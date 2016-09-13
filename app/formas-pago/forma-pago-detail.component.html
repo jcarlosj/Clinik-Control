@@ -8,13 +8,19 @@
         <div [hidden]="!(form.controls.codigo.touched && !form.controls.codigo.valid)">
             <small>
                 <!--Error en el codigo   {{ form.controls.codigo.errors | json }}-->
-                <i>> {{ errors(form.controls.codigo) }}</i>
+                <i>> {{ errors(form.controls.codigo, 'codigo' ) }}</i>
             </small>
         </div>
     </div>
     <div>
         <label>Descripcion: </label>
         <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion" />
+                <div [hidden]="!(form.controls.codigo.touched && !form.controls.descripcion.valid)">
+            <small>
+                <!--Error en el descripcion   {{ form.controls.descripcion.errors | json }}-->
+                <i>> {{ errors(form.controls.descripcion, 'descripcion' ) }}</i>
+            </small>
+        </div>
     </div>
     <div>
         <label>Tipo: </label>

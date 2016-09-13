@@ -127,20 +127,30 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
     .catch(error => this.error = error);
   }
 
-  errors(data: FormControl){
+  errors(data: FormControl, name: string ){
 
     let resp = '';
     let error: any;
 
-    for ( error in data.errors ){
+    let fields = { 
+      codigo: {
+        required:      'Campo requerido.',
+        minlength:     'Debe tener 2 o más caracteres.',
+        maxlength:     'Debe tener hasta 10 caracteres.',
+        pattern:       'Solo admite valores enteros'
+      },
+      descripcion: {
+        required:      'Campo requerido.',
+        minlength:     'Debe tener 10 o más caracteres.',
+        maxlength:     'Debe tener hasta 30 caracteres.',
+        pattern:       'Solo admite valores alfabéticos.'
+      },
+    };
 
-      switch (error) {
-        case "required"  : resp += 'Debe digitar un dato ';        break;
-        case "minlength" : resp += 'Digite 2 o más caracteres ';   break;  
-        case "maxlength" : resp += 'Digite hasta 10 caracteres ';  break; 
-        case "pattern"   : resp += 'Solo admite números enteros '; break;      
-        default          : resp += 'Default: ' + error ;           break;
-      }
+    for ( error in data.errors ){
+   
+      console .log( fields[ name ][ error ] );
+      resp += fields[ name ][ error ] + ' ';
     }
 
     return resp;
