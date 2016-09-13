@@ -1,0 +1,42 @@
+<h3>{{title}}</h3>
+<form  *ngIf="obj" [formGroup]="form" novalidate >
+    <input type="hidden" id="id" name="id" formControlName="id" />
+    <div>
+        <label>Codigo: </label>
+        <input required type="text" id="codigo" name="codigo" placeholder="codigo"
+            formControlName="codigo"
+            [disabled]="!esNuevo"
+          />
+        <div [hidden]="!(form.controls.codigo.touched && !form.controls.codigo.valid)">
+            <p>
+                <!--Error en el codigo   {{ form.controls.codigo.errors | json }}-->
+
+                Error en el codigo   {{ errors(form.controls.codigo) }}
+            </p>
+        </div>
+    </div>
+    <div>
+        <label>Descripcion: </label>
+        <input type="text" id="descripcion" name="descripcion" placeholder="descripcion"
+            formControlName="descripcion"
+        />
+    </div>
+    <div>
+        <label>Tipo: </label>
+        <select id="tipo" name="tipo"
+            formControlName="tipo">
+            <option *ngFor="let o of tiposFormasPago" [value]="o.tipo">{{o.descripcion}}</option>
+        </select>
+    </div>
+    <div>
+        <label>Estado: </label>
+        <select id="estado" name="estado"
+            formControlName="estado">
+            <option *ngFor="let o of estado" [value]="o.codigo">{{o.nombre}}</option>
+        </select>
+    </div>
+    <p>
+        <button (click)="save()">Guardar</button>
+        <button (click)="goToList()">Regresar</button>
+    </p>
+</form>

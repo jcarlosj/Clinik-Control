@@ -1,0 +1,11 @@
+<h2>{{title}}</h2>
+<ul class="items">
+    <li *ngFor="let o of arrObj"
+    [class.selected]="isSelected(o)"
+    (click)="onSelect(o)">
+        <span class="badge">{{o.codigo}}</span> {{o.descripcion}}<!--br />
+        <span style="font-size: 9px;">estado: {{o.estado}} / editable: {{o.editable}} / borrable: {{o.borrable}} / ID Crea: {{o.idUsuarioCrea}} / ID Modifica: {{o.idUsuarioModifica}} / Fecha creacion: {{o.fechaCreacion}} / fecha modifica: {{o.fechaModificacion}}</span-->
+        <button class="delete-button"  (click)="delete(o, $event)">Borrar</button>
+    </li>
+</ul>
+<button (click)="add()">{{botonNuevo}}</button>
