@@ -78,16 +78,34 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
               .then( formapago => {
                       this .vObj = formapago;
                       this .form .setValue( this.vObj );
+                      console .log( 'Nuevo: ' + this.esNuevo );
+                      this .validateFields();
                       this .esNuevo =  false;
+                      
               });
         } 
         else {
           this .vObj = new FormaPago();
           this .form .setValue( new FormaPago() );
-          this .form .controls[ "codigo" ] .setValidators( Validators .minLength( 2 ) );
+          this .validateFields();
           this .esNuevo =  true;
+          console .log( 'Nuevo: ' + this.esNuevo );
         }
     });
+  }
+
+  // Configuración de validaciones de
+  validateFields() {
+    this .form .controls[ "codigo" ] .setValidators([ 
+            Validators .minLength( 2 ), 
+            Validators .maxLength( 10 ),
+            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+    ]);
+    this .form .controls[ "descripcion" ] .setValidators([ 
+            Validators .minLength( 10 ), 
+            Validators .maxLength( 30 ),
+            Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
+    ]);
   }
 
   ngOnDestroy() {
@@ -114,13 +132,14 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
     let resp = '';
     let error: any;
 
-    for (error in data.errors){
+    for ( error in data.errors ){
+
       switch (error) {
-        case "required" :
-          resp += 'Debe digitar un dato';
-          break;
-        default:      
-          break;
+        case "required"  : resp += 'Debe digitar un dato ';        break;
+        case "minlength" : resp += 'Digite 2 o más caracteres ';   break;  
+        case "maxlength" : resp += 'Digite hasta 10 caracteres ';  break; 
+        case "pattern"   : resp += 'Solo admite números enteros '; break;      
+        default          : resp += 'Default: ' + error ;           break;
       }
     }
 

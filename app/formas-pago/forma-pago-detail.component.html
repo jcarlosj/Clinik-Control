@@ -6,10 +6,10 @@
         <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" required />
         
         <div [hidden]="!(form.controls.codigo.touched && !form.controls.codigo.valid)">
-            <p>
+            <small>
                 <!--Error en el codigo   {{ form.controls.codigo.errors | json }}-->
-                Error en el codigo   {{ errors(form.controls.codigo) }}
-            </p>
+                <i>> {{ errors(form.controls.codigo) }}</i>
+            </small>
         </div>
     </div>
     <div>
