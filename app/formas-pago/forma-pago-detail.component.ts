@@ -127,7 +127,7 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
     .catch(error => this.error = error);
   }
 
-  errors(data: FormControl, name: string ){
+  errors( name: string ){
 
     let resp = '';
     let error: any;
@@ -147,25 +147,9 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
       },
     };
 
-    let data2 = this .form.controls[ name ].errors; 
-    // verificar si dos objetos son del mismo
-    if( data.errors === data2 ) {    // <-- data.errors (parametro recibido desde el formulario) / data2: propiedad del form (de tipo FormGroup)
-      // Valores del array -> data.errors
-      console .log( 'data.error: ' + typeof( data.errors ) );
-      for ( error in data.errors ){
-        console .log( ' -> ' + error );
-      }
-      // Valores del array -> form
-      console .log( 'data2: ' + typeof( data2 ) );
-      for ( error in data2 ){
-        console .log( ' -> ' + error );
-      }
-    }
-
-    for ( error in data2 ){
-   
-      //console .log( fields[ name ][ error ] );
+    for ( error in this .form.controls[ name ].errors ){
       resp += fields[ name ][ error ] + ' ';
+      
     }
 
     return resp;
