@@ -36,7 +36,7 @@
         </select>
     </div>
     <div>
-        <button (click)="save()">{{botonGuardar}}</button>
+        <button (click)="save()" [disabled]="!form.valid" >{{botonGuardar}}</button>
         <button (click)="goToList()">{{botonRegresar}}</button>
     </div>
 </form>

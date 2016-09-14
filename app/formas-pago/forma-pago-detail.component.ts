@@ -129,7 +129,7 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
 
   errors( name: string ){
 
-    let resp = '';
+    let resp: string = '';
     let error: any;
 
     let fields = { 
@@ -145,13 +145,12 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
         maxlength:     'Debe tener hasta 30 caracteres.',
         pattern:       'Solo admite valores alfabéticos.'
       },
-    };
-
-    for ( error in this .form.controls[ name ].errors ){
-      resp += fields[ name ][ error ] + ' ';
-
     }
 
+    for ( error in this .form.controls[ name ].errors ){
+        resp += fields[ name ][ error ] + ' ';
+    }
+    
     return resp;
   }
 }
