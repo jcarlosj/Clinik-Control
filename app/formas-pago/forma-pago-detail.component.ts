@@ -61,8 +61,8 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
         new cTipoFP( 10, 'Tarjeta prepago', true )
     ];
     this.estado = [
-        new cEstado('A', 'Activo' ),
-        new cEstado('I', 'Inactivo' ),
+        new cEstado( 'A', 'Activo' ),
+        new cEstado( 'I', 'Inactivo' )
     ];
     this.sub = this.router.params.subscribe(params => {
         /* ---------- 
@@ -149,7 +149,7 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
 
     for ( error in this .form.controls[ name ].errors ){
       resp += fields[ name ][ error ] + ' ';
-      
+
     }
 
     return resp;

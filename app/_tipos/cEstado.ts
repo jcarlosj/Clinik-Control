@@ -1,5 +1,9 @@
-import { Injectable } from '@angular/core';
+// Class
 export class cEstado {
-  constructor(public codigo: string, 
-                public nombre: string) { }
+  
+  // Constructor
+  constructor(
+    public codigo: string, 
+    public nombre: string
+  ) { }
 }

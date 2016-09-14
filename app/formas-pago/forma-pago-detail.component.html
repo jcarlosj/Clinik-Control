@@ -14,8 +14,9 @@
     </div>
     <div>
         <label>Descripcion: </label>
-        <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion" />
-                <div [hidden]="!(form.controls.codigo.touched && !form.controls.descripcion.valid)">
+        <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion" required />
+        
+        <div [hidden]="!(form.controls.codigo.touched && !form.controls.descripcion.valid)">
             <small>
                 <!--Error en el descripcion   {{ form.controls.descripcion.errors | json }}-->
                 <i>> {{ errors( 'descripcion' ) }}</i>
