@@ -1,13 +1,13 @@
 <h4>{{title}}</h4>
-<form [formGroup]="form" *ngIf="vObj" novalidate >
+<form [formGroup]="frmFormaPago" *ngIf="vObj" novalidate >
     <input formControlName="id" type="hidden" id="id" name="id" />
     <div>
         <label>Codigo: </label>
         <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" required />
         
-        <div [hidden]="!(form.controls.codigo.touched && !form.controls.codigo.valid)">
+        <div [hidden]="!(frmFormaPago.controls.codigo.touched && !frmFormaPago.controls.codigo.valid)">
             <small>
-                <!--Error en el codigo   {{ form.controls.codigo.errors | json }}-->
+                <!--Error en el codigo   {{ frmFormaPago.controls.codigo.errors | json }}-->
                 <i>> {{ errors( 'codigo' ) }}</i>
             </small>
         </div>
@@ -16,9 +16,9 @@
         <label>Descripcion: </label>
         <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion" required />
         
-        <div [hidden]="!(form.controls.codigo.touched && !form.controls.descripcion.valid)">
+        <div [hidden]="!(frmFormaPago.controls.codigo.touched && !frmFormaPago.controls.descripcion.valid)">
             <small>
-                <!--Error en el descripcion   {{ form.controls.descripcion.errors | json }}-->
+                <!--Error en el descripcion   {{ frmFormaPago.controls.descripcion.errors | json }}-->
                 <i>> {{ errors( 'descripcion' ) }}</i>
             </small>
         </div>
@@ -36,7 +36,7 @@
         </select>
     </div>
     <div>
-        <button (click)="save()" [disabled]="!form.valid" >{{botonGuardar}}</button>
+        <button (click)="save()" [disabled]="!frmFormaPago.valid" >{{botonGuardar}}</button>
         <button (click)="goToList()">{{botonRegresar}}</button>
     </div>
 </form>

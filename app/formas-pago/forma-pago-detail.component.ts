@@ -29,7 +29,7 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
   private botonGuardar = 'Guardar';
   private botonRegresar = 'Regresar';
 
-  form = new FormGroup({
+  frmFormaPago = new FormGroup({
       id          : new FormControl(),
       codigo      : new FormControl(),
       descripcion : new FormControl(),
@@ -77,7 +77,7 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
           this.service.getRecord(this.codigo)
               .then( formapago => {
                       this .vObj = formapago;
-                      this .form .setValue( this.vObj );
+                      this .frmFormaPago .setValue( this.vObj );
                       console .log( 'Nuevo: ' + this.esNuevo );
                       this .validateFields();
                       this .esNuevo =  false;
@@ -86,7 +86,7 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
         } 
         else {
           this .vObj = new FormaPago();
-          this .form .setValue( new FormaPago() );
+          this .frmFormaPago .setValue( new FormaPago() );
           this .validateFields();
           this .esNuevo =  true;
           console .log( 'Nuevo: ' + this.esNuevo );
@@ -96,12 +96,12 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
 
   // Configuración de validaciones de
   validateFields() {
-    this .form .controls[ "codigo" ] .setValidators([ 
+    this .frmFormaPago .controls[ "codigo" ] .setValidators([ 
             Validators .minLength( 2 ), 
             Validators .maxLength( 10 ),
             Validators .pattern( '^[0-9]+([0-9]+)?$' )
     ]);
-    this .form .controls[ "descripcion" ] .setValidators([ 
+    this .frmFormaPago .controls[ "descripcion" ] .setValidators([ 
             Validators .minLength( 10 ), 
             Validators .maxLength( 30 ),
             Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
@@ -119,7 +119,7 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
   }
 
   save(){
-    this .service .save(this.form.value,this.esNuevo)
+    this .service .save(this.frmFormaPago.value,this.esNuevo)
                   .then(formapago => {
                     this.vObj = formapago;
                     this.goToList( formapago );
@@ -147,7 +147,7 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
       },
     }
 
-    for ( error in this .form.controls[ name ].errors ){
+    for ( error in this .frmFormaPago.controls[ name ].errors ){
         resp += fields[ name ][ error ] + ' ';
     }
     

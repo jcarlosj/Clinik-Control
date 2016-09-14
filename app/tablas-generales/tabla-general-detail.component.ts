@@ -23,7 +23,7 @@ import { cEstado }             from '../_tipos/cEstado';
 
 // Decorator
 @Component({
-  selector    : 'fTablaGeneral',
+  selector    : 'tablas-generales',
   templateUrl : '../app/tablas-generales/tabla-general-detail.component.html',
   //directives  : [REACTIVE_FORM_DIRECTIVES, FORM_DIRECTIVES],
 })
