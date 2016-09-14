@@ -23,7 +23,7 @@ import { cEstado }             from '../_tipos/cEstado';
 
 // Decorator
 @Component({
-  selector    : 'frm-forma-pago',
+  selector    : 'fTablaGeneral',
   templateUrl : '../app/tablas-generales/tabla-general-detail.component.html',
   //directives  : [REACTIVE_FORM_DIRECTIVES, FORM_DIRECTIVES],
 })
@@ -32,7 +32,7 @@ import { cEstado }             from '../_tipos/cEstado';
 export class TablaGeneralDetail implements OnInit, OnDestroy {
   // Atributes
   @Output() close = new EventEmitter();
-  private form        : FormGroup;
+  private fTablaGeneral : FormGroup;
   private obj         : TablaGeneral;
   private error       : any;
   private sub         : any;
@@ -83,7 +83,7 @@ export class TablaGeneralDetail implements OnInit, OnDestroy {
   // Implements de Angular 2
   ngOnInit() {
 
-    this .form = new FormGroup({
+    this .fTablaGeneral = new FormGroup({
         id                : new FormControl(),
         codigo            : new FormControl(),
         descripcion       : new FormControl(),
@@ -111,16 +111,31 @@ export class TablaGeneralDetail implements OnInit, OnDestroy {
             this.service.getTablaGeneral(this.codigo)
                 .then(obj => {
                     this.obj = obj;
-                    this.form.setValue(this.obj);
+                    this.fTablaGeneral.setValue(this.obj);
+                    this .validateFields();
                     this.esNuevo =  false;
                 });
         } else {
             this.obj = new TablaGeneral();
-            this.form.setValue(new TablaGeneral());
-            this.form.controls["codigo"].setValidators(Validators.minLength(2));
+            this.fTablaGeneral.setValue(new TablaGeneral());
+            this .validateFields();
             this.esNuevo =  true;
         }
     });
+  }
+
+  // Configuración de validaciones de
+  validateFields() {
+    this .fTablaGeneral .controls[ "codigo" ] .setValidators([ 
+            Validators .minLength( 2 ), 
+            Validators .maxLength( 10 ),
+            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+    ]);
+    this .fTablaGeneral .controls[ "descripcion" ] .setValidators([ 
+            Validators .minLength( 10 ), 
+            Validators .maxLength( 30 ),
+            Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
+    ]);
   }
 
   ngOnDestroy() {
@@ -134,10 +149,10 @@ export class TablaGeneralDetail implements OnInit, OnDestroy {
   }
 
   save(){
-    console .log( 'this .form .value :' + this.form.value );
+    console .log( 'this .fTablaGeneral .value :' + this.fTablaGeneral.value );
 
     this.service
-      .save( this.form.value, this.esNuevo )
+      .save( this.fTablaGeneral.value, this.esNuevo )
       .then( obj => {
         this .obj = obj;
         this .goToList( obj );
@@ -145,20 +160,30 @@ export class TablaGeneralDetail implements OnInit, OnDestroy {
       .catch( error => this .error = error );
   }
 
-  errors(obj: FormControl){
-    let resp = '';
+  errors( name: string ){
+
+    let resp: string = '';
     let error: any;
 
-    for (error in obj.errors){
-      switch (error) {
-        case "required" :
-          resp += 'Debe digitar un dato';
-          break;
-        default:
-          break;
-      }
+    let fields = { 
+      codigo: {
+        required:      'Campo requerido.',
+        minlength:     'Debe tener 2 o más caracteres.',
+        maxlength:     'Debe tener hasta 10 caracteres.',
+        pattern:       'Solo admite valores enteros'
+      },
+      descripcion: {
+        required:      'Campo requerido.',
+        minlength:     'Debe tener 10 o más caracteres.',
+        maxlength:     'Debe tener hasta 30 caracteres.',
+        pattern:       'Solo admite valores alfabéticos.'
+      },
     }
 
+    for ( error in this .fTablaGeneral.controls[ name ].errors ){
+        resp += fields[ name ][ error ] + ' ';
+    }
+    
     return resp;
-  }
+  }  
 }

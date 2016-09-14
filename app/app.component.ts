@@ -10,9 +10,9 @@ import './rxjs-extensions';
     <nav>
       <a routerLink="/formas_pago" routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }">Formas de Pago</a>
-      <!--a routerLink="/marca" routerLinkActive="active"
+      <a routerLink="/marca" routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }">{{marcas}}</a>
-      <a routerLink="/presentacion_medicamento" routerLinkActive="active"
+      <!--a routerLink="/presentacion_medicamento" routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }">{{presentacionMedicamentos}}</a>
       <a routerLink="/vias_administracion" routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }">{{viasAdministracion}}</a>

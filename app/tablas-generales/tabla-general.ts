@@ -19,7 +19,7 @@ export class TablaGeneral {
         this.id          = "";
         this.codigo      = "";
         this.descripcion = "";
-        this.estado      = "";
+        this.estado      = "A";
         //this.tipo        = 1;
         this.editable    = false;
         this.borrable    = false;
