@@ -22,6 +22,10 @@ import { AgrupacionService } from './agrupaciones/agrupacion.service';
 import { AgrupacionListComponent }    from './agrupaciones/agrupacion-list.component';
 import { AgrupacionDetailComponent }    from './agrupaciones/agrupacion-detail.component';
 
+import { ProductoService }         from './productos/producto.service';
+import { ProductoListComponent }   from './productos/producto-list.component';
+import { ProductoDetailComponent } from './productos/producto-detail.component';
+
 import { routing, appRoutingProviders }        from './app.routing';
 
 @NgModule({
@@ -40,13 +44,16 @@ import { routing, appRoutingProviders }        from './app.routing';
     TablaGeneralList,
     TablaGeneralDetail,
     AgrupacionListComponent,
-    AgrupacionDetailComponent
+    AgrupacionDetailComponent,
+    ProductoListComponent,
+    ProductoDetailComponent
   ],
   providers: [
     appRoutingProviders, 
     FormaPagoService,
     TablaGeneralService,        
-    AgrupacionService/*,
+    AgrupacionService,
+    ProductoService/*,
     { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
     { provide: SEED_DATA,  useClass: InMemoryDataService }     // in-mem server data*/
   ],

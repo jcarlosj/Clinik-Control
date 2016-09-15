@@ -10,6 +10,8 @@ import './rxjs-extensions';
     <nav>
       <a routerLink="/formas_pago" routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }">Formas de Pago</a>
+        <a routerLink="/productos" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">{{productos}}</a>
       <a routerLink="/marca" routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }">{{marcas}}</a>
       <!--a routerLink="/presentacion_medicamento" routerLinkActive="active"
@@ -32,6 +34,7 @@ export class AppComponent {
   // Atributes
   private title = 'Clinik Control';
   private description = 'v0.1';
+  private productos   = 'Productos';
   private formasPago                : string;
   private tablaGeneral              : string;
   private marcas                    : string;

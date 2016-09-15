@@ -1,0 +1,42 @@
+<h4>{{title}}</h4>
+<form [formGroup]="frmProducto" *ngIf="vObj" novalidate >
+    <input formControlName="id" type="hidden" id="id" name="id" />
+    <div>
+        <label>Codigo: </label>
+        <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" required />
+        
+        <div [hidden]="!(frmProducto.controls.codigo.touched && !frmProducto.controls.codigo.valid)">
+            <small>
+                <!--Error en el codigo   {{ frmProducto.controls.codigo.errors | json }}-->
+                <i>> {{ errors( 'codigo' ) }}</i>
+            </small>
+        </div>
+    </div>
+    <div>
+        <label>Descripcion: </label>
+        <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion" required />
+        
+        <div [hidden]="!(frmProducto.controls.codigo.touched && !frmProducto.controls.descripcion.valid)">
+            <small>
+                <!--Error en el descripcion   {{ frmProducto.controls.descripcion.errors | json }}-->
+                <i>> {{ errors( 'descripcion' ) }}</i>
+            </small>
+        </div>
+    </div>
+    <div>
+        <label>Tipo: </label>
+        <select formControlName="tipo" id="tipo" name="tipo">
+            <option [value]="o.tipo" *ngFor="let o of tiposFormasPago">{{o.descripcion}}</option>
+        </select>
+    </div>
+    <div>
+        <label>Estado: </label>
+        <select formControlName="estado" id="estado" name="estado" >
+            <option [value]="o.codigo" *ngFor="let o of estado">{{o.nombre}}</option>
+        </select>
+    </div>
+    <div>
+        <button (click)="save()" [disabled]="!frmProducto.valid" >{{botonGuardar}}</button>
+        <button (click)="goToList()">{{botonRegresar}}</button>
+    </div>
+</form>

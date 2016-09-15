@@ -21,6 +21,13 @@ import { InMemoryDbService } from 'angular2-in-memory-web-api';
       {id: '04', codigo: '04', descripcion: 'Pago multiple', estado: 'A', tipo: 2, editable: true, borrable: false },
       {id: '05', codigo: '05', descripcion: 'Prueba', estado: 'I', tipo: 1, editable: true, borrable: true }
     ];
+    let productos = [
+      {id: '01', codigo: '01', descripcion: 'Producto 1', estado: 'A', tipo: 1, editable: true, borrable: false },
+      {id: '02', codigo: '02', descripcion: 'Producto 2', estado: 'A', tipo: 1, editable: true, borrable: false },
+      {id: '03', codigo: '03', descripcion: 'Producto 3', estado: 'A', tipo: 1, editable: true, borrable: false },
+      {id: '04', codigo: '04', descripcion: 'Producto 4', estado: 'A', tipo: 2, editable: true, borrable: false },
+      {id: '05', codigo: '05', descripcion: 'Producto 5', estado: 'I', tipo: 1, editable: true, borrable: true }
+    ];
     let tablas_generales = [
       {
         id          : '01',
@@ -275,13 +282,6 @@ import { InMemoryDbService } from 'angular2-in-memory-web-api';
         fechaModificacion : '1977-11-24'
       }
     ]
-    return {heroes, formas_pago, tipos_impuesto, tablas_generales, marca, presentacion_medicamento, vias_administracion, riesgo_procedimiento, agrupacion};
+    return { heroes, productos, formas_pago, tipos_impuesto, tablas_generales, marca, presentacion_medicamento, vias_administracion, riesgo_procedimiento, agrupacion};
   }
 }
-
-
-/*
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/
