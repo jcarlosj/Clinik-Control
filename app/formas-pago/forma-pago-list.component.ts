@@ -15,15 +15,16 @@ import { FormaPago } from './forma-pago';
 export class FormaPagoListComponent implements OnInit, OnDestroy {
 	
 	// Atributes
-	private arrObj: FormaPago[];
-	private selectedObj: FormaPago;
-	private selectedId: string;
-	private sub: any;
-	private error: any;
-	private path: string;
-	private title = 'Listado formas de pago';
+	private arrObj      : FormaPago[];
+	private selectedObj : FormaPago;
+	private selectedId  : string;
+	private sub 				: any;
+	private error 			: any;
+	private path 				: string;
+
+	private title       = 'Listado formas de pago';
 	private botonBorrar = 'Borrar';
-	private botonNuevo = 'Nueva formas de pago';
+	private botonNuevo  = 'Nueva formas de pago';
 
 	// Constructor
 	constructor(
@@ -60,8 +61,6 @@ export class FormaPagoListComponent implements OnInit, OnDestroy {
     this .router .navigate( [ this .path, obj.codigo ] );
   }
   add(){
-	  //let o: FormaPago;
-		//this.selectedObj = new FormaPago();		
 	  this .router .navigate([ this .path, this.selectedObj ]);
   }
 

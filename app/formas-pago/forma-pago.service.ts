@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 
 // Imports personalizados necesarios para este componente
-import { Path }           from '../paths';
+import { Path }      from '../paths';
 import { FormaPago } from '../formas-pago/forma-pago';
 
 // Decorator
@@ -101,5 +101,4 @@ export class FormaPagoService {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
-  
 }

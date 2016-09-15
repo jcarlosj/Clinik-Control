@@ -23,17 +23,17 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
   @Output() close = new EventEmitter();
 
   // Atributes 
-  private frmFormaPago : FormGroup;
-  private vObj: FormaPago;
-  private codigo: string;
-  private tiposFormasPago: cTipoFP[];
-  private estado: cEstado[];
-  private sub: any;
-  private esNuevo: boolean = false;
-  private error: any;
+  private frmFormaPago    : FormGroup;
+  private vObj            : FormaPago;
+  private codigo          : string;
+  private tiposFormasPago : cTipoFP[];
+  private estado          : cEstado[];
+  private sub             : any;
+  private esNuevo         : boolean = false;
+  private error           : any;
   // Definimos texto boton y titulo
-  private title = 'Formas de pago';
-  private botonGuardar = 'Guardar';
+  private title         = 'Formas de pago';
+  private botonGuardar  = 'Guardar';
   private botonRegresar = 'Regresar';
   
   // Constructor
@@ -141,11 +141,13 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
     .catch(error => this.error = error);
   }
 
+  // Manejador de mensajes de ERROR de campos del formulario
   errors( name: string ){
 
     let resp: string = '';
     let error: any;
 
+    // Configuracion de mensaje por campo
     let fields = { 
       codigo: {
         required:      'Campo requerido.',
