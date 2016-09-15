@@ -20,6 +20,7 @@ export class FormaPagoListComponent implements OnInit, OnDestroy {
 	private selectedId: string;
 	private sub: any;
 	private error: any;
+	private path: string;
 	private title = 'Listado formas de pago';
 	private botonBorrar = 'Borrar';
 	private botonNuevo = 'Nueva formas de pago';
@@ -29,7 +30,11 @@ export class FormaPagoListComponent implements OnInit, OnDestroy {
 		private service: FormaPagoService,
 		private route: ActivatedRoute,
 		private router: Router
-	) { }
+	) { 
+		// Capturamos el PATH actual.
+		this .path = this .router .url;
+		console .log( 'Validate Path: ' + this .path );
+	}
 
 	// Implements de Angular 2
 	ngOnInit() {
@@ -37,7 +42,7 @@ export class FormaPagoListComponent implements OnInit, OnDestroy {
 											.params
 											.subscribe( params => {
 													this.selectedId = params['codigo'];
-													this.service.getRecords()
+													this.service.getRecords( this .path )
         											.then( obj => this.arrObj = obj );
 											});
   }

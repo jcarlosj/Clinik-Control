@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 
 // Imports personalizados necesarios para este componente
+import { Path }           from '../paths';
 import { FormaPago } from '../formas-pago/forma-pago';
 
 // Decorator
@@ -13,13 +14,25 @@ export class FormaPagoService {
 
   // Atributes
   private formaspagoUrl = 'app/formas_pago';  // URL to web api
- 
+  private path : string;
+  private headers: Headers;
+  private url: string;
+
   // Constructor
-  constructor( private http: Http ) { }
+  constructor( private http: Http ) { 
+    this .headers = new Headers();
+    this .headers .append('Content-Type', 'application/json');
+  }
 
   // Methods
-  public getRecords(): Promise <FormaPago[]> { 
-    return this.http.get(this.formaspagoUrl)
+  public getRecords( path: string ): Promise <FormaPago[]> { 
+
+  // Redirecciona la URL web API agregandole el PATH
+  this .path   = path;
+  let url = `${Path.API}${this.path}`;
+  console .log( 'Listado registros: ' + Path.API + this.path + ' *** ' + this .url );
+
+    return this.http.get( url )
                .toPromise()
                .then(
                 response => response.json().data as FormaPago[])
@@ -27,8 +40,10 @@ export class FormaPagoService {
   }
 
   public getRecord(codigo: string) {
-      return this.getRecords()
-          .then(obj => obj.find(obj => obj.codigo === codigo));
+      console .log( 'Lista registro: ' + Path.API + this.path + ' *** ' + this .url );
+
+      return this .getRecords( this .path )
+                  .then(obj => obj.find(obj => obj.codigo === codigo));
   }
   
   public save(obj: FormaPago, esNuevo: boolean): Promise<FormaPago>  {
