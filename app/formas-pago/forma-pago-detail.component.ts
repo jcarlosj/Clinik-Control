@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, OnInit, OnDestroy, Output } from '@angu
 import { ActivatedRoute, Params }             from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule }                from '@angular/forms';
+import { Location }                           from '@angular/common';
 
 // Imports personalizados necesarios para este componente
 import { FormaPagoService } from './forma-pago.service';
@@ -38,7 +39,8 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
   
   // Constructor
   constructor(
-    private router: ActivatedRoute,
+    private location: Location,
+    private route: ActivatedRoute,
     private service: FormaPagoService
   ) { 
 
@@ -77,7 +79,7 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
           borrable    : new FormControl()
     });
 
-    this.sub = this.router.params.subscribe(params => {
+    this.sub = this.route.params.subscribe(params => {
         /* ---------- 
             13-Ago-2016   -  Fernando Bermeo
             depurando en el navegador se puede observar que el parametro codigo es igual a la cadena
@@ -129,7 +131,7 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
 
   goToList( obj: FormaPago = null) {
     this .close .emit( obj );
-    window.history.back();   
+    this .location .back();   
   }
 
   save(){
