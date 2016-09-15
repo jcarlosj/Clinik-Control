@@ -1,17 +1,20 @@
-// TODO SOMEDAY: Feature Componetized like CrisisCenter
+// Imports del core de Angular 2 necesarios para este componente
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-
+// Imports personalizados necesarios para este componente
 import { FormaPagoService }   from './forma-pago.service';
 import { FormaPago } from './forma-pago';
 
+// Decorator
 @Component({
 	templateUrl: '../app/formas-pago/forma-pago-list.component.html',
 })
 
+// Clase principal para este componente
 export class FormaPagoListComponent implements OnInit, OnDestroy {
-	// Atributos
+	
+	// Atributes
 	private arrObj: FormaPago[];
 	private selectedObj: FormaPago;
 	private selectedId: string;
@@ -28,6 +31,7 @@ export class FormaPagoListComponent implements OnInit, OnDestroy {
 		private router: Router
 	) { }
 
+	// Implements de Angular 2
 	ngOnInit() {
 			this.sub = this .route
 											.params
@@ -42,6 +46,7 @@ export class FormaPagoListComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
+	// Methods
   isSelected( obj: FormaPago ) { 
 		return obj.codigo === this.selectedId; 
 	}

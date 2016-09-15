@@ -1,23 +1,29 @@
+// Imports del core de Angular 2 necesarios para este componente
 import { Component, EventEmitter, Input, OnInit, OnDestroy, Output } from '@angular/core';
-import { ActivatedRoute, Params }       from '@angular/router';
+import { ActivatedRoute, Params }             from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule }                from '@angular/forms';
 
+// Imports personalizados necesarios para este componente
 import { FormaPagoService } from './forma-pago.service';
-import { FormaPago } from './forma-pago';
-import { cTipoFP} from '../_tipos/cTipos-FP';
-import { cEstado} from '../_tipos/cEstado';
+import { FormaPago }        from './forma-pago';
+import { cTipoFP}           from '../_tipos/cTipos-FP';
+import { cEstado}           from '../_tipos/cEstado';
 
+// Decorator
 @Component({
   selector: 'formas-de-pago',
   templateUrl: '../app/formas-pago/forma-pago-detail.component.html'
 })  
 
+// Clase principal del componente
 export class FormaPagoDetailComponent implements OnInit, OnDestroy {
 
+  // Decorador
   @Output() close = new EventEmitter();
 
-  // Atributos 
+  // Atributes 
+  private frmFormaPago : FormGroup;
   private vObj: FormaPago;
   private codigo: string;
   private tiposFormasPago: cTipoFP[];
@@ -25,27 +31,18 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
   private sub: any;
   private esNuevo: boolean = false;
   private error: any;
+  // Definimos texto boton y titulo
   private title = 'Formas de pago';
   private botonGuardar = 'Guardar';
   private botonRegresar = 'Regresar';
-
-  frmFormaPago = new FormGroup({
-      id          : new FormControl(),
-      codigo      : new FormControl(),
-      descripcion : new FormControl(),
-      estado      : new FormControl(),
-      tipo        : new FormControl(),
-      editable    : new FormControl(),
-      borrable    : new FormControl()
-  });
   
   // Constructor
   constructor(
     private router: ActivatedRoute,
     private service: FormaPagoService
-  ) { }
+  ) { 
 
-  ngOnInit() {
+    // Inicializando atributos
     this.codigo = '';
     
     this.tiposFormasPago = [
@@ -64,6 +61,22 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
         new cEstado( 'A', 'Activo' ),
         new cEstado( 'I', 'Inactivo' )
     ];
+  }
+
+  // Implements de Angular 2
+  ngOnInit() {
+
+    // Inicializando atributos
+    this .frmFormaPago = new FormGroup({
+          id          : new FormControl(),
+          codigo      : new FormControl(),
+          descripcion : new FormControl(),
+          estado      : new FormControl(),
+          tipo        : new FormControl(),
+          editable    : new FormControl(),
+          borrable    : new FormControl()
+    });
+
     this.sub = this.router.params.subscribe(params => {
         /* ---------- 
             13-Ago-2016   -  Fernando Bermeo
@@ -75,8 +88,8 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
           this.esNuevo =  false;
           this.codigo = params['codigo'];
           this.service.getRecord(this.codigo)
-              .then( formapago => {
-                      this .vObj = formapago;
+              .then( obj => {
+                      this .vObj = obj;
                       this .frmFormaPago .setValue( this.vObj );
                       console .log( 'Nuevo: ' + this.esNuevo );
                       this .validateFields();
@@ -92,9 +105,15 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
           console .log( 'Nuevo: ' + this.esNuevo );
         }
     });
+  } 
+
+  ngOnDestroy() {
+    this .sub .unsubscribe();
   }
 
-  // Configuración de validaciones de
+  // Methods
+
+  // Configuración de validaciones de campos del formulario
   validateFields() {
     this .frmFormaPago .controls[ "codigo" ] .setValidators([ 
             Validators .minLength( 2 ), 
@@ -108,21 +127,16 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
     ]);
   }
 
-  ngOnDestroy() {
-    this .sub .unsubscribe();
-  }
-
   goToList( obj: FormaPago = null) {
     this .close .emit( obj );
-    window.history.back();
-    //alert (window.location.pathname);    
+    window.history.back();   
   }
 
   save(){
     this .service .save(this.frmFormaPago.value,this.esNuevo)
-                  .then(formapago => {
-                    this.vObj = formapago;
-                    this.goToList( formapago );
+                  .then( obj => {
+                    this.vObj = obj;
+                    this.goToList( obj );
                   })
     .catch(error => this.error = error);
   }

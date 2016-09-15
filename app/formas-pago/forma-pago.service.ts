@@ -1,23 +1,24 @@
+// Imports del core de Angular 2 necesarios para este componente
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 
-//import 'rxjs/add/operator/toPromise';
-//import 'rxjs/add/operator/share';
-//import 'rxjs/add/operator/map';
-
+// Imports personalizados necesarios para este componente
 import { FormaPago } from '../formas-pago/forma-pago';
 
+// Decorator
 @Injectable()
 
+// Clase principal para este servicio
 export class FormaPagoService {
 
+  // Atributes
   private formaspagoUrl = 'app/formas_pago';  // URL to web api
  
-  constructor( 
-    private http: Http 
-  ) { }
+  // Constructor
+  constructor( private http: Http ) { }
 
-  getRecords(): Promise <FormaPago[]> { 
+  // Methods
+  public getRecords(): Promise <FormaPago[]> { 
     return this.http.get(this.formaspagoUrl)
                .toPromise()
                .then(
@@ -25,53 +26,54 @@ export class FormaPagoService {
                .catch(this.handleError);
   }
 
-
-  getRecord(codigo: string) {
+  public getRecord(codigo: string) {
       return this.getRecords()
-          .then(forma_pago => forma_pago.find(forma_pago => forma_pago.codigo === codigo));
+          .then(obj => obj.find(obj => obj.codigo === codigo));
   }
   
-  public save(formapago: FormaPago, esNuevo: boolean): Promise<FormaPago>  {
+  public save(obj: FormaPago, esNuevo: boolean): Promise<FormaPago>  {
     if (esNuevo){
-      return this.post(formapago);
+
+      return this.post(obj);
     }
-    return this.put(formapago);
+
+    return this.put(obj);
   }
 
-  public delete( formapago: FormaPago) {
+  public delete( obj: FormaPago) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    let url = `${this.formaspagoUrl}/${formapago.codigo}`;
+    let url = `${this.formaspagoUrl}/${obj.codigo}`;
     return this.http
                .delete(url, {headers: headers})
                .toPromise()
                .catch(this.handleError);
   }
 
-  // Add new forma pago
-  private post(formapago: FormaPago): Promise<FormaPago> {
+  // Add new
+  private post(obj: FormaPago): Promise<FormaPago> {
     let headers = new Headers({
       'Content-Type': 'application/json'});
 
     return this.http
-               .post(this.formaspagoUrl, JSON.stringify(formapago), {headers: headers})
+               .post(this.formaspagoUrl, JSON.stringify(obj), {headers: headers})
                .toPromise()
                .then(res => res.json().data)
                .catch(this.handleError);
   }
 
-  // Update existing forma pago
-  private put(formapago: FormaPago) {
+  // Update existing
+  private put(obj: FormaPago) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     
-    let url = `${this.formaspagoUrl}/${formapago.codigo}`;
+    let url = `${this.formaspagoUrl}/${obj.codigo}`;
 
     return this.http
-               .put(url, JSON.stringify(formapago), {headers: headers})
+               .put(url, JSON.stringify(obj), {headers: headers})
                .toPromise()
-               .then(() => formapago)
+               .then(() => obj)
                .catch(this.handleError);
   }
 
