@@ -65,14 +65,14 @@ export class FormaPagoListComponent implements OnInit, OnDestroy {
 	  this .router .navigate(['/forma_pago', this.selectedObj ]);
   }
 
-	delete( obj: FormaPago, event: any ) {
+	delete( arrObj: FormaPago, event: any ) {
     event.stopPropagation();
 		 
-    this .service .delete( obj )
+    this .service .delete( arrObj )
                   .then( res => {
-          						this .arrObj = this .arrObj .filter( h => h !== obj );
+          						this .arrObj = this .arrObj .filter( h => h !== arrObj );
           						
-											if ( this.selectedObj === obj ) { 
+											if ( this.selectedObj === arrObj ) { 
 												this.selectedObj = null; 
 											}
         					})
