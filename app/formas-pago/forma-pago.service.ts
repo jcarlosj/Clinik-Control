@@ -13,7 +13,6 @@ import { FormaPago } from '../formas-pago/forma-pago';
 export class FormaPagoService {
 
   // Atributes
-  private formaspagoUrl = 'app/formas_pago';  // URL to web api
   private path : string;
   private headers: Headers;
   private url: string;
@@ -56,23 +55,24 @@ export class FormaPagoService {
   }
 
   public delete( obj: FormaPago) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    
+    console .log( 'Elimina: ' + Path.API + this.path );
+    this .url = `${Path.API}${this.path}/${obj.codigo}`;
 
-    let url = `${this.formaspagoUrl}/${obj.codigo}`;
     return this.http
-               .delete(url, {headers: headers})
+               .delete( this .url, {headers: this .headers})
                .toPromise()
                .catch(this.handleError);
   }
 
   // Add new
   private post(obj: FormaPago): Promise<FormaPago> {
-    let headers = new Headers({
-      'Content-Type': 'application/json'});
+    
+    this .url = `${Path.API}${this.path}`;
+    console .log( 'Guarda nuevo: ' + Path.API + this.path + ' *** ' + this .url );
 
     return this.http
-               .post(this.formaspagoUrl, JSON.stringify(obj), {headers: headers})
+               .post(this .url, JSON.stringify(obj), {headers: this .headers})
                .toPromise()
                .then(res => res.json().data)
                .catch(this.handleError);
@@ -80,13 +80,18 @@ export class FormaPagoService {
 
   // Update existing
   private put(obj: FormaPago) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    
-    let url = `${this.formaspagoUrl}/${obj.codigo}`;
+
+    console .log( 'Objeto: ' + Object .keys( obj ) );
+    console .log( 'Objeto: ' + Object .values( obj ) );
+    console .log( 'Editar: ' + obj.codigo );
+
+    this .url = `${Path.API}${this.path}/${obj.codigo}`;
+
+    console .log( 'Guarda nuevo: ' + Path.API + this.path + ' *** ' + this .url );
+    console .log( 'Los datos seran enviados a la urlAPI: ' + this .url );
 
     return this.http
-               .put(url, JSON.stringify(obj), {headers: headers})
+               .put( this .url, JSON.stringify(obj), {headers: this .headers})
                .toPromise()
                .then(() => obj)
                .catch(this.handleError);

@@ -9,5 +9,5 @@ import { FormaPagoDetailComponent }  from './forma-pago-detail.component';
 
 export const FORMAS_PAGO_ROUTER: Routes = [
   { path: 'formas_pago',  component: FormaPagoListComponent },
-  { path: 'forma_pago/:codigo', component: FormaPagoDetailComponent }
+  { path: 'formas_pago/:codigo', component: FormaPagoDetailComponent }
 ];

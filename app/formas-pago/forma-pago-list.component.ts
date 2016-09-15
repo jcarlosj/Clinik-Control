@@ -57,12 +57,12 @@ export class FormaPagoListComponent implements OnInit, OnDestroy {
 	}
 
   onSelect( obj: FormaPago ) {
-    this .router .navigate( [ '/forma_pago', obj.codigo ] );
+    this .router .navigate( [ this .path, obj.codigo ] );
   }
   add(){
 	  //let o: FormaPago;
 		//this.selectedObj = new FormaPago();		
-	  this .router .navigate(['/forma_pago', this.selectedObj ]);
+	  this .router .navigate([ this .path, this.selectedObj ]);
   }
 
 	delete( arrObj: FormaPago, event: any ) {
