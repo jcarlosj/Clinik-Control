@@ -8,7 +8,7 @@ import { Producto } from './producto';
 
 // Decorator
 @Component({
-	templateUrl: '../app/formas-pago/forma-pago-list.component.html',
+	templateUrl: '../app/productos/producto-list.component.html',
 })
 
 // Clase principal para este componente

@@ -1,42 +1,426 @@
 <h4>{{title}}</h4>
 <form [formGroup]="frmProducto" *ngIf="vObj" novalidate >
     <input formControlName="id" type="hidden" id="id" name="id" />
-    <div>
-        <label>Codigo: </label>
-        <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" required />
-        
-        <div [hidden]="!(frmProducto.controls.codigo.touched && !frmProducto.controls.codigo.valid)">
-            <small>
-                <!--Error en el codigo   {{ frmProducto.controls.codigo.errors | json }}-->
-                <i>> {{ errors( 'codigo' ) }}</i>
-            </small>
+    <fieldset>
+        <legend>Identificación (Producto/Servicio)</legend>
+        <div>
+            <label>Codigo: </label>
+            <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" required />
+            
+            <div [hidden]="!(frmProducto.controls.codigo.touched && !frmProducto.controls.codigo.valid)">
+                <small>
+                    <i>> {{ errors( 'codigo' ) }}</i>
+                </small>
+            </div>
         </div>
-    </div>
-    <div>
-        <label>Descripcion: </label>
-        <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion" required />
-        
-        <div [hidden]="!(frmProducto.controls.codigo.touched && !frmProducto.controls.descripcion.valid)">
-            <small>
-                <!--Error en el descripcion   {{ frmProducto.controls.descripcion.errors | json }}-->
-                <i>> {{ errors( 'descripcion' ) }}</i>
-            </small>
+        <div>
+            <label>Descripcion: </label>
+            <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion" required />
+            
+            <div [hidden]="!(frmProducto.controls.descripcion.touched && !frmProducto.controls.descripcion.valid)">
+                <small>
+                    <i>> {{ errors( 'descripcion' ) }}</i>
+                </small>
+            </div>
         </div>
-    </div>
-    <div>
-        <label>Tipo: </label>
-        <select formControlName="tipo" id="tipo" name="tipo">
-            <option [value]="o.tipo" *ngFor="let o of tiposFormasPago">{{o.descripcion}}</option>
-        </select>
-    </div>
-    <div>
-        <label>Estado: </label>
-        <select formControlName="estado" id="estado" name="estado" >
-            <option [value]="o.codigo" *ngFor="let o of estado">{{o.nombre}}</option>
-        </select>
-    </div>
-    <div>
-        <button (click)="save()" [disabled]="!frmProducto.valid" >{{botonGuardar}}</button>
-        <button (click)="goToList()">{{botonRegresar}}</button>
-    </div>
+        <div>
+            <label>Descripcion: </label>
+            <input formControlName="descripcion1" type="text" id="descripcion1" name="descripcion1" placeholder="descripcion1" />
+            
+            <div [hidden]="!(frmProducto.controls.descripcion1.touched && !frmProducto.controls.descripcion1.valid)">
+                <small>
+                    <i>> {{ errors( 'descripcion1' ) }}</i>
+                </small>
+            </div>
+        </div>
+        <div>
+            <label>Código de barras: </label>
+            <input formControlName="codigoBarras" type="text" id="codigoBarras" name="codigoBarras" placeholder="codigoBarras" />
+            
+            <div [hidden]="!(frmProducto.controls.codigoBarras.touched && !frmProducto.controls.codigoBarras.valid)">
+                <small>
+                    <i>> {{ errors( 'codigoBarras' ) }}</i>
+                </small>
+            </div>
+        </div>
+        <div>
+            <label>Referencia: </label>
+            <input formControlName="referencia" type="text" id="referencia" name="referencia" placeholder="referencia" />
+            
+            <div [hidden]="!(frmProducto.controls.referencia.touched && !frmProducto.controls.referencia.valid)">
+                <small>
+                    <i>> {{ errors( 'referencia' ) }}</i>
+                </small>
+            </div>
+        </div>
+        <div>
+            <label>Equivalencia: </label>
+            <input formControlName="equivalencia" type="text" id="equivalencia" name="equivalencia" placeholder="equivalencia" />
+            
+            <div [hidden]="!(frmProducto.controls.equivalencia.touched && !frmProducto.controls.equivalencia.valid)">
+                <small>
+                    <i>> {{ errors( 'equivalencia' ) }}</i>
+                </small>
+            </div>
+        </div>
+        <div>
+            <label>Unidad Empaque: </label>
+            <input formControlName="unidadEmpaque" type="text" id="unidadEmpaque" name="unidadEmpaque" placeholder="unidadEmpaque" />
+            
+            <div [hidden]="!(frmProducto.controls.unidadEmpaque.touched && !frmProducto.controls.unidadEmpaque.valid)">
+                <small>
+                    <i>> {{ errors( 'unidadEmpaque' ) }}</i>
+                </small>
+            </div>
+        </div>
+        <div>
+            <label>Ubicación bodega: </label>
+            <input formControlName="ubicacionBodega" type="text" id="ubicacionBodega" name="ubicacionBodega" placeholder="ubicacionBodega" />
+            
+            <div [hidden]="!(frmProducto.controls.ubicacionBodega.touched && !frmProducto.controls.ubicacionBodega.valid)">
+                <small>
+                    <i>> {{ errors( 'ubicacionBodega' ) }}</i>
+                </small>
+            </div>
+        </div>
+     </fieldset>   
+     <fieldset>
+        <legend>Precios y datos estadísticos</legend>
+
+        <div>
+            <label>Precio de venta 1: </label>
+            <input formControlName="precioVenta1" type="text" id="precioVenta1" name="precioVenta1" placeholder="precioVenta1" />
+            
+            <div [hidden]="!(frmProducto.controls.precioVenta1.touched && !frmProducto.controls.precioVenta1.valid)">
+                <small>
+                    <i>> {{ errors( 'precioVenta1' ) }}</i>
+                </small>
+            </div>
+        </div>
+        <div>
+            <label>Precio de venta 2: </label>
+            <input formControlName="precioVenta2" type="text" id="precioVenta2" name="precioVenta2" placeholder="precioVenta2" />
+            
+            <div [hidden]="!(frmProducto.controls.precioVenta2.touched && !frmProducto.controls.precioVenta2.valid)">
+                <small>
+                    <i>> {{ errors( 'precioVenta2' ) }}</i>
+                </small>
+            </div>
+        </div>
+        <div>
+            <label>Precio de venta 3: </label>
+            <input formControlName="precioVenta3" type="text" id="precioVenta3" name="precioVenta3" placeholder="precioVenta3" />
+            
+            <div [hidden]="!(frmProducto.controls.precioVenta3.touched && !frmProducto.controls.precioVenta3.valid)">
+                <small>
+                    <i>> {{ errors( 'precioVenta3' ) }}</i>
+                </small>
+            </div>
+        </div>        
+        <div>
+            <label>Precio de venta 4: </label>
+            <input formControlName="precioVenta4" type="text" id="precioVenta4" name="precioVenta4" placeholder="precioVenta4" />
+            
+            <div [hidden]="!(frmProducto.controls.precioVenta4.touched && !frmProducto.controls.precioVenta4.valid)">
+                <small>
+                    <i>> {{ errors( 'precioVenta4' ) }}</i>
+                </small>
+            </div>
+        </div>  
+        <div>
+            <label>Precio de venta 5: </label>
+            <input formControlName="precioVenta5" type="text" id="precioVenta5" name="precioVenta5" placeholder="precioVenta5" />
+            
+            <div [hidden]="!(frmProducto.controls.precioVenta5.touched && !frmProducto.controls.precioVenta5.valid)">
+                <small>
+                    <i>> {{ errors( 'precioVenta5' ) }}</i>
+                </small>
+            </div>
+        </div>     
+        <div>
+            <label>Existencia: </label>
+            <input formControlName="existencia" type="text" id="existencia" name="existencia" placeholder="existencia" />
+            
+            <div [hidden]="!(frmProducto.controls.existencia.touched && !frmProducto.controls.existencia.valid)">
+                <small>
+                    <i>> {{ errors( 'existencia' ) }}</i>
+                </small>
+            </div>
+        </div>    
+        <div>
+            <label>Saldo pedido: </label>
+            <input formControlName="saldoPedido" type="text" id="saldoPedido" name="saldoPedido" placeholder="saldoPedido" />
+            
+            <div [hidden]="!(frmProducto.controls.saldoPedido.touched && !frmProducto.controls.saldoPedido.valid)">
+                <small>
+                    <i>> {{ errors( 'saldoPedido' ) }}</i>
+                </small>
+            </div>
+        </div>      
+        <div>
+            <label>Costo promedio: </label>
+            <input formControlName="costoPromedio" type="text" id="costoPromedio" name="costoPromedio" placeholder="costoPromedio" />
+            
+            <div [hidden]="!(frmProducto.controls.costoPromedio.touched && !frmProducto.controls.costoPromedio.valid)">
+                <small>
+                    <i>> {{ errors( 'costoPromedio' ) }}</i>
+                </small>
+            </div>
+        </div>      
+        <div>
+            <label>Costo última compra: </label>
+            <input formControlName="costoUltimaCompra" type="text" id="costoUltimaCompra" name="costoUltimaCompra" placeholder="costoUltimaCompra" />
+            
+            <div [hidden]="!(frmProducto.controls.costoUltimaCompra.touched && !frmProducto.controls.costoUltimaCompra.valid)">
+                <small>
+                    <i>> {{ errors( 'costoUltimaCompra' ) }}</i>
+                </small>
+            </div>
+        </div>          
+        <div>
+            <label>Costo FOB: </label>
+            <input formControlName="costoFOB" type="text" id="costoFOB" name="costoFOB" placeholder="costoFOB" />
+            
+            <div [hidden]="!(frmProducto.controls.costoFOB.touched && !frmProducto.controls.costoFOB.valid)">
+                <small>
+                    <i>> {{ errors( 'costoFOB' ) }}</i>
+                </small>
+            </div>
+        </div>                  
+
+     </fieldset> 
+     <fieldset>
+        <legend>Parámetros (Legales)</legend>
+
+        <div>
+            <label>Tipo de IVA venta: </label>
+            <input formControlName="tipoIVAVenta" type="text" id="tipoIVAVenta" name="tipoIVAVenta" placeholder="tipoIVAVenta" />
+            
+            <div [hidden]="!(frmProducto.controls.tipoIVAVenta.touched && !frmProducto.controls.tipoIVAVenta.valid)">
+                <small>
+                    <i>> {{ errors( 'tipoIVAVenta' ) }}</i>
+                </small>
+            </div>
+        </div> 
+        <div>
+            <label>Tipo de IVA compra: </label>
+            <input formControlName="tipoIVACompra" type="text" id="tipoIVACompra" name="tipoIVACompra" placeholder="tipoIVACompra" />
+            
+            <div [hidden]="!(frmProducto.controls.tipoIVACompra.touched && !frmProducto.controls.tipoIVACompra.valid)">
+                <small>
+                    <i>> {{ errors( 'tipoIVACompra' ) }}</i>
+                </small>
+            </div>
+        </div> 
+        <div>
+            <label>Registro invima: </label>
+            <input formControlName="registroInvima" type="text" id="registroInvima" name="registroInvima" placeholder="registroInvima" />
+            
+            <div [hidden]="!(frmProducto.controls.registroInvima.touched && !frmProducto.controls.registroInvima.valid)">
+                <small>
+                    <i>> {{ errors( 'registroInvima' ) }}</i>
+                </small>
+            </div>
+        </div>       
+        <div>
+            <label>Número de meses de garantia: </label>
+            <input formControlName="numeroMesesGarantia" type="text" id="numeroMesesGarantia" name="numeroMesesGarantia" placeholder="numeroMesesGarantia" />
+            
+            <div [hidden]="!(frmProducto.controls.numeroMesesGarantia.touched && !frmProducto.controls.numeroMesesGarantia.valid)">
+                <small>
+                    <i>> {{ errors( 'numeroMesesGarantia' ) }}</i>
+                </small>
+            </div>
+        </div>                
+
+     </fieldset>
+     <fieldset>
+        <legend>Parámetros (Controles sobre valores y cantidades)</legend>
+
+        <div>
+            <label>Stock mínimo: </label>
+            <input formControlName="stockMinimo" type="text" id="stockMinimo" name="stockMinimo" placeholder="stockMinimo" />
+            
+            <div [hidden]="!(frmProducto.controls.stockMinimo.touched && !frmProducto.controls.stockMinimo.valid)">
+                <small>
+                    <i>> {{ errors( 'stockMinimo' ) }}</i>
+                </small>
+            </div>
+        </div>
+        <div>
+            <label>Stock máximo: </label>
+            <input formControlName="stockMaximo" type="text" id="stockMaximo" name="stockMaximo" placeholder="stockMaximo" />
+            
+            <div [hidden]="!(frmProducto.controls.stockMaximo.touched && !frmProducto.controls.stockMaximo.valid)">
+                <small>
+                    <i>> {{ errors( 'stockMaximo' ) }}</i>
+                </small>
+            </div>
+        </div>   
+        <div>
+            <label>% Máx de Dto pago de contado: </label>
+            <input formControlName="porcMaxDtoContado" type="text" id="porcMaxDtoContado" name="porcMaxDtoContado" placeholder="porcMaxDtoContado" />
+            
+            <div [hidden]="!(frmProducto.controls.porcMaxDtoContado.touched && !frmProducto.controls.porcMaxDtoContado.valid)">
+                <small>
+                    <i>> {{ errors( 'porcMaxDtoContado' ) }}</i>
+                </small>
+            </div>
+        </div>
+        <div>
+            <label>% Máx de Dto pago a credito: </label>
+            <input formControlName="porcMaxDtoCredito" type="text" id="porcMaxDtoCredito" name="porcMaxDtoCredito" placeholder="porcMaxDtoCredito" />
+            
+            <div [hidden]="!(frmProducto.controls.porcMaxDtoCredito.touched && !frmProducto.controls.porcMaxDtoCredito.valid)">
+                <small>
+                    <i>> {{ errors( 'porcMaxDtoCredito' ) }}</i>
+                </small>
+            </div>
+        </div>
+        <div>
+            <label>% de comisión por venta: </label>
+            <input formControlName="porcComisionVenta" type="text" id="porcComisionVenta" name="porcComisionVenta" placeholder="porcComisionVenta" />
+            
+            <div [hidden]="!(frmProducto.controls.porcComisionVenta.touched && !frmProducto.controls.porcComisionVenta.valid)">
+                <small>
+                    <i>> {{ errors( 'porcComisionVenta' ) }}</i>
+                </small>
+            </div>
+        </div>                                    
+
+     </fieldset>
+     <fieldset>
+        <legend>Parámetros (S/N)</legend>
+
+        <div>
+            <label>Producto activo: </label>
+            <input formControlName="productoActivo" type="text" id="productoActivo" name="productoActivo" placeholder="productoActivo" />
+            
+            <div [hidden]="!(frmProducto.controls.productoActivo.touched && !frmProducto.controls.productoActivo.valid)">
+                <small>
+                    <i>> {{ errors( 'productoActivo' ) }}</i>
+                </small>
+            </div>
+        </div>   
+        <div>
+            <label>Producto se vende: </label>
+            <input formControlName="productoSeVende" type="text" id="productoSeVende" name="productoSeVende" placeholder="productoSeVende" />
+            
+            <div [hidden]="!(frmProducto.controls.productoSeVende.touched && !frmProducto.controls.productoSeVende.valid)">
+                <small>
+                    <i>> {{ errors( 'productoSeVende' ) }}</i>
+                </small>
+            </div>
+        </div>  
+        <div>
+            <label>Precio fijo: </label>
+            <input formControlName="precioFijo" type="text" id="precioFijo" name="precioFijo" placeholder="precioFijo" />
+            
+            <div [hidden]="!(frmProducto.controls.precioFijo.touched && !frmProducto.controls.precioFijo.valid)">
+                <small>
+                    <i>> {{ errors( 'precioFijo' ) }}</i>
+                </small>
+            </div>
+        </div>        
+        <div>
+            <label>Usa control de lotes: </label>
+            <input formControlName="usaControlLotes" type="text" id="usaControlLotes" name="usaControlLotes" placeholder="usaControlLotes" />
+            
+            <div [hidden]="!(frmProducto.controls.usaControlLotes.touched && !frmProducto.controls.usaControlLotes.valid)">
+                <small>
+                    <i>> {{ errors( 'usaControlLotes' ) }}</i>
+                </small>
+            </div>
+        </div>         
+        <div>
+            <label>Aplica para pedido: </label>
+            <input formControlName="aplicaParaPedido" type="text" id="aplicaParaPedido" name="aplicaParaPedido" placeholder="aplicaParaPedido" />
+            
+            <div [hidden]="!(frmProducto.controls.aplicaParaPedido.touched && !frmProducto.controls.aplicaParaPedido.valid)">
+                <small>
+                    <i>> {{ errors( 'aplicaParaPedido' ) }}</i>
+                </small>
+            </div>
+        </div>        
+        <div>
+            <label>Usa seriales: </label>
+            <input formControlName="usaSeriales" type="text" id="usaSeriales" name="usaSeriales" placeholder="usaSeriales" />
+            
+            <div [hidden]="!(frmProducto.controls.usaSeriales.touched && !frmProducto.controls.usaSeriales.valid)">
+                <small>
+                    <i>> {{ errors( 'usaSeriales' ) }}</i>
+                </small>
+            </div>
+        </div>           
+        <div>
+            <label>Producto en consignación: </label>
+            <input formControlName="productoEnConsig" type="text" id="productoEnConsig" name="productoEnConsig" placeholder="productoEnConsig" />
+            
+            <div [hidden]="!(frmProducto.controls.productoEnConsig.touched && !frmProducto.controls.productoEnConsig.valid)">
+                <small>
+                    <i>> {{ errors( 'productoEnConsig' ) }}</i>
+                </small>
+            </div>
+        </div>         
+        <div>
+            <label>Producto controlado: </label>
+            <input formControlName="productoControlado" type="text" id="productoControlado" name="productoControlado" placeholder="productoControlado" />
+            
+            <div [hidden]="!(frmProducto.controls.productoControlado.touched && !frmProducto.controls.productoControlado.valid)">
+                <small>
+                    <i>> {{ errors( 'productoControlado' ) }}</i>
+                </small>
+            </div>
+        </div>         
+        <div>
+            <label>Permite negativos: </label>
+            <input formControlName="permiteNegativos" type="text" id="permiteNegativos" name="permiteNegativos" placeholder="permiteNegativos" />
+            
+            <div [hidden]="!(frmProducto.controls.permiteNegativos.touched && !frmProducto.controls.permiteNegativos.valid)">
+                <small>
+                    <i>> {{ errors( 'permiteNegativos' ) }}</i>
+                </small>
+            </div>
+        </div>            
+
+     </fieldset>     
+     <fieldset>
+        <legend>Otros</legend>
+
+        <div>
+            <label>Color agenda: </label>
+            <input formControlName="colorAgenda" type="text" id="colorAgenda" name="colorAgenda" placeholder="colorAgenda" />
+            
+            <div [hidden]="!(frmProducto.controls.colorAgenda.touched && !frmProducto.controls.colorAgenda.valid)">
+                <small>
+                    <i>> {{ errors( 'colorAgenda' ) }}</i>
+                </small>
+            </div>
+        </div>
+
+     </fieldset>   
+     <fieldset>
+        <legend>Control</legend>
+
+
+
+     </fieldset>  
+
+
+        <!--div>
+            <label>Tipo: </label>
+            <select formControlName="tipo" id="tipo" name="tipo">
+                <option [value]="o.tipo" *ngFor="let o of tiposFormasPago">{{o.descripcion}}</option>
+            </select>
+        </div>
+        <div>
+            <label>Estado: </label>
+            <select formControlName="estado" id="estado" name="estado" >
+                <option [value]="o.codigo" *ngFor="let o of estado">{{o.nombre}}</option>
+            </select>
+        </div-->
+        <div>
+            <button (click)="save()" [disabled]="!frmProducto.valid" >{{botonGuardar}}</button>
+            <button (click)="goToList()">{{botonRegresar}}</button>
+        </div>
 </form>

@@ -21,13 +21,72 @@ import { InMemoryDbService } from 'angular2-in-memory-web-api';
       {id: '04', codigo: '04', descripcion: 'Pago multiple', estado: 'A', tipo: 2, editable: true, borrable: false },
       {id: '05', codigo: '05', descripcion: 'Prueba', estado: 'I', tipo: 1, editable: true, borrable: true }
     ];
+
     let productos = [
-      {id: '01', codigo: '01', descripcion: 'Producto 1', estado: 'A', tipo: 1, editable: true, borrable: false },
-      {id: '02', codigo: '02', descripcion: 'Producto 2', estado: 'A', tipo: 1, editable: true, borrable: false },
-      {id: '03', codigo: '03', descripcion: 'Producto 3', estado: 'A', tipo: 1, editable: true, borrable: false },
-      {id: '04', codigo: '04', descripcion: 'Producto 4', estado: 'A', tipo: 2, editable: true, borrable: false },
-      {id: '05', codigo: '05', descripcion: 'Producto 5', estado: 'I', tipo: 1, editable: true, borrable: true }
+      {
+        //--- IDENTIFICACION DE PRODUCTO --- 
+        id                  : '01', 
+        codigo              : '01', 
+        //agrupacion          : 1,
+        descripcion         : 'Producto (1)',
+        descripcion1        : 'Descripcion del producto (1)',
+        //marca               : 1,
+        codigoBarras        : 'DEREDERRA-234',
+        referencia          : 'AT-098i',
+        equivalencia        : 'Equivalencia',
+        //unidadMedida        : 1,
+        unidadEmpaque       : 6,
+        ubicacionBodega     : 'Por ahi anda',
+        //--- PRECIOS Y DATOS ESTADISTICOS ---
+        precioVenta1        : 82000,
+        precioVenta2        : 90000,
+        precioVenta3        : 120000,
+        precioVenta4        : 150000,
+        precioVenta5        : 180000,
+        existencia          : 12,
+        saldoPedido         : 36,
+        costoPromedio       : 23000,   
+        costoUltimaCompra   : 21500,
+        costoFOB            : 27,
+        //--- PARAMETROS (Legales) ---
+        tipoIVAVenta        : 7,
+        tipoIVACompra       : 12,
+        registroInvima      : 'RegistroInvima',
+        numeroMesesGarantia : 6,
+        //--- PARAMETROS (Controles sobre valores y cantidades) ---
+        stockMinimo         : 12,
+        stockMaximo         : 30,
+        porcMaxDtoContado   : 5,
+        porcMaxDtoCredito   : 7,
+        porcComisionVenta   : 5,
+        //--- PARAMETROS (Si/No) ---
+        productoActivo      : 'S',
+        productoSeVende     : 'N',
+        precioFijo          : 'S',
+        usaControlLotes     : 'N',
+        aplicaParaPedido    : 'N',
+        usaSeriales         : 'N',
+        productoEnConsig    : 'N',
+        productoControlado  : 'N',
+        permiteNegativos    : 'N',
+        //--- PARAMETROS (Varios) ---
+        colorAgenda         : 0,
+        //presentacion        : 0,
+        //viaAdministracion   : 0,
+        //codigoBono          : 0,
+        //--- OTROS ---
+        //public observaciones    : '';
+        //public riesgosAsociados : '';
+        //--- CONTROL ---
+        //idUsuarioCrea       : 1,
+        //idUsuarioModifica   : 2,
+        //fechaCrea           : '2016-01-01',
+        //fechaModifica       : '2016-09-16',
+        //registros           : 3
+      }
     ];
+
+
     let tablas_generales = [
       {
         id          : '01',
