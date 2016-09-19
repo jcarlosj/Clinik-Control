@@ -52,24 +52,7 @@ export class AppComponent {
     this .presentacionMedicamentos = 'Presentación medicamentos';
     this .viasAdministracion       = 'Vías administración';
     this .riesgosProcedimiento     = 'Riesgos procedimiento';
-    this .tipoImpuestos            = 'Tipos de Impuestos'
-    this .agrupacion                = 'Agrupaciones'
+    this .tipoImpuestos            = 'Tipos de Impuestos';
+    this .agrupacion               = 'Agrupaciones';
   }
 }
-
-/*
-template: `
-    <h1>{{title}}</h1>
-    <nav>
-      <a routerLink="/um" routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }">Formas de Pago</a>
-    </nav>
-    <router-outlet></router-outlet>
-  `
-*/
-
-/*
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/

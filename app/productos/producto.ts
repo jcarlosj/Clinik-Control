@@ -2,14 +2,14 @@ export class Producto {
     //--- IDENTIFICACION DE PRODUCTO --- 
     public id                  : string;
     public codigo              : string;
-    //public agrupacion         : string; 
+    public agrupacion          : number; 
     public descripcion         : string;
     public descripcion1        : string;
-    //public marca               : number;  
+    public marca               : number;  
     public codigoBarras        : string;
     public referencia          : string;
     public equivalencia        : string;
-    //public unidadMedida        : number;
+    public unidadMedida        : number;
     public unidadEmpaque       : number;
     public ubicacionBodega     : string;
     //--- PRECIOS Y DATOS ESTADISTICOS ---
@@ -46,8 +46,8 @@ export class Producto {
     public permiteNegativos    : string;
     //--- PARAMETROS (Varios) ---
     public colorAgenda         : number;
-    //public presentacion        : number;
-    //public viaAdministracion   : number;
+    public presentacion        : number;
+    public viaAdministracion   : number;
     //public codigoBono          : number;
     //--- OTROS ---
     //public observaciones
@@ -64,14 +64,14 @@ export class Producto {
         //--- IDENTIFICACION DE PRODUCTO --- 
         this .id                    = '';
         this .codigo                = '';
-        //this .agrupacion          = 0; 
+        this .agrupacion            = 0; 
         this .descripcion           = '';
         this .descripcion1          = '';
-        //this .marca               = 0; 
+        this .marca                 = 0; 
         this .codigoBarras          = '';
         this .referencia            = '';
         this .equivalencia          = '';
-        //this .unidadMedida        = 0; 
+        this .unidadMedida          = 0; 
         this .unidadEmpaque         = 0;
         this .ubicacionBodega       = '';
         //--- PRECIOS Y DATOS ESTADISTICOS ---
@@ -96,7 +96,7 @@ export class Producto {
         this .porcMaxDtoContado   = 0;
         this .porcMaxDtoCredito   = 0;
         this .porcComisionVenta   = 0;
-        //--- PARAMETROS (Si/No) ---
+        //--- PARAMETROS (Si/No) --- 
         this .productoActivo      = 'S';
         this .productoSeVende     = 'N';
         this .precioFijo          = 'S';
@@ -107,7 +107,10 @@ export class Producto {
         this .productoControlado  = 'N';
         this .permiteNegativos    = 'N';
         //--- OTROS ---
-        this .colorAgenda       = 0;
+        this .colorAgenda         = 0;
+        this .presentacion        = 0;
+        this .viaAdministracion   = 0;
+
         //--- CONTROL ---
         //this .registros         = 0;
     }

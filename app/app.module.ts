@@ -26,6 +26,8 @@ import { ProductoService }         from './productos/producto.service';
 import { ProductoListComponent }   from './productos/producto-list.component';
 import { ProductoDetailComponent } from './productos/producto-detail.component';
 
+import { DataService } from './data.service';
+
 import { routing, appRoutingProviders }        from './app.routing';
 
 @NgModule({
@@ -49,7 +51,8 @@ import { routing, appRoutingProviders }        from './app.routing';
     ProductoDetailComponent
   ],
   providers: [
-    appRoutingProviders, 
+    appRoutingProviders,
+    DataService, 
     FormaPagoService,
     TablaGeneralService,        
     AgrupacionService,

@@ -14,6 +14,12 @@
             </div>
         </div>
         <div>
+            <label>Agrupación: </label>
+            <select formControlName="agrupacion" id="agrupacion" name="agrupacion">
+                <option [value]="o.id" *ngFor="let o of agrupaciones">{{o.nombre}}</option>
+            </select>
+        </div>
+        <div>
             <label>Descripcion: </label>
             <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion" required />
             
@@ -32,6 +38,12 @@
                     <i>> {{ errors( 'descripcion1' ) }}</i>
                 </small>
             </div>
+        </div>
+        <div>
+            <label>Marcas: </label>
+            <select formControlName="marca" id="marca" name="marca">
+                <option [value]="o.id" *ngFor="let o of marcas">{{o.nombre}}</option>
+            </select>
         </div>
         <div>
             <label>Código de barras: </label>
@@ -62,6 +74,12 @@
                     <i>> {{ errors( 'equivalencia' ) }}</i>
                 </small>
             </div>
+        </div>
+        <div>
+            <label>Unidad de medida: </label>
+            <select formControlName="unidadMedida" id="unidadMedida" name="unidadMedida">
+                <option [value]="o.id" *ngFor="let o of unidades">{{o.nombre}}</option>
+            </select>
         </div>
         <div>
             <label>Unidad Empaque: </label>
@@ -194,24 +212,16 @@
 
         <div>
             <label>Tipo de IVA venta: </label>
-            <input formControlName="tipoIVAVenta" type="text" id="tipoIVAVenta" name="tipoIVAVenta" placeholder="tipoIVAVenta" />
-            
-            <div [hidden]="!(frmProducto.controls.tipoIVAVenta.touched && !frmProducto.controls.tipoIVAVenta.valid)">
-                <small>
-                    <i>> {{ errors( 'tipoIVAVenta' ) }}</i>
-                </small>
-            </div>
-        </div> 
+            <select formControlName="tipoIVAVenta" id="tipoIVAVenta" name="tipoIVAVenta">
+                <option [value]="o.id" *ngFor="let o of tiposDeIva">{{o.nombre}}</option>
+            </select>
+        </div>
         <div>
             <label>Tipo de IVA compra: </label>
-            <input formControlName="tipoIVACompra" type="text" id="tipoIVACompra" name="tipoIVACompra" placeholder="tipoIVACompra" />
-            
-            <div [hidden]="!(frmProducto.controls.tipoIVACompra.touched && !frmProducto.controls.tipoIVACompra.valid)">
-                <small>
-                    <i>> {{ errors( 'tipoIVACompra' ) }}</i>
-                </small>
-            </div>
-        </div> 
+            <select formControlName="tipoIVACompra" id="tipoIVACompra" name="tipoIVACompra">
+                <option [value]="o.id" *ngFor="let o of tiposDeIva">{{o.nombre}}</option>
+            </select>
+        </div>  
         <div>
             <label>Registro invima: </label>
             <input formControlName="registroInvima" type="text" id="registroInvima" name="registroInvima" placeholder="registroInvima" />
@@ -397,6 +407,18 @@
                 </small>
             </div>
         </div>
+        <div>
+            <label>Presentación: </label>
+            <select formControlName="presentacion" id="presentacion" name="presentacion">
+                <option [value]="o.id" *ngFor="let o of presentaciones">{{o.nombre}}</option>
+            </select>
+        </div>  
+        <div>
+            <label>Vía administración: </label>
+            <select formControlName="viaAdministracion" id="viaAdministracion" name="viaAdministracion">
+                <option [value]="o.id" *ngFor="let o of vias">{{o.nombre}}</option>
+            </select>
+        </div>  
 
      </fieldset>   
      <fieldset>
@@ -405,15 +427,7 @@
 
 
      </fieldset>  
-
-
         <!--div>
-            <label>Tipo: </label>
-            <select formControlName="tipo" id="tipo" name="tipo">
-                <option [value]="o.tipo" *ngFor="let o of tiposFormasPago">{{o.descripcion}}</option>
-            </select>
-        </div>
-        <div>
             <label>Estado: </label>
             <select formControlName="estado" id="estado" name="estado" >
                 <option [value]="o.codigo" *ngFor="let o of estado">{{o.nombre}}</option>

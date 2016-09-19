@@ -8,8 +8,9 @@ import { Location }                           from '@angular/common';
 // Imports personalizados necesarios para este componente
 import { ProductoService } from './producto.service';
 import { Producto }        from './producto';
-import { cTipoFP}           from '../_tipos/cTipos-FP';
-import { cEstado}           from '../_tipos/cEstado';
+import { cTipoFP}          from '../_tipos/cTipos-FP';
+import { cEstado}          from '../_tipos/cEstado';
+import { DataService }     from '../data.service';
 
 // Decorator
 @Component({
@@ -36,33 +37,26 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
   private title         = 'Formas de pago';
   private botonGuardar  = 'Guardar';
   private botonRegresar = 'Regresar';
+  // Carga datos adicionales
+  private data: any[];
+  private agrupaciones: any;
+  private marcas: any;
+  private presentaciones: any;
+  private tiposDeIva: any;
+  private unidades: any;
+  private vias: any;
   
   // Constructor
   constructor(
     private location: Location,
     private route: ActivatedRoute,
-    private service: ProductoService
+    private service: ProductoService,
+    private serviceData: DataService
   ) { 
 
     // Inicializando atributos
     this.codigo = '';
     
-    this.tiposFormasPago = [
-        new cTipoFP( 1, 'Efectivo/convencional', true ),
-        new cTipoFP( 2, 'Tipo multiple', true ),
-        new cTipoFP( 3, 'Tarjetas Datafono', true ),
-        new cTipoFP( 4, 'Cheques', true ),
-        new cTipoFP( 5, 'Tarjetas imprinter', true ),
-        new cTipoFP( 6, 'Vales', true ),
-        new cTipoFP( 7, 'Bonos', true ),
-        new cTipoFP( 8, 'Transferencia electronica', true ),
-        new cTipoFP( 9, 'Consignación directa', true ),
-        new cTipoFP( 10, 'Tarjeta prepago', true )
-    ];
-    this.estado = [
-        new cEstado( 'A', 'Activo' ),
-        new cEstado( 'I', 'Inactivo' )
-    ];
   }
 
   // Implements de Angular 2
@@ -73,14 +67,14 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
           //--- IDENTIFICACION DE PRODUCTO ---
           id              : new FormControl(),
           codigo          : new FormControl(),
-          //agrupacion      : new FormControl(),
+          agrupacion      : new FormControl(),
           descripcion     : new FormControl(),
           descripcion1    : new FormControl(),
-          //marca           : new FormControl(),
+          marca           : new FormControl(),
           codigoBarras    : new FormControl(),
           referencia      : new FormControl(),
           equivalencia    : new FormControl(),
-          //unidadMedida    : new FormControl(),
+          unidadMedida    : new FormControl(),
           unidadEmpaque   : new FormControl(),
           ubicacionBodega : new FormControl(),
           //--- PRECIOS Y DATOS ESTADISTICOS ---
@@ -117,8 +111,8 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
           permiteNegativos    : new FormControl(),
           //--- PARAMETROS (Varios) ---
           colorAgenda         : new FormControl(),
-          //presentacion        : new FormControl(),
-          //viaAdministracion   : new FormControl(),
+          presentacion        : new FormControl(),
+          viaAdministracion   : new FormControl(),
           //codigoBono          : new FormControl(),
           //--- OTROS ---
           //observnew FormControl(),
@@ -137,6 +131,30 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
             depurando en el navegador se puede observar que el parametro codigo es igual a la cadena
             "undefined", por eso se hacen las dos comparaciones
         ---------- */
+
+        // 
+        this .serviceData.getData() .then( data => { 
+          this .data = data;
+          this .agrupaciones   = this.data['0'].agrupaciones;
+          this .marcas         = this.data['0'].marcas;
+          this .presentaciones = this.data['0'].presentaciones;
+          this .tiposDeIva     = this.data['0'].tiposDeIva;
+          this .unidades       = this.data['0'].unidades;
+          this .vias           = this.data['0'].vias;
+
+          // --------- Ciclo de prueba para recorrer los campos de la estructura
+          /*
+          let a = this.data[0].marcas;
+          a.forEach(o => {
+            console .log( '+++' + o['nombre'] );
+            this .marcas = o
+            debugger;
+          });
+          --------- */
+        });
+        
+        
+
         if (params['codigo'] !== undefined && params['codigo'] !== "undefined") {
           // Si el parametro codigo no esta definido entonces se trata de un nuevo registro
           this.esNuevo =  false;
@@ -147,8 +165,7 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
                       this .frmProducto .setValue( this.vObj );
                       console .log( 'Nuevo: ' + this.esNuevo );
                       this .validateFields();
-                      this .esNuevo =  false;
-                      
+                      this .esNuevo =  false; 
               });
         } 
         else {
@@ -158,7 +175,9 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
           this .esNuevo =  true;
           console .log( 'Nuevo: ' + this.esNuevo );
         }
+
     });
+
   } 
 
   ngOnDestroy() {

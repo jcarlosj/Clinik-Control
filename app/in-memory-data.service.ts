@@ -14,6 +14,20 @@ import { InMemoryDbService } from 'angular2-in-memory-web-api';
       {id: 19, name: 'Magma'},
       {id: 20, name: 'Tornado'}
     ];
+
+    let tipos_formas_pago = [
+        { id: 1, descripcion: 'Efectivo/convencional' },
+        { id: 2, descripcion: 'Tipo multiple' },
+        { id: 3, descripcion: 'Tarjetas Datafono' },
+        { id: 4, descripcion: 'Cheques' },
+        { id: 5, descripcion: 'Tarjetas imprinter' },
+        { id: 6, descripcion: 'Vales' },
+        { id: 7, descripcion: 'Bonos' },
+        { id: 8, descripcion: 'Transferencia electronica' },
+        { id: 9, descripcion: 'Consignación directa' },
+        { id: 10, descripcion: 'Tarjeta prepago' }
+    ];
+
     let formas_pago = [
       {id: '01', codigo: '01', descripcion: 'efectivo', estado: 'A', tipo: 1, editable: true, borrable: false },
       {id: '02', codigo: '02', descripcion: 'Tarjeta de credito', estado: 'A', tipo: 1, editable: true, borrable: false },
@@ -27,14 +41,14 @@ import { InMemoryDbService } from 'angular2-in-memory-web-api';
         //--- IDENTIFICACION DE PRODUCTO --- 
         id                  : '01', 
         codigo              : '01', 
-        //agrupacion          : 1,
+        agrupacion          : 1,
         descripcion         : 'Producto (1)',
         descripcion1        : 'Descripcion del producto (1)',
-        //marca               : 1,
+        marca               : 1,
         codigoBarras        : 'DEREDERRA-234',
         referencia          : 'AT-098i',
         equivalencia        : 'Equivalencia',
-        //unidadMedida        : 1,
+        unidadMedida        : 1,
         unidadEmpaque       : 6,
         ubicacionBodega     : 'Por ahi anda',
         //--- PRECIOS Y DATOS ESTADISTICOS ---
@@ -49,8 +63,8 @@ import { InMemoryDbService } from 'angular2-in-memory-web-api';
         costoUltimaCompra   : 21500,
         costoFOB            : 27,
         //--- PARAMETROS (Legales) ---
-        tipoIVAVenta        : 7,
-        tipoIVACompra       : 12,
+        tipoIVAVenta        : 1,
+        tipoIVACompra       : 1,
         registroInvima      : 'RegistroInvima',
         numeroMesesGarantia : 6,
         //--- PARAMETROS (Controles sobre valores y cantidades) ---
@@ -71,8 +85,8 @@ import { InMemoryDbService } from 'angular2-in-memory-web-api';
         permiteNegativos    : 'N',
         //--- PARAMETROS (Varios) ---
         colorAgenda         : 0,
-        //presentacion        : 0,
-        //viaAdministracion   : 0,
+        presentacion        : 1,
+        viaAdministracion   : 1,
         //codigoBono          : 0,
         //--- OTROS ---
         //public observaciones    : '';
@@ -340,7 +354,43 @@ import { InMemoryDbService } from 'angular2-in-memory-web-api';
         fechaCreacion     : '1955-09-21',
         fechaModificacion : '1977-11-24'
       }
-    ]
-    return { heroes, productos, formas_pago, tipos_impuesto, tablas_generales, marca, presentacion_medicamento, vias_administracion, riesgo_procedimiento, agrupacion};
+    ];
+
+    let data = [
+      {
+        agrupaciones:[
+              {id: 1, nombre: 'Agrupación a'},
+              {id: 2, nombre: 'Agrupación b'},
+              {id: 3, nombre: 'Agrupación c'}
+        ],
+        marcas:[
+              {id: 1, nombre: 'Marca a'},
+              {id: 2, nombre: 'Marca b'},
+              {id: 3, nombre: 'Marca c'}
+        ],
+        presentaciones:[
+              {id: 1, nombre: 'Presentación a'},
+              {id: 2, nombre: 'Presentación b'},
+              {id: 3, nombre: 'Presentación c'}
+        ],
+        tiposDeIva:[
+              {id: 1, nombre: '%5'},
+              {id: 2, nombre: '%7'},
+              {id: 3, nombre: '%12'},
+              {id: 4, nombre: '%16'}
+        ],
+        unidades:[
+              {id: 1, nombre: 'Unidad de medida 1'},
+              {id: 2, nombre: 'Unidad de medida 2'}
+        ],
+        vias:[
+              {id: 1, nombre: 'Vía de administración a'},
+              {id: 2, nombre: 'Vía de administración b'},
+              {id: 3, nombre: 'Vía de administración c'}
+        ],
+      }
+    ];
+
+    return { data, tipos_formas_pago, heroes, productos, formas_pago, tipos_impuesto, tablas_generales, marca, presentacion_medicamento, vias_administracion, riesgo_procedimiento, agrupacion};
   }
 }
