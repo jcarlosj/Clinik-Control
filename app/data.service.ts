@@ -8,7 +8,7 @@ import { Data } from './data';
 
 export class DataService {
 
-  private formaspagoUrl = Path.API + '/data';  // URL to web api
+  private formaspagoUrl = Path.Server.API + '/data';  // URL to web api
   constructor(private http: Http) {
     console.log( this.formaspagoUrl ); 
   }

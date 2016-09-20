@@ -3,12 +3,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } 			from '@angular/router';
 
 // Imports personalizados necesarios para este componente
+import { Path } 								from '../paths';
 import { TablaGeneralService }  from './tabla-general.service';
 import { TablaGeneral } 				from './tabla-general';
 
 // Decorator
 @Component({
-	templateUrl: '../app/tablas-generales/tabla-general-list.component.html',
+	templateUrl: Path.Server.TEMPLATE + 'tablas-generales/tabla-general-list.component.html',
 })
 
 // Class

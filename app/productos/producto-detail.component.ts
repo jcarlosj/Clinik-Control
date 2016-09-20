@@ -6,15 +6,16 @@ import { ReactiveFormsModule }                from '@angular/forms';
 import { Location }                           from '@angular/common';
 
 // Imports personalizados necesarios para este componente
+import { Path, Validate }  from '../paths';
 import { ProductoService } from './producto.service';
 import { Producto }        from './producto';
-import { Activaciones }   from '../_tipos/c-activaciones';
+import { Activaciones }    from '../_tipos/c-activaciones';
 import { DataService }     from '../data.service';
 
 // Decorator
 @Component({
   selector: 'formas-de-pago',
-  templateUrl: '../app/productos/producto-detail.component.html'
+  templateUrl: Path.Server.TEMPLATE + 'productos/producto-detail.component.html'
 })  
 
 // Clase principal del componente
@@ -188,146 +189,139 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
   // Methods
 
   // Configuración de validaciones de campos del formulario
-  validateFields() {
-
-    let ans       = '^[a-zA-Z0-9 ]+([a-zA-Z0-9!@#$%^&*()_ ]+)?$';
-    //let ansOk     = '^[a-zA-Z0-9 ]+([a-zA-Z0-9!@#$%^&*()[]_ ]+)?$';
-    //let ansp      = '^[a-zA-Z0-9 ]+([a-zA-Z0-9áéíóúñ!@#$%^&*<>?()[]{}|\\\/\"\'=:;,.-_ ]+)?$';
-    let entero    = '^[0-9]+([0-9]+)?$';
-    let decimal   = '^[0-9]+([,][0-9]+)?$';
-    let codBarras = '^[a-zA-Z0-9 ]+([a-zA-Z0-9 ]+)?$';
+  validateFields() {   
 
     //--- PRECIOS Y DATOS ESTADISTICOS ---
     this .frmProducto .controls[ "codigo" ] .setValidators([ 
             Validators .required,
             Validators .minLength( 2 ), 
             Validators .maxLength( 20 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( Validate.RegExp.ENTERO )
     ]);
     this .frmProducto .controls[ "descripcion" ] .setValidators([
             Validators .required,  
             Validators .minLength( 5 ), 
             Validators .maxLength( 80 ),
-            Validators .pattern( ans )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "descripcion1" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 80 ),
-            Validators .pattern( ans )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "codigoBarras" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 20 ),
-            Validators .pattern( codBarras )
+            Validators .pattern( Validate.RegExp.CODIGO_BARRAS )
     ]);
     this .frmProducto .controls[ "referencia" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 20 ),
-            Validators .pattern( ans )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "equivalencia" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 20 ),
-            Validators .pattern( ans )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "unidadEmpaque" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
-            Validators .pattern( decimal )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "ubicacionBodega" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 10 ),
-            Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     //--- PRECIOS Y DATOS ESTADISTICOS ---
     this .frmProducto .controls[ "precioVenta1" ] .setValidators([
             Validators .required, 
             Validators .minLength( 3 ), 
             Validators .maxLength( 9 ),
-            Validators .pattern( decimal )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "precioVenta2" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 9 ),
-            Validators .pattern( decimal )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "precioVenta3" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 9 ),
-            Validators .pattern( decimal )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "precioVenta4" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 9 ),
-            Validators .pattern( decimal )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "precioVenta5" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 9 ),
-            Validators .pattern( decimal )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "existencia" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
-            Validators .pattern( decimal )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "saldoPedido" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
-            Validators .pattern( decimal )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "costoPromedio" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
-            Validators .pattern( decimal )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "costoUltimaCompra" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
-            Validators .pattern( decimal )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "costoFOB" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
-            Validators .pattern( decimal )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     //--- PARAMETROS (Legales) ---
     this .frmProducto .controls[ "registroInvima" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 30 ),
-            Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
+            Validators .pattern( Validate.RegExp.GENERAL )
     ]);           
     this .frmProducto .controls[ "numeroMesesGarantia" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 2 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( Validate.RegExp.ENTERO )
     ]);  
     //--- PARAMETROS (Controles sobre valores y cantidades) ---
     this .frmProducto .controls[ "stockMinimo" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
-            Validators .pattern( decimal )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "stockMaximo" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
-            Validators .pattern( decimal )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "porcMaxDtoContado" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 2 ),
-            Validators .pattern( decimal )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "porcMaxDtoCredito" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 2 ),
-            Validators .pattern( decimal )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "porcComisionVenta" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 2 ),
-            Validators .pattern( decimal )
+            Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     //--- PARAMETROS (Si/No) ---
     // No hay reglas todos son selectores obligatorios
@@ -335,22 +329,22 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
     this .frmProducto .controls[ "colorAgenda" ] .setValidators([ 
             Validators .minLength( 10 ), 
             Validators .maxLength( 12 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( Validate.RegExp.ENTERO )
     ]);
     /*this .frmProducto .controls[ "presentacion" ] .setValidators([ 
             Validators .minLength( 10 ), 
             Validators .maxLength( 30 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( Validate.RegExp.ENTERO )
     ]);
     this .frmProducto .controls[ "viaAdministracion" ] .setValidators([ 
             Validators .minLength( 10 ), 
             Validators .maxLength( 30 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( Validate.RegExp.ENTERO )
     ]);
     this .frmProducto .controls[ "codigoBono" ] .setValidators([ 
             Validators .minLength( 10 ), 
             Validators .maxLength( 30 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( Validate.RegExp.ENTERO )
     ]);                
     //--- OTROS ---
     //--- CONTROL ---

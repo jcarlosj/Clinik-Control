@@ -6,6 +6,7 @@ import { ReactiveFormsModule }                from '@angular/forms';
 import { Location }                           from '@angular/common';
 
 // Imports personalizados necesarios para este componente
+import { Path, Validate }   from '../paths';
 import { FormaPagoService } from './forma-pago.service';
 import { FormaPago }        from './forma-pago';
 import { cTipoFP}           from '../_tipos/cTipos-FP';
@@ -14,7 +15,7 @@ import { cEstado}           from '../_tipos/cEstado';
 // Decorator
 @Component({
   selector: 'formas-de-pago',
-  templateUrl: '../app/formas-pago/forma-pago-detail.component.html'
+  templateUrl: Path.Server.TEMPLATE + 'formas-pago/forma-pago-detail.component.html'
 })  
 
 // Clase principal del componente
@@ -50,14 +51,14 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
     this.tiposFormasPago = [
         new cTipoFP( 1, 'Efectivo/convencional', true ),
         new cTipoFP( 2, 'Tipo multiple', true ),
-        new cTipoFP( 3, 'Tarjetas Datafono', true ),
-        new cTipoFP( 4, 'Cheques', true ),
-        new cTipoFP( 5, 'Tarjetas imprinter', true ),
-        new cTipoFP( 6, 'Vales', true ),
-        new cTipoFP( 7, 'Bonos', true ),
-        new cTipoFP( 8, 'Transferencia electronica', true ),
-        new cTipoFP( 9, 'Consignación directa', true ),
-        new cTipoFP( 10, 'Tarjeta prepago', true )
+        new cTipoFP( 3, 'Tarjetas Datafono', false ),
+        new cTipoFP( 4, 'Cheques', false ),
+        new cTipoFP( 5, 'Tarjetas imprinter', false ),
+        new cTipoFP( 6, 'Vales', false ),
+        new cTipoFP( 7, 'Bonos', false ),
+        new cTipoFP( 8, 'Transferencia electronica', false ),
+        new cTipoFP( 9, 'Consignación directa', false ),
+        new cTipoFP( 10, 'Tarjeta prepago', false )
     ];
     this.estado = [
         new cEstado( 'A', 'Activo' ),
@@ -117,15 +118,16 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
 
   // Configuración de validaciones de campos del formulario
   validateFields() {
+
     this .frmFormaPago .controls[ "codigo" ] .setValidators([ 
             Validators .minLength( 2 ), 
             Validators .maxLength( 10 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( Validate.RegExp.ENTERO )
     ]);
     this .frmFormaPago .controls[ "descripcion" ] .setValidators([ 
             Validators .minLength( 10 ), 
             Validators .maxLength( 30 ),
-            Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
+            Validators .pattern( Validate.RegExp.GENERAL )
     ]);
   }
 

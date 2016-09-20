@@ -3,9 +3,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 // Imports personalizados necesarios para este componente
+import { Path }              from '../paths';
 import { ProductoService }   from './producto.service';
-import { Producto } from './producto';
-import { Path }      from '../paths';
+import { Producto }          from './producto';
 
 // Decorator
 @Component({

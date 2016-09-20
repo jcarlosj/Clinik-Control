@@ -10,12 +10,12 @@ import { Router,
 import { FormControl,
          FormGroup,
          Validators }          from '@angular/forms';
-/*import { REACTIVE_FORM_DIRECTIVES,
-         FORM_DIRECTIVES }     from '@angular/forms';*/
-import {ReactiveFormsModule} from '@angular/forms';
+
+import {ReactiveFormsModule}   from '@angular/forms';
 import { Location }            from '@angular/common';
 
 // Imports personalizados necesarios para este componente
+import { Path, Validate }      from '../paths';
 import { TablaGeneralService } from './tabla-general.service';
 import { TablaGeneral }        from './tabla-general';
 import { cTipoTabla }          from '../_tipos/c-tipo-tabla';
@@ -24,8 +24,7 @@ import { cEstado }             from '../_tipos/cEstado';
 // Decorator
 @Component({
   selector    : 'tablas-generales',
-  templateUrl : '../app/tablas-generales/tabla-general-detail.component.html',
-  //directives  : [REACTIVE_FORM_DIRECTIVES, FORM_DIRECTIVES],
+  templateUrl : Path.Server.TEMPLATE + 'tablas-generales/tabla-general-detail.component.html'
 })
 
 // Class
@@ -40,8 +39,7 @@ export class TablaGeneralDetail implements OnInit, OnDestroy {
   private esNuevo     : boolean = false;
   //private tiposTablas : cTipoTabla[];
   private estado      : cEstado[];
-  private router_     : Router;
-
+  
   private title       : string;
   private path        : string;
 
@@ -129,12 +127,12 @@ export class TablaGeneralDetail implements OnInit, OnDestroy {
     this .fTablaGeneral .controls[ "codigo" ] .setValidators([ 
             Validators .minLength( 2 ), 
             Validators .maxLength( 10 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( Validate.RegExp.ENTERO )
     ]);
     this .fTablaGeneral .controls[ "descripcion" ] .setValidators([ 
             Validators .minLength( 10 ), 
             Validators .maxLength( 30 ),
-            Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
+            Validators .pattern( Validate.RegExp.GENERAL )
     ]);
   }
 

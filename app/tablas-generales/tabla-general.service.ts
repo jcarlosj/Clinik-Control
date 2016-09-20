@@ -29,8 +29,8 @@ export class TablaGeneralService {
 
     // Redirecciona la URL web API agregandole el PATH
     this .path   = path;
-    let url = `${Path.API}${this.path}`;
-    console .log( 'Listado registros: ' + Path.API + this.path + ' *** ' + this .url );
+    let url = `${Path.Server.API}${this.path}`;
+    console .log( 'Listado registros: ' + Path.Server.API + this.path + ' *** ' + this .url );
 
     return this.http.get( url )
                .toPromise()
@@ -39,7 +39,7 @@ export class TablaGeneralService {
   }
 
   getTablaGeneral(codigo: string) {
-      console .log( 'Lista registro: ' + Path.API + this.path + ' *** ' + this .url );
+      console .log( 'Lista registro: ' + Path.Server.API + this.path + ' *** ' + this .url );
 
       return this.getTablasGenerales( this .path )
           .then( obj => obj.find(obj => obj.codigo === codigo) );
@@ -57,8 +57,8 @@ export class TablaGeneralService {
   // Delete
   delete(obj: TablaGeneral) {
 
-    console .log( 'Elimina: ' + Path.API + this.path );
-    this .url = `${Path.API}${this.path}/${obj.codigo}`;
+    console .log( 'Elimina: ' + Path.Server.API + this.path );
+    this .url = `${Path.Server.API}${this.path}/${obj.codigo}`;
 
     return this.http
                .delete(this .url, {headers: this .headers})
@@ -69,8 +69,8 @@ export class TablaGeneralService {
   // Add new
   private post(obj: TablaGeneral): Promise<TablaGeneral> {
 
-    this .url = `${Path.API}${this.path}`;
-    console .log( 'Guarda nuevo: ' + Path.API + this.path + ' *** ' + this .url );
+    this .url = `${Path.Server.API}${this.path}`;
+    console .log( 'Guarda nuevo: ' + Path.Server.API + this.path + ' *** ' + this .url );
 
     return this.http
                .post( this .url, JSON.stringify(obj), {headers: this .headers})
@@ -86,9 +86,9 @@ export class TablaGeneralService {
     console .log( 'Objeto: ' + Object .values( obj ) );
     console .log( 'Editar: ' + obj.codigo );
 
-    this .url = `${Path.API}${this.path}/${obj.codigo}`;
+    this .url = `${Path.Server.API}${this.path}/${obj.codigo}`;
 
-    console .log( 'Guarda nuevo: ' + Path.API + this.path + ' *** ' + this .url );
+    console .log( 'Guarda nuevo: ' + Path.Server.API + this.path + ' *** ' + this .url );
     console .log( 'Los datos seran enviados a la urlAPI: ' + this .url );
 
     return this.http

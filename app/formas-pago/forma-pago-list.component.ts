@@ -3,12 +3,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 // Imports personalizados necesarios para este componente
-import { FormaPagoService }   from './forma-pago.service';
-import { FormaPago } from './forma-pago';
+import { Path }              from '../paths';
+import { FormaPagoService }  from './forma-pago.service';
+import { FormaPago }         from './forma-pago';
 
 // Decorator
 @Component({
-	templateUrl: '../app/formas-pago/forma-pago-list.component.html',
+	templateUrl: Path.Server.TEMPLATE + 'formas-pago/forma-pago-list.component.html',
 })
 
 // Clase principal para este componente
