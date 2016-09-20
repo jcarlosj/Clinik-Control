@@ -3,7 +3,7 @@
     <li *ngFor="let o of arrObj" [class.selected]="isSelected(o)" (click)="onSelect(o)">
         <span>
             <span class="badge">{{o.codigo}}</span> 
-        {{o.descripcion}}</span>
+        {{o.descripcion1}}</span>
         <button class="delete-button" (click)="delete(o, $event)">{{botonBorrar}}</button>
     </li>
 </ul>

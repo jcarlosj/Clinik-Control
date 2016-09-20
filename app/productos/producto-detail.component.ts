@@ -67,18 +67,18 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
     // Inicializando atributos
     this .frmProducto = new FormGroup({
           //--- IDENTIFICACION DE PRODUCTO ---
-          id              : new FormControl(),
-          codigo          : new FormControl(),
-          agrupacion      : new FormControl(),
-          descripcion     : new FormControl(),
-          descripcion1    : new FormControl(),
-          marca           : new FormControl(),
-          codigoBarras    : new FormControl(),
-          referencia      : new FormControl(),
-          equivalencia    : new FormControl(),
-          unidadMedida    : new FormControl(),
-          unidadEmpaque   : new FormControl(),
-          ubicacionBodega : new FormControl(),
+          id                  : new FormControl(),
+          codigo              : new FormControl(),
+          agrupacion          : new FormControl(),
+          descripcion1        : new FormControl(),
+          descripcion2        : new FormControl(),
+          marca               : new FormControl(),
+          codigoBarras        : new FormControl(),
+          referencia          : new FormControl(),
+          equivalencia        : new FormControl(),
+          unidadMedida        : new FormControl(),
+          unidadEmpaque       : new FormControl(),
+          ubicacionBodega     : new FormControl(),
           //--- PRECIOS Y DATOS ESTADISTICOS ---
           precioVenta1        : new FormControl(),
           precioVenta2        : new FormControl(),
@@ -198,13 +198,13 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
             Validators .maxLength( 20 ),
             Validators .pattern( Validate.RegExp.ENTERO )
     ]);
-    this .frmProducto .controls[ "descripcion" ] .setValidators([
+    this .frmProducto .controls[ "descripcion1" ] .setValidators([
             Validators .required,  
             Validators .minLength( 5 ), 
             Validators .maxLength( 80 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
-    this .frmProducto .controls[ "descripcion1" ] .setValidators([ 
+    this .frmProducto .controls[ "descripcion2" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 80 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
@@ -380,13 +380,13 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
         maxlength:     'Debe tener hasta 20 caracteres.',
         pattern:       'Solo admite valores enteros'
       },
-      descripcion: {
+      descripcion1: {
         required:      'Campo requerido.',
         minlength:     'Debe tener 10 o más caracteres.',
         maxlength:     'Debe tener hasta 80 caracteres.',
         pattern:       'Solo admite valores alfanuméricos.'
       },
-      descripcion1: {
+      descripcion2: {
         maxlength:     'Debe tener hasta 80 caracteres.',
         pattern:       'Solo admite valores alfanuméricos.'
       },

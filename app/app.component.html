@@ -1,6 +1,6 @@
     <h1>{{title}} <small>{{description}}</small></h1>
     <nav>
-        <ul class="">
+        <ul class="principal-menu">
             <li *ngFor="let o of menu">
                 <a routerLink="{{o.path}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{o.nameItem}}</a>
             </li>

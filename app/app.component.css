@@ -8,6 +8,11 @@ h2 {
   margin-top: 0;
   padding-top: 0;
 }
+nav li {
+  display: inline-block;
+  list-style-type: none;
+  margin-right: 0.4em;
+}
 nav a {
   padding: 5px 10px;
   text-decoration: none;
@@ -26,10 +31,3 @@ nav a:hover {
 nav a.active {
   color: #039be5;
 }
-
-
-/*
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/

@@ -21,21 +21,21 @@
         </div>
         <div>
             <label>*Descripcion: </label>
-            <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion"  maxlength="80" />
-            
-            <div [hidden]="!(frmProducto.controls.descripcion.touched && !frmProducto.controls.descripcion.valid)">
-                <small>
-                    <i>> {{ errors( 'descripcion' ) }}</i>
-                </small>
-            </div>
-        </div>
-        <div>
-            <label>Descripcion: </label>
             <input formControlName="descripcion1" type="text" id="descripcion1" name="descripcion1" placeholder="descripcion1"  maxlength="80" />
             
             <div [hidden]="!(frmProducto.controls.descripcion1.touched && !frmProducto.controls.descripcion1.valid)">
                 <small>
                     <i>> {{ errors( 'descripcion1' ) }}</i>
+                </small>
+            </div>
+        </div>
+        <div>
+            <label>Descripcion: </label>
+            <input formControlName="descripcion2" type="text" id="descripcion2" name="descripcion2" placeholder="descripcion2"  maxlength="80" />
+            
+            <div [hidden]="!(frmProducto.controls.descripcion2.touched && !frmProducto.controls.descripcion2.valid)">
+                <small>
+                    <i>> {{ errors( 'descripcion2' ) }}</i>
                 </small>
             </div>
         </div>
