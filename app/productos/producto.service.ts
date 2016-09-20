@@ -28,8 +28,8 @@ export class ProductoService {
 
   // Redirecciona la URL web API agregandole el PATH
   this .path   = path;
-  let url = `${Path.API}${this.path}`;
-  console .log( 'Listado registros: ' + Path.API + this.path + ' *** ' + this .url );
+  let url = `${Path.Local.API}${this.path}`;
+  console .log( 'Listado registros: ' + Path.Local.API + this.path + ' *** ' + this .url );
 
     return this.http.get( url )
                .toPromise()
@@ -39,7 +39,7 @@ export class ProductoService {
   }
 
   public getRecord(codigo: string) {
-      console .log( 'Lista registro: ' + Path.API + this.path + ' *** ' + this .url );
+      console .log( 'Lista registro: ' + Path.Local.API + this.path + ' *** ' + this .url );
 
       return this .getRecords( this .path )
                   .then(obj => obj.find(obj => obj.codigo === codigo));
@@ -56,8 +56,8 @@ export class ProductoService {
 
   public delete( obj: Producto) {
     
-    console .log( 'Elimina: ' + Path.API + this.path );
-    this .url = `${Path.API}${this.path}/${obj.codigo}`;
+    console .log( 'Elimina: ' + Path.Local.API + this.path );
+    this .url = `${Path.Local.API}${this.path}/${obj.codigo}`;
 
     return this.http
                .delete( this .url, {headers: this .headers})
@@ -68,8 +68,8 @@ export class ProductoService {
   // Add new
   private post(obj: Producto): Promise<Producto> {
     
-    this .url = `${Path.API}${this.path}`;
-    console .log( 'Guarda nuevo: ' + Path.API + this.path + ' *** ' + this .url );
+    this .url = `${Path.Local.API}${this.path}`;
+    console .log( 'Guarda nuevo: ' + Path.Local.API + this.path + ' *** ' + this .url );
 
     return this.http
                .post(this .url, JSON.stringify(obj), {headers: this .headers})
@@ -85,9 +85,9 @@ export class ProductoService {
     console .log( 'Objeto: ' + Object .values( obj ) );
     console .log( 'Editar: ' + obj.codigo );
 
-    this .url = `${Path.API}${this.path}/${obj.codigo}`;
+    this .url = `${Path.Local.API}${this.path}/${obj.codigo}`;
 
-    console .log( 'Guarda nuevo: ' + Path.API + this.path + ' *** ' + this .url );
+    console .log( 'Guarda nuevo: ' + Path.Local.API + this.path + ' *** ' + this .url );
     console .log( 'Los datos seran enviados a la urlAPI: ' + this .url );
 
     return this.http
