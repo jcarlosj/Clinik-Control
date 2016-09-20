@@ -8,8 +8,7 @@ import { Location }                           from '@angular/common';
 // Imports personalizados necesarios para este componente
 import { ProductoService } from './producto.service';
 import { Producto }        from './producto';
-import { cTipoFP}          from '../_tipos/cTipos-FP';
-import { cEstado}          from '../_tipos/cEstado';
+import { Activaciones }   from '../_tipos/c-activaciones';
 import { DataService }     from '../data.service';
 
 // Decorator
@@ -28,8 +27,7 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
   private frmProducto    : FormGroup;
   private vObj            : Producto;
   private codigo          : string;
-  private tiposFormasPago : cTipoFP[];
-  private estado          : cEstado[];
+  private activaciones    : Activaciones[];
   private sub             : any;
   private esNuevo         : boolean = false;
   private error           : any;
@@ -56,7 +54,10 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
 
     // Inicializando atributos
     this.codigo = '';
-    
+    this .activaciones = [
+        new Activaciones( 'N', 'No' ),
+        new Activaciones( 'S', 'Sí' )
+    ];
   }
 
   // Implements de Angular 2
@@ -188,189 +189,189 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
 
   // Configuración de validaciones de campos del formulario
   validateFields() {
+
+    let ans       = '^[a-zA-Z0-9 ]+([a-zA-Z0-9!@#$%^&*()_ ]+)?$';
+    let ansp      = '^[a-zA-Z0-9 ]+([a-zA-Z0-9áéíóúñ!@#$%^&*<>?()[]{}|\\\/\"\'=:;,.-_ ]+)?$';
+    let entero    = '^[0-9]+([0-9]+)?$';
+    let decimal   = '^[0-9]+,+([0-9]+)?$';
+    let codBarras = '^[a-zA-Z0-9 ]+([a-zA-Z0-9 ]+)?$';
+
     //--- PRECIOS Y DATOS ESTADISTICOS ---
     this .frmProducto .controls[ "codigo" ] .setValidators([ 
+            Validators .required,
             Validators .minLength( 2 ), 
-            Validators .maxLength( 10 ),
+            Validators .maxLength( 20 ),
             Validators .pattern( '^[0-9]+([0-9]+)?$' )
     ]);
-    this .frmProducto .controls[ "descripcion" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
-            Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
+    this .frmProducto .controls[ "descripcion" ] .setValidators([
+            Validators .required,  
+            Validators .minLength( 5 ), 
+            Validators .maxLength( 80 ),
+            Validators .pattern( ans )
     ]);
     this .frmProducto .controls[ "descripcion1" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
-            Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 80 ),
+            Validators .pattern( ans )
     ]);
     this .frmProducto .controls[ "codigoBarras" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
-            Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 20 ),
+            Validators .pattern( codBarras )
     ]);
     this .frmProducto .controls[ "referencia" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
-            Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 20 ),
+            Validators .pattern( ans )
     ]);
     this .frmProducto .controls[ "equivalencia" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
-            Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 20 ),
+            Validators .pattern( ans )
     ]);
     this .frmProducto .controls[ "unidadEmpaque" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 12 ),
+            Validators .pattern( entero )
     ]);
     this .frmProducto .controls[ "ubicacionBodega" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 10 ),
             Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
     ]);
     //--- PRECIOS Y DATOS ESTADISTICOS ---
-    this .frmProducto .controls[ "precioVenta1" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+    this .frmProducto .controls[ "precioVenta1" ] .setValidators([
+            Validators .required, 
+            Validators .minLength( 3 ), 
+            Validators .maxLength( 9 ),
             Validators .pattern( '^[0-9]+([0-9]+)?$' )
     ]);
     this .frmProducto .controls[ "precioVenta2" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 9 ),
             Validators .pattern( '^[0-9]+([0-9]+)?$' )
     ]);
     this .frmProducto .controls[ "precioVenta3" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 9 ),
             Validators .pattern( '^[0-9]+([0-9]+)?$' )
     ]);
     this .frmProducto .controls[ "precioVenta4" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 9 ),
             Validators .pattern( '^[0-9]+([0-9]+)?$' )
     ]);
     this .frmProducto .controls[ "precioVenta5" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 9 ),
             Validators .pattern( '^[0-9]+([0-9]+)?$' )
     ]);
     this .frmProducto .controls[ "existencia" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 12 ),
             Validators .pattern( '^[0-9]+([0-9]+)?$' )
     ]);
     this .frmProducto .controls[ "saldoPedido" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 12 ),
             Validators .pattern( '^[0-9]+([0-9]+)?$' )
     ]);
     this .frmProducto .controls[ "costoPromedio" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 12 ),
             Validators .pattern( '^[0-9]+([0-9]+)?$' )
     ]);
     this .frmProducto .controls[ "costoUltimaCompra" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 12 ),
             Validators .pattern( '^[0-9]+([0-9]+)?$' )
     ]);
     this .frmProducto .controls[ "costoFOB" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 12 ),
             Validators .pattern( '^[0-9]+([0-9]+)?$' )
     ]);
     //--- PARAMETROS (Legales) ---
-    this .frmProducto .controls[ "tipoIVAVenta" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
-    ]);
     this .frmProducto .controls[ "registroInvima" ] .setValidators([ 
-            Validators .minLength( 10 ), 
+            Validators .minLength( 0 ), 
             Validators .maxLength( 30 ),
             Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
-    ]);    
-    this .frmProducto .controls[ "tipoIVACompra" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
-    ]);        
+    ]);           
     this .frmProducto .controls[ "numeroMesesGarantia" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 2 ),
             Validators .pattern( '^[0-9]+([0-9]+)?$' )
     ]);  
     //--- PARAMETROS (Controles sobre valores y cantidades) ---
     this .frmProducto .controls[ "stockMinimo" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 12 ),
             Validators .pattern( '^[0-9]+([0-9]+)?$' )
     ]);
     this .frmProducto .controls[ "stockMaximo" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 12 ),
             Validators .pattern( '^[0-9]+([0-9]+)?$' )
     ]);
     this .frmProducto .controls[ "porcMaxDtoContado" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 2 ),
             Validators .pattern( '^[0-9]+([0-9]+)?$' )
     ]);
     this .frmProducto .controls[ "porcMaxDtoCredito" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 2 ),
             Validators .pattern( '^[0-9]+([0-9]+)?$' )
     ]);
     this .frmProducto .controls[ "porcComisionVenta" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 2 ),
             Validators .pattern( '^[0-9]+([0-9]+)?$' )
     ]);
     //--- PARAMETROS (Si/No) ---
     this .frmProducto .controls[ "productoActivo" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 1 ),
             Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
     ]);
     this .frmProducto .controls[ "productoSeVende" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 1 ),
             Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
     ]);    
     this .frmProducto .controls[ "precioFijo" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 1 ),
             Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
     ]);    
     this .frmProducto .controls[ "usaControlLotes" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 1 ),
             Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
     ]);    
     this .frmProducto .controls[ "aplicaParaPedido" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 1 ),
             Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
     ]);    
     this .frmProducto .controls[ "usaSeriales" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 1 ),
             Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
     ]);    
     this .frmProducto .controls[ "productoEnConsig" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 1 ),
             Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
     ]);    
     this .frmProducto .controls[ "productoControlado" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 1 ),
             Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
     ]);
     this .frmProducto .controls[ "permiteNegativos" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 1 ),
             Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
     ]);
     //--- PARAMETROS (Varios) ---
@@ -425,49 +426,37 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
       codigo: {
         required:      'Campo requerido.',
         minlength:     'Debe tener 2 o más caracteres.',
-        maxlength:     'Debe tener hasta 10 caracteres.',
+        maxlength:     'Debe tener hasta 20 caracteres.',
         pattern:       'Solo admite valores enteros'
       },
       descripcion: {
         required:      'Campo requerido.',
         minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        maxlength:     'Debe tener hasta 80 caracteres.',
+        pattern:       'Solo admite valores alfanuméricos.'
       },
       descripcion1: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        maxlength:     'Debe tener hasta 80 caracteres.',
+        pattern:       'Solo admite valores alfanuméricos.'
       },
       codigoBarras: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
+        maxlength:     'Debe tener hasta 20 caracteres.',
         pattern:       'Solo admite valores alfabéticos.'
       },
       referencia: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        maxlength:     'Debe tener hasta 20 caracteres.',
+        pattern:       'Solo admite valores alfanuméricos.'
       },
       equivalencia: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
+        maxlength:     'Debe tener hasta 20 caracteres.',
         pattern:       'Solo admite valores alfabéticos.'
       },
       unidadEmpaque: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
+        maxlength:     'Debe tener hasta 12 caracteres.',
         pattern:       'Solo admite valores alfabéticos.'
       },
       ubicacionBodega: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
+        maxlength:     'Debe tener hasta 10 caracteres.',
         pattern:       'Solo admite valores alfabéticos.'
       },
       //--- PRECIOS Y DATOS ESTADISTICOS ---

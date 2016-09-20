@@ -5,7 +5,7 @@
         <legend>Identificación (Producto/Servicio)</legend>
         <div>
             <label>Codigo: </label>
-            <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" required />
+            <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="20" />
             
             <div [hidden]="!(frmProducto.controls.codigo.touched && !frmProducto.controls.codigo.valid)">
                 <small>
@@ -21,7 +21,7 @@
         </div>
         <div>
             <label>Descripcion: </label>
-            <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion" required />
+            <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion"  maxlength="80" />
             
             <div [hidden]="!(frmProducto.controls.descripcion.touched && !frmProducto.controls.descripcion.valid)">
                 <small>
@@ -31,7 +31,7 @@
         </div>
         <div>
             <label>Descripcion: </label>
-            <input formControlName="descripcion1" type="text" id="descripcion1" name="descripcion1" placeholder="descripcion1" />
+            <input formControlName="descripcion1" type="text" id="descripcion1" name="descripcion1" placeholder="descripcion1"  maxlength="80" />
             
             <div [hidden]="!(frmProducto.controls.descripcion1.touched && !frmProducto.controls.descripcion1.valid)">
                 <small>
@@ -47,7 +47,7 @@
         </div>
         <div>
             <label>Código de barras: </label>
-            <input formControlName="codigoBarras" type="text" id="codigoBarras" name="codigoBarras" placeholder="codigoBarras" />
+            <input formControlName="codigoBarras" type="text" id="codigoBarras" name="codigoBarras" placeholder="codigoBarras"  maxlength="20" />
             
             <div [hidden]="!(frmProducto.controls.codigoBarras.touched && !frmProducto.controls.codigoBarras.valid)">
                 <small>
@@ -57,7 +57,7 @@
         </div>
         <div>
             <label>Referencia: </label>
-            <input formControlName="referencia" type="text" id="referencia" name="referencia" placeholder="referencia" />
+            <input formControlName="referencia" type="text" id="referencia" name="referencia" placeholder="referencia"  maxlength="20" />
             
             <div [hidden]="!(frmProducto.controls.referencia.touched && !frmProducto.controls.referencia.valid)">
                 <small>
@@ -67,7 +67,7 @@
         </div>
         <div>
             <label>Equivalencia: </label>
-            <input formControlName="equivalencia" type="text" id="equivalencia" name="equivalencia" placeholder="equivalencia" />
+            <input formControlName="equivalencia" type="text" id="equivalencia" name="equivalencia" placeholder="equivalencia"  maxlength="12" />
             
             <div [hidden]="!(frmProducto.controls.equivalencia.touched && !frmProducto.controls.equivalencia.valid)">
                 <small>
@@ -83,7 +83,7 @@
         </div>
         <div>
             <label>Unidad Empaque: </label>
-            <input formControlName="unidadEmpaque" type="text" id="unidadEmpaque" name="unidadEmpaque" placeholder="unidadEmpaque" />
+            <input formControlName="unidadEmpaque" type="text" id="unidadEmpaque" name="unidadEmpaque" placeholder="unidadEmpaque"  maxlength="12" />
             
             <div [hidden]="!(frmProducto.controls.unidadEmpaque.touched && !frmProducto.controls.unidadEmpaque.valid)">
                 <small>
@@ -93,7 +93,7 @@
         </div>
         <div>
             <label>Ubicación bodega: </label>
-            <input formControlName="ubicacionBodega" type="text" id="ubicacionBodega" name="ubicacionBodega" placeholder="ubicacionBodega" />
+            <input formControlName="ubicacionBodega" type="text" id="ubicacionBodega" name="ubicacionBodega" placeholder="ubicacionBodega"  maxlength="20" />
             
             <div [hidden]="!(frmProducto.controls.ubicacionBodega.touched && !frmProducto.controls.ubicacionBodega.valid)">
                 <small>
@@ -107,7 +107,7 @@
 
         <div>
             <label>Precio de venta 1: </label>
-            <input formControlName="precioVenta1" type="text" id="precioVenta1" name="precioVenta1" placeholder="precioVenta1" />
+            <input formControlName="precioVenta1" type="text" id="precioVenta1" name="precioVenta1" placeholder="precioVenta1" maxlength="9" />
             
             <div [hidden]="!(frmProducto.controls.precioVenta1.touched && !frmProducto.controls.precioVenta1.valid)">
                 <small>
@@ -117,7 +117,7 @@
         </div>
         <div>
             <label>Precio de venta 2: </label>
-            <input formControlName="precioVenta2" type="text" id="precioVenta2" name="precioVenta2" placeholder="precioVenta2" />
+            <input formControlName="precioVenta2" type="text" id="precioVenta2" name="precioVenta2" placeholder="precioVenta2" maxlength="9"  />
             
             <div [hidden]="!(frmProducto.controls.precioVenta2.touched && !frmProducto.controls.precioVenta2.valid)">
                 <small>
@@ -127,7 +127,7 @@
         </div>
         <div>
             <label>Precio de venta 3: </label>
-            <input formControlName="precioVenta3" type="text" id="precioVenta3" name="precioVenta3" placeholder="precioVenta3" />
+            <input formControlName="precioVenta3" type="text" id="precioVenta3" name="precioVenta3" placeholder="precioVenta3" maxlength="9"  />
             
             <div [hidden]="!(frmProducto.controls.precioVenta3.touched && !frmProducto.controls.precioVenta3.valid)">
                 <small>
@@ -137,7 +137,7 @@
         </div>        
         <div>
             <label>Precio de venta 4: </label>
-            <input formControlName="precioVenta4" type="text" id="precioVenta4" name="precioVenta4" placeholder="precioVenta4" />
+            <input formControlName="precioVenta4" type="text" id="precioVenta4" name="precioVenta4" placeholder="precioVenta4" maxlength="9"  />
             
             <div [hidden]="!(frmProducto.controls.precioVenta4.touched && !frmProducto.controls.precioVenta4.valid)">
                 <small>
@@ -147,7 +147,7 @@
         </div>  
         <div>
             <label>Precio de venta 5: </label>
-            <input formControlName="precioVenta5" type="text" id="precioVenta5" name="precioVenta5" placeholder="precioVenta5" />
+            <input formControlName="precioVenta5" type="text" id="precioVenta5" name="precioVenta5" placeholder="precioVenta5" maxlength="9"  />
             
             <div [hidden]="!(frmProducto.controls.precioVenta5.touched && !frmProducto.controls.precioVenta5.valid)">
                 <small>
@@ -157,7 +157,7 @@
         </div>     
         <div>
             <label>Existencia: </label>
-            <input formControlName="existencia" type="text" id="existencia" name="existencia" placeholder="existencia" />
+            <input formControlName="existencia" type="text" id="existencia" name="existencia" placeholder="existencia" maxlength="12"  />
             
             <div [hidden]="!(frmProducto.controls.existencia.touched && !frmProducto.controls.existencia.valid)">
                 <small>
@@ -167,7 +167,7 @@
         </div>    
         <div>
             <label>Saldo pedido: </label>
-            <input formControlName="saldoPedido" type="text" id="saldoPedido" name="saldoPedido" placeholder="saldoPedido" />
+            <input formControlName="saldoPedido" type="text" id="saldoPedido" name="saldoPedido" placeholder="saldoPedido" maxlength="12" />
             
             <div [hidden]="!(frmProducto.controls.saldoPedido.touched && !frmProducto.controls.saldoPedido.valid)">
                 <small>
@@ -177,7 +177,7 @@
         </div>      
         <div>
             <label>Costo promedio: </label>
-            <input formControlName="costoPromedio" type="text" id="costoPromedio" name="costoPromedio" placeholder="costoPromedio" />
+            <input formControlName="costoPromedio" type="text" id="costoPromedio" name="costoPromedio" placeholder="costoPromedio" maxlength="12" />
             
             <div [hidden]="!(frmProducto.controls.costoPromedio.touched && !frmProducto.controls.costoPromedio.valid)">
                 <small>
@@ -187,7 +187,7 @@
         </div>      
         <div>
             <label>Costo última compra: </label>
-            <input formControlName="costoUltimaCompra" type="text" id="costoUltimaCompra" name="costoUltimaCompra" placeholder="costoUltimaCompra" />
+            <input formControlName="costoUltimaCompra" type="text" id="costoUltimaCompra" name="costoUltimaCompra" placeholder="costoUltimaCompra" maxlength="12" />
             
             <div [hidden]="!(frmProducto.controls.costoUltimaCompra.touched && !frmProducto.controls.costoUltimaCompra.valid)">
                 <small>
@@ -197,7 +197,7 @@
         </div>          
         <div>
             <label>Costo FOB: </label>
-            <input formControlName="costoFOB" type="text" id="costoFOB" name="costoFOB" placeholder="costoFOB" />
+            <input formControlName="costoFOB" type="text" id="costoFOB" name="costoFOB" placeholder="costoFOB" maxlength="12" />
             
             <div [hidden]="!(frmProducto.controls.costoFOB.touched && !frmProducto.controls.costoFOB.valid)">
                 <small>
@@ -304,94 +304,58 @@
 
         <div>
             <label>Producto activo: </label>
-            <input formControlName="productoActivo" type="text" id="productoActivo" name="productoActivo" placeholder="productoActivo" />
-            
-            <div [hidden]="!(frmProducto.controls.productoActivo.touched && !frmProducto.controls.productoActivo.valid)">
-                <small>
-                    <i>> {{ errors( 'productoActivo' ) }}</i>
-                </small>
-            </div>
-        </div>   
+            <select formControlName="productoActivo" id="productoActivo" name="productoActivo" >
+                <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
+            </select>
+        </div> 
         <div>
             <label>Producto se vende: </label>
-            <input formControlName="productoSeVende" type="text" id="productoSeVende" name="productoSeVende" placeholder="productoSeVende" />
-            
-            <div [hidden]="!(frmProducto.controls.productoSeVende.touched && !frmProducto.controls.productoSeVende.valid)">
-                <small>
-                    <i>> {{ errors( 'productoSeVende' ) }}</i>
-                </small>
-            </div>
-        </div>  
+            <select formControlName="productoSeVende" id="productoSeVende" name="productoSeVende" >
+                <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
+            </select>
+        </div>   
         <div>
             <label>Precio fijo: </label>
-            <input formControlName="precioFijo" type="text" id="precioFijo" name="precioFijo" placeholder="precioFijo" />
-            
-            <div [hidden]="!(frmProducto.controls.precioFijo.touched && !frmProducto.controls.precioFijo.valid)">
-                <small>
-                    <i>> {{ errors( 'precioFijo' ) }}</i>
-                </small>
-            </div>
-        </div>        
+            <select formControlName="precioFijo" id="precioFijo" name="precioFijo" >
+                <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
+            </select>
+        </div>       
         <div>
             <label>Usa control de lotes: </label>
-            <input formControlName="usaControlLotes" type="text" id="usaControlLotes" name="usaControlLotes" placeholder="usaControlLotes" />
-            
-            <div [hidden]="!(frmProducto.controls.usaControlLotes.touched && !frmProducto.controls.usaControlLotes.valid)">
-                <small>
-                    <i>> {{ errors( 'usaControlLotes' ) }}</i>
-                </small>
-            </div>
-        </div>         
+            <select formControlName="usaControlLotes" id="usaControlLotes" name="usaControlLotes" >
+                <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
+            </select>
+        </div>
         <div>
             <label>Aplica para pedido: </label>
-            <input formControlName="aplicaParaPedido" type="text" id="aplicaParaPedido" name="aplicaParaPedido" placeholder="aplicaParaPedido" />
-            
-            <div [hidden]="!(frmProducto.controls.aplicaParaPedido.touched && !frmProducto.controls.aplicaParaPedido.valid)">
-                <small>
-                    <i>> {{ errors( 'aplicaParaPedido' ) }}</i>
-                </small>
-            </div>
-        </div>        
+            <select formControlName="aplicaParaPedido" id="aplicaParaPedido" name="aplicaParaPedido" >
+                <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
+            </select>
+        </div>      
         <div>
             <label>Usa seriales: </label>
-            <input formControlName="usaSeriales" type="text" id="usaSeriales" name="usaSeriales" placeholder="usaSeriales" />
-            
-            <div [hidden]="!(frmProducto.controls.usaSeriales.touched && !frmProducto.controls.usaSeriales.valid)">
-                <small>
-                    <i>> {{ errors( 'usaSeriales' ) }}</i>
-                </small>
-            </div>
-        </div>           
+            <select formControlName="usaSeriales" id="usaSeriales" name="usaSeriales" >
+                <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
+            </select>
+        </div>       
         <div>
             <label>Producto en consignación: </label>
-            <input formControlName="productoEnConsig" type="text" id="productoEnConsig" name="productoEnConsig" placeholder="productoEnConsig" />
-            
-            <div [hidden]="!(frmProducto.controls.productoEnConsig.touched && !frmProducto.controls.productoEnConsig.valid)">
-                <small>
-                    <i>> {{ errors( 'productoEnConsig' ) }}</i>
-                </small>
-            </div>
-        </div>         
+            <select formControlName="productoEnConsig" id="productoEnConsig" name="productoEnConsig" >
+                <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
+            </select>
+        </div>              
         <div>
             <label>Producto controlado: </label>
-            <input formControlName="productoControlado" type="text" id="productoControlado" name="productoControlado" placeholder="productoControlado" />
-            
-            <div [hidden]="!(frmProducto.controls.productoControlado.touched && !frmProducto.controls.productoControlado.valid)">
-                <small>
-                    <i>> {{ errors( 'productoControlado' ) }}</i>
-                </small>
-            </div>
+            <select formControlName="productoControlado" id="productoControlado" name="productoControlado" >
+                <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
+            </select>
         </div>         
         <div>
             <label>Permite negativos: </label>
-            <input formControlName="permiteNegativos" type="text" id="permiteNegativos" name="permiteNegativos" placeholder="permiteNegativos" />
-            
-            <div [hidden]="!(frmProducto.controls.permiteNegativos.touched && !frmProducto.controls.permiteNegativos.valid)">
-                <small>
-                    <i>> {{ errors( 'permiteNegativos' ) }}</i>
-                </small>
-            </div>
-        </div>            
+            <select formControlName="permiteNegativos" id="permiteNegativos" name="permiteNegativos" >
+                <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
+            </select>
+        </div>                                    
 
      </fieldset>     
      <fieldset>
