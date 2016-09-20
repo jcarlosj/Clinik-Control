@@ -191,9 +191,10 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
   validateFields() {
 
     let ans       = '^[a-zA-Z0-9 ]+([a-zA-Z0-9!@#$%^&*()_ ]+)?$';
+    let ansOk     = '^[a-zA-Z0-9 ]+([a-zA-Z0-9!@#$%^&*()[]_ ]+)?$';
     let ansp      = '^[a-zA-Z0-9 ]+([a-zA-Z0-9áéíóúñ!@#$%^&*<>?()[]{}|\\\/\"\'=:;,.-_ ]+)?$';
     let entero    = '^[0-9]+([0-9]+)?$';
-    let decimal   = '^[0-9]+,+([0-9]+)?$';
+    let decimal   = '^[0-9]+([,][0-9]+)?$';
     let codBarras = '^[a-zA-Z0-9 ]+([a-zA-Z0-9 ]+)?$';
 
     //--- PRECIOS Y DATOS ESTADISTICOS ---
@@ -207,7 +208,7 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
             Validators .required,  
             Validators .minLength( 5 ), 
             Validators .maxLength( 80 ),
-            Validators .pattern( ans )
+            Validators .pattern( ansOk )
     ]);
     this .frmProducto .controls[ "descripcion1" ] .setValidators([ 
             Validators .minLength( 0 ), 
@@ -232,7 +233,7 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
     this .frmProducto .controls[ "unidadEmpaque" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
-            Validators .pattern( entero )
+            Validators .pattern( decimal )
     ]);
     this .frmProducto .controls[ "ubicacionBodega" ] .setValidators([ 
             Validators .minLength( 0 ), 
@@ -244,52 +245,52 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
             Validators .required, 
             Validators .minLength( 3 ), 
             Validators .maxLength( 9 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( decimal )
     ]);
     this .frmProducto .controls[ "precioVenta2" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 9 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( decimal )
     ]);
     this .frmProducto .controls[ "precioVenta3" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 9 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( decimal )
     ]);
     this .frmProducto .controls[ "precioVenta4" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 9 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( decimal )
     ]);
     this .frmProducto .controls[ "precioVenta5" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 9 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( decimal )
     ]);
     this .frmProducto .controls[ "existencia" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( decimal )
     ]);
     this .frmProducto .controls[ "saldoPedido" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( decimal )
     ]);
     this .frmProducto .controls[ "costoPromedio" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( decimal )
     ]);
     this .frmProducto .controls[ "costoUltimaCompra" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( decimal )
     ]);
     this .frmProducto .controls[ "costoFOB" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( decimal )
     ]);
     //--- PARAMETROS (Legales) ---
     this .frmProducto .controls[ "registroInvima" ] .setValidators([ 
@@ -306,27 +307,27 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
     this .frmProducto .controls[ "stockMinimo" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( decimal )
     ]);
     this .frmProducto .controls[ "stockMaximo" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( decimal )
     ]);
     this .frmProducto .controls[ "porcMaxDtoContado" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 2 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( decimal )
     ]);
     this .frmProducto .controls[ "porcMaxDtoCredito" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 2 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( decimal )
     ]);
     this .frmProducto .controls[ "porcComisionVenta" ] .setValidators([ 
             Validators .minLength( 0 ), 
             Validators .maxLength( 2 ),
-            Validators .pattern( '^[0-9]+([0-9]+)?$' )
+            Validators .pattern( decimal )
     ]);
     //--- PARAMETROS (Si/No) ---
     this .frmProducto .controls[ "productoActivo" ] .setValidators([ 
@@ -453,7 +454,7 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
       },
       unidadEmpaque: {
         maxlength:     'Debe tener hasta 12 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        pattern:       'Solo admite valores decimales.'
       },
       ubicacionBodega: {
         maxlength:     'Debe tener hasta 10 caracteres.',
@@ -464,61 +465,52 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
         required:      'Campo requerido.',
         minlength:     'Debe tener 10 o más caracteres.',
         maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        pattern:       'Solo admite valores decimales.'
       },
       precioVenta2: {
-        required:      'Campo requerido.',
         minlength:     'Debe tener 10 o más caracteres.',
         maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        pattern:       'Solo admite valores decimales.'
       },
       precioVenta3: {
-        required:      'Campo requerido.',
         minlength:     'Debe tener 10 o más caracteres.',
         maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        pattern:       'Solo admite valores decimales.'
       },
       precioVenta4: {
-        required:      'Campo requerido.',
         minlength:     'Debe tener 10 o más caracteres.',
         maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        pattern:       'Solo admite valores decimales.'
       },
       precioVenta5: {
-        required:      'Campo requerido.',
         minlength:     'Debe tener 10 o más caracteres.',
         maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        pattern:       'Solo admite valores decimales.'
       },     
       existencia: {
-        required:      'Campo requerido.',
         minlength:     'Debe tener 10 o más caracteres.',
         maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        pattern:       'Solo admite valores decimales.'
       }, 
       saldoPedido: {
-        required:      'Campo requerido.',
         minlength:     'Debe tener 10 o más caracteres.',
         maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        pattern:       'Solo admite valores decimales.'
       }, 
       costoPromedio: {
-        required:      'Campo requerido.',
         minlength:     'Debe tener 10 o más caracteres.',
         maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        pattern:       'Solo admite valores decimales.'
       }, 
       costoUltimaCompra: {
-        required:      'Campo requerido.',
         minlength:     'Debe tener 10 o más caracteres.',
         maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        pattern:       'Solo admite valores decimales.'
       }, 
       costoFOB: {
-        required:      'Campo requerido.',
         minlength:     'Debe tener 10 o más caracteres.',
         maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        pattern:       'Solo admite valores decimales.'
       },                                                  
       //--- PARAMETROS (Legales) ---
       tipoIVAVenta: {
@@ -534,103 +526,43 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
         pattern:       'Solo admite valores alfabéticos.'
       }, 
       registroInvima: {
-        required:      'Campo requerido.',
         minlength:     'Debe tener 10 o más caracteres.',
         maxlength:     'Debe tener hasta 30 caracteres.',
         pattern:       'Solo admite valores alfabéticos.'
       }, 
       numeroMesesGarantia: {
-        required:      'Campo requerido.',
         minlength:     'Debe tener 10 o más caracteres.',
         maxlength:     'Debe tener hasta 30 caracteres.',
         pattern:       'Solo admite valores alfabéticos.'
       }, 
       //--- PARAMETROS (Controles sobre valores y cantidades) ---
       stockMinimo: {
-        required:      'Campo requerido.',
         minlength:     'Debe tener 10 o más caracteres.',
         maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        pattern:       'Solo admite valores decimales.'
       },
       stockMaximo: {
-        required:      'Campo requerido.',
         minlength:     'Debe tener 10 o más caracteres.',
         maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        pattern:       'Solo admite valores decimales.'
       },
       porcMaxDtoContado: {
-        required:      'Campo requerido.',
         minlength:     'Debe tener 10 o más caracteres.',
         maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        pattern:       'Solo admite valores decimales.'
       },                  
       porcMaxDtoCredito: {
-        required:      'Campo requerido.',
         minlength:     'Debe tener 10 o más caracteres.',
         maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        pattern:       'Solo admite valores decimales.'
       },
       porcComisionVenta: {
-        required:      'Campo requerido.',
         minlength:     'Debe tener 10 o más caracteres.',
         maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        pattern:       'Solo admite valores decimales.'
       },
       //--- PARAMETROS (Si/No) ---
-      productoActivo: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
-      },
-      productoSeVende: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
-      },
-      precioFijo: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
-      },
-      usaControlLotes: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
-      },
-      aplicaParaPedido: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
-      },      
-      usaSeriales: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
-      },
-      productoEnConsig: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
-      },
-      productoControlado: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
-      },
-      permiteNegativos: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
-      },
+      // No hay reglas todos son selectores obligatorios
       //--- PARAMETROS (Varios) ---
       colorAgenda: {
         required:      'Campo requerido.',

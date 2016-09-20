@@ -4,7 +4,7 @@
     <fieldset>
         <legend>Identificación (Producto/Servicio)</legend>
         <div>
-            <label>Codigo: </label>
+            <label>*Codigo: </label>
             <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="20" />
             
             <div [hidden]="!(frmProducto.controls.codigo.touched && !frmProducto.controls.codigo.valid)">
@@ -14,13 +14,13 @@
             </div>
         </div>
         <div>
-            <label>Agrupación: </label>
+            <label>*Agrupación: </label>
             <select formControlName="agrupacion" id="agrupacion" name="agrupacion">
                 <option [value]="o.id" *ngFor="let o of agrupaciones">{{o.nombre}}</option>
             </select>
         </div>
         <div>
-            <label>Descripcion: </label>
+            <label>*Descripcion: </label>
             <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion"  maxlength="80" />
             
             <div [hidden]="!(frmProducto.controls.descripcion.touched && !frmProducto.controls.descripcion.valid)">
@@ -76,7 +76,7 @@
             </div>
         </div>
         <div>
-            <label>Unidad de medida: </label>
+            <label>*Unidad de medida: </label>
             <select formControlName="unidadMedida" id="unidadMedida" name="unidadMedida">
                 <option [value]="o.id" *ngFor="let o of unidades">{{o.nombre}}</option>
             </select>
@@ -106,7 +106,7 @@
         <legend>Precios y datos estadísticos</legend>
 
         <div>
-            <label>Precio de venta 1: </label>
+            <label>*Precio de venta 1: </label>
             <input formControlName="precioVenta1" type="text" id="precioVenta1" name="precioVenta1" placeholder="precioVenta1" maxlength="9" />
             
             <div [hidden]="!(frmProducto.controls.precioVenta1.touched && !frmProducto.controls.precioVenta1.valid)">
@@ -211,13 +211,13 @@
         <legend>Parámetros (Legales)</legend>
 
         <div>
-            <label>Tipo de IVA venta: </label>
+            <label>*Tipo de IVA venta: </label>
             <select formControlName="tipoIVAVenta" id="tipoIVAVenta" name="tipoIVAVenta">
                 <option [value]="o.id" *ngFor="let o of tiposDeIva">{{o.nombre}}</option>
             </select>
         </div>
         <div>
-            <label>Tipo de IVA compra: </label>
+            <label>*Tipo de IVA compra: </label>
             <select formControlName="tipoIVACompra" id="tipoIVACompra" name="tipoIVACompra">
                 <option [value]="o.id" *ngFor="let o of tiposDeIva">{{o.nombre}}</option>
             </select>
@@ -249,7 +249,7 @@
 
         <div>
             <label>Stock mínimo: </label>
-            <input formControlName="stockMinimo" type="text" id="stockMinimo" name="stockMinimo" placeholder="stockMinimo" />
+            <input formControlName="stockMinimo" type="text" id="stockMinimo" name="stockMinimo" placeholder="stockMinimo" maxlength="12" />
             
             <div [hidden]="!(frmProducto.controls.stockMinimo.touched && !frmProducto.controls.stockMinimo.valid)">
                 <small>
@@ -259,7 +259,7 @@
         </div>
         <div>
             <label>Stock máximo: </label>
-            <input formControlName="stockMaximo" type="text" id="stockMaximo" name="stockMaximo" placeholder="stockMaximo" />
+            <input formControlName="stockMaximo" type="text" id="stockMaximo" name="stockMaximo" placeholder="stockMaximo" maxlength="12" />
             
             <div [hidden]="!(frmProducto.controls.stockMaximo.touched && !frmProducto.controls.stockMaximo.valid)">
                 <small>
@@ -269,7 +269,7 @@
         </div>   
         <div>
             <label>% Máx de Dto pago de contado: </label>
-            <input formControlName="porcMaxDtoContado" type="text" id="porcMaxDtoContado" name="porcMaxDtoContado" placeholder="porcMaxDtoContado" />
+            <input formControlName="porcMaxDtoContado" type="text" id="porcMaxDtoContado" name="porcMaxDtoContado" placeholder="porcMaxDtoContado" maxlength="2" />
             
             <div [hidden]="!(frmProducto.controls.porcMaxDtoContado.touched && !frmProducto.controls.porcMaxDtoContado.valid)">
                 <small>
@@ -279,7 +279,7 @@
         </div>
         <div>
             <label>% Máx de Dto pago a credito: </label>
-            <input formControlName="porcMaxDtoCredito" type="text" id="porcMaxDtoCredito" name="porcMaxDtoCredito" placeholder="porcMaxDtoCredito" />
+            <input formControlName="porcMaxDtoCredito" type="text" id="porcMaxDtoCredito" name="porcMaxDtoCredito" placeholder="porcMaxDtoCredito" maxlength="2" />
             
             <div [hidden]="!(frmProducto.controls.porcMaxDtoCredito.touched && !frmProducto.controls.porcMaxDtoCredito.valid)">
                 <small>
@@ -289,7 +289,7 @@
         </div>
         <div>
             <label>% de comisión por venta: </label>
-            <input formControlName="porcComisionVenta" type="text" id="porcComisionVenta" name="porcComisionVenta" placeholder="porcComisionVenta" />
+            <input formControlName="porcComisionVenta" type="text" id="porcComisionVenta" name="porcComisionVenta" placeholder="porcComisionVenta" maxlength="2" />
             
             <div [hidden]="!(frmProducto.controls.porcComisionVenta.touched && !frmProducto.controls.porcComisionVenta.valid)">
                 <small>
@@ -303,55 +303,55 @@
         <legend>Parámetros (S/N)</legend>
 
         <div>
-            <label>Producto activo: </label>
+            <label>*Producto activo: </label>
             <select formControlName="productoActivo" id="productoActivo" name="productoActivo" >
                 <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
             </select>
         </div> 
         <div>
-            <label>Producto se vende: </label>
+            <label>*Producto se vende: </label>
             <select formControlName="productoSeVende" id="productoSeVende" name="productoSeVende" >
                 <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
             </select>
         </div>   
         <div>
-            <label>Precio fijo: </label>
+            <label>*Precio fijo: </label>
             <select formControlName="precioFijo" id="precioFijo" name="precioFijo" >
                 <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
             </select>
         </div>       
         <div>
-            <label>Usa control de lotes: </label>
+            <label>*Usa control de lotes: </label>
             <select formControlName="usaControlLotes" id="usaControlLotes" name="usaControlLotes" >
                 <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
             </select>
         </div>
         <div>
-            <label>Aplica para pedido: </label>
+            <label>*Aplica para pedido: </label>
             <select formControlName="aplicaParaPedido" id="aplicaParaPedido" name="aplicaParaPedido" >
                 <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
             </select>
         </div>      
         <div>
-            <label>Usa seriales: </label>
+            <label>*Usa seriales: </label>
             <select formControlName="usaSeriales" id="usaSeriales" name="usaSeriales" >
                 <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
             </select>
         </div>       
         <div>
-            <label>Producto en consignación: </label>
+            <label>*Producto en consignación: </label>
             <select formControlName="productoEnConsig" id="productoEnConsig" name="productoEnConsig" >
                 <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
             </select>
         </div>              
         <div>
-            <label>Producto controlado: </label>
+            <label>*Producto controlado: </label>
             <select formControlName="productoControlado" id="productoControlado" name="productoControlado" >
                 <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
             </select>
         </div>         
         <div>
-            <label>Permite negativos: </label>
+            <label>*Permite negativos: </label>
             <select formControlName="permiteNegativos" id="permiteNegativos" name="permiteNegativos" >
                 <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
             </select>
