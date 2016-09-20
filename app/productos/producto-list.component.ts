@@ -5,10 +5,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 // Imports personalizados necesarios para este componente
 import { ProductoService }   from './producto.service';
 import { Producto } from './producto';
+import { Path }      from '../paths';
 
 // Decorator
 @Component({
-	templateUrl: '../app/productos/producto-list.component.html',
+	templateUrl: Path.Server.TEMPLATE + 'productos/producto-list.component.html',
 })
 
 // Clase principal para este componente

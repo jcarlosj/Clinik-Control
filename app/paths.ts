@@ -4,12 +4,11 @@ export class Path {
     //static LOCALHOST_PATH : string = 'http://localhost:3000/app/';
 
     static Server = {
-      API       : 'http://localhost/clinik_api/src/',
-      LOCALHOST : 'http://localhost:3000/app/'  
-    };
-
-    static Local = {
+      // API       : 'http://localhost/clinik_api/src/',
+      // LOCALHOST : 'http://localhost:3000/app/',  
+      // TEMPLATE  : '../app',
       API       : 'app',
-      LOCALHOST : ''  
+      LOCALHOST : '',  
+      TEMPLATE  : '../app/',
     };
 }

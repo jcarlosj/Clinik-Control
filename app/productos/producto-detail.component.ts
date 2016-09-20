@@ -32,7 +32,7 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
   private esNuevo         : boolean = false;
   private error           : any;
   // Definimos texto boton y titulo
-  private title         = 'Formas de pago';
+  private title         = 'Producto';
   private botonGuardar  = 'Guardar';
   private botonRegresar = 'Regresar';
   // Carga datos adicionales
@@ -191,8 +191,8 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
   validateFields() {
 
     let ans       = '^[a-zA-Z0-9 ]+([a-zA-Z0-9!@#$%^&*()_ ]+)?$';
-    let ansOk     = '^[a-zA-Z0-9 ]+([a-zA-Z0-9!@#$%^&*()[]_ ]+)?$';
-    let ansp      = '^[a-zA-Z0-9 ]+([a-zA-Z0-9áéíóúñ!@#$%^&*<>?()[]{}|\\\/\"\'=:;,.-_ ]+)?$';
+    //let ansOk     = '^[a-zA-Z0-9 ]+([a-zA-Z0-9!@#$%^&*()[]_ ]+)?$';
+    //let ansp      = '^[a-zA-Z0-9 ]+([a-zA-Z0-9áéíóúñ!@#$%^&*<>?()[]{}|\\\/\"\'=:;,.-_ ]+)?$';
     let entero    = '^[0-9]+([0-9]+)?$';
     let decimal   = '^[0-9]+([,][0-9]+)?$';
     let codBarras = '^[a-zA-Z0-9 ]+([a-zA-Z0-9 ]+)?$';
@@ -208,7 +208,7 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
             Validators .required,  
             Validators .minLength( 5 ), 
             Validators .maxLength( 80 ),
-            Validators .pattern( ansOk )
+            Validators .pattern( ans )
     ]);
     this .frmProducto .controls[ "descripcion1" ] .setValidators([ 
             Validators .minLength( 0 ), 
