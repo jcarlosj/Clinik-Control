@@ -330,55 +330,11 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
             Validators .pattern( decimal )
     ]);
     //--- PARAMETROS (Si/No) ---
-    this .frmProducto .controls[ "productoActivo" ] .setValidators([ 
-            Validators .minLength( 0 ), 
-            Validators .maxLength( 1 ),
-            Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
-    ]);
-    this .frmProducto .controls[ "productoSeVende" ] .setValidators([ 
-            Validators .minLength( 0 ), 
-            Validators .maxLength( 1 ),
-            Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
-    ]);    
-    this .frmProducto .controls[ "precioFijo" ] .setValidators([ 
-            Validators .minLength( 0 ), 
-            Validators .maxLength( 1 ),
-            Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
-    ]);    
-    this .frmProducto .controls[ "usaControlLotes" ] .setValidators([ 
-            Validators .minLength( 0 ), 
-            Validators .maxLength( 1 ),
-            Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
-    ]);    
-    this .frmProducto .controls[ "aplicaParaPedido" ] .setValidators([ 
-            Validators .minLength( 0 ), 
-            Validators .maxLength( 1 ),
-            Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
-    ]);    
-    this .frmProducto .controls[ "usaSeriales" ] .setValidators([ 
-            Validators .minLength( 0 ), 
-            Validators .maxLength( 1 ),
-            Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
-    ]);    
-    this .frmProducto .controls[ "productoEnConsig" ] .setValidators([ 
-            Validators .minLength( 0 ), 
-            Validators .maxLength( 1 ),
-            Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
-    ]);    
-    this .frmProducto .controls[ "productoControlado" ] .setValidators([ 
-            Validators .minLength( 0 ), 
-            Validators .maxLength( 1 ),
-            Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
-    ]);
-    this .frmProducto .controls[ "permiteNegativos" ] .setValidators([ 
-            Validators .minLength( 0 ), 
-            Validators .maxLength( 1 ),
-            Validators .pattern( '^[a-zA-Z]+([a-zA-Z]+)?$' )
-    ]);
+    // No hay reglas todos son selectores obligatorios
     //--- PARAMETROS (Varios) ---
     this .frmProducto .controls[ "colorAgenda" ] .setValidators([ 
             Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .maxLength( 12 ),
             Validators .pattern( '^[0-9]+([0-9]+)?$' )
     ]);
     /*this .frmProducto .controls[ "presentacion" ] .setValidators([ 

@@ -67,7 +67,7 @@
         </div>
         <div>
             <label>Equivalencia: </label>
-            <input formControlName="equivalencia" type="text" id="equivalencia" name="equivalencia" placeholder="equivalencia"  maxlength="12" />
+            <input formControlName="equivalencia" type="text" id="equivalencia" name="equivalencia" placeholder="equivalencia"  maxlength="20" />
             
             <div [hidden]="!(frmProducto.controls.equivalencia.touched && !frmProducto.controls.equivalencia.valid)">
                 <small>
@@ -93,7 +93,7 @@
         </div>
         <div>
             <label>Ubicación bodega: </label>
-            <input formControlName="ubicacionBodega" type="text" id="ubicacionBodega" name="ubicacionBodega" placeholder="ubicacionBodega"  maxlength="20" />
+            <input formControlName="ubicacionBodega" type="text" id="ubicacionBodega" name="ubicacionBodega" placeholder="ubicacionBodega"  maxlength="10" />
             
             <div [hidden]="!(frmProducto.controls.ubicacionBodega.touched && !frmProducto.controls.ubicacionBodega.valid)">
                 <small>
@@ -224,7 +224,7 @@
         </div>  
         <div>
             <label>Registro invima: </label>
-            <input formControlName="registroInvima" type="text" id="registroInvima" name="registroInvima" placeholder="registroInvima" />
+            <input formControlName="registroInvima" type="text" id="registroInvima" name="registroInvima" placeholder="registroInvima" maxlength="30" />
             
             <div [hidden]="!(frmProducto.controls.registroInvima.touched && !frmProducto.controls.registroInvima.valid)">
                 <small>
@@ -234,7 +234,7 @@
         </div>       
         <div>
             <label>Número de meses de garantia: </label>
-            <input formControlName="numeroMesesGarantia" type="text" id="numeroMesesGarantia" name="numeroMesesGarantia" placeholder="numeroMesesGarantia" />
+            <input formControlName="numeroMesesGarantia" type="text" id="numeroMesesGarantia" name="numeroMesesGarantia" placeholder="numeroMesesGarantia" maxlength="30" />
             
             <div [hidden]="!(frmProducto.controls.numeroMesesGarantia.touched && !frmProducto.controls.numeroMesesGarantia.valid)">
                 <small>
@@ -363,7 +363,7 @@
 
         <div>
             <label>Color agenda: </label>
-            <input formControlName="colorAgenda" type="text" id="colorAgenda" name="colorAgenda" placeholder="colorAgenda" />
+            <input formControlName="colorAgenda" type="text" id="colorAgenda" name="colorAgenda" placeholder="colorAgenda" maxlength="12" />
             
             <div [hidden]="!(frmProducto.controls.colorAgenda.touched && !frmProducto.controls.colorAgenda.valid)">
                 <small>
