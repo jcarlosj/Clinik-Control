@@ -1,16 +1,15 @@
 // Imports del core de Angular 2 necesarios para este componente
-import { Injectable }     from '@angular/core';
-import { Headers, Http }  from '@angular/http';
-import 'rxjs/add/operator/toPromise';
+import { Injectable } from '@angular/core';
+import { Http, Headers, Response } from '@angular/http';
 
 // Imports personalizados necesarios para este componente
-import { Path }           from '../paths';
-import { Agrupacion }     from '../agrupaciones/agrupacion';
+import { Path }      from '../paths';
+import { Agrupacion } from '../agrupaciones/agrupacion';
 
 // Decorator
 @Injectable()
 
-// Class
+// Clase principal para este servicio
 export class AgrupacionService {
 
   // Atributes
@@ -19,34 +18,35 @@ export class AgrupacionService {
   private url: string;
 
   // Constructor
-  constructor( private http: Http ) {
+  constructor( private http: Http ) { 
     this .headers = new Headers();
     this .headers .append('Content-Type', 'application/json');
   }
 
   // Methods
-  getRecords( path: string ) {
+  public getRecords( path: string ): Promise <Agrupacion[]> { 
 
-    // Redirecciona la URL web API agregandole el PATH
-    this .path   = path;
-    let url = `${Path.Server.API}${this.path}`;
-    console .log( 'Listado registros: ' + Path.Server.API + this.path + ' *** ' + this .url );
+  // Redirecciona la URL web API agregandole el PATH
+  this .path   = path;
+  let url = `${Path.Server.API}${this.path}`;
+  console .log( 'Listado registros: ' + Path.Server.API + this.path + ' *** ' + this .url );
 
     return this.http.get( url )
                .toPromise()
-               .then(response => response.json().data as Agrupacion[])
+               .then(
+                response => response.json().data as Agrupacion[])
                .catch(this.handleError);
   }
 
-  getRecord(codigo: string) {
+  public getRecord(codigo: string) {
       console .log( 'Lista registro: ' + Path.Server.API + this.path + ' *** ' + this .url );
 
-      return this.getRecords( this .path )
-          .then( obj => obj.find(obj => obj.codigo === codigo) );
+      return this .getRecords( this .path )
+                  .then(obj => obj.find(obj => obj.codigo === codigo));
   }
-
-  save(obj: Agrupacion, esNuevo: boolean): Promise<Agrupacion>  {
-    if (esNuevo) {
+  
+  public save(obj: Agrupacion, esNuevo: boolean): Promise<Agrupacion>  {
+    if (esNuevo){
 
       return this.post(obj);
     }
@@ -54,26 +54,25 @@ export class AgrupacionService {
     return this.put(obj);
   }
 
-  // Delete
-  delete(obj: Agrupacion) {
-
+  public delete( obj: Agrupacion) {
+    
     console .log( 'Elimina: ' + Path.Server.API + this.path );
     this .url = `${Path.Server.API}${this.path}/${obj.codigo}`;
 
     return this.http
-               .delete(this .url, {headers: this .headers})
+               .delete( this .url, {headers: this .headers})
                .toPromise()
                .catch(this.handleError);
   }
 
   // Add new
   private post(obj: Agrupacion): Promise<Agrupacion> {
-
+    
     this .url = `${Path.Server.API}${this.path}`;
     console .log( 'Guarda nuevo: ' + Path.Server.API + this.path + ' *** ' + this .url );
 
     return this.http
-               .post( this .url, JSON.stringify(obj), {headers: this .headers})
+               .post(this .url, JSON.stringify(obj), {headers: this .headers})
                .toPromise()
                .then(res => res.json().data)
                .catch(this.handleError);

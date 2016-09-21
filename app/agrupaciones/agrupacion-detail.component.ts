@@ -1,153 +1,215 @@
 // Imports del core de Angular 2 necesarios para este componente
-import { Component,
-         EventEmitter,
-         Input,
-         OnInit,
-         OnDestroy,
-         Output }           from '@angular/core';
-import { Router,
-         ActivatedRoute }   from '@angular/router';
-import { Location }         from '@angular/common';
-/*import { FormBuilder, Validators}       from '@angular/common';*/
-import { Form, FormControl, FormGroup, Validators }         from '@angular/forms';
-//import { REACTIVE_FORM_DIRECTIVES, FORM_DIRECTIVES }  from '@angular/forms';
-import {ReactiveFormsModule} from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, OnDestroy, Output } from '@angular/core';
+import { ActivatedRoute, Params }             from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule }                from '@angular/forms';
+import { Location }                           from '@angular/common';
 
 // Imports personalizados necesarios para este componente
+import { Path, Validate }    from '../paths';
 import { AgrupacionService } from './agrupacion.service';
 import { Agrupacion }        from './agrupacion';
-import { cTipoFP }           from '../_tipos/cTipos-FP';
-import { cEstado }           from '../_tipos/cEstado';
+import { Activaciones }      from '../_tipos/c-activaciones';
+import { cEstado}            from '../_tipos/cEstado';
 
 // Decorator
 @Component({
-  selector    : 'agrupacion',
-  templateUrl : '../app/agrupaciones/agrupacion-detail.component.html'
-})
+  selector: 'formas-de-pago',
+  templateUrl: Path.Server.TEMPLATE + 'agrupaciones/agrupacion-detail.component.html'
+})  
 
-// Class
+// Clase principal del componente
 export class AgrupacionDetailComponent implements OnInit, OnDestroy {
 
-  // Atributes
+  // Atributes 
   @Output() close = new EventEmitter();
-  private form            : FormGroup;
-  private obj             : Agrupacion;
-  private error           : any;
-  private sub             : any;
+  private frmAgrupacion   : FormGroup;
+  private vObj            : Agrupacion;
   private codigo          : string;
-  private esNuevo         : boolean = false;
-  private tiposFormasPago : cTipoFP[];
+  private activaciones    : Activaciones[];
   private estado          : cEstado[];
-
-  private title           : string;
-  private path            : string;
-
+  private sub             : any;
+  private esNuevo         : boolean = false;
+  private error           : any;
+  // Definimos texto boton y titulo
+  private title         = 'Agrupación';
+  private botonGuardar  = 'Guardar';
+  private botonRegresar = 'Regresar';
+  
   // Constructor
   constructor(
     private location: Location,
-    private service: AgrupacionService,
     private route: ActivatedRoute,
-    private router: Router
-  ) {
-    // Definimos texto boton y titulo
-		this .title = 'Agrupación';
+    private service: AgrupacionService
+  ) { 
 
     // Inicializando atributos
     this.codigo = '';
-    this.tiposFormasPago = [
-        new cTipoFP( 1, 'Efectivo/convencional'    , true ),
-        new cTipoFP( 2, 'Tipo multiple'            , true ),
-        new cTipoFP( 3, 'Tarjetas Datafono'        , true ),
-        new cTipoFP( 4, 'Cheques'                  , true ),
-        new cTipoFP( 5, 'Tarjetas imprinter'       , true ),
-        new cTipoFP( 6, 'Vales'                    , true ),
-        new cTipoFP( 7, 'Bonos'                    , true ),
-        new cTipoFP( 8, 'Transferencia electronica', true ),
-        new cTipoFP( 9, 'Consignación directa'     , true ),
-        new cTipoFP( 10, 'Tarjeta prepago'         , true )
+    this .activaciones = [
+        new Activaciones( 'N', 'No' ),
+        new Activaciones( 'S', 'Sí' )
     ];
     this.estado = [
-        new cEstado('A', 'Activo'),
-        new cEstado('I', 'Inactivo'),
+        new cEstado( 'A', 'Activo' ),
+        new cEstado( 'I', 'Inactivo' )
     ];
   }
 
   // Implements de Angular 2
   ngOnInit() {
 
-    this .form = new FormGroup({
-        id          : new FormControl(),
-        codigo      : new FormControl(),
-        descripcion : new FormControl(),
-        estado      : new FormControl(),
-        tipo        : new FormControl(),
-        editable    : new FormControl(),
-        borrable    : new FormControl()
+    // Inicializando atributos
+    this .frmAgrupacion = new FormGroup({
+          id                : new FormControl(),
+          codigo            : new FormControl(),
+          descripcion       : new FormControl(),
+          codigoPadre       : new FormControl(),
+          nivel             : new FormControl(),
+          permiteDetalle    : new FormControl(),
+          orden             : new FormControl(),
+          idUsuarioCrea     : new FormControl(),     // <-- Parámetros: Control. 
+          idUsuarioModifica : new FormControl(), 
+          fechaCreacion     : new FormControl(),
+          fechaModificacion : new FormControl(),
+          registro          : new FormControl(),
+          estado            : new FormControl()
     });
 
     this.sub = this.route.params.subscribe(params => {
-        /* ----------
-          13-Ago-2016   -  Fernando Bermeo
-          depurando en el navegador se puede observar que el parametro codigo es igual a la cadena
-          "undefined", por eso se hacen las dos comparaciones
+        /* ---------- 
+            13-Ago-2016   -  Fernando Bermeo
+            depurando en el navegador se puede observar que el parametro codigo es igual a la cadena
+            "undefined", por eso se hacen las dos comparaciones
         ---------- */
         if (params['codigo'] !== undefined && params['codigo'] !== "undefined") {
-            // Si el parametro codigo no esta definido entonces se trata de un nuevo registro
+          // Si el parametro codigo no esta definido entonces se trata de un nuevo registro
           this.esNuevo =  false;
           this.codigo = params['codigo'];
           this.service.getRecord(this.codigo)
-              .then(obj => {
-                  this.obj = obj;
-                  this.form.setValue(this.obj);
-                  this.esNuevo =  false;
-                });
-        } else {
-            this.obj = new Agrupacion();
-            this.form.setValue(new Agrupacion());
-            this.form.controls["codigo"].setValidators(Validators.minLength(2));
-            this.esNuevo =  true;
+              .then( obj => {
+                      this .vObj = obj;
+                      this .frmAgrupacion .setValue( this.vObj );
+                      console .log( 'Nuevo: ' + this.esNuevo );
+                      this .validateFields();
+                      this .esNuevo =  false;
+                      
+              });
+        } 
+        else {
+          this .vObj = new Agrupacion();
+          this .frmAgrupacion .setValue( new Agrupacion() );
+          this .validateFields();
+          this .esNuevo =  true;
+          console .log( 'Nuevo: ' + this.esNuevo );
         }
     });
-  }
+  } 
+
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    this .sub .unsubscribe();
   }
 
   // Methods
-  goToList(obj: Agrupacion = null) {
-    this.close.emit(obj);
-    this .location .back();
+
+  // Configuración de validaciones de campos del formulario
+  validateFields() {
+
+    this .frmAgrupacion .controls[ "codigo" ] .setValidators([ 
+            Validators .minLength( 2 ), 
+            Validators .maxLength( 10 ),
+            Validators .pattern( Validate.RegExp.ENTERO )
+    ]);
+    this .frmAgrupacion .controls[ "descripcion" ] .setValidators([ 
+            Validators .minLength( 5 ), 
+            Validators .maxLength( 80 ),
+            Validators .pattern( Validate.RegExp.GENERAL )
+    ]);
+    this .frmAgrupacion .controls[ "codigoPadre" ] .setValidators([ 
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 3 ),
+            Validators .pattern( Validate.RegExp.ENTERO )
+    ]);
+    this .frmAgrupacion .controls[ "nivel" ] .setValidators([ 
+            Validators .minLength( 0 ), 
+            Validators .maxLength( 3 ),
+            Validators .pattern( Validate.RegExp.ENTERO )
+    ]);
+    this .frmAgrupacion .controls[ "permiteDetalle" ] .setValidators([ 
+            Validators .minLength( 1 ), 
+            Validators .maxLength( 1 ),
+            Validators .pattern( Validate.RegExp.GENERAL )
+    ]);  
+    this .frmAgrupacion .controls[ "orden" ] .setValidators([ 
+            Validators .minLength( 10 ), 
+            Validators .maxLength( 30 ),
+            Validators .pattern( Validate.RegExp.ENTERO )
+    ]);
+  }
+
+  goToList( obj: Agrupacion = null) {
+    this .close .emit( obj );
+    this .location .back();   
   }
 
   save(){
-    this.service
-      .save(this.form.value, this.esNuevo )
-      .then(obj => {
-        this.obj = obj;
-        this.goToList(obj);
-      })
-      .catch(error => this.error = error);
+    this .service .save(this.frmAgrupacion.value,this.esNuevo)
+                  .then( obj => {
+                    this.vObj = obj;
+                    this.goToList( obj );
+                  })
+    .catch(error => this.error = error);
   }
-  errors(obj: FormControl){
-    /*obj = obj + " xxxxx";
-    return obj;*/
-    let resp = '';
+
+  // Manejador de mensajes de ERROR de campos del formulario
+  errors( name: string ){
+
+    let resp: string = '';
     let error: any;
-    for (error in obj.errors){
-      switch (error) {
-        case "required" :
-          resp += 'Debe digitar un dato';
-          break;
 
-        default:
-
-          break;
-      }
-
+    // Configuracion de mensaje por campo
+    let fields = { 
+      codigo: {
+        required:      'Campo requerido.',
+        minlength:     'Debe tener 2 o más caracteres.',
+        maxlength:     'Debe tener hasta 10 caracteres.',
+        pattern:       'Solo admite valores enteros'
+      },
+      descripcion: {
+        required:      'Campo requerido.',
+        minlength:     'Debe tener 10 o más caracteres.',
+        maxlength:     'Debe tener hasta 30 caracteres.',
+        pattern:       'Solo admite valores alfabéticos.'
+      }/*,
+      codigoPadre: {
+        required:      'Campo requerido.',
+        minlength:     'Debe tener 10 o más caracteres.',
+        maxlength:     'Debe tener hasta 30 caracteres.',
+        pattern:       'Solo admite valores alfabéticos.'
+      },
+      nivel: {
+        required:      'Campo requerido.',
+        minlength:     'Debe tener 10 o más caracteres.',
+        maxlength:     'Debe tener hasta 30 caracteres.',
+        pattern:       'Solo admite valores alfabéticos.'
+      },
+      permiteDetalle: {
+        required:      'Campo requerido.',
+        minlength:     'Debe tener 10 o más caracteres.',
+        maxlength:     'Debe tener hasta 30 caracteres.',
+        pattern:       'Solo admite valores alfabéticos.'
+      },
+      orden: {
+        required:      'Campo requerido.',
+        minlength:     'Debe tener 10 o más caracteres.',
+        maxlength:     'Debe tener hasta 30 caracteres.',
+        pattern:       'Solo admite valores alfabéticos.'
+      }     */ 
     }
 
-
+    for ( error in this .frmAgrupacion.controls[ name ].errors ){
+        resp += fields[ name ][ error ] + ' ';
+    }
+    
     return resp;
-
   }
 }

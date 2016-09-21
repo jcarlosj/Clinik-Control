@@ -148,22 +148,10 @@ import { InMemoryDbService } from 'angular2-in-memory-web-api';
         fechaModificacion : '1977-11-24'
       }
     ];
-    let agrupacion = [
-      {
-        id                : 1,
-        codigo            : "01",
-        descripcion       : "Descripción Agrupación 1",
-        codigoPadre       : 1,
-        nivel             : 1,
-        permiteDetalle    : "N",
-        orden             : 1,
-        editable          : true,
-        borrable          : true,
-        idUsuarioCrea     : 2,
-        idUsuarioModifica : 3,
-        fechaCreacion     : '1955-09-21',
-        fechaModificacion : '1977-11-24'
-      }
+    let agrupaciones = [
+      { id: '01', codigo: '01', descripcion: 'Descripción Agrupación 1', codigoPadre: 1, nivel: 1, permiteDetalle: 'N', orden: 1, idUsuarioCrea: 1, idUsuarioModifica: 3, fechaCreacion: '1955-09-21', fechaModificacion: '1977-11-24', registro: 1, estado: 'A' },
+      { id: '02', codigo: '02', descripcion: 'Descripción Agrupación 2', codigoPadre: 1, nivel: 1, permiteDetalle: 'N', orden: 1, idUsuarioCrea: 1, idUsuarioModifica: 3, fechaCreacion: '1955-09-21', fechaModificacion: '1977-11-24', registro: 1, estado: 'A' },
+      { id: '03', codigo: '03', descripcion: 'Descripción Agrupación 3', codigoPadre: 1, nivel: 1, permiteDetalle: 'N', orden: 1, idUsuarioCrea: 1, idUsuarioModifica: 3, fechaCreacion: '1955-09-21', fechaModificacion: '1977-11-24', registro: 1, estado: 'A' }
     ];
 
     let data = [
@@ -212,7 +200,7 @@ import { InMemoryDbService } from 'angular2-in-memory-web-api';
       tipos_formas_pago, 
       productos, 
       tipos_impuesto,  
-      agrupacion
+      agrupaciones
     };
   }
 }

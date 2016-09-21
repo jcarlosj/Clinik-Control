@@ -1,11 +1,12 @@
-<h2>{{title}}</h2>
+<h4>{{title}}</h4>
 <ul class="items">
-    <li *ngFor="let o of arrObj"
-    [class.selected]="isSelected(o)"
-    (click)="onSelect(o)">
-        <span class="badge">{{o.codigo}}</span> {{o.descripcion}}
-        <button class="delete-button"  (click)="delete(o, $event)">Borrar</button>
+    <li *ngFor="let o of arrObj" [class.selected]="isSelected(o)" (click)="onSelect(o)">
+        <span>
+            <span class="badge">{{o.codigo}}</span> 
+        {{o.descripcion}}</span>
+        <button class="delete-button" (click)="delete(o, $event)">{{botonBorrar}}</button>
     </li>
 </ul>
-<!--<div class="error" *ngIf="error">{{error}}</div>  -->
-<button (click)="add()">{{botonNuevo}}</button>
+<div>
+    <button (click)="add()">{{botonNuevo}}</button>
+</div>
