@@ -3,15 +3,15 @@ export class FormaPago {
 
     // Constructor
     constructor(
-        private id                : string = "",
-        private codigo            : string = "", 
-        private descripcion       : string = "", 
-        private estado            : string = "A",
-        private tipo              : number = 1,
-        private idUsuarioCrea     : number = 0,     // <-- Parámetros: Control.
-        private idUsuarioModifica : number = 0,
-        private fechaCreacion     : string = '',
-        private fechaModificacion : string = '',
-        private registro          : number = 0
+        public id                : string = "",
+        public codigo            : string = "", 
+        public descripcion       : string = "", 
+        public estado            : string = "A",
+        public tipo              : number = 1,
+        public idUsuarioCrea     : number = 0,     // <-- Parámetros: Control.
+        public idUsuarioModifica : number = 0,
+        public fechaCreacion     : string = '',
+        public fechaModificacion : string = '',
+        public registro          : number = 0
     ) { }
 }

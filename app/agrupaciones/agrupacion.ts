@@ -16,5 +16,5 @@ export class Agrupacion {
         public fechaModificacion    : string = '',
         public registro             : number = 0,
         public estado               : string = 'A' 
-            ) { }
+    ) { }
 }

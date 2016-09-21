@@ -31,7 +31,7 @@ import { cEstado }             from '../_tipos/cEstado';
 export class TablaGeneralDetail implements OnInit, OnDestroy {
   // Atributes
   @Output() close = new EventEmitter();
-  private fTablaGeneral : FormGroup;
+  private frmTablaGeneral : FormGroup;
   private obj         : TablaGeneral;
   private error       : any;
   private sub         : any;
@@ -84,18 +84,17 @@ export class TablaGeneralDetail implements OnInit, OnDestroy {
   // Implements de Angular 2
   ngOnInit() {
 
-    this .fTablaGeneral = new FormGroup({
+    this .frmTablaGeneral = new FormGroup({
         id                : new FormControl(),
         codigo            : new FormControl(),
         descripcion       : new FormControl(),
         estado            : new FormControl(),
         //tipo            : new FormControl(),
-        editable          : new FormControl(),
-        borrable          : new FormControl(),
         idUsuarioCrea     : new FormControl(),
         idUsuarioModifica : new FormControl(),
         fechaCreacion     : new FormControl(),
-        fechaModificacion : new FormControl()
+        fechaModificacion : new FormControl(),
+        registro          : new FormControl()
     });
 
     console .log ( 'router: ' + this.router);
@@ -112,13 +111,13 @@ export class TablaGeneralDetail implements OnInit, OnDestroy {
             this.service.getTablaGeneral(this.codigo)
                 .then(obj => {
                     this.obj = obj;
-                    this.fTablaGeneral.setValue(this.obj);
+                    this.frmTablaGeneral.setValue(this.obj);
                     this .validateFields();
                     this.esNuevo =  false;
                 });
         } else {
             this.obj = new TablaGeneral();
-            this.fTablaGeneral.setValue(new TablaGeneral());
+            this.frmTablaGeneral.setValue(new TablaGeneral());
             this .validateFields();
             this.esNuevo =  true;
         }
@@ -127,12 +126,12 @@ export class TablaGeneralDetail implements OnInit, OnDestroy {
 
   // Configuración de validaciones de
   validateFields() {
-    this .fTablaGeneral .controls[ "codigo" ] .setValidators([ 
+    this .frmTablaGeneral .controls[ "codigo" ] .setValidators([ 
             Validators .minLength( 2 ), 
             Validators .maxLength( 10 ),
             Validators .pattern( Validate.RegExp.ENTERO )
     ]);
-    this .fTablaGeneral .controls[ "descripcion" ] .setValidators([ 
+    this .frmTablaGeneral .controls[ "descripcion" ] .setValidators([ 
             Validators .minLength( 10 ), 
             Validators .maxLength( 30 ),
             Validators .pattern( Validate.RegExp.GENERAL )
@@ -150,10 +149,10 @@ export class TablaGeneralDetail implements OnInit, OnDestroy {
   }
 
   save(){
-    console .log( 'this .fTablaGeneral .value :' + this.fTablaGeneral.value );
+    console .log( 'this .frmTablaGeneral .value :' + this.frmTablaGeneral.value );
 
     this.service
-      .save( this.fTablaGeneral.value, this.esNuevo )
+      .save( this.frmTablaGeneral.value, this.esNuevo )
       .then( obj => {
         this .obj = obj;
         this .goToList( obj );
@@ -181,7 +180,7 @@ export class TablaGeneralDetail implements OnInit, OnDestroy {
       },
     }
 
-    for ( error in this .fTablaGeneral.controls[ name ].errors ){
+    for ( error in this .frmTablaGeneral.controls[ name ].errors ){
         resp += fields[ name ][ error ] + ' ';
     }
     

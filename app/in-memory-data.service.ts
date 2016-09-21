@@ -4,11 +4,11 @@ import { InMemoryDbService } from 'angular2-in-memory-web-api';
   createDb() {
 
     let formas_pago = [
-      {id: '01', codigo: '01', descripcion: 'efectivo',                  estado: 'A', tipo: 1, idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '2016-08-16', registro: 1 },
-      {id: '02', codigo: '02', descripcion: 'Tarjeta de credito',        estado: 'A', tipo: 1, idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '2016-08-16', registro: 1 },
-      {id: '03', codigo: '03', descripcion: 'Transferencia electronica', estado: 'A', tipo: 1, idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '2016-08-16', registro: 1 },
-      {id: '04', codigo: '04', descripcion: 'Pago multiple',             estado: 'A', tipo: 2, idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '2016-08-16', registro: 1 },
-      {id: '05', codigo: '05', descripcion: 'Prueba',                    estado: 'I', tipo: 1, idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '2016-08-16', registro: 1 }
+      {id: '01', codigo: '01', descripcion: 'efectivo',                  estado: 'A', tipo: 1, idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '2016-08-16', fechaModificacion: '2016-08-16', registro: 1 },
+      {id: '02', codigo: '02', descripcion: 'Tarjeta de credito',        estado: 'A', tipo: 1, idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '2016-08-16', fechaModificacion: '2016-08-16', registro: 1 },
+      {id: '03', codigo: '03', descripcion: 'Transferencia electronica', estado: 'A', tipo: 1, idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '2016-08-16', fechaModificacion: '2016-08-16', registro: 1 },
+      {id: '04', codigo: '04', descripcion: 'Pago multiple',             estado: 'A', tipo: 2, idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '2016-08-16', fechaModificacion: '2016-08-16', registro: 1 },
+      {id: '05', codigo: '05', descripcion: 'Prueba',                    estado: 'I', tipo: 1, idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '2016-08-16', fechaModificacion: '2016-08-16', registro: 1 }
     ];
 
     let tipos_formas_pago = [
