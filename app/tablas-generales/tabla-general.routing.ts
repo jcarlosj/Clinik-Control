@@ -6,7 +6,7 @@ import { TablaGeneralList }     from './tabla-general-list.component';
 import { TablaGeneralDetail }   from './tabla-general-detail.component';
 
 // Constante con los PATHs del componente
-export const TABLA_GENERAL_ROUTES: Routes = [
+export const TABLA_GENERAL_ROUTER: Routes = [
   { path: 'tabla_general'                     , component: TablaGeneralList },
   { path: 'tabla_general/:codigo'             , component: TablaGeneralDetail },
   { path: 'marca'                             , component: TablaGeneralList },
