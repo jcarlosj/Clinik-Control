@@ -304,6 +304,48 @@ import { InMemoryDbService } from 'angular2-in-memory-web-api';
       }
     ];
 
+    let unidades_medida = [
+      {
+        id          : '01',
+        codigo      : '01',
+        descripcion : 'Unidades de medida 1',
+        estado      : 'A',
+        tipo        : 'rproced',
+        editable    : true,
+        borrable    : true,
+        idUsuarioCrea     : 1,
+        idUsuarioModifica : 1,
+        fechaCreacion     : '1955-09-21',
+        fechaModificacion : '2016-07-16'
+      },
+      {
+        id          : '02',
+        codigo      : '02',
+        descripcion : 'Unidades de medida 2',
+        estado      : 'A',
+        tipo        : 'rproced',
+        editable    : true,
+        borrable    : true,
+        idUsuarioCrea     : 1,
+        idUsuarioModifica : 2,
+        fechaCreacion     : '1955-09-21',
+        fechaModificacion : '1977-11-24'
+      },
+      {
+        id          : '03',
+        codigo      : '03',
+        descripcion : 'Unidades de medida 3',
+        estado      : 'I',
+        tipo        : 'rproced',
+        editable    : true,
+        borrable    : true,
+        idUsuarioCrea     : 2,
+        idUsuarioModifica : 3,
+        fechaCreacion     : '1955-09-21',
+        fechaModificacion : '1977-11-24'
+      }
+    ];
+
     let tipos_impuesto = [
       {
         //id                : '01',
@@ -391,6 +433,20 @@ import { InMemoryDbService } from 'angular2-in-memory-web-api';
       }
     ];
 
-    return { data, tipos_formas_pago, heroes, productos, formas_pago, tipos_impuesto, tablas_generales, marca, presentacion_medicamento, vias_administracion, riesgo_procedimiento, agrupacion};
+    return { 
+      data, 
+      tipos_formas_pago, 
+      heroes, 
+      productos, 
+      formas_pago, 
+      tipos_impuesto, 
+      tablas_generales, 
+      marca, 
+      presentacion_medicamento, 
+      vias_administracion, 
+      riesgo_procedimiento,
+      unidades_medida, 
+      agrupacion
+    };
   }
 }

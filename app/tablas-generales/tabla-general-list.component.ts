@@ -40,20 +40,24 @@ export class TablaGeneralList implements OnInit, OnDestroy {
 		console .log( 'Validate Path: ' + this .path );
 
 		if( this .path == '/marca' ) {
-			this .title += 'marcas';
+			this .title += 'Marcas';
 			this .botonNuevo += 'a marca';
 		}
 		if( this .path == '/presentacion_medicamento' ) {
-			this .title += 'presentación medicamentos';
+			this .title += 'Presentación de medicamentos';
 			this .botonNuevo += 'a presentación de medicamento';
 		}
 		if( this .path == '/vias_administracion' ) {
-			this .title += 'vías administración';
+			this .title += 'Vías de administración';
 			this .botonNuevo += 'a vía de administración';
 		}
 		if( this .path == '/riesgo_procedimiento' ) {
-			this .title += 'riesgos procedimiento';
+			this .title += 'Riesgos de procedimiento';
 			this .botonNuevo += 'o riesgo de procedimiento';
+		}
+		if( this .path == '/unidades_medida' ) {
+			this .title += 'Unidades de medida';
+			this .botonNuevo += 'a vía de administración';
 		}
 
 	}

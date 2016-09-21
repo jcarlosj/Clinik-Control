@@ -69,6 +69,9 @@ export class TablaGeneralDetail implements OnInit, OnDestroy {
   		if( this .path == '/riesgo_procedimiento' ) {
   			this .title += 'Riesgo de procedimiento';
   		}
+      if( this .path == '/unidades_medida' ) {
+  			this .title += 'Unidades de medida';
+  		}
 
       // Inicializando atributos
       this.codigo = '';

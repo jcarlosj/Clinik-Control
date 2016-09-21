@@ -1,5 +1,4 @@
 // Imports del core de Angular 2 necesarios para este componente
-//import { RouterConfig }         from '@angular/router';
 import { Routes, RouterModule } from '@angular/router';
 
 // Imports personalizados necesarios para este componente
@@ -17,5 +16,7 @@ export const TABLA_GENERAL_ROUTES: Routes = [
   { path: 'vias_administracion'               , component: TablaGeneralList },
   { path: 'vias_administracion/:codigo'       , component: TablaGeneralDetail },
   { path: 'riesgo_procedimiento'              , component: TablaGeneralList },
-  { path: 'riesgo_procedimiento/:codigo'      , component: TablaGeneralDetail }
+  { path: 'riesgo_procedimiento/:codigo'      , component: TablaGeneralDetail },
+  { path: 'unidades_medida'                   , component: TablaGeneralList },
+  { path: 'unidades_medida/:codigo'           , component: TablaGeneralDetail }
 ];

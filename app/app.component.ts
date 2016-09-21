@@ -22,6 +22,7 @@ export class AppComponent {
       { path: '/presentacion_medicamento', nameItem: 'Presentación de medicamentos' },
       { path: '/vias_administracion',      nameItem: 'Vías de administración' },
       { path: '/riesgo_procedimiento',     nameItem: 'Riesgos procedimiento' },
+      { path: '/unidades_medida',          nameItem: 'Unidades de medida' },
       { path: '/tipos_impuesto',           nameItem: 'Tipos de impuesto' },
       { path: '/agrupaciones',             nameItem: 'Agrupaciones' },
       { path: '/productos',                nameItem: 'Productos' }
