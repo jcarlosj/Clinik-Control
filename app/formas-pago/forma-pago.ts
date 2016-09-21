@@ -1,19 +1,17 @@
+// Clase principal (estructura de datos)
 export class FormaPago {
-    id: string;
-    codigo: string; 
-    descripcion: string; 
-    estado: string;
-    tipo: number;
-    editable: boolean;
-    borrable: boolean;
-    constructor()
-    {
-        this.id = "";
-        this.codigo= ""; 
-        this.descripcion= ""; 
-        this.estado= "A";
-        this.tipo= 1;
-        this.editable= false;
-        this.borrable= false;
-    }
+
+    // Constructor
+    constructor(
+        private id                : string = "",
+        private codigo            : string = "", 
+        private descripcion       : string = "", 
+        private estado            : string = "A",
+        private tipo              : number = 1,
+        private idUsuarioCrea     : number = 0,     // <-- Parámetros: Control.
+        private idUsuarioModifica : number = 0,
+        private fechaCreacion     : string = '',
+        private fechaModificacion : string = '',
+        private registro          : number = 0
+    ) { }
 }

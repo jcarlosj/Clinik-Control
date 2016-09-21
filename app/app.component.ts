@@ -27,6 +27,6 @@ export class AppComponent {
       { path: '/agrupaciones',             nameItem: 'Agrupaciones' },
       { path: '/productos',                nameItem: 'Productos' }
     ];
-
+    
   }
 }

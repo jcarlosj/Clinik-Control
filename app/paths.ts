@@ -20,5 +20,12 @@ export class Validate {
       CODIGO_BARRAS : '^[a-zA-Z0-9 ]+([a-zA-Z0-9 ]+)?$',
       GENERAL       : '^[a-zA-Z0-9 ]+([a-zA-Z0-9!@#$%^&*()_ ]+)?$'
     }
+}    
 
+export class Data {
+    static getfechaActual() : string {
+      let fecha = new Date();
+      // Obtenemos el año, mes y día actual.
+      return fecha.getFullYear() + '-' + (fecha.getMonth() + 1) + '-' + fecha.getDate();
+    }
 }
