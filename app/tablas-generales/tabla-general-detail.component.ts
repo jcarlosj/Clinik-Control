@@ -29,19 +29,24 @@ import { cEstado }             from '../_tipos/cEstado';
 
 // Class
 export class TablaGeneralDetail implements OnInit, OnDestroy {
+
   // Atributes
   @Output() close = new EventEmitter();
   private frmTablaGeneral : FormGroup;
-  private obj         : TablaGeneral;
-  private error       : any;
-  private sub         : any;
-  private codigo      : string;
-  private esNuevo     : boolean = false;
-  //private tiposTablas : cTipoTabla[];
-  private estado      : cEstado[];
+  private vObj            : TablaGeneral;
+  private codigo          : string;
+  //private tiposTablas     : cTipoTabla[];
+  private estado          : cEstado[];
+  private sub             : any;
+  private esNuevo         : boolean = false;
+  private error           : any;
+  private path            : string;
+
+  // Definimos texto boton y titulo
+  private title         = '';
+  private botonGuardar  = 'Guardar';
+  private botonRegresar = 'Regresar';
   
-  private title       : string;
-  private path        : string;
 
   // Constructor
   constructor(
@@ -110,13 +115,13 @@ export class TablaGeneralDetail implements OnInit, OnDestroy {
             this.codigo  = params['codigo'];
             this.service.getTablaGeneral(this.codigo)
                 .then(obj => {
-                    this.obj = obj;
-                    this.frmTablaGeneral.setValue(this.obj);
+                    this.vObj = obj;
+                    this.frmTablaGeneral.setValue(this.vObj);
                     this .validateFields();
                     this.esNuevo =  false;
                 });
         } else {
-            this.obj = new TablaGeneral();
+            this.vObj = new TablaGeneral();
             this.frmTablaGeneral.setValue(new TablaGeneral());
             this .validateFields();
             this.esNuevo =  true;
@@ -154,7 +159,7 @@ export class TablaGeneralDetail implements OnInit, OnDestroy {
     this.service
       .save( this.frmTablaGeneral.value, this.esNuevo )
       .then( obj => {
-        this .obj = obj;
+        this .vObj = obj;
         this .goToList( obj );
       })
       .catch( error => this .error = error );
@@ -177,7 +182,7 @@ export class TablaGeneralDetail implements OnInit, OnDestroy {
         minlength:     'Debe tener 10 o más caracteres.',
         maxlength:     'Debe tener hasta 30 caracteres.',
         pattern:       'Solo admite valores alfabéticos.'
-      },
+      }
     }
 
     for ( error in this .frmTablaGeneral.controls[ name ].errors ){

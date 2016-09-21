@@ -17,14 +17,15 @@ export class TablaGeneralList implements OnInit, OnDestroy {
 
 	// Atributes
 	private arrObj			: TablaGeneral[];
-	private obj					: TablaGeneral;
-	private error				: any;
-	private id					: string;
+	private selectedObj	: TablaGeneral;
+	private selectedId					: string;
 	private sub					: any;
-
-	private title				: string;
+	private error				: any;
 	private path 				: string;
-	private botonNuevo 	: string;
+
+	private title       = 'Listado de ';
+	private botonBorrar = 'Borrar';
+	private botonNuevo  = 'Nuev';
 
 	// Constructor
 	constructor(
@@ -32,9 +33,6 @@ export class TablaGeneralList implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router
 	) {
-		// Definimos texto boton y titulo
-		this .title = 'Listado de ';
-		this .botonNuevo = 'Nuev';
 
 		this .path = this .router .url;
 		console .log( 'Validate Path: ' + this .path );
@@ -68,7 +66,7 @@ export class TablaGeneralList implements OnInit, OnDestroy {
   	this.sub = this.route
     	.params
     	.subscribe(params => {
-      	this.id = params['codigo'];
+      	this.selectedId = params['codigo'];
       	this.service.getTablasGenerales( this .path ) .then(arrObj => this.arrObj = arrObj);
 		});
   }
@@ -78,16 +76,16 @@ export class TablaGeneralList implements OnInit, OnDestroy {
   }
 
 	// Methods
-  isSelected(obj: TablaGeneral) { return obj.codigo === this.id; }
+  isSelected(obj: TablaGeneral) { 
+		return obj.codigo === this.selectedId; 
+	}
 
   onSelect(obj: TablaGeneral) {
     this.router.navigate([ this .path, obj.codigo ]);
   }
 
   add(){
-	  let obj : TablaGeneral;
-		this.obj   = new TablaGeneral();
-	  this.router.navigate([ this .path, obj ]);
+	  this.router.navigate([ this .path, this .selectedObj ]);
 		console .log( 'Creando nuevo registro' );
   }
 
@@ -98,7 +96,10 @@ export class TablaGeneralList implements OnInit, OnDestroy {
         .delete(arrObj)
         .then(res => {
           this.arrObj = this.arrObj.filter(h => h !== arrObj);
-          if (this.obj === arrObj) { this.obj = null; }
+         
+				 if ( this.selectedObj === arrObj ) { 
+					 this.selectedObj = null; 
+					}
         })
         .catch(error => this.error = error);
   }

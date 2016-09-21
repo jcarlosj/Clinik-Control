@@ -95,23 +95,23 @@ import { InMemoryDbService } from 'angular2-in-memory-web-api';
       { id: '04', codigo: '04', descripcion: 'Marca 4', estado: 'A', idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '1955-09-21', fechaModificacion: '2016-07-16', registro: 1 }
     ];
     let presentacion_medicamento = [
-      { id: '01', codigo: '01', descripcion: 'Presentación medicamento 1', estado: 'A', tipo: 'premed', idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '1955-09-21', fechaModificacion: '2016-07-16', registro: 1 },
-      { id: '02', codigo: '02', descripcion: 'Presentación medicamento 2', estado: 'A', tipo: 'premed', idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '1955-09-21', fechaModificacion: '2016-07-16', registro: 1 },
-      { id: '03', codigo: '03', descripcion: 'Presentación medicamento 3', estado: 'A', tipo: 'premed', idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '1955-09-21', fechaModificacion: '2016-07-16', registro: 1 }
+      { id: '01', codigo: '01', descripcion: 'Presentación medicamento 1', estado: 'A', idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '1955-09-21', fechaModificacion: '2016-07-16', registro: 1 },
+      { id: '02', codigo: '02', descripcion: 'Presentación medicamento 2', estado: 'A', idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '1955-09-21', fechaModificacion: '2016-07-16', registro: 1 },
+      { id: '03', codigo: '03', descripcion: 'Presentación medicamento 3', estado: 'A', idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '1955-09-21', fechaModificacion: '2016-07-16', registro: 1 }
     ];
     let vias_administracion = [
-      { id: '01', codigo: '01', descripcion: 'Vías de administración 1', estado: 'A', tipo: 'vadmon', idUsuarioCrea: 1, idUsuarioModifica : 1, fechaCreacion: '1955-09-21', fechaModificacion : '2016-07-16', registro: 1 },
-      { id: '02', codigo: '02', descripcion: 'Vías de administración 2', estado: 'A', tipo: 'vadmon', idUsuarioCrea: 1, idUsuarioModifica : 1, fechaCreacion: '1955-09-21', fechaModificacion : '2016-07-16', registro: 1 },
-      { id: '03', codigo: '03', descripcion: 'Vías de administración 3', estado: 'A', tipo: 'vadmon', idUsuarioCrea: 1, idUsuarioModifica : 1, fechaCreacion: '1955-09-21', fechaModificacion : '2016-07-16', registro: 1 }
+      { id: '01', codigo: '01', descripcion: 'Vías de administración 1', estado: 'A', idUsuarioCrea: 1, idUsuarioModifica : 1, fechaCreacion: '1955-09-21', fechaModificacion : '2016-07-16', registro: 1 },
+      { id: '02', codigo: '02', descripcion: 'Vías de administración 2', estado: 'A', idUsuarioCrea: 1, idUsuarioModifica : 1, fechaCreacion: '1955-09-21', fechaModificacion : '2016-07-16', registro: 1 },
+      { id: '03', codigo: '03', descripcion: 'Vías de administración 3', estado: 'A', idUsuarioCrea: 1, idUsuarioModifica : 1, fechaCreacion: '1955-09-21', fechaModificacion : '2016-07-16', registro: 1 }
     ];
     let riesgo_procedimiento = [
-      { id: '01', codigo: '01', descripcion: 'Riesgos de procedimiento 1', estado: 'A', tipo: 'rproced', idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '1955-09-21', fechaModificacion: '2016-07-16', registro: 1 },
-      { id: '02', codigo: '02', descripcion: 'Riesgos de procedimiento 2', estado: 'A', tipo: 'rproced', idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '1955-09-21', fechaModificacion: '2016-07-16', registro: 1 },
-      { id: '03', codigo: '03', descripcion: 'Riesgos de procedimiento 3', estado: 'A', tipo: 'rproced', idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '1955-09-21', fechaModificacion: '2016-07-16', registro: 1 }
+      { id: '01', codigo: '01', descripcion: 'Riesgos de procedimiento 1', estado: 'A', idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '1955-09-21', fechaModificacion: '2016-07-16', registro: 1 },
+      { id: '02', codigo: '02', descripcion: 'Riesgos de procedimiento 2', estado: 'A', idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '1955-09-21', fechaModificacion: '2016-07-16', registro: 1 },
+      { id: '03', codigo: '03', descripcion: 'Riesgos de procedimiento 3', estado: 'A', idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '1955-09-21', fechaModificacion: '2016-07-16', registro: 1 }
     ];
     let unidades_medida = [
-      { id: '01', codigo: '01', descripcion: 'Unidades de medida 1', estado: 'A', tipo: 'umed', idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '1955-09-21', fechaModificacion: '2016-07-16', registro: 1 },
-      { id: '02', codigo: '02', descripcion: 'Unidades de medida 2', estado: 'A', tipo: 'umed', idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '1955-09-21', fechaModificacion: '2016-07-16', registro: 1 }
+      { id: '01', codigo: '01', descripcion: 'Unidades de medida 1', estado: 'A', idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '1955-09-21', fechaModificacion: '2016-07-16', registro: 1 },
+      { id: '02', codigo: '02', descripcion: 'Unidades de medida 2', estado: 'A', idUsuarioCrea: 1, idUsuarioModifica: 1, fechaCreacion: '1955-09-21', fechaModificacion: '2016-07-16', registro: 1 }
     ];
 
     let tipos_impuesto = [
