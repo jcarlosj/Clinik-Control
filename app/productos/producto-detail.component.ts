@@ -11,6 +11,7 @@ import { ProductoService } from './producto.service';
 import { Producto }        from './producto';
 import { Activaciones }    from '../_tipos/c-activaciones';
 import { DataService }     from '../data.service';
+import { cEstado }         from '../_tipos/cEstado';
 
 // Decorator
 @Component({
@@ -29,6 +30,7 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
   private vObj            : Producto;
   private codigo          : string;
   private activaciones    : Activaciones[];
+  private estado          : cEstado[];
   private sub             : any;
   private esNuevo         : boolean = false;
   private error           : any;
@@ -58,6 +60,10 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
     this .activaciones = [
         new Activaciones( 'N', 'No' ),
         new Activaciones( 'S', 'Sí' )
+    ];
+    this.estado = [
+        new cEstado( 'A', 'Activo' ),
+        new cEstado( 'I', 'Inactivo' )
     ];
   }
 
@@ -120,11 +126,12 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
           //observnew FormControl(),
           //riesgosAsnew FormControl(),
           //--- CONTROL ---
-          //idUsuarioCrea       : new FormControl(),
-          //idUsuarioModifica   : new FormControl(),
-          //fechaCrea           : new FormControl(),
-          //fechaModifica       : new FormControl(),
-          //registros           : new FormControl()
+          estado              : new FormControl(),
+          idUsuarioCrea       : new FormControl(),
+          idUsuarioModifica   : new FormControl(),
+          fechaCrea           : new FormControl(),
+          fechaModifica       : new FormControl(),
+          registros           : new FormControl()
     });
 
     this.sub = this.route.params.subscribe(params => {

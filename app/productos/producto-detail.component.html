@@ -387,16 +387,13 @@
      </fieldset>   
      <fieldset>
         <legend>Control</legend>
-
-
-
-     </fieldset>  
-        <!--div>
+        <div>
             <label>Estado: </label>
             <select formControlName="estado" id="estado" name="estado" >
                 <option [value]="o.codigo" *ngFor="let o of estado">{{o.nombre}}</option>
             </select>
-        </div-->
+        </div>
+     </fieldset>  
         <div>
             <button (click)="save()" [disabled]="!frmProducto.valid" >{{botonGuardar}}</button>
             <button (click)="goToList()">{{botonRegresar}}</button>

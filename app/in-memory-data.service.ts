@@ -1,6 +1,6 @@
 import { InMemoryDbService } from 'angular2-in-memory-web-api';
-//export class InMemoryDataService {
-  export class InMemoryDataService implements InMemoryDbService {
+
+export class InMemoryDataService implements InMemoryDbService {
   createDb() {
 
     let formas_pago = [
@@ -30,7 +30,7 @@ import { InMemoryDbService } from 'angular2-in-memory-web-api';
         id                  : '01', 
         codigo              : '01', 
         agrupacion          : 1,
-        descripcion1         : 'Producto (1)',
+        descripcion1        : 'Producto (1)',
         descripcion2        : 'Descripcion del producto (1)',
         marca               : 1,
         codigoBarras        : 'DEREDERRA-234',
@@ -80,11 +80,12 @@ import { InMemoryDbService } from 'angular2-in-memory-web-api';
         //public observaciones    : '';
         //public riesgosAsociados : '';
         //--- CONTROL ---
-        //idUsuarioCrea       : 1,
-        //idUsuarioModifica   : 2,
-        //fechaCrea           : '2016-01-01',
-        //fechaModifica       : '2016-09-16',
-        //registros           : 0
+        estado              : 'A',
+        idUsuarioCrea       : 0,
+        idUsuarioModifica   : 0,
+        fechaCrea           : '2016-01-01',
+        fechaModifica       : '2016-09-16',
+        registros           : 0
       }
     ];
 

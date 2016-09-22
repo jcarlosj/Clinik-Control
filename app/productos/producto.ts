@@ -49,11 +49,12 @@ export class Producto {
         //public codigoBono        : number = 0,
         //public observaciones     : string = '',
         //public riesgosAsociados  : string = '',
+        public estado              : string = 'A',
         public idUsuarioCrea       : number = 0,     // <-- Parámetros: Control.
         public idUsuarioModifica   : number = 0,
         public fechaCrea           : string = '',
         public fechaModifica       : string = '',
-        public registro            : number = 0
+        public registros           : number = 0
 
     ) { }
     
