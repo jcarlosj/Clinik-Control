@@ -11,6 +11,7 @@ export class AppComponent {
 
   // Atributes
   private title       : string = 'Clinik Control';
+  private urlTitle    : string = '/';
   private description : string = 'v0.2';
   private menu        : any;
 

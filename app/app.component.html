@@ -1,4 +1,8 @@
-    <h1>{{title}} <small>{{description}}</small></h1>
+    <h1>
+        <a routerLink="{{urlTitle}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{title}}</a>
+        <small>{{description}}</small>
+    </h1>
+    
     <nav>
         <ul class="principal-menu">
             <li *ngFor="let o of menu">
