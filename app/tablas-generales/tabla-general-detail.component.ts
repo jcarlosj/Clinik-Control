@@ -55,29 +55,28 @@ export class TablaGeneralDetail implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router
   ) {
-      // Definimos texto boton y titulo
-  		this .title = '';
-
-      //
-  		this .path = this .router .url;
-  		console .log( 'Validate Path: ' + this .path );
-
-  		if( this .path == '/marca' ) {
-  			this .title += 'Marca';
-  		}
-  		if( this .path == '/presentacion_medicamento' ) {
-  			this .title += 'Presentación de medicamento';
-  		}
-  		if( this .path == '/vias_administracion' ) {
-  			this .title += 'Vía de administración';
-  		}
-  		if( this .path == '/riesgo_procedimiento' ) {
-  			this .title += 'Riesgo de procedimiento';
-  		}
-      if( this .path == '/unidades_medida' ) {
-  			this .title += 'Unidades de medida';
-  		}
-
+    // Definimos texto boton y titulo
+    this .path = this .router .url;
+    console .log( 'Validate Path: ' + this .path );
+    console .log( 'Titulo: ' + this .title );
+    
+		if( this .path == '/marca' ) {
+			this .title += 'Marcas';
+      console .log ( 'Titulo Agrega : ' + this .title );
+		}
+		if( this .path == '/presentacion_medicamento' ) {
+			this .title += 'Presentación de medicamentos';
+		}
+		if( this .path == '/vias_administracion' ) {
+			this .title += 'Vías de administración';
+		}
+		if( this .path == '/riesgo_procedimiento' ) {
+			this .title += 'Riesgos de procedimiento';
+		}
+		if( this .path == '/unidades_medida' ) {
+			this .title += 'Unidades de medida';
+		}
+console .log ( 'Titulo Afuera : ' + this .title );
       // Inicializando atributos
       this.codigo = '';
       this.estado = [
@@ -134,11 +133,11 @@ export class TablaGeneralDetail implements OnInit, OnDestroy {
     this .frmTablaGeneral .controls[ "codigo" ] .setValidators([ 
             Validators .minLength( 2 ), 
             Validators .maxLength( 10 ),
-            Validators .pattern( Validate.RegExp.ENTERO )
+            Validators .pattern( Validate.RegExp.CODIGO )
     ]);
     this .frmTablaGeneral .controls[ "descripcion" ] .setValidators([ 
             Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .maxLength( 80 ),
             Validators .pattern( Validate.RegExp.GENERAL )
     ]);
   }
@@ -173,15 +172,15 @@ export class TablaGeneralDetail implements OnInit, OnDestroy {
     let fields = { 
       codigo: {
         required:      'Campo requerido.',
-        minlength:     'Debe tener 2 o más caracteres.',
-        maxlength:     'Debe tener hasta 10 caracteres.',
-        pattern:       'Solo admite valores enteros'
+        minlength:     'Mínimo 2 o más números y/o caracteres.',
+        maxlength:     'Hasta 10 números y/o caracteres.',
+        pattern:       'Solo valores alfanuméricos sin espacios'
       },
       descripcion: {
         required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        minlength:     'Mínimo 10 o más números y/o caracteres.',
+        maxlength:     'Hasta 80 números y/o caracteres.',
+        pattern:       'Solo valores alfanuméricos y algunos símbolos.'
       }
     }
 

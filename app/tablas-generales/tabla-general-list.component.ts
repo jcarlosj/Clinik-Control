@@ -18,7 +18,7 @@ export class TablaGeneralList implements OnInit, OnDestroy {
 	// Atributes
 	private arrObj			: TablaGeneral[];
 	private selectedObj	: TablaGeneral;
-	private selectedId					: string;
+	private selectedId	: string;
 	private sub					: any;
 	private error				: any;
 	private path 				: string;

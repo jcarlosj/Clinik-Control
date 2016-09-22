@@ -3,7 +3,7 @@
     <input type="hidden" id="id" name="id" formControlName="id" />
     <div>
         <label>Codigo: </label>
-        <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" required />
+        <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="10" required />
         <div [hidden]="!(frmTablaGeneral.controls.codigo.touched && !frmTablaGeneral.controls.codigo.valid)">
             <small>
                 <i>> {{ errors( 'codigo' ) }}</i>
@@ -12,7 +12,7 @@
     </div>
     <div>
         <label>Descripcion: </label>
-        <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion" required />
+        <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion" maxlength="80" required />
                 <div [hidden]="!(frmTablaGeneral.controls.descripcion.touched && !frmTablaGeneral.controls.descripcion.valid)">
             <small>
                 <i>> {{ errors( 'descripcion' ) }}</i>
