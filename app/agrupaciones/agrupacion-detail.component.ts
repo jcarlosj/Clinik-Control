@@ -115,16 +115,19 @@ export class AgrupacionDetailComponent implements OnInit, OnDestroy {
   validateFields() {
 
     this .frmAgrupacion .controls[ "codigo" ] .setValidators([ 
+            Validators .required,
             Validators .minLength( 2 ), 
             Validators .maxLength( 10 ),
             Validators .pattern( Validate.RegExp.ENTERO )
     ]);
     this .frmAgrupacion .controls[ "descripcion" ] .setValidators([ 
+            Validators .required,
             Validators .minLength( 5 ), 
             Validators .maxLength( 80 ),
             Validators .pattern( Validate.RegExp.GENERAL )
     ]);
     this .frmAgrupacion .controls[ "codigoPadre" ] .setValidators([ 
+            Validators .required,
             Validators .minLength( 0 ), 
             Validators .maxLength( 3 ),
             Validators .pattern( Validate.RegExp.ENTERO )
@@ -133,17 +136,7 @@ export class AgrupacionDetailComponent implements OnInit, OnDestroy {
             Validators .minLength( 0 ), 
             Validators .maxLength( 3 ),
             Validators .pattern( Validate.RegExp.ENTERO )
-    ]);
-    this .frmAgrupacion .controls[ "permiteDetalle" ] .setValidators([ 
-            Validators .minLength( 1 ), 
-            Validators .maxLength( 1 ),
-            Validators .pattern( Validate.RegExp.GENERAL )
     ]);  
-    this .frmAgrupacion .controls[ "orden" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
-            Validators .pattern( Validate.RegExp.ENTERO )
-    ]);
   }
 
   goToList( obj: Agrupacion = null) {
@@ -170,40 +163,26 @@ export class AgrupacionDetailComponent implements OnInit, OnDestroy {
     let fields = { 
       codigo: {
         required:      'Campo requerido.',
-        minlength:     'Debe tener 2 o más caracteres.',
-        maxlength:     'Debe tener hasta 10 caracteres.',
-        pattern:       'Solo admite valores enteros'
+        minlength:     'Mínimo 2 o más números.',
+        maxlength:     'Hasta 10 caracteres.',
+        pattern:       'Solo valores enteros'
       },
       descripcion: {
         required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
-      }/*,
+        minlength:     'Mínimo 10 o más números.',
+        maxlength:     'Hasta 80 caracteres.',
+        pattern:       'Solo valores alfanuméricos y algunos símbolos.'
+      },
       codigoPadre: {
         required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        minlength:     'Mínimo 1 o más números.',
+        maxlength:     'Hasta 3 caracteres.',
+        pattern:       'Solo valores enteros.'
       },
       nivel: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
-      },
-      permiteDetalle: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
-      },
-      orden: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
-      }     */ 
+        maxlength:     'Hasta 3 números.',
+        pattern:       'Solo valores enteros.'
+      }
     }
 
     for ( error in this .frmAgrupacion.controls[ name ].errors ){

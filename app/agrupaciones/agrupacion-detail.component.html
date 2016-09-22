@@ -3,7 +3,7 @@
     <input formControlName="id" type="hidden" id="id" name="id" />
     <div>
         <label>Codigo: </label>
-        <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" required />
+        <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="10" required />
         
         <div [hidden]="!(frmAgrupacion.controls.codigo.touched && !frmAgrupacion.controls.codigo.valid)">
             <small>
@@ -13,7 +13,7 @@
     </div>
     <div>
         <label>Descripcion: </label>
-        <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion" required />
+        <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion" maxlength="80" required />
         
         <div [hidden]="!(frmAgrupacion.controls.descripcion.touched && !frmAgrupacion.controls.descripcion.valid)">
             <small>
@@ -23,7 +23,7 @@
     </div>
     <div>
         <label>Código Padre: </label>
-        <input formControlName="codigoPadre" type="text" id="codigoPadre" name="codigoPadre" placeholder="codigoPadre" required />
+        <input formControlName="codigoPadre" type="text" id="codigoPadre" name="codigoPadre" placeholder="codigoPadre" maxlength="3" required />
         
         <div [hidden]="!(frmAgrupacion.controls.codigoPadre.touched && !frmAgrupacion.controls.codigoPadre.valid)">
             <small>
@@ -33,7 +33,7 @@
     </div>
     <div>
         <label>Nivel: </label>
-        <input formControlName="nivel" type="text" id="nivel" name="nivel" placeholder="nivel" />
+        <input formControlName="nivel" type="text" id="nivel" name="nivel" placeholder="nivel" maxlength="3" />
         
         <div [hidden]="!(frmAgrupacion.controls.nivel.touched && !frmAgrupacion.controls.nivel.valid)">
             <small>
@@ -46,17 +46,7 @@
         <select formControlName="permiteDetalle" id="permiteDetalle" name="permiteDetalle" >
             <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
         </select>
-    </div>       
-    <div>
-        <label>Orden: </label>
-        <input formControlName="orden" type="text" id="orden" name="orden" placeholder="orden" required />
-        
-        <div [hidden]="!(frmAgrupacion.controls.orden.touched && !frmAgrupacion.controls.orden.valid)">
-            <small>
-                <i> {{ errors( 'orden' ) }}</i>
-            </small>
-        </div>
-    </div>     
+    </div>           
     <div>
         <label>Estado: </label>
         <select formControlName="estado" id="estado" name="estado" >
