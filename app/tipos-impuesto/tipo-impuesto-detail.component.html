@@ -1,0 +1,35 @@
+<h4>{{title}}</h4>
+<form [formGroup]="frmTipoImpuesto" *ngIf="vObj" novalidate >
+    <input formControlName="id" type="hidden" id="id" name="id" />
+    <div>
+        <label>Codigo: </label>
+        <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" required />
+        
+        <div [hidden]="!(frmTipoImpuesto.controls.codigo.touched && !frmTipoImpuesto.controls.codigo.valid)">
+            <small>
+                <!--Error en el codigo   {{ frmTipoImpuesto.controls.codigo.errors | json }}-->
+                <i>> {{ errors( 'codigo' ) }}</i>
+            </small>
+        </div>
+    </div>  
+    <div>     
+        <label>Descripcion: </label>
+        <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion" required />
+        
+        <div [hidden]="!(frmTipoImpuesto.controls.descripcion.touched && !frmTipoImpuesto.controls.descripcion.valid)">
+            <small>
+                <i>> {{ errors( 'descripcion' ) }}</i>
+            </small>
+        </div>
+    </div>
+    <div>
+        <label>Estado: </label>
+        <select formControlName="estado" id="estado" name="estado" >
+            <option [value]="o.codigo" *ngFor="let o of estado">{{o.nombre}}</option>
+        </select>
+    </div>
+    <div>
+        <button (click)="save()" [disabled]="!frmTipoImpuesto.valid" >{{botonGuardar}}</button>
+        <button (click)="goToList()">{{botonRegresar}}</button>
+    </div>   
+</form>

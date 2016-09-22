@@ -6,7 +6,7 @@ import { FORMAS_PAGO_ROUTER }   from './formas-pago/formas-pago.routing';
 import { TABLA_GENERAL_ROUTER } from './tablas-generales/tabla-general.routing';
 import { AGRUPACION_ROUTER }    from './agrupaciones/agrupacion.routing';
 import { PRODUCTOS_ROUTER }     from './productos/producto.routing';
-import { tipoImpuestoRoutes }   from './tipos-impuestos/tipo-impuesto.routes';
+import { TIPOS_IMPUESTO_ROUTER }   from './tipos-impuesto/tipo-impuesto.routing';
 
 const appRoutes: Routes = [
   {
@@ -17,7 +17,8 @@ const appRoutes: Routes = [
   ...FORMAS_PAGO_ROUTER,
   ...TABLA_GENERAL_ROUTER,
   ...AGRUPACION_ROUTER,
-  ...PRODUCTOS_ROUTER
+  ...PRODUCTOS_ROUTER,
+  ...TIPOS_IMPUESTO_ROUTER
   
 ];
 

@@ -26,6 +26,11 @@ import { ProductoService }         from './productos/producto.service';
 import { ProductoListComponent }   from './productos/producto-list.component';
 import { ProductoDetailComponent } from './productos/producto-detail.component';
 
+
+import { TipoImpuestoService }         from './tipos-impuesto/tipo-impuesto.service';
+import { TipoImpuestoListComponent }   from './tipos-impuesto/tipo-impuesto-list.component';
+import { TipoImpuestoDetailComponent } from './tipos-impuesto/tipo-impuesto-detail.component';
+
 import { DataService } from './data.service';
 
 import { routing, appRoutingProviders }        from './app.routing';
@@ -48,7 +53,9 @@ import { routing, appRoutingProviders }        from './app.routing';
     AgrupacionListComponent,
     AgrupacionDetailComponent,
     ProductoListComponent,
-    ProductoDetailComponent
+    ProductoDetailComponent,
+    TipoImpuestoListComponent,
+    TipoImpuestoDetailComponent
   ],
   providers: [
     appRoutingProviders,
@@ -56,7 +63,8 @@ import { routing, appRoutingProviders }        from './app.routing';
     FormaPagoService,
     TablaGeneralService,        
     AgrupacionService,
-    ProductoService/*,
+    ProductoService,
+    TipoImpuestoService/*,
     { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
     { provide: SEED_DATA,  useClass: InMemoryDataService }     // in-mem server data*/
   ],

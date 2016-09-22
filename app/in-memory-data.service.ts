@@ -22,7 +22,7 @@ export class InMemoryDataService implements InMemoryDbService {
         { id: 8, descripcion: 'Transferencia electronica' },
         { id: 9, descripcion: 'Consignación directa' },
         { id: 10, descripcion: 'Tarjeta prepago' }
-    ];
+    ]; 
 
     let productos = [
       {
@@ -116,38 +116,10 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     let tipos_impuesto = [
-      {
-        //id                : '01',
-        codigo            : 'IV',
-        codigoAlternativo : '01',
-        descripcion       : 'Iva',
-        porcentaje        : 12,
-        base              : 1,
-        tipoImpuesto      : 'IVA',
-        estado            : 'A',
-        editable          : true,
-        borrable          : true,
-        idUsuarioCrea     : 2,
-        idUsuarioModifica : 3,
-        fechaCreacion     : '1955-09-21',
-        fechaModificacion : '1977-11-24'
-      },
-      {
-        //id                : '02',
-        codigo            : 'RF',
-        codigoAlternativo : '02',
-        descripcion       : 'Retención en la fuente',
-        porcentaje        : 12,
-        base              : 1,
-        tipoImpuesto      : 'RF',
-        estado            : 'A',
-        editable          : true,
-        borrable          : true,
-        idUsuarioCrea     : 2,
-        idUsuarioModifica : 3,
-        fechaCreacion     : '1955-09-21',
-        fechaModificacion : '1977-11-24'
-      }
+      { id: '01', codigo: '01', codigoAlternativo: '001', descripcion: 'Iva', porcentaje: 12, base: 1, tipoImpuesto: 'IVA', estado: 'A', idUsuarioCrea: 2, idUsuarioModifica: 3, fechaCreacion: '1955-09-21', fechaModificacion : '1977-11-24', registros: 0 },
+      { id: '02', codigo: '02', codigoAlternativo: '002', descripcion: 'Iva', porcentaje: 12, base: 1, tipoImpuesto: 'IVA', estado: 'A', idUsuarioCrea: 2, idUsuarioModifica: 3, fechaCreacion: '1955-09-21', fechaModificacion : '1977-11-24', registros: 0 },
+      { id: '03', codigo: '03', codigoAlternativo: '003', descripcion: 'Iva', porcentaje: 12, base: 1, tipoImpuesto: 'IVA', estado: 'A', idUsuarioCrea: 2, idUsuarioModifica: 3, fechaCreacion: '1955-09-21', fechaModificacion : '1977-11-24', registros: 0 },
+      { id: '04', codigo: '04', codigoAlternativo: '004', descripcion: 'Iva', porcentaje: 12, base: 1, tipoImpuesto: 'IVA', estado: 'A', idUsuarioCrea: 2, idUsuarioModifica: 3, fechaCreacion: '1955-09-21', fechaModificacion : '1977-11-24', registros: 0 },
     ];
     let agrupaciones = [
       { id: '01', codigo: '01', descripcion: 'Descripción Agrupación 1', codigoPadre: 1, nivel: 1, permiteDetalle: 'N', orden: 1, idUsuarioCrea: 1, idUsuarioModifica: 3, fechaCreacion: '1955-09-21', fechaModificacion: '1977-11-24', registro: 1, estado: 'A' },
