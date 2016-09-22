@@ -32,7 +32,7 @@ export class TipoImpuestoDetailComponent implements OnInit, OnDestroy {
   private sub             : any;
   private esNuevo         : boolean = false;
   private error           : any;
-  private tiposImpuesto   : cTiposImpuestos[];
+  private tiposDeImpuesto : cTiposImpuestos[];
   // Definimos texto boton y titulo
   private title         = 'Tipo de impuesto';
   private botonGuardar  = 'Guardar';
@@ -47,11 +47,12 @@ export class TipoImpuestoDetailComponent implements OnInit, OnDestroy {
 
     // Inicializando atributos
     this.codigo = '';
-    this.tiposImpuesto = [
-        new cTiposImpuestos( '1', 'ReteFuente', true ),
-        new cTiposImpuestos( '2', 'ReteIva', true ),
-        new cTiposImpuestos( '3', 'Iva', false ),
-        new cTiposImpuestos( '4', 'Otros', false )
+    this.tiposDeImpuesto = [
+        new cTiposImpuestos( 'RF', 'ReteFuente', true ),
+        new cTiposImpuestos( 'RICA', 'ReteICA', true ),
+        new cTiposImpuestos( 'RIVA', 'ReteIVA', true ),
+        new cTiposImpuestos( 'IVA', 'IVA', false ),
+        new cTiposImpuestos( 'O', 'Otros', false )
     ];
     this.estado = [
         new cEstado( 'A', 'Activo' ),
@@ -123,6 +124,11 @@ export class TipoImpuestoDetailComponent implements OnInit, OnDestroy {
             Validators .maxLength( 10 ),
             Validators .pattern( Validate.RegExp.ENTERO )
     ]);
+        this .frmTipoImpuesto .controls[ "codigoAlternativo" ] .setValidators([ 
+            Validators .minLength( 2 ), 
+            Validators .maxLength( 10 ),
+            Validators .pattern( Validate.RegExp.ENTERO )
+    ]);
     this .frmTipoImpuesto .controls[ "descripcion" ] .setValidators([ 
             Validators .minLength( 10 ), 
             Validators .maxLength( 30 ),
@@ -158,7 +164,12 @@ export class TipoImpuestoDetailComponent implements OnInit, OnDestroy {
         maxlength:     'Debe tener hasta 10 caracteres.',
         pattern:       'Solo admite valores enteros'
       },
-      descripcion: {
+      codigoAlternativo: {
+        required:      'Campo requerido.',
+        minlength:     'Debe tener 2 o más caracteres.',
+        maxlength:     'Debe tener hasta 10 caracteres.',
+        pattern:       'Solo admite valores enteros'
+      },      descripcion: {
         required:      'Campo requerido.',
         minlength:     'Debe tener 10 o más caracteres.',
         maxlength:     'Debe tener hasta 30 caracteres.',

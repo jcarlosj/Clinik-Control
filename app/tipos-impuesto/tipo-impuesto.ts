@@ -9,7 +9,7 @@ export class TipoImpuesto {
         public descripcion       : string = '',
         public porcentaje        : number = 0,
         public base              : number = 0,
-        public tipoImpuesto      : string = '',
+        public tipoImpuesto      : string = 'RF',
         public estado            : string = 'A',
         public idUsuarioCrea     : number = 0,
         public idUsuarioModifica : number = 0,
