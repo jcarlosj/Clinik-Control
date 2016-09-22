@@ -40,13 +40,7 @@
                 <i> {{ errors( 'nivel' ) }}</i>
             </small>
         </div>
-    </div>    
-    <div>
-        <label>*Permite detalle: </label>
-        <select formControlName="permiteDetalle" id="permiteDetalle" name="permiteDetalle" >
-            <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
-        </select>
-    </div>           
+    </div>               
     <div>
         <label>Estado: </label>
         <select formControlName="estado" id="estado" name="estado" >
