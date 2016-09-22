@@ -123,13 +123,15 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
   validateFields() {
 
     this .frmFormaPago .controls[ "codigo" ] .setValidators([ 
+            Validators .required,
             Validators .minLength( 2 ), 
             Validators .maxLength( 10 ),
             Validators .pattern( Validate.RegExp.ENTERO )
     ]);
     this .frmFormaPago .controls[ "descripcion" ] .setValidators([ 
+            Validators .required,
             Validators .minLength( 10 ), 
-            Validators .maxLength( 30 ),
+            Validators .maxLength( 80 ),
             Validators .pattern( Validate.RegExp.GENERAL )
     ]);
   }
@@ -158,15 +160,15 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
     let fields = { 
       codigo: {
         required:      'Campo requerido.',
-        minlength:     'Debe tener 2 o más caracteres.',
-        maxlength:     'Debe tener hasta 10 caracteres.',
-        pattern:       'Solo admite valores enteros'
+        minlength:     'Mínimo 2 o más caracteres.',
+        maxlength:     'Hasta 10 caracteres.',
+        pattern:       'Solo valores enteros'
       },
       descripcion: {
         required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        minlength:     'Mínimo 10 o más caracteres.',
+        maxlength:     'Hasta 80 caracteres.',
+        pattern:       'Solo alfabéticos y algunos símbolos.'
       },
     }
 
