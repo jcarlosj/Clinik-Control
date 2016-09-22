@@ -15,6 +15,7 @@ export class Validate {
     static RegExp = {
       ENTERO        : '^[0-9]+([0-9]+)?$',
       DECIMAL       : '^[0-9]+([,][0-9]+)?$',
+      HEXADECIMAL   : '^[#]+([a-fA-F0-9]+)?$',  
       ALFANUMERICO  : '^[a-zA-Z0-9 ]+([a-zA-Z0-9 ]+)?$',
       ALFABETICO    : '^[a-zA-Z ]+([a-zA-Z ]+)?$',
       CODIGO_BARRAS : '^[a-zA-Z0-9 ]+([a-zA-Z0-9 ]+)?$',

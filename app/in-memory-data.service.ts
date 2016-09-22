@@ -72,7 +72,7 @@ export class InMemoryDataService implements InMemoryDbService {
         productoControlado  : 'N',
         permiteNegativos    : 'N',
         //--- PARAMETROS (Varios) ---
-        colorAgenda         : 0,
+        colorAgenda         : '#CC00CC',
         presentacion        : 1,
         viaAdministracion   : 1,
         //codigoBono          : 0,

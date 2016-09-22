@@ -202,44 +202,38 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
     this .frmProducto .controls[ "codigo" ] .setValidators([ 
             Validators .required,
             Validators .minLength( 2 ), 
-            Validators .maxLength( 20 ),
-            Validators .pattern( Validate.RegExp.ENTERO )
+            Validators .maxLength( 10 ),
+            Validators .pattern( Validate.RegExp.CODIGO )
     ]);
     this .frmProducto .controls[ "descripcion1" ] .setValidators([
             Validators .required,  
             Validators .minLength( 5 ), 
             Validators .maxLength( 80 ),
-            Validators .pattern( Validate.RegExp.DECIMAL )
+            Validators .pattern( Validate.RegExp.GENERAL )
     ]);
     this .frmProducto .controls[ "descripcion2" ] .setValidators([ 
-            Validators .minLength( 0 ), 
             Validators .maxLength( 80 ),
-            Validators .pattern( Validate.RegExp.DECIMAL )
+            Validators .pattern( Validate.RegExp.GENERAL )
     ]);
     this .frmProducto .controls[ "codigoBarras" ] .setValidators([ 
-            Validators .minLength( 0 ), 
             Validators .maxLength( 20 ),
             Validators .pattern( Validate.RegExp.CODIGO_BARRAS )
     ]);
     this .frmProducto .controls[ "referencia" ] .setValidators([ 
-            Validators .minLength( 0 ), 
             Validators .maxLength( 20 ),
-            Validators .pattern( Validate.RegExp.DECIMAL )
+            Validators .pattern( Validate.RegExp.GENERAL )
     ]);
     this .frmProducto .controls[ "equivalencia" ] .setValidators([ 
-            Validators .minLength( 0 ), 
             Validators .maxLength( 20 ),
-            Validators .pattern( Validate.RegExp.DECIMAL )
+            Validators .pattern( Validate.RegExp.GENERAL )
     ]);
     this .frmProducto .controls[ "unidadEmpaque" ] .setValidators([ 
-            Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "ubicacionBodega" ] .setValidators([ 
-            Validators .minLength( 0 ), 
             Validators .maxLength( 10 ),
-            Validators .pattern( Validate.RegExp.DECIMAL )
+            Validators .pattern( Validate.RegExp.CODIGO )
     ]);
     //--- PRECIOS Y DATOS ESTADISTICOS ---
     this .frmProducto .controls[ "precioVenta1" ] .setValidators([
@@ -249,94 +243,77 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "precioVenta2" ] .setValidators([ 
-            Validators .minLength( 0 ), 
             Validators .maxLength( 9 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
-    this .frmProducto .controls[ "precioVenta3" ] .setValidators([ 
-            Validators .minLength( 0 ), 
+    this .frmProducto .controls[ "precioVenta3" ] .setValidators([
             Validators .maxLength( 9 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "precioVenta4" ] .setValidators([ 
-            Validators .minLength( 0 ), 
             Validators .maxLength( 9 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "precioVenta5" ] .setValidators([ 
-            Validators .minLength( 0 ), 
             Validators .maxLength( 9 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "existencia" ] .setValidators([ 
-            Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "saldoPedido" ] .setValidators([ 
-            Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "costoPromedio" ] .setValidators([ 
-            Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "costoUltimaCompra" ] .setValidators([ 
-            Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "costoFOB" ] .setValidators([ 
-            Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     //--- PARAMETROS (Legales) ---
     this .frmProducto .controls[ "registroInvima" ] .setValidators([ 
-            Validators .minLength( 0 ), 
             Validators .maxLength( 30 ),
             Validators .pattern( Validate.RegExp.GENERAL )
     ]);           
     this .frmProducto .controls[ "numeroMesesGarantia" ] .setValidators([ 
-            Validators .minLength( 0 ), 
             Validators .maxLength( 2 ),
             Validators .pattern( Validate.RegExp.ENTERO )
     ]);  
     //--- PARAMETROS (Controles sobre valores y cantidades) ---
     this .frmProducto .controls[ "stockMinimo" ] .setValidators([ 
-            Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "stockMaximo" ] .setValidators([ 
-            Validators .minLength( 0 ), 
             Validators .maxLength( 12 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "porcMaxDtoContado" ] .setValidators([ 
-            Validators .minLength( 0 ), 
-            Validators .maxLength( 2 ),
+            Validators .maxLength( 5 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmProducto .controls[ "porcMaxDtoCredito" ] .setValidators([ 
-            Validators .minLength( 0 ), 
-            Validators .maxLength( 2 ),
+            Validators .maxLength( 5 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
-    this .frmProducto .controls[ "porcComisionVenta" ] .setValidators([ 
-            Validators .minLength( 0 ), 
-            Validators .maxLength( 2 ),
+    this .frmProducto .controls[ "porcComisionVenta" ] .setValidators([  
+            Validators .maxLength( 5 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     //--- PARAMETROS (Si/No) ---
     // No hay reglas todos son selectores obligatorios
     //--- PARAMETROS (Varios) ---
     this .frmProducto .controls[ "colorAgenda" ] .setValidators([ 
-            Validators .minLength( 10 ), 
-            Validators .maxLength( 12 ),
-            Validators .pattern( Validate.RegExp.ENTERO )
+            Validators .maxLength( 7 ),
+            Validators .pattern( Validate.RegExp.HEXADECIMAL )
     ]);
     /*this .frmProducto .controls[ "presentacion" ] .setValidators([ 
             Validators .minLength( 10 ), 
@@ -383,149 +360,124 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
       //--- IDENTIFICACION DE PRODUCTO ---
       codigo: {
         required:      'Campo requerido.',
-        minlength:     'Debe tener 2 o más caracteres.',
-        maxlength:     'Debe tener hasta 20 caracteres.',
-        pattern:       'Solo admite valores enteros'
+        minlength:     'Mínimo 2 o más caracteres.',
+        maxlength:     'Hasta 10 caracteres.',
+        pattern:       'Solo valores alfanuméricos sin espacios'
       },
       descripcion1: {
         required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 80 caracteres.',
-        pattern:       'Solo admite valores alfanuméricos.'
+        minlength:     'Mínimo 10 o más números y/o caracteres.',
+        maxlength:     'Hasta 80 números y/o caracteres.',
+        pattern:       'Solo valores alfanuméricos y algunos símbolos.'
       },
       descripcion2: {
-        maxlength:     'Debe tener hasta 80 caracteres.',
-        pattern:       'Solo admite valores alfanuméricos.'
+        maxlength:     'Hasta 80 números y/o caracteres.',
+        pattern:       'Solo valores alfanuméricos y algunos símbolos.'
       },
       codigoBarras: {
-        maxlength:     'Debe tener hasta 20 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        maxlength:     'Hasta 20 números y/o caracteres..',
+        pattern:       'Solo valores alfabéticos.'
       },
       referencia: {
-        maxlength:     'Debe tener hasta 20 caracteres.',
-        pattern:       'Solo admite valores alfanuméricos.'
+        maxlength:     'Debe tener hasta 20 números y/o caracteres..',
+        pattern:       'Solo valores alfanuméricos.'
       },
       equivalencia: {
-        maxlength:     'Debe tener hasta 20 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        maxlength:     'Hasta 20 números y/o caracteres..',
+        pattern:       'Solo valores y algunos símbolos.'
       },
       unidadEmpaque: {
-        maxlength:     'Debe tener hasta 12 caracteres.',
-        pattern:       'Solo admite valores decimales.'
+        maxlength:     'Debe tener hasta 12 números.',
+        pattern:       'Solo valores decimales.'
       },
       ubicacionBodega: {
-        maxlength:     'Debe tener hasta 10 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        maxlength:     'Debe tener hasta 10 números y/o caracteres..',
+        pattern:       'Solo valores alfabéticos.'
       },
       //--- PRECIOS Y DATOS ESTADISTICOS ---
       precioVenta1: {
         required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores decimales.'
+        minlength:     'Mínimo 3 o más números.',
+        maxlength:     'Hasta 9 números.',
+        pattern:       'Solo valores decimales.'
       },
       precioVenta2: {
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores decimales.'
+        maxlength:     'Hasta 9 números.',
+        pattern:       'Solo valores decimales.'
       },
       precioVenta3: {
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores decimales.'
+        maxlength:     'Hasta 9 números.',
+        pattern:       'Solo valores decimales.'
       },
       precioVenta4: {
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores decimales.'
+        maxlength:     'Hasta 9 números.',
+        pattern:       'Solo valores decimales.'
       },
       precioVenta5: {
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores decimales.'
+        maxlength:     'Hasta 9 números.',
+        pattern:       'Solo valores decimales.'
       },     
       existencia: {
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores decimales.'
+        maxlength:     'Hasta 12 números.',
+        pattern:       'Solo valores decimales.'
       }, 
       saldoPedido: {
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores decimales.'
+        maxlength:     'Hasta 12 números.',
+        pattern:       'Solo valores decimales.'
       }, 
       costoPromedio: {
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores decimales.'
+        maxlength:     'Hasta 12 números.',
+        pattern:       'Solo valores decimales.'
       }, 
       costoUltimaCompra: {
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores decimales.'
+        maxlength:     'Hasta 12 números.',
+        pattern:       'Solo valores decimales.'
       }, 
       costoFOB: {
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores decimales.'
+        maxlength:     'Hasta 12 números.',
+        pattern:       'Solo valores decimales.'
       },                                                  
       //--- PARAMETROS (Legales) ---
-      tipoIVAVenta: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
-      }, 
-      tipoIVACompra: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
-      }, 
       registroInvima: {
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        maxlength:     'Hasta 30 caracteres.',
+        pattern:       'Solo valores alfabéticos.'
       }, 
       numeroMesesGarantia: {
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        maxlength:     'Hasta 2 números.',
+        pattern:       'Solo valores enteros.'
       }, 
       //--- PARAMETROS (Controles sobre valores y cantidades) ---
       stockMinimo: {
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores decimales.'
+        minlength:     'Mínimo 1 o más números.',
+        maxlength:     'Hasta 12 números.',
+        pattern:       'Solo valores decimales.'
       },
       stockMaximo: {
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores decimales.'
+        minlength:     'Mínimo 1 o más números.',
+        maxlength:     'Hasta 12 números.',
+        pattern:       'Solo valores decimales.'
       },
       porcMaxDtoContado: {
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores decimales.'
+        minlength:     'Mínimo 1 o más números.',
+        maxlength:     'Hasta 2 números.',
+        pattern:       'Solo valores decimales.'
       },                  
       porcMaxDtoCredito: {
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores decimales.'
+        minlength:     'Mínimo 1 o más números.',
+        maxlength:     'Hasta 2 números.',
+        pattern:       'Solo valores decimales.'
       },
       porcComisionVenta: {
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores decimales.'
+        minlength:     'Mínimo 1 o más números.',
+        maxlength:     'Hasta 2 números.',
+        pattern:       'Solo valores decimales.'
       },
       //--- PARAMETROS (Si/No) ---
       // No hay reglas todos son selectores obligatorios
       //--- PARAMETROS (Varios) ---
       colorAgenda: {
-        required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        maxlength:     'Hasta 7 caracteres.',
+        pattern:       'Solo valores hexadecimales.'
       },
       //--- OTROS ---
       //--- CONTROL ---

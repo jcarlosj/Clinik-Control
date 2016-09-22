@@ -5,7 +5,7 @@
         <legend>Identificación (Producto/Servicio)</legend>
         <div>
             <label>*Codigo: </label>
-            <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="20" />
+            <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="10" />
             
             <div [hidden]="!(frmProducto.controls.codigo.touched && !frmProducto.controls.codigo.valid)">
                 <small>
@@ -234,7 +234,7 @@
         </div>       
         <div>
             <label>Número de meses de garantia: </label>
-            <input formControlName="numeroMesesGarantia" type="text" id="numeroMesesGarantia" name="numeroMesesGarantia" placeholder="numeroMesesGarantia" maxlength="30" />
+            <input formControlName="numeroMesesGarantia" type="text" id="numeroMesesGarantia" name="numeroMesesGarantia" placeholder="numeroMesesGarantia" maxlength="2" />
             
             <div [hidden]="!(frmProducto.controls.numeroMesesGarantia.touched && !frmProducto.controls.numeroMesesGarantia.valid)">
                 <small>
@@ -269,7 +269,7 @@
         </div>   
         <div>
             <label>% Máx de Dto pago de contado: </label>
-            <input formControlName="porcMaxDtoContado" type="text" id="porcMaxDtoContado" name="porcMaxDtoContado" placeholder="porcMaxDtoContado" maxlength="2" />
+            <input formControlName="porcMaxDtoContado" type="text" id="porcMaxDtoContado" name="porcMaxDtoContado" placeholder="porcMaxDtoContado" maxlength="5" />
             
             <div [hidden]="!(frmProducto.controls.porcMaxDtoContado.touched && !frmProducto.controls.porcMaxDtoContado.valid)">
                 <small>
@@ -279,7 +279,7 @@
         </div>
         <div>
             <label>% Máx de Dto pago a credito: </label>
-            <input formControlName="porcMaxDtoCredito" type="text" id="porcMaxDtoCredito" name="porcMaxDtoCredito" placeholder="porcMaxDtoCredito" maxlength="2" />
+            <input formControlName="porcMaxDtoCredito" type="text" id="porcMaxDtoCredito" name="porcMaxDtoCredito" placeholder="porcMaxDtoCredito" maxlength="5" />
             
             <div [hidden]="!(frmProducto.controls.porcMaxDtoCredito.touched && !frmProducto.controls.porcMaxDtoCredito.valid)">
                 <small>
@@ -289,7 +289,7 @@
         </div>
         <div>
             <label>% de comisión por venta: </label>
-            <input formControlName="porcComisionVenta" type="text" id="porcComisionVenta" name="porcComisionVenta" placeholder="porcComisionVenta" maxlength="2" />
+            <input formControlName="porcComisionVenta" type="text" id="porcComisionVenta" name="porcComisionVenta" placeholder="porcComisionVenta" maxlength="5" />
             
             <div [hidden]="!(frmProducto.controls.porcComisionVenta.touched && !frmProducto.controls.porcComisionVenta.valid)">
                 <small>
@@ -363,7 +363,7 @@
 
         <div>
             <label>Color agenda: </label>
-            <input formControlName="colorAgenda" type="text" id="colorAgenda" name="colorAgenda" placeholder="colorAgenda" maxlength="12" />
+            <input formControlName="colorAgenda" type="text" id="colorAgenda" name="colorAgenda" placeholder="Ej: #FF6600" maxlength="7" />
             
             <div [hidden]="!(frmProducto.controls.colorAgenda.touched && !frmProducto.controls.colorAgenda.valid)">
                 <small>
