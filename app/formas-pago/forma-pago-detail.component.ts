@@ -160,15 +160,15 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
     let fields = { 
       codigo: {
         required:      'Campo requerido.',
-        minlength:     'Mínimo 2 o más caracteres.',
-        maxlength:     'Hasta 10 caracteres.',
+        minlength:     'Mínimo 2 o más números.',
+        maxlength:     'Hasta 10 números.',
         pattern:       'Solo valores enteros'
       },
       descripcion: {
         required:      'Campo requerido.',
         minlength:     'Mínimo 10 o más caracteres.',
         maxlength:     'Hasta 80 caracteres.',
-        pattern:       'Solo alfabéticos y algunos símbolos.'
+        pattern:       'Solo valores alfanuméricos y algunos símbolos.'
       },
     }
 
