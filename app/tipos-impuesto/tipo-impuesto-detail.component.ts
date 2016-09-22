@@ -119,21 +119,41 @@ export class TipoImpuestoDetailComponent implements OnInit, OnDestroy {
   // Configuración de validaciones de campos del formulario
   validateFields() {
 
-    this .frmTipoImpuesto .controls[ "codigo" ] .setValidators([ 
+    this .frmTipoImpuesto .controls[ "codigo" ] .setValidators([
+            Validators .required,  
             Validators .minLength( 2 ), 
             Validators .maxLength( 10 ),
-            Validators .pattern( Validate.RegExp.ENTERO )
+            Validators .pattern( Validate.RegExp.CODIGO )
     ]);
-        this .frmTipoImpuesto .controls[ "codigoAlternativo" ] .setValidators([ 
+    this .frmTipoImpuesto .controls[ "codigoAlternativo" ] .setValidators([ 
+            Validators .required,  
             Validators .minLength( 2 ), 
             Validators .maxLength( 10 ),
-            Validators .pattern( Validate.RegExp.ENTERO )
+            Validators .pattern( Validate.RegExp.CODIGO )
     ]);
-    this .frmTipoImpuesto .controls[ "descripcion" ] .setValidators([ 
+    this .frmTipoImpuesto .controls[ "descripcion" ] .setValidators([
+            Validators .required,   
             Validators .minLength( 10 ), 
             Validators .maxLength( 30 ),
             Validators .pattern( Validate.RegExp.GENERAL )
     ]);
+    this .frmTipoImpuesto .controls[ "porcentaje" ] .setValidators([   
+            Validators .maxLength( 5 ),
+            Validators .pattern( Validate.RegExp.DECIMAL ),
+            this. validaRangoPorcentaje
+    ]);
+    this .frmTipoImpuesto .controls[ "base" ] .setValidators([   
+            Validators .maxLength( 9 ),
+            Validators .pattern( Validate.RegExp.DECIMAL )
+    ]);
+    
+  }
+
+  validaRangoPorcentaje( porcentaje: FormControl ) {
+      console.log( 'procentaje: ' + porcentaje .value);
+      return parseFloat( porcentaje .value ) >= parseFloat( '0' ) && parseFloat( porcentaje .value ) <= parseFloat( '100' ) ? null : {
+        range: true
+      }
   }
 
   goToList( obj: TipoImpuesto = null) {
@@ -160,21 +180,31 @@ export class TipoImpuestoDetailComponent implements OnInit, OnDestroy {
     let fields = { 
       codigo: {
         required:      'Campo requerido.',
-        minlength:     'Debe tener 2 o más caracteres.',
-        maxlength:     'Debe tener hasta 10 caracteres.',
-        pattern:       'Solo admite valores enteros'
+        minlength:     'Mínimo 2 o más números y/o caracteres.',
+        maxlength:     'Hasta 10 números y/o caracteres.',
+        pattern:       'Solo valores alfanuméricos sin espacios'
       },
       codigoAlternativo: {
         required:      'Campo requerido.',
-        minlength:     'Debe tener 2 o más caracteres.',
-        maxlength:     'Debe tener hasta 10 caracteres.',
-        pattern:       'Solo admite valores enteros'
-      },      descripcion: {
+        minlength:     'Mínimo 2 o más números y/o caracteres.',
+        maxlength:     'Hasta 10 números y/o caracteres.',
+        pattern:       'Solo valores alfanuméricos sin espacios'
+      },      
+      descripcion: {
         required:      'Campo requerido.',
-        minlength:     'Debe tener 10 o más caracteres.',
-        maxlength:     'Debe tener hasta 30 caracteres.',
-        pattern:       'Solo admite valores alfabéticos.'
+        minlength:     'Mínimo 10 o más números y/o caracteres.',
+        maxlength:     'Hasta 80 números y/o caracteres.',
+        pattern:       'Solo valores alfanuméricos y algunos símbolos.'
       },
+      porcentaje: {
+        maxlength:     'Hasta 5 números punto decimal incluido.',
+        pattern:       'Solo valores enteros y decimales.',
+        range:         'Establezca un rango entre 1-100'
+      },
+      base: {
+        maxlength:     'Hasta 9 números.',
+        pattern:       'Solo valores enteros.'
+      }
     }
 
     for ( error in this .frmTipoImpuesto.controls[ name ].errors ){

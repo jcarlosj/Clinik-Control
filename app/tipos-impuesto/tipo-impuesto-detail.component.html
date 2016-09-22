@@ -3,7 +3,7 @@
     <input formControlName="id" type="hidden" id="id" name="id" />
     <div>
         <label>Codigo: </label>
-        <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" required />
+        <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="10" required />
         
         <div [hidden]="!(frmTipoImpuesto.controls.codigo.touched && !frmTipoImpuesto.controls.codigo.valid)">
             <small>
@@ -13,7 +13,7 @@
     </div>  
     <div>
         <label>Codigo alternativo: </label>
-        <input formControlName="codigoAlternativo" [disabled]="!esNuevo" type="text" id="codigoAlternativo" name="codigoAlternativo" placeholder="codigoAlternativo" required />
+        <input formControlName="codigoAlternativo" [disabled]="!esNuevo" type="text" id="codigoAlternativo" name="codigoAlternativo" placeholder="codigoAlternativo" maxlength="10" required />
         
         <div [hidden]="!(frmTipoImpuesto.controls.codigoAlternativo.touched && !frmTipoImpuesto.controls.codigoAlternativo.valid)">
             <small>
@@ -23,7 +23,7 @@
     </div> 
     <div>     
         <label>Descripcion: </label>
-        <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion" required />
+        <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion" maxlength="80" required />
         
         <div [hidden]="!(frmTipoImpuesto.controls.descripcion.touched && !frmTipoImpuesto.controls.descripcion.valid)">
             <small>
@@ -33,7 +33,7 @@
     </div>
     <div>
         <label>Porcentaje: </label>
-        <input formControlName="porcentaje" [disabled]="!esNuevo" type="text" id="porcentaje" name="porcentaje" placeholder="porcentaje" required />
+        <input formControlName="porcentaje" [disabled]="!esNuevo" type="text" id="porcentaje" name="porcentaje" placeholder="porcentaje" maxlength="5" />
         
         <div [hidden]="!(frmTipoImpuesto.controls.porcentaje.touched && !frmTipoImpuesto.controls.porcentaje.valid)">
             <small>
@@ -43,7 +43,7 @@
     </div>  
     <div>
         <label>Base: </label>
-        <input formControlName="base" [disabled]="!esNuevo" type="text" id="base" name="base" placeholder="base" required />
+        <input formControlName="base" [disabled]="!esNuevo" type="text" id="base" name="base" placeholder="base" />
         
         <div [hidden]="!(frmTipoImpuesto.controls.base.touched && !frmTipoImpuesto.controls.base.valid)">
             <small>

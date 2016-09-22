@@ -18,6 +18,7 @@ export class Validate {
       ALFANUMERICO  : '^[a-zA-Z0-9 ]+([a-zA-Z0-9 ]+)?$',
       ALFABETICO    : '^[a-zA-Z ]+([a-zA-Z ]+)?$',
       CODIGO_BARRAS : '^[a-zA-Z0-9 ]+([a-zA-Z0-9 ]+)?$',
+      CODIGO        : '^[a-zA-Z0-9]+([a-zA-Z0-9]+)?$',
       GENERAL       : '^[a-zA-Z0-9 ]+([a-zA-Z0-9!@#$%^&*()_ ]+)?$'
     }
 }    
