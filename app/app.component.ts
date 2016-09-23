@@ -26,7 +26,8 @@ export class AppComponent {
       { path: '/unidades_medida',          nameItem: 'Unidades de medida' },
       { path: '/tipos_impuesto',           nameItem: 'Tipos de impuesto' },
       { path: '/agrupaciones',             nameItem: 'Agrupaciones' },
-      { path: '/productos',                nameItem: 'Productos' }
+      { path: '/productos',                nameItem: 'Productos' },
+      { path: '/terceros',                 nameItem: 'Terceros' }
     ];
     
   }

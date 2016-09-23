@@ -27,65 +27,45 @@ export class InMemoryDataService implements InMemoryDbService {
     let productos = [
       {
         //--- IDENTIFICACION DE PRODUCTO --- 
-        id                  : '01', 
-        codigo              : '01', 
-        agrupacion          : 1,
-        descripcion1        : 'Producto (1)',
-        descripcion2        : 'Descripcion del producto (1)',
-        marca               : 1,
-        codigoBarras        : 'DEREDERRA-234',
-        referencia          : 'AT-098i',
-        equivalencia        : 'Equivalencia',
-        unidadMedida        : 1,
-        unidadEmpaque       : 6,
-        ubicacionBodega     : 'Por ahi anda',
+        id: '01', codigo: '01', agrupacion: 1, descripcion1: 'Producto (1)', descripcion2: 'Descripcion del producto (1)', marca: 1, codigoBarras: 'DEREDERRA-234', referencia: 'AT-098i', equivalencia: 'Equivalencia', unidadMedida: 1, unidadEmpaque: 6, ubicacionBodega: 'Por ahi anda', 
         //--- PRECIOS Y DATOS ESTADISTICOS ---
-        precioVenta1        : 82000,
-        precioVenta2        : 90000,
-        precioVenta3        : 120000,
-        precioVenta4        : 150000,
-        precioVenta5        : 180000,
-        existencia          : 12,
-        saldoPedido         : 36,
-        costoPromedio       : 23000,   
-        costoUltimaCompra   : 21500,
-        costoFOB            : 27,
+        precioVenta1: 82000, precioVenta2: 90000, precioVenta3: 120000, precioVenta4: 150000, precioVenta5: 180000, existencia: 12, saldoPedido: 36, costoPromedio: 23000, costoUltimaCompra: 21500, costoFOB: 27, 
         //--- PARAMETROS (Legales) ---
-        tipoIVAVenta        : 1,
-        tipoIVACompra       : 1,
-        registroInvima      : 'RegistroInvima',
-        numeroMesesGarantia : 6,
+        tipoIVAVenta: 1, tipoIVACompra: 1, registroInvima: 'RegistroInvima', numeroMesesGarantia : 6,
         //--- PARAMETROS (Controles sobre valores y cantidades) ---
-        stockMinimo         : 12,
-        stockMaximo         : 30,
-        porcMaxDtoContado   : 5,
-        porcMaxDtoCredito   : 7,
-        porcComisionVenta   : 5,
+        stockMinimo: 12, stockMaximo: 30, porcMaxDtoContado: 5, porcMaxDtoCredito: 7, porcComisionVenta: 5, 
         //--- PARAMETROS (Si/No) ---
-        productoActivo      : 'S',
-        productoSeVende     : 'N',
-        precioFijo          : 'S',
-        usaControlLotes     : 'N',
-        aplicaParaPedido    : 'N',
-        usaSeriales         : 'N',
-        productoEnConsig    : 'N',
-        productoControlado  : 'N',
-        permiteNegativos    : 'N',
+        productoActivo: 'S', productoSeVende: 'N', precioFijo: 'S', usaControlLotes: 'N', aplicaParaPedido: 'N', usaSeriales: 'N', productoEnConsig: 'N', productoControlado: 'N', permiteNegativos: 'N', 
         //--- PARAMETROS (Varios) ---
-        colorAgenda         : '#CC00CC',
-        presentacion        : 1,
-        viaAdministracion   : 1,
+        colorAgenda: '#CC00CC', presentacion: 1, viaAdministracion: 1, 
         //codigoBono          : 0,
         //--- OTROS ---
-        //public observaciones    : '';
-        //public riesgosAsociados : '';
+        // observaciones    : '', riesgosAsociados : '',
         //--- CONTROL ---
-        estado              : 'A',
-        idUsuarioCrea       : 0,
-        idUsuarioModifica   : 0,
-        fechaCrea           : '2016-01-01',
-        fechaModifica       : '2016-09-16',
-        registros           : 0
+        estado: 'A', idUsuarioCrea: 0, idUsuarioModifica: 0, fechaCrea: '2016-01-01', fechaModifica: '2016-09-16', registros: 0
+      }
+    ];
+
+        let terceros = [
+      {
+        //--- DATOS BÁSICOS --- 
+        id: '01', codigo: '01', tipoDocIdentificacion: 1, numeroIdentificacion: '79854214', ciudadExpedicion: 3, dv: '1', razonSocial: 'Fulano de Tal por cual', nombre1: 'Fulano', nombre2: 'de Tal', apellido1: 'para', apellido2: 'cual', 
+        //--- DATOS DE UBICACIÓN ---
+        direccion: 'Av Carrera con Calle', idCiudad: 3, idBarrio: 2, telefonoFijo: '2342111', telefonoMovil: '3002154487', eMail: 'fulanitodetalporcual@correo.co', idZona: 3, 
+        //--- DATOS PERSONALES ---
+        fechaNacimiento: '1983-02-15', lugarNacimiento: 3, grupoSanguineo: 'A+', sexo: 'm', estadoCivil: 2, profesionOficio: 3, idEPS: 3,  
+        //--- DATOS CLINIK CONTROL ---
+        tieneConvenio: 'N', tipoAfiliacion: 'N', idProfesionalAsignado: 1,
+        //--- PARAMETROS LEGALES ---
+        exentoIVA: 'N', autoretenedor: 'N', tipoPersona: 1, 
+        //--- PARAMETROS CONTROL CXC CXP Y CAJA ---
+        cupoCredito: 1, diasPlazo: 15, listaPrecios: 1, porcDtoContado: 10, porcDtoCredito: 12,  
+        //--- PARAMETROS VARIOS ---
+        afiliadoFidelizacion: 'N', tipoImpresionFV: 1, 
+        //--- MANEJAR PESTAÑAS ---
+        // referenciasTerceros: '', observaciones: '', tipoTercero: '',
+        //--- CONTROL ---
+        estado: 'A', idUsuarioCrea: 0, idUsuarioModifica: 0, fechaCrea: '2016-01-01', fechaModifica: '2016-09-16', registros: 0
       }
     ];
 
@@ -159,8 +139,82 @@ export class InMemoryDataService implements InMemoryDbService {
               {id: 2, nombre: 'Vía de administración b'},
               {id: 3, nombre: 'Vía de administración c'}
         ],
+        /*--- TERCEROS ---*/
+        ciudades:[
+              {id: 1, nombre: 'Bogotá D.C.'},
+              {id: 2, nombre: 'Medellín'},
+              {id: 3, nombre: 'Santiago de Cali'}
+        ],
+        barrios:[
+              {id: 1, nombre: 'El Nogal'},
+              {id: 2, nombre: 'Los Rosales'},
+              {id: 3, nombre: 'Cedritos'},
+              {id: 3, nombre: 'Chico'}
+        ],
+        zonas:[
+              {id: 1, nombre: 'Zona norte'},
+              {id: 2, nombre: 'Zona sur'},
+              {id: 3, nombre: 'Zona centro'},
+              {id: 4, nombre: 'Zona oriente'},
+              {id: 5, nombre: 'Zona occidente'}
+        ],
+        tipoDocumento:[
+              {id: 1, nombre: 'Tarjeta de identidad'},
+              {id: 2, nombre: 'Cédula de ciudadania'},
+              {id: 3, nombre: 'NIT'},
+              {id: 4, nombre: 'Cédula de extrangería'}
+        ],
+        sexo:[
+              {id: 1, genero: 'Masculino'},
+              {id: 2, genero: 'Femenino'}
+        ],
+        grupoSanguineo:[
+              {id: 1, tipo: 'A-'},
+              {id: 2, tipo: 'A+'},
+              {id: 3, tipo: 'B-'},
+              {id: 4, tipo: 'B+'},
+              {id: 5, tipo: 'AB-'},
+              {id: 6, tipo: 'AB+'},      
+              {id: 7, tipo: 'O-'},
+              {id: 8, tipo: 'O+'}
+        ],
+        estadoCivil:[
+              {id: 1, estado: 'Soltero/a'},
+              {id: 2, estado: 'Casado/a'},
+              {id: 3, estado: 'Separado/a'},
+              {id: 4, estado: 'Viudo/a'},
+              {id: 5, estado: 'Unión libre'}
+        ],
+        profesionOficio:[
+              {id: 1, tipo: 'Profesión u oficio 1' },
+              {id: 2, tipo: 'Profesión u oficio 2' },
+              {id: 3, tipo: 'Profesión u oficio 3' }
+        ],
+        eps:[
+              {id: 1, nombre: 'CafeSalud'},
+              {id: 2, nombre: 'Sura'},
+              {id: 3, nombre: 'Compensar'},
+              {id: 4, nombre: 'SOS'}
+        ],
+        profesionalAsignado:[
+              {id: 1, nombre: 'Fulano de tal'},
+              {id: 2, nombre: 'Sultado de tal'},
+              {id: 3, nombre: 'Perencejo de tal'},
+              {id: 4, nombre: 'Fulano de tal por cual'}
+        ],
+        tipoPersona:[
+              {id: 1, tipo: 'Persona Natural'},
+              {id: 2, tipo: 'Persona Jurídica'},
+        ],
+        tipoImpresion:[
+              {id: 1, tipo: 'No imprime'},
+              {id: 2, tipo: 'Tiquete'},
+              {id: 3, tipo: 'Corporativa'}
+        ]
+
       }
     ];
+
 
     return { 
       data,
@@ -173,7 +227,8 @@ export class InMemoryDataService implements InMemoryDbService {
       tipos_formas_pago, 
       productos, 
       tipos_impuesto,  
-      agrupaciones
+      agrupaciones,
+      terceros
     };
   }
 }

@@ -26,10 +26,13 @@ import { ProductoService }         from './productos/producto.service';
 import { ProductoListComponent }   from './productos/producto-list.component';
 import { ProductoDetailComponent } from './productos/producto-detail.component';
 
-
 import { TipoImpuestoService }         from './tipos-impuesto/tipo-impuesto.service';
 import { TipoImpuestoListComponent }   from './tipos-impuesto/tipo-impuesto-list.component';
 import { TipoImpuestoDetailComponent } from './tipos-impuesto/tipo-impuesto-detail.component';
+
+import { TerceroService }         from './terceros/tercero.service';
+import { TerceroListComponent }   from './terceros/tercero-list.component';
+import { TerceroDetailComponent } from './terceros/tercero-detail.component';
 
 import { DataService } from './data.service';
 
@@ -55,7 +58,9 @@ import { routing, appRoutingProviders }        from './app.routing';
     ProductoListComponent,
     ProductoDetailComponent,
     TipoImpuestoListComponent,
-    TipoImpuestoDetailComponent
+    TipoImpuestoDetailComponent,
+    TerceroListComponent,
+    TerceroDetailComponent
   ],
   providers: [
     appRoutingProviders,
@@ -64,7 +69,8 @@ import { routing, appRoutingProviders }        from './app.routing';
     TablaGeneralService,        
     AgrupacionService,
     ProductoService,
-    TipoImpuestoService/*,
+    TipoImpuestoService,
+    TerceroService/*,
     { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
     { provide: SEED_DATA,  useClass: InMemoryDataService }     // in-mem server data*/
   ],
