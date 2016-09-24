@@ -18,9 +18,11 @@ export class Validate {
       HEXADECIMAL   : '^[#]+([a-fA-F0-9]+)?$',  
       ALFANUMERICO  : '^[a-zA-Z0-9 ]+([a-zA-Z0-9 ]+)?$',
       ALFABETICO    : '^[a-zA-Z ]+([a-zA-Z ]+)?$',
-      CODIGO_BARRAS : '^[a-zA-Z0-9 ]+([a-zA-Z0-9 ]+)?$',
+      CODIGO_BARRAS : '^[a-zA-Z0-9]+([a-zA-Z0-9]+)?$',
       CODIGO        : '^[a-zA-Z0-9]+([a-zA-Z0-9]+)?$',
-      GENERAL       : '^[a-zA-Z0-9 ]+([a-zA-Z0-9!@#$%^&*()_ ]+)?$'
+      GENERAL       : '^[a-zA-Z0-9 ]+([a-zA-Z0-9!@#$%^&*()_ ]+)?$',
+      EMAIL         : '^[a-zA-Z0-9]+([_.-]?[a-zA-Z0-9]+)@[a-zA-Z0-9]+([_.-]?[a-zA-Z0-9]+)*(\.[a-zA-Z0-9]{2,4})+$',
+      FECHA         : '^([0-9]{2}\/[0-9]{2}\/[0-9]{4})$'
     }
 }    
 

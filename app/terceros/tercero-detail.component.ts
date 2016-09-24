@@ -215,12 +215,12 @@ export class TerceroDetailComponent implements OnInit, OnDestroy {
     ]);
     this .frmTercero .controls[ "numeroIdentificacion" ] .setValidators([
             Validators .required,  
-            Validators .minLength( 5 ), 
+            Validators .minLength( 7 ), 
             Validators .maxLength( 15 ),
             Validators .pattern( Validate.RegExp.GENERAL )
     ]);
     this .frmTercero .controls[ "dv" ] .setValidators([ 
-            Validators .maxLength( 80 ),
+            Validators .maxLength( 1 ),
             Validators .pattern( Validate.RegExp.ENTERO )
     ]);
     this .frmTercero .controls[ "razonSocial" ] .setValidators([ 
@@ -228,37 +228,45 @@ export class TerceroDetailComponent implements OnInit, OnDestroy {
             Validators .pattern( Validate.RegExp.GENERAL )
     ]);
     this .frmTercero .controls[ "nombre1" ] .setValidators([ 
+            Validators .required,
+            Validators .minLength( 3 ),
             Validators .maxLength( 15 ),
-            Validators .pattern( Validate.RegExp.GENERAL )
+            Validators .pattern( Validate.RegExp.ALFABETICO )
     ]);
     this .frmTercero .controls[ "nombre2" ] .setValidators([ 
+            Validators .minLength( 3 ),
             Validators .maxLength( 14 ),
-            Validators .pattern( Validate.RegExp.GENERAL )
+            Validators .pattern( Validate.RegExp.ALFABETICO )
     ]);
-    this .frmTercero .controls[ "apellido1" ] .setValidators([ 
+    this .frmTercero .controls[ "apellido1" ] .setValidators([
+            Validators .required,
+            Validators .minLength( 3 ), 
             Validators .maxLength( 15 ),
-            Validators .pattern( Validate.RegExp.GENERAL )
+            Validators .pattern( Validate.RegExp.ALFABETICO )
     ]);
-    this .frmTercero .controls[ "apellido2" ] .setValidators([ 
+    this .frmTercero .controls[ "apellido2" ] .setValidators([
+            Validators .minLength( 3 ), 
             Validators .maxLength( 14 ),
-            Validators .pattern( Validate.RegExp.GENERAL )
+            Validators .pattern( Validate.RegExp.ALFABETICO )
     ]);
     //--- PRECIOS Y DATOS ESTADISTICOS ---
     this .frmTercero .controls[ "direccion" ] .setValidators([
             Validators .maxLength( 80 ),
             Validators .pattern( Validate.RegExp.GENERAL )
     ]);
-    this .frmTercero .controls[ "telefonoFijo" ] .setValidators([ 
+    this .frmTercero .controls[ "telefonoFijo" ] .setValidators([
+            Validators .minLength( 7 ), 
             Validators .maxLength( 20 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmTercero .controls[ "telefonoMovil" ] .setValidators([
+            Validators .minLength( 10 ), 
             Validators .maxLength( 20 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     this .frmTercero .controls[ "eMail" ] .setValidators([ 
-            Validators .maxLength( 100 )
-    //        Validators .pattern( Validate.RegExp.EMAIL )
+            Validators .maxLength( 100 ),
+            Validators .pattern( Validate.RegExp.EMAIL )
     ]);
     this .frmTercero .controls[ "fechaNacimiento" ] .setValidators([ 
             Validators .maxLength( 10 ),
@@ -278,14 +286,30 @@ export class TerceroDetailComponent implements OnInit, OnDestroy {
     ]);
     this .frmTercero .controls[ "porcDtoContado" ] .setValidators([ 
             Validators .maxLength( 2 ),
-            Validators .pattern( Validate.RegExp.DECIMAL )
+            Validators .pattern( Validate.RegExp.DECIMAL ),
+            this .validaRangoPorcDtoContado
     ]);
     this .frmTercero .controls[ "porcDtoCredito" ] .setValidators([ 
             Validators .maxLength( 2 ),
-            Validators .pattern( Validate.RegExp.DECIMAL )
+            Validators .pattern( Validate.RegExp.DECIMAL ),
+            this .validaRangoPorcDtoCredito
     ]);
     //--- PARAMETROS (Legales) ---
     
+  }
+
+  validaRangoPorcDtoContado( porcDtoContado: FormControl ) {
+      console.log( 'procentaje: ' + porcDtoContado .value);
+      return parseFloat( porcDtoContado .value ) >= parseFloat( '0' ) && parseFloat( porcDtoContado .value ) <= parseFloat( '100' ) ? null : {
+        range: true
+      }
+  }
+
+  validaRangoPorcDtoCredito( porcDtoCredito: FormControl ) {
+      console.log( 'procentaje: ' + porcDtoCredito .value);
+      return parseFloat( porcDtoCredito .value ) >= parseFloat( '0' ) && parseFloat( porcDtoCredito .value ) <= parseFloat( '100' ) ? null : {
+        range: true
+      }
   }
 
   goToList( obj: Tercero = null) {
@@ -313,16 +337,83 @@ export class TerceroDetailComponent implements OnInit, OnDestroy {
       //--- IDENTIFICACION DE Tercero ---
       codigo: {
         required:      'Campo requerido.',
-        minlength:     'Mínimo 2 o más caracteres.',
-        maxlength:     'Hasta 10 caracteres.',
+        minlength:     'Mínimo 2 o más números y/o caracteres.',
+        maxlength:     'Hasta 10  números y/o caracteres.',
         pattern:       'Solo valores alfanuméricos sin espacios'
       },
       numeroIdentificacion: {
         required:      'Campo requerido.',
-        minlength:     'Mínimo 10 o más números y/o caracteres.',
-        maxlength:     'Hasta 80 números y/o caracteres.',
+        minlength:     'Mínimo 7 o más números.',
+        maxlength:     'Hasta 15 números.',
         pattern:       'Solo valores alfanuméricos y algunos símbolos.'
       },
+      dv: {
+        maxlength:     'Ingresar 1 digito.',
+        pattern:       'Solo valores numéricos.'
+      },
+      nombre1: {
+        required:      'Campo requerido.',
+        minlength:     'Mínimo 3 o más caracteres.',
+        maxlength:     'Hasta 15 caracteres.',
+        pattern:       'Solo valores alfabeticos.'
+      },
+      nombre2: {
+        minlength:     'Mínimo 3 o más caracteres.',
+        maxlength:     'Hasta 14 caracteres.',
+        pattern:       'Solo valores alfabeticos.'
+      },      
+      apellido1: {
+        required:      'Campo requerido.',
+        minlength:     'Mínimo 3 o más caracteres.',
+        maxlength:     'Hasta 15 caracteres.',
+        pattern:       'Solo valores alfabeticos.'
+      },
+      apellido2: {
+        minlength:     'Mínimo 3 o más caracteres.',
+        maxlength:     'Hasta 14 caracteres.',
+        pattern:       'Solo valores alfabeticos.'
+      },          
+      direccion: {
+        minlength:     'Mínimo 3 o más números y/o caracteres.',
+        maxlength:     'Hasta 80 números y/o caracteres.',
+        pattern:       'Solo valores alfanuméricos y algunos símbolos.'
+      },         
+      telefonoFijo: {
+        minlength:     'Mínimo 7 o más números.',
+        maxlength:     'Hasta 20 números',
+        pattern:       'Solo valores numéricos.'
+      },
+      telefonoMovil: {
+        minlength:     'Mínimo 10 o más números.',
+        maxlength:     'Hasta 20 números.',
+        pattern:       'Solo valores numéricos.'
+      },            
+      eMail: {
+        maxlength:     'Hasta 100 números y/o caracteres.',
+        pattern:       'Solo valores alfanuméricos y el símbolo @.'
+      },
+      cupoCredito: {
+        maxlength:     'Hasta 10 números',
+        pattern:       'Solo valores enteros o decimales.'
+      },      
+      diasPlazo: {
+        maxlength:     'Hasta 3 números',
+        pattern:       'Solo valores enteros.'
+      },  
+      listaPrecios: {
+        maxlength:     'Ingresar 1 digito.',
+        pattern:       'Solo valores enteros o decimales.'
+      },      
+      porcDtoContado: {
+        maxlength:     'Hasta 5 números punto decimal incluido.',
+        pattern:       'Solo valores enteros o decimales.',
+        range:         'Establezca un rango entre 0-100'              
+      },  
+      porcDtoCredito: {
+        maxlength:     'Hasta 5 números punto decimal incluido.',
+        pattern:       'Solo valores enteros o decimales.',
+        range:         'Establezca un rango entre 1-100'   
+      },               
       
     }
 

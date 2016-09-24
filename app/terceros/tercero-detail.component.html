@@ -15,13 +15,13 @@
         </div>
         <div>
             <label>Tipo documento de identidad: </label>
-            <select formControlName="tipoDocIdentificacion" id="tipoDocIdentificacion" name="tipoDocIdentificacion" >
+            <select formControlName="tipoDocIdentificacion" id="tipoDocIdentificacion" name="tipoDocIdentificacion" maxlength='15' >
                 <option [value]="o.id" *ngFor="let o of tipoDocumento">{{o.nombre}}</option>
             </select>
         </div> 
          <div>
             <label>*Número de identificación: </label>
-            <input formControlName="numeroIdentificacion" [disabled]="!esNuevo" type="text" id="numeroIdentificacion" name="numeroIdentificacion" placeholder="numeroIdentificacion" maxlength="10" />
+            <input formControlName="numeroIdentificacion" [disabled]="!esNuevo" type="text" id="numeroIdentificacion" name="numeroIdentificacion" placeholder="numeroIdentificacion" maxlength="15" />
             
             <div [hidden]="!(frmTercero.controls.numeroIdentificacion.touched && !frmTercero.controls.numeroIdentificacion.valid)">
                 <small>
@@ -47,7 +47,7 @@
         </div>                           
         <div>
             <label>Razón social: </label>
-            <input formControlName="razonSocial" [disabled]="!esNuevo" type="text" id="razonSocial" name="razonSocial" placeholder="razonSocial" />
+            <input formControlName="razonSocial" [disabled]="!esNuevo" type="text" id="razonSocial" name="razonSocial" placeholder="razonSocial" maxlength="60" />
             
             <div [hidden]="!(frmTercero.controls.razonSocial.touched && !frmTercero.controls.razonSocial.valid)">
                 <small>
@@ -100,7 +100,7 @@
         <legend>Datos de ubicación</legend>
         <div>
             <label>Dirección: </label>
-            <input formControlName="direccion" [disabled]="!esNuevo" type="text" id="direccion" name="direccion" placeholder="direccion" maxlength="10" />
+            <input formControlName="direccion" [disabled]="!esNuevo" type="text" id="direccion" name="direccion" placeholder="direccion" maxlength="80" />
             
             <div [hidden]="!(frmTercero.controls.direccion.touched && !frmTercero.controls.direccion.valid)">
                 <small>
@@ -142,7 +142,7 @@
         </div>      
         <div>
             <label>Correo electrónico: </label>
-            <input formControlName="eMail" [disabled]="!esNuevo" type="text" id="eMail" name="eMail" placeholder="eMail" maxlength="10" />
+            <input formControlName="eMail" [disabled]="!esNuevo" type="text" id="eMail" name="eMail" placeholder="eMail" maxlength="100" />
             
             <div [hidden]="!(frmTercero.controls.eMail.touched && !frmTercero.controls.eMail.valid)">
                 <small>
