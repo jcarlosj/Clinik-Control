@@ -268,10 +268,10 @@ export class TerceroDetailComponent implements OnInit, OnDestroy {
             Validators .maxLength( 100 ),
             Validators .pattern( Validate.RegExp.EMAIL )
     ]);
-    this .frmTercero .controls[ "fechaNacimiento" ] .setValidators([ 
+    /*this .frmTercero .controls[ "fechaNacimiento" ] .setValidators([ 
             Validators .maxLength( 10 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
-    ]);
+    ]);*/
     this .frmTercero .controls[ "cupoCredito" ] .setValidators([ 
             Validators .maxLength( 12 ),
             Validators .pattern( Validate.RegExp.DECIMAL )

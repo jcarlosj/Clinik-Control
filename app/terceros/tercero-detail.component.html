@@ -1,338 +1,575 @@
+
 <h4>{{title}}</h4>
 <form [formGroup]="frmTercero" *ngIf="vObj" novalidate >
     <input formControlName="id" type="hidden" id="id" name="id" />
-    <fieldset>
-        <legend>Datos Básicos</legend>
-         <div>
-            <label>*Codigo: </label>
-            <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="15" />
-            
-            <div [hidden]="!(frmTercero.controls.codigo.touched && !frmTercero.controls.codigo.valid)">
-                <small>
-                    <i>> {{ errors( 'codigo' ) }}</i>
-                </small>
-            </div>
-        </div>
-        <div>
-            <label>Tipo documento de identidad: </label>
-            <select formControlName="tipoDocIdentificacion" id="tipoDocIdentificacion" name="tipoDocIdentificacion" maxlength='15' >
-                <option [value]="o.id" *ngFor="let o of tipoDocumento">{{o.nombre}}</option>
-            </select>
-        </div> 
-         <div>
-            <label>*Número de identificación: </label>
-            <input formControlName="numeroIdentificacion" [disabled]="!esNuevo" type="text" id="numeroIdentificacion" name="numeroIdentificacion" placeholder="numeroIdentificacion" maxlength="15" />
-            
-            <div [hidden]="!(frmTercero.controls.numeroIdentificacion.touched && !frmTercero.controls.numeroIdentificacion.valid)">
-                <small>
-                    <i>> {{ errors( 'numeroIdentificacion' ) }}</i>
-                </small>
-            </div>
-        </div> 
-        <div>
-            <label>Ciudad de expedición: </label>
-            <select formControlName="ciudadExpedicion" id="ciudadExpedicion" name="ciudadExpedicion" >
-                <option [value]="o.id" *ngFor="let o of ciudades">{{o.nombre}}</option>
-            </select>
-        </div>   
-        <div>
-            <label>*Digito de verificación: </label>
-            <input formControlName="dv" [disabled]="!esNuevo" type="text" id="dv" name="dv" placeholder="dv" maxlength="1" />
-            
-            <div [hidden]="!(frmTercero.controls.dv.touched && !frmTercero.controls.dv.valid)">
-                <small>
-                    <i>> {{ errors( 'dv' ) }}</i>
-                </small>
-            </div>
-        </div>                           
-        <div>
-            <label>Razón social: </label>
-            <input formControlName="razonSocial" [disabled]="!esNuevo" type="text" id="razonSocial" name="razonSocial" placeholder="razonSocial" maxlength="60" />
-            
-            <div [hidden]="!(frmTercero.controls.razonSocial.touched && !frmTercero.controls.razonSocial.valid)">
-                <small>
-                    <i>> {{ errors( 'razonSocial' ) }}</i>
-                </small>
-            </div>
-        </div>        
-        <div>
-            <label>Primer nombre: </label>
-            <input formControlName="nombre1" [disabled]="!esNuevo" type="text" id="nombre1" name="nombre1" placeholder="nombre1" maxlength="15" />
-            
-            <div [hidden]="!(frmTercero.controls.nombre1.touched && !frmTercero.controls.nombre1.valid)">
-                <small>
-                    <i>> {{ errors( 'nombre1' ) }}</i>
-                </small>
-            </div>
-        </div>      
-        <div>
-            <label>Segundo nombre: </label>
-            <input formControlName="nombre2" [disabled]="!esNuevo" type="text" id="nombre2" name="nombre2" placeholder="nombre2" maxlength="14" />
-            
-            <div [hidden]="!(frmTercero.controls.nombre2.touched && !frmTercero.controls.nombre2.valid)">
-                <small>
-                    <i>> {{ errors( 'nombre2' ) }}</i>
-                </small>
-            </div>
-        </div>
-        <div>
-            <label>Primer apellido: </label>
-            <input formControlName="apellido1" [disabled]="!esNuevo" type="text" id="apellido1" name="apellido1" placeholder="apellido1" maxlength="15" />
-            
-            <div [hidden]="!(frmTercero.controls.apellido1.touched && !frmTercero.controls.apellido1.valid)">
-                <small>
-                    <i>> {{ errors( 'apellido1' ) }}</i>
-                </small>
-            </div>
-        </div>                     
-        <div>
-            <label>Segundo apellido: </label>
-            <input formControlName="apellido2" [disabled]="!esNuevo" type="text" id="apellido2" name="apellido2" placeholder="apellido2" maxlength="14" />
-            
-            <div [hidden]="!(frmTercero.controls.apellido2.touched && !frmTercero.controls.apellido2.valid)">
-                <small>
-                    <i>> {{ errors( 'apellido2' ) }}</i>
-                </small>
-            </div>
-        </div>        
-     </fieldset>   
-     <fieldset>
-        <legend>Datos de ubicación</legend>
-        <div>
-            <label>Dirección: </label>
-            <input formControlName="direccion" [disabled]="!esNuevo" type="text" id="direccion" name="direccion" placeholder="direccion" maxlength="80" />
-            
-            <div [hidden]="!(frmTercero.controls.direccion.touched && !frmTercero.controls.direccion.valid)">
-                <small>
-                    <i>> {{ errors( 'direccion' ) }}</i>
-                </small>
-            </div>
-        </div>
-        <div>
-            <label>Ciudad: </label>
-            <select formControlName="idCiudad" id="idCiudad" name="idCiudad" >
-                <option [value]="o.id" *ngFor="let o of ciudades">{{o.nombre}}</option>
-            </select>
-        </div>        
-        <div>
-            <label>Barrio: </label>
-            <select formControlName="idBarrio" id="idBarrio" name="idBarrio" >
-                <option [value]="o.id" *ngFor="let o of barrios">{{o.nombre}}</option>
-            </select>
-        </div>   
-        <div>
-            <label>Teléfono fijo: </label>
-            <input formControlName="telefonoFijo" [disabled]="!esNuevo" type="text" id="telefonoFijo" name="telefonoFijo" placeholder="telefonoFijo" maxlength="10" />
-            
-            <div [hidden]="!(frmTercero.controls.telefonoFijo.touched && !frmTercero.controls.telefonoFijo.valid)">
-                <small>
-                    <i>> {{ errors( 'telefonoFijo' ) }}</i>
-                </small>
-            </div>
-        </div>         
-        <div>
-            <label>Teléfono móvil: </label>
-            <input formControlName="telefonoMovil" [disabled]="!esNuevo" type="text" id="telefonoMovil" name="telefonoMovil" placeholder="telefonoMovil" maxlength="10" />
-            
-            <div [hidden]="!(frmTercero.controls.telefonoMovil.touched && !frmTercero.controls.telefonoMovil.valid)">
-                <small>
-                    <i>> {{ errors( 'telefonoMovil' ) }}</i>
-                </small>
-            </div>
-        </div>      
-        <div>
-            <label>Correo electrónico: </label>
-            <input formControlName="eMail" [disabled]="!esNuevo" type="text" id="eMail" name="eMail" placeholder="eMail" maxlength="100" />
-            
-            <div [hidden]="!(frmTercero.controls.eMail.touched && !frmTercero.controls.eMail.valid)">
-                <small>
-                    <i>> {{ errors( 'eMail' ) }}</i>
-                </small>
-            </div>
-        </div>  
-        <div>
-            <label>Zona: </label>
-            <select formControlName="idZona" id="idZona" name="idZona" >
-                <option [value]="o.id" *ngFor="let o of zonas">{{o.nombre}}</option>
-            </select>
-        </div>                          
-     </fieldset> 
-     <fieldset>
-        <legend>Datos personales</legend>
-        <div>
-            <label>Fecha de nacimiento: </label>
-            <input formControlName="fechaNacimiento" [disabled]="!esNuevo" type="text" id="fechaNacimiento" name="fechaNacimiento" placeholder="fechaNacimiento" maxlength="10" />
-            
-            <div [hidden]="!(frmTercero.controls.fechaNacimiento.touched && !frmTercero.controls.fechaNacimiento.valid)">
-                <small>
-                    <i>> {{ errors( 'fechaNacimiento' ) }}</i>
-                </small>
-            </div>
-        </div> 
-        <div>
-            <label>Lugar de nacimiento: </label>
-            <input formControlName="lugarNacimiento" [disabled]="!esNuevo" type="text" id="lugarNacimiento" name="lugarNacimiento" placeholder="lugarNacimiento" maxlength="10" />
-            
-            <div [hidden]="!(frmTercero.controls.lugarNacimiento.touched && !frmTercero.controls.lugarNacimiento.valid)">
-                <small>
-                    <i>> {{ errors( 'lugarNacimiento' ) }}</i>
-                </small>
-            </div>
-        </div>   
-        <div>
-            <label>Grupo sanguineo: </label>
-            <select formControlName="grupoSanguineo" id="grupoSanguineo" name="grupoSanguineo" >
-                <option [value]="o.id" *ngFor="let o of grupoSanguineo">{{o.tipo}}</option>
-            </select>
-        </div>         
-        <div>
-            <label>Género: </label>
-            <select formControlName="sexo" id="sexo" name="sexo" >
-                <option [value]="o.id" *ngFor="let o of sexo">{{o.genero}}</option>
-            </select>
-        </div>             
-        <div>
-            <label>Estado civil: </label>
-            <select formControlName="estadoCivil" id="estadoCivil" name="estadoCivil" >
-                <option [value]="o.id" *ngFor="let o of estadoCivil">{{o.estado}}</option>
-            </select>
-        </div>           
-        <div>
-            <label>Profesión u oficio: </label>
-            <select formControlName="profesionOficio" id="profesionOficio" name="profesionOficio" >
-                <option [value]="o.id" *ngFor="let o of profesionOficio">{{o.tipo}}</option>
-            </select>
-        </div>     
-        <div>
-            <label>EPS: </label>
-            <select formControlName="idEPS" id="idEPS" name="idEPS" >
-                <option [value]="o.id" *ngFor="let o of eps">{{o.nombre}}</option>
-            </select>
-        </div>                                     
-     </fieldset>
-     <fieldset>
-        <legend>Datos Clinik Control</legend>                   
-<div>
-            <label>Tiene convenio: </label>
-            <select formControlName="tieneConvenio" id="tieneConvenio" name="tieneConvenio" >
-                <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
-            </select>
-        </div>        
-        <div>
-            <label>Tipo de afiliación: </label>
-            <select formControlName="tipoAfiliacion" id="tipoAfiliacion" name="tipoAfiliacion" >
-                <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
-            </select>
-        </div>  
-        <div>
-            <label>Profesional asignado: </label>
-            <select formControlName="idProfesionalAsignado" id="idProfesionalAsignado" name="idProfesionalAsignado" >
-                <option [value]="o.id" *ngFor="let o of profesionalAsignado">{{o.nombre}}</option>
-            </select>
-        </div>
-     </fieldset>
-     <fieldset>
-        <legend>Parámetros legales</legend>
-        <div>
-            <label>Exento de IVA: </label>
-            <select formControlName="exentoIVA" id="exentoIVA" name="exentoIVA" >
-                <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
-            </select>
-        </div> 
-        <div>
-            <label>Autoretenedor: </label>
-            <select formControlName="autoretenedor" id="autoretenedor" name="autoretenedor" >
-                <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
-            </select>
-        </div> 
-        <div>
-            <label>Tipo de persona: </label>
-            <select formControlName="tipoPersona" id="tipoPersona" name="tipoPersona" >
-                <option [value]="o.id" *ngFor="let o of tipoPersona">{{o.tipo}}</option>
-            </select>
-        </div>                 
+    <div class="demo-tab-container">
+        <mdl-tabs mdl-ripple mdl-tab-active-index="0" >
+            <mdl-tab-panel>
+                <mdl-tab-panel-title>
+                    <mdl-icon class="mdl-color-text--primary">person</mdl-icon>
+                    <span>Datos Básicos</span>
+                </mdl-tab-panel-title>
+                <mdl-tab-panel-content>
+                    <div class="mdl-grid">
+                        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            <mdl-textfield 
+                                    type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="15" required
+                                    formControlName="codigo" [disabled]="!esNuevo" 
+                                    label="*Código" floating-label>
+                            </mdl-textfield>
+                            <div [hidden]="!(frmTercero.controls.codigo.touched && !frmTercero.controls.codigo.valid)">
+                                <small>
+                                    <i>> {{ errors( 'codigo' ) }}</i>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            <label>Tipo documento identidad: </label><br/>
+                            <select formControlName="tipoDocIdentificacion" id="tipoDocIdentificacion" name="tipoDocIdentificacion" >
+                                <option [value]="o.id" *ngFor="let o of tipoDocumento">{{o.nombre}}</option>
+                            </select>
+                        </div> 
+                        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            <mdl-textfield 
+                                    type="text" id="numeroIdentificacion" name="numeroIdentificacion" placeholder="numeroIdentificacion" maxlength="10"
+                                    formControlName="numeroIdentificacion" 
+                                    
+                                    label="*Número de identificación" floating-label>
+                            </mdl-textfield>
+                            <div [hidden]="!(frmTercero.controls.numeroIdentificacion.touched && !frmTercero.controls.numeroIdentificacion.valid)">
+                                <small>
+                                    <i>> {{ errors( 'numeroIdentificacion' ) }}</i>
+                                </small>
+                            </div>
+                        </div> 
+                        <div class="mdl-cell--2-col-desktop mdl-cell--2-col-tablet mdl-cell--2-col-phone">
+                            <label>*Digito verificación: </label>
+                            <mdl-textfield 
+                                    type="text" id="dv" name="dv" placeholder="dv" maxlength="1"
+                                    formControlName="dv"
+                                    label="*Digito verificación" floating-label> 
+                            </mdl-textfield>
+                            
+                            <div [hidden]="!(frmTercero.controls.dv.touched && !frmTercero.controls.dv.valid)">
+                                <small>
+                                    <i>> {{ errors( 'dv' ) }}</i>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            <label>Ciudad de expedición: </label><br/>
+                            <select formControlName="ciudadExpedicion" id="ciudadExpedicion" name="ciudadExpedicion" >
+                                <option [value]="o.id" *ngFor="let o of ciudades">{{o.nombre}}</option>
+                            </select>
+                        </div>   
+                                                   
+                        <div class="mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                            <mdl-textfield
+                                    type="text" id="razonSocial" name="razonSocial" placeholder="razonSocial" maxlength="60"
+                                    formControlName="razonSocial"  
+                                    label="Razón social" floating-label>
+                            </mdl-textfield>
+                            
+                            <div [hidden]="!(frmTercero.controls.razonSocial.touched && !frmTercero.controls.razonSocial.valid)">
+                                <small>
+                                    <i>> {{ errors( 'razonSocial' ) }}</i>
+                                </small>
+                            </div>
+                        </div>   
+                        <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone">
+                        </div>
+                        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            <mdl-textfield 
+                                    type="text" id="nombre1" name="nombre1" placeholder="nombre1" maxlength="15"
+                                    formControlName="nombre1"  
+                                    label="Primer nombre" floating-label>
+                            </mdl-textfield>
+                            
+                            <div [hidden]="!(frmTercero.controls.nombre1.touched && !frmTercero.controls.nombre1.valid)">
+                                <small>
+                                    <i>> {{ errors( 'nombre1' ) }}</i>
+                                </small>
+                            </div>
+                        </div>      
+                        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            <mdl-textfield 
+                                    type="text" id="nombre2" name="nombre2" placeholder="nombre2" maxlength="14"
+                                    formControlName="nombre2" 
+                                    label="Segundo nombre" floating-label> 
+                                    
+                            </mdl-textfield>
+                            <div [hidden]="!(frmTercero.controls.nombre2.touched && !frmTercero.controls.nombre2.valid)">
+                                <small>
+                                    <i>> {{ errors( 'nombre2' ) }}</i>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            <mdl-textfield 
+                                    type="text" id="apellido1" name="apellido1" placeholder="apellido1" maxlength="15"
+                                    formControlName="apellido1"  
+                                    label="Primer apellido" floating-label>
+                            </mdl-textfield>
+                            <div [hidden]="!(frmTercero.controls.apellido1.touched && !frmTercero.controls.apellido1.valid)">
+                                <small>
+                                    <i>> {{ errors( 'apellido1' ) }}</i>
+                                </small>
+                            </div>
+                        </div>                     
+                        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            <mdl-textfield
+                                    type="text" id="apellido2" name="apellido2" placeholder="apellido2" maxlength="14"
+                                    formControlName="apellido2"  
+                                    label="Segundo apellido" floating-label>
+                            </mdl-textfield>
+                            
+                            <div [hidden]="!(frmTercero.controls.apellido2.touched && !frmTercero.controls.apellido2.valid)">
+                                <small>
+                                    <i>> {{ errors( 'apellido2' ) }}</i>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </mdl-tab-panel-content>        
+            </mdl-tab-panel>   
+            <mdl-tab-panel>
+                <mdl-tab-panel-title>
+                    <mdl-icon class="mdl-color-text--primary">person</mdl-icon>
+                    <span>Datos de ubicación</span>
+                </mdl-tab-panel-title>
+                <mdl-tab-panel-content>
+                    <div class="mdl-grid">
+                        <div class="mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                            <mdl-textfield 
+                                    type="text" id="direccion" name="direccion" placeholder="direccion" maxlength="80"
+                                    formControlName="direccion"  
+                                    label="Dirección" floating-label>
+                            </mdl-textfield>
+                            <div [hidden]="!(frmTercero.controls.direccion.touched && !frmTercero.controls.direccion.valid)">
+                                <small>
+                                    <i>> {{ errors( 'direccion' ) }}</i>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            <label>Ciudad: </label>
+                            <select formControlName="idCiudad" id="idCiudad" name="idCiudad" >
+                                <option [value]="o.id" *ngFor="let o of ciudades">{{o.nombre}}</option>
+                            </select>
+                        </div>        
+                        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            <label>Barrio: </label>
+                            <select formControlName="idBarrio" id="idBarrio" name="idBarrio" >
+                                <option [value]="o.id" *ngFor="let o of barrios">{{o.nombre}}</option>
+                            </select>
+                        </div>   
+                        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            <mdl-textfield 
+                                    type="text" id="telefonoFijo" name="telefonoFijo" placeholder="telefonoFijo" maxlength="10"
+                                    formControlName="telefonoFijo"  
+                                    label="Teléfono fijo" floating-label>
+                            </mdl-textfield>
+                            <div [hidden]="!(frmTercero.controls.telefonoFijo.touched && !frmTercero.controls.telefonoFijo.valid)">
+                                <small>
+                                    <i>> {{ errors( 'telefonoFijo' ) }}</i>
+                                </small>
+                            </div>
+                        </div>         
+                        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            <mdl-textfield 
+                                    type="text" id="telefonoMovil" name="telefonoMovil" placeholder="telefonoMovil" maxlength="10"
+                                    formControlName="telefonoMovil"  
+                                    label="Teléfono móvil" floating-label>
+                            </mdl-textfield>
+                            
+                            <div [hidden]="!(frmTercero.controls.telefonoMovil.touched && !frmTercero.controls.telefonoMovil.valid)">
+                                <small>
+                                    <i>> {{ errors( 'telefonoMovil' ) }}</i>
+                                </small>
+                            </div>
+                        </div>      
+                        <div class="mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                            <mdl-textfield 
+                                    type="text" id="eMail" name="eMail" placeholder="eMail" maxlength="100"
+                                    formControlName="eMail"  
+                                    label="Correo electrónico" floating-label>
+                            </mdl-textfield>
+                            <div [hidden]="!(frmTercero.controls.eMail.touched && !frmTercero.controls.eMail.valid)">
+                                <small>
+                                    <i>> {{ errors( 'eMail' ) }}</i>
+                                </small>
+                            </div>
+                        </div>  
+                        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            <label>Zona: </label>
+                            <select formControlName="idZona" id="idZona" name="idZona" >
+                                <option [value]="o.id" *ngFor="let o of zonas">{{o.nombre}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </mdl-tab-panel-content>                          
+            </mdl-tab-panel> 
+            <mdl-tab-panel>
+                <mdl-tab-panel-title>
+                    <mdl-icon class="mdl-color-text--primary">person</mdl-icon>
+                    <span>Datos personales</span>
+                </mdl-tab-panel-title>
+                <mdl-tab-panel-content>
+                    <div class="mdl-grid">
+                        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            <mdl-textfield 
+                                    type="text" id="fechaNacimiento" name="fechaNacimiento" placeholder="fechaNacimiento" maxlength="10"
+                                    formControlName="fechaNacimiento"  
+                                    label="Fecha de nacimiento" floating-label>
+                            </mdl-textfield>
+                            
+                            <div [hidden]="!(frmTercero.controls.fechaNacimiento.touched && !frmTercero.controls.fechaNacimiento.valid)">
+                                <small>
+                                    <i>> {{ errors( 'fechaNacimiento' ) }}</i>
+                                </small>
+                            </div>
+                        </div> 
+                        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            <mdl-textfield 
+                                    type="text" id="lugarNacimiento" name="lugarNacimiento" placeholder="lugarNacimiento" maxlength="10"
+                                    formControlName="lugarNacimiento"  
+                                    label="Lugar de nacimiento" floating-label>
+                            </mdl-textfield>
+                            
+                            <div [hidden]="!(frmTercero.controls.lugarNacimiento.touched && !frmTercero.controls.lugarNacimiento.valid)">
+                                <small>
+                                    <i>> {{ errors( 'lugarNacimiento' ) }}</i>
+                                </small>
+                            </div>
+                        </div>   
+                        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            <label>Grupo sanguineo: </label>
+                            <select formControlName="grupoSanguineo" id="grupoSanguineo" name="grupoSanguineo" >
+                                <option [value]="o.id" *ngFor="let o of grupoSanguineo">{{o.tipo}}</option>
+                            </select>
+                        </div>         
+                        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            <label>Género: </label>
+                            <select formControlName="sexo" id="sexo" name="sexo" >
+                                <option [value]="o.id" *ngFor="let o of sexo">{{o.genero}}</option>
+                            </select>
+                        </div>             
+                        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            <label>Estado civil: </label>
+                            <select formControlName="estadoCivil" id="estadoCivil" name="estadoCivil" >
+                                <option [value]="o.id" *ngFor="let o of estadoCivil">{{o.estado}}</option>
+                            </select>
+                        </div>           
+                        <div class="mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                            <label>Profesión u oficio: </label>
+                            <select formControlName="profesionOficio" id="profesionOficio" name="profesionOficio" >
+                                <option [value]="o.id" *ngFor="let o of profesionOficio">{{o.tipo}}</option>
+                            </select>
+                        </div>     
+                        <div class="mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                            <label>EPS: </label>
+                            <select formControlName="idEPS" id="idEPS" name="idEPS" >
+                                <option [value]="o.id" *ngFor="let o of eps">{{o.nombre}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </mdl-tab-panel-content>                                     
+            </mdl-tab-panel>
+            <mdl-tab-panel>
+                <mdl-tab-panel-title>
+                    <mdl-icon class="mdl-color-text--primary">person</mdl-icon>
+                    <span>Pamametros</span>
+                </mdl-tab-panel-title>
+                <mdl-tab-panel-content>
+                    <div class="mdl-grid">
+                        <div class="mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                            <div class="mdl-grid">
+                                <div class="mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                                    <h5>Controles CxC Cxp y Caja</h5>
+                                </div>
+                                <div class="mdl-cell--12-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                                    <mdl-textfield 
+                                            type="text" id="cupoCredito" name="cupoCredito" placeholder="cupoCredito" maxlength="10"
+                                            formControlName="cupoCredito" 
+                                            label="Cupo crédito" floating-label>
+                                    </mdl-textfield>
+                                    <div [hidden]="!(frmTercero.controls.cupoCredito.touched && !frmTercero.controls.cupoCredito.valid)">
+                                        <small>
+                                            <i>> {{ errors( 'cupoCredito' ) }}</i>
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="mdl-cell--12-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                                    <mdl-textfield 
+                                            type="text" id="diasPlazo" name="diasPlazo" placeholder="diasPlazo" maxlength="3"
+                                            formControlName="diasPlazo" 
+                                            label="Días de plazo" floating-label>
+                                    </mdl-textfield>
+                                    <div [hidden]="!(frmTercero.controls.diasPlazo.touched && !frmTercero.controls.diasPlazo.valid)">
+                                        <small>
+                                            <i>> {{ errors( 'diasPlazo' ) }}</i>
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="mdl-cell--12-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                                    <label>: </label>
+                                    <mdl-textfield 
+                                            type="text" id="listaPrecios" name="listaPrecios" placeholder="listaPrecios" maxlength="1"
+                                            formControlName="listaPrecios" 
+                                            label="Lista de precios" floating-label>
+                                    </mdl-textfield>
+                                    <div [hidden]="!(frmTercero.controls.listaPrecios.touched && !frmTercero.controls.listaPrecios.valid)">
+                                        <small>
+                                            <i>> {{ errors( 'listaPrecios' ) }}</i>
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="mdl-cell--12-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                                    <mdl-textfield 
+                                            type="text" id="porcDtoContado" name="porcDtoContado" placeholder="porcDtoContado" maxlength="5"
+                                            formControlName="porcDtoContado" 
+                                            label="% de Dto por pago de contado" floating-label>
+                                    </mdl-textfield>
+                                    <div [hidden]="!(frmTercero.controls.porcDtoContado.touched && !frmTercero.controls.porcDtoContado.valid)">
+                                        <small>
+                                            <i>> {{ errors( 'porcDtoContado' ) }}</i>
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="mdl-cell--12-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                                    <mdl-textfield 
+                                            type="text" id="porcDtoCredito" name="porcDtoCredito" placeholder="porcDtoCredito" maxlength="5"
+                                            formControlName="porcDtoCredito" 
+                                            label="% de Dto por pago de crédito" floating-label>
+                                    </mdl-textfield>
+                                    
+                                    <div [hidden]="!(frmTercero.controls.porcDtoCredito.touched && !frmTercero.controls.porcDtoCredito.valid)">
+                                        <small>
+                                            <i>> {{ errors( 'porcDtoCredito' ) }}</i>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-     </fieldset>     
-     <fieldset>
-        <legend>Parámetros Controles CxC Cxp y Caja.</legend>
-                <div>
-            <label>Cupo crédito: </label>
-            <input formControlName="cupoCredito" [disabled]="!esNuevo" type="text" id="cupoCredito" name="cupoCredito" placeholder="cupoCredito" maxlength="10" />
-            
-            <div [hidden]="!(frmTercero.controls.cupoCredito.touched && !frmTercero.controls.cupoCredito.valid)">
-                <small>
-                    <i>> {{ errors( 'cupoCredito' ) }}</i>
-                </small>
-            </div>
-        </div> 
+
+                        <div class="mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                            <div class="mdl-grid">
+                                
+                                <div class="mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                                    <h5>Datos Clinik Control</h5>
+                                </div>
+                                <div class="mdl-cell--7-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                                    <label>Tiene convenio</label>
+                                </div>
+                                <div class="mdl-cell--5-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                                    <mdl-radio  
+                                            formControlName="tieneConvenio"
+                                            [value]="o.codigo"
+                                            *ngFor="let o of activaciones">
+                                        {{o.nombre}}
+                                    </mdl-radio>
+                                </div>
+
+                                <div class="mdl-cell--7-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone cellbackcolor">
+                                    <label>Tipo de afiliación: </label>
+                                </div>
+                                <div class="mdl-cell--5-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone cellbackcolor">
+                                    <mdl-radio
+                                            formControlName="tipoAfiliacion" 
+                                            id="tipoAfiliacion" name="tipoAfiliacion"
+                                            [value]="o.codigo" 
+                                            *ngFor="let o of activaciones">
+                                        {{o.nombre}}
+                                    </mdl-radio>
+                                </div>  
+                                <div class="mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                                    <label>Profesional asignado: </label><br/>
+                                    <select formControlName="idProfesionalAsignado" id="idProfesionalAsignado" name="idProfesionalAsignado" >
+                                        <option [value]="o.id" *ngFor="let o of profesionalAsignado">{{o.nombre}}</option>
+                                    </select>
+                                </div>
+
+                                
+                                <div class="mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                                    <h5>Parametros varios</h5>
+                                </div>
+                                <div class="mdl-cell--7-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone cellbackcolor">
+                                    <label>Afiliado fidelización: </label>
+                                </div>
+                                <div class="mdl-cell--5-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone cellbackcolor">
+                                    <mdl-radio 
+                                            id="afiliadoFidelizacion" name="afiliadoFidelizacion" 
+                                            formControlName="afiliadoFidelizacion" 
+                                            [value]="o.codigo" 
+                                            *ngFor="let o of activaciones">
+                                        {{o.nombre}}
+                                    </mdl-radio>
+                                </div> 
+                                <div class="mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                                    <label>Tipos de impresión (Factura de venta)</label>
+                                    <select formControlName="tipoImpresionFV" id="tipoImpresionFV" name="tipoImpresionFV" >
+                                        <option [value]="o.id" *ngFor="let o of tipoImpresion">{{o.tipo}}</option>
+                                    </select>
+                                </div>
+                                <div class="mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                                    <label>Estado</label>
+                                    <select formControlName="estado" id="estado" name="estado" >
+                                        <option [value]="o.codigo" *ngFor="let o of estado">{{o.nombre}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                            <div class="mdl-grid">
+                                <div class="mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                                    <h5>Parámetros legales</h5>
+                                </div>
+                                
+                                <div class="mdl-cell--7-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                                    <label>Exento de IVA: </label>
+                                </div>
+                                <div class="mdl-cell--5-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                                    <mdl-radio 
+                                            id="exentoIVA" name="exentoIVA"
+                                            formControlName="exentoIVA" 
+                                            [value]="o.codigo" 
+                                            *ngFor="let o of activaciones">
+                                        {{o.nombre}}
+                                    </mdl-radio>
+                                    
+                                </div> 
+                                <div class="mdl-cell--7-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone cellbackcolor">
+                                    <label>Autoretenedor</label>
+                                </div>
+                                <div class="mdl-cell--5-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone cellbackcolor">
+                                    <mdl-radio 
+                                            id="autoretenedor" name="autoretenedor"
+                                            formControlName="autoretenedor"  
+                                            [value]="o.codigo" 
+                                            *ngFor="let o of activaciones">
+                                        {{o.nombre}}
+                                    </mdl-radio>
+                                </div>
+                                <div class="mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                                    <label>Tipo de persona</label>
+                                    <select formControlName="tipoPersona" id="tipoPersona" name="tipoPersona" >
+                                        <option [value]="o.id" *ngFor="let o of tipoPersona">{{o.tipo}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </mdl-tab-panel-content>                                     
+            </mdl-tab-panel>
+        </mdl-tabs>
+    </div>  
         <div>
-            <label>Días de plazo: </label>
-            <input formControlName="diasPlazo" [disabled]="!esNuevo" type="text" id="diasPlazo" name="diasPlazo" placeholder="diasPlazo" maxlength="3" />
-            
-            <div [hidden]="!(frmTercero.controls.diasPlazo.touched && !frmTercero.controls.diasPlazo.valid)">
-                <small>
-                    <i>> {{ errors( 'diasPlazo' ) }}</i>
-                </small>
-            </div>
-        </div>     
-        <div>
-            <label>Lista de precios: </label>
-            <input formControlName="listaPrecios" [disabled]="!esNuevo" type="text" id="listaPrecios" name="listaPrecios" placeholder="listaPrecios" maxlength="1" />
-            
-            <div [hidden]="!(frmTercero.controls.listaPrecios.touched && !frmTercero.controls.listaPrecios.valid)">
-                <small>
-                    <i>> {{ errors( 'listaPrecios' ) }}</i>
-                </small>
-            </div>
-        </div>     
-        <div>
-            <label>% de Dto por pago de contado: </label>
-            <input formControlName="porcDtoContado" [disabled]="!esNuevo" type="text" id="porcDtoContado" name="porcDtoContado" placeholder="porcDtoContado" maxlength="2" />
-            
-            <div [hidden]="!(frmTercero.controls.porcDtoContado.touched && !frmTercero.controls.porcDtoContado.valid)">
-                <small>
-                    <i>> {{ errors( 'porcDtoContado' ) }}</i>
-                </small>
-            </div>
-        </div>    
-        <div>
-            <label>% de Dto por pago de crédito: </label>
-            <input formControlName="porcDtoCredito" [disabled]="!esNuevo" type="text" id="porcDtoCredito" name="porcDtoCredito" placeholder="porcDtoCredito" maxlength="2" />
-            
-            <div [hidden]="!(frmTercero.controls.porcDtoCredito.touched && !frmTercero.controls.porcDtoCredito.valid)">
-                <small>
-                    <i>> {{ errors( 'porcDtoCredito' ) }}</i>
-                </small>
-            </div>
-        </div>                        
-                         
-     </fieldset>      
-     <fieldset>
-        <legend>Control</legend>
-        <div>
-            <label>Afiliado fidelización: </label>
-            <select formControlName="afiliadoFidelizacion" id="afiliadoFidelizacion" name="afiliadoFidelizacion" >
-                <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
-            </select>
-        </div> 
-        <div>
-            <label>Tipos de impresión (Factura de venta): </label>
-            <select formControlName="tipoImpresionFV" id="tipoImpresionFV" name="tipoImpresionFV" >
-                <option [value]="o.id" *ngFor="let o of tipoImpresion">{{o.tipo}}</option>
-            </select>
-        </div> 
-    </fieldset>    
-     <fieldset>
-        <legend>Control</legend>
-        <div>
-            <label>Estado: </label>
-            <select formControlName="estado" id="estado" name="estado" >
-                <option [value]="o.codigo" *ngFor="let o of estado">{{o.nombre}}</option>
-            </select>
-        </div>
-     </fieldset>  
-        <div>
-            <button (click)="save()" [disabled]="!frmTercero.valid" >{{botonGuardar}}</button>
-            <button (click)="goToList()">{{botonRegresar}}</button>
+            <button 
+                    (click)="save()" [disabled]="!frmTercero.valid" 
+                    mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
+                {{botonGuardar}}
+            </button>
+            <button 
+                    (click)="goToList()"
+                    mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
+                {{botonRegresar}}
+            </button>
         </div>
 </form>
+
+<!--input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="15" />
+<select formControlName="tipoDocIdentificacion" id="tipoDocIdentificacion" name="tipoDocIdentificacion" maxlength='15' >
+    <option [value]="o.id" *ngFor="let o of tipoDocumento">{{o.nombre}}</option>
+</select>
+<input formControlName="numeroIdentificacion" [disabled]="!esNuevo" type="text" id="numeroIdentificacion" name="numeroIdentificacion" placeholder="numeroIdentificacion" maxlength="15" />
+
+<select formControlName="ciudadExpedicion" id="ciudadExpedicion" name="ciudadExpedicion" >
+    <option [value]="o.id" *ngFor="let o of ciudades">{{o.nombre}}</option>
+</select>
+<input formControlName="dv" [disabled]="!esNuevo" type="text" id="dv" name="dv" placeholder="dv" maxlength="1" />
+
+<input formControlName="razonSocial" [disabled]="!esNuevo" type="text" id="razonSocial" name="razonSocial" placeholder="razonSocial" maxlength="60" />
+
+<input formControlName="nombre1" [disabled]="!esNuevo" type="text" id="nombre1" name="nombre1" placeholder="nombre1" maxlength="15" />
+
+<input formControlName="nombre2" [disabled]="!esNuevo" type="text" id="nombre2" name="nombre2" placeholder="nombre2" maxlength="14" />
+
+<input formControlName="apellido1" [disabled]="!esNuevo" type="text" id="apellido1" name="apellido1" placeholder="apellido1" maxlength="15" />
+
+<input formControlName="apellido2" [disabled]="!esNuevo" type="text" id="apellido2" name="apellido2" placeholder="apellido2" maxlength="14" />
+<input formControlName="direccion" [disabled]="!esNuevo" type="text" id="direccion" name="direccion" placeholder="direccion" maxlength="80" />
+<select formControlName="idCiudad" id="idCiudad" name="idCiudad" >
+    <option [value]="o.id" *ngFor="let o of ciudades">{{o.nombre}}</option>
+</select>
+<select formControlName="idBarrio" id="idBarrio" name="idBarrio" >
+    <option [value]="o.id" *ngFor="let o of barrios">{{o.nombre}}</option>
+</select>
+<input formControlName="telefonoFijo" [disabled]="!esNuevo" type="text" id="telefonoFijo" name="telefonoFijo" placeholder="telefonoFijo" maxlength="10" />
+
+<input formControlName="telefonoMovil" [disabled]="!esNuevo" type="text" id="telefonoMovil" name="telefonoMovil" placeholder="telefonoMovil" maxlength="10" />
+<input formControlName="eMail" [disabled]="!esNuevo" type="text" id="eMail" name="eMail" placeholder="eMail" maxlength="100" />
+
+<select formControlName="idZona" id="idZona" name="idZona" >
+    <option [value]="o.id" *ngFor="let o of zonas">{{o.nombre}}</option>
+</select>
+<input formControlName="fechaNacimiento" [disabled]="!esNuevo" type="text" id="fechaNacimiento" name="fechaNacimiento" placeholder="fechaNacimiento" maxlength="10" />
+<input formControlName="lugarNacimiento" [disabled]="!esNuevo" type="text" id="lugarNacimiento" name="lugarNacimiento" placeholder="lugarNacimiento" maxlength="10" />
+
+<select formControlName="grupoSanguineo" id="grupoSanguineo" name="grupoSanguineo" >
+    <option [value]="o.id" *ngFor="let o of grupoSanguineo">{{o.tipo}}</option>
+</select>
+
+<select formControlName="sexo" id="sexo" name="sexo" >
+    <option [value]="o.id" *ngFor="let o of sexo">{{o.genero}}</option>
+</select>
+
+<select formControlName="estadoCivil" id="estadoCivil" name="estadoCivil" >
+    <option [value]="o.id" *ngFor="let o of estadoCivil">{{o.estado}}</option>
+</select>
+<select formControlName="profesionOficio" id="profesionOficio" name="profesionOficio" >
+    <option [value]="o.id" *ngFor="let o of profesionOficio">{{o.tipo}}</option>
+</select>
+<select formControlName="idEPS" id="idEPS" name="idEPS" >
+    <option [value]="o.id" *ngFor="let o of eps">{{o.nombre}}</option>
+</select>
+<select formControlName="tieneConvenio" id="tieneConvenio" name="tieneConvenio" >
+    <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
+</select>
+<select formControlName="tipoAfiliacion" id="tipoAfiliacion" name="tipoAfiliacion" >
+    <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
+</select>
+<select formControlName="idProfesionalAsignado" id="idProfesionalAsignado" name="idProfesionalAsignado" >
+    <option [value]="o.id" *ngFor="let o of profesionalAsignado">{{o.nombre}}</option>
+</select>
+<select formControlName="exentoIVA" id="exentoIVA" name="exentoIVA" >
+    <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
+</select>
+
+<select formControlName="autoretenedor" id="autoretenedor" name="autoretenedor" >
+    <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
+</select>
+<select formControlName="tipoPersona" id="tipoPersona" name="tipoPersona" >
+    <option [value]="o.id" *ngFor="let o of tipoPersona">{{o.tipo}}</option>
+</select>
+
+<input formControlName="cupoCredito" [disabled]="!esNuevo" type="text" id="cupoCredito" name="cupoCredito" placeholder="cupoCredito" maxlength="10" />
+
+<input formControlName="diasPlazo" [disabled]="!esNuevo" type="text" id="diasPlazo" name="diasPlazo" placeholder="diasPlazo" maxlength="3" />
+
+<input formControlName="listaPrecios" [disabled]="!esNuevo" type="text" id="listaPrecios" name="listaPrecios" placeholder="listaPrecios" maxlength="1" />
+
+<input formControlName="porcDtoContado" [disabled]="!esNuevo" type="text" id="porcDtoContado" name="porcDtoContado" placeholder="porcDtoContado" maxlength="2" />
+
+<input formControlName="porcDtoCredito" [disabled]="!esNuevo" type="text" id="porcDtoCredito" name="porcDtoCredito" placeholder="porcDtoCredito" maxlength="2" />
+
+<select formControlName="afiliadoFidelizacion" id="afiliadoFidelizacion" name="afiliadoFidelizacion" >
+    <option [value]="o.codigo" *ngFor="let o of activaciones">{{o.nombre}}</option>
+</select>
+<select formControlName="tipoImpresionFV" id="tipoImpresionFV" name="tipoImpresionFV" >
+    <option [value]="o.id" *ngFor="let o of tipoImpresion">{{o.tipo}}</option>
+</select>
+
+<select formControlName="estado" id="estado" name="estado" >
+    <option [value]="o.codigo" *ngFor="let o of estado">{{o.nombre}}</option>
+</select-->
