@@ -147,8 +147,34 @@ button.delete-button{
 }
 
 
-/*
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/
+/* -----
+  Modificación de la hoja de estilos de Material Design para 
+  campos: select, radio y despliegue de mensajes de error.
+----- */
+select {
+  padding: 1px;
+  width: 98%;
+  margin: 1px;
+  border: 0;
+  border-bottom: 2px solid rgb(236,239,241);
+}
+mdl-radio{
+  padding: 0 10px 0 20px;
+}
+.cellbackcolor{
+  background-color: rgb(236,239,241)
+}
+.cellbackcolor-contrast{
+  background-color: rgb(255,255,255)
+}
+/*.mdl-grid div div mdl-textfield{
+  background-color: yellow !important;
+  height: 0;
+}*/
+
+.fieldvalidate-error{
+  color: rgb(213,0,0);
+  font-size: 0.8em;
+  padding: -10px 0 0 0 !important;
+
+}

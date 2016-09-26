@@ -2,6 +2,9 @@ import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule }    from '@angular/forms';
 
+// Imports de packages externos
+import { MdlModule } from 'angular2-mdl';       // <--- Material Design Lite
+
 // Imports for loading & configuring the in-memory web api
 import { HttpModule } from '@angular/http';
 
@@ -43,6 +46,7 @@ import { routing, appRoutingProviders }        from './app.routing';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    MdlModule,          // <--- Material Design Lite
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     routing
