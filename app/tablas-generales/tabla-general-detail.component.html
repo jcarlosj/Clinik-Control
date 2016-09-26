@@ -1,32 +1,53 @@
 <h3>{{title}}</h3>
 <form  *ngIf="vObj" [formGroup]="frmTablaGeneral" novalidate >
     <input type="hidden" id="id" name="id" formControlName="id" />
-    <div>
-        <label>Codigo: </label>
-        <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="10" required />
-        <div [hidden]="!(frmTablaGeneral.controls.codigo.touched && !frmTablaGeneral.controls.codigo.valid)">
-            <small>
-                <i>> {{ errors( 'codigo' ) }}</i>
-            </small>
+    <div class="mdl-grid">
+        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            <mdl-textfield 
+                    type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="10" required
+                    formControlName="codigo" [disabled]="!esNuevo" 
+                    label="Código" floating-label >
+            </mdl-textfield>
+            <div [hidden]="!(frmTablaGeneral.controls.codigo.touched && !frmTablaGeneral.controls.codigo.valid)">
+                <span class="fieldvalidate-error">
+                    <i>> {{ errors( 'codigo' ) }}</i>
+                </span>
+            </div>
+        </div>
+        <div class="mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+            <mdl-textfield 
+                    formControlName="descripcion" 
+                    type="text" id="descripcion" name="descripcion" placeholder="descripcion" maxlength="80" required 
+                    label="Descripción" floating-label >
+            </mdl-textfield>
+            <div [hidden]="!(frmTablaGeneral.controls.descripcion.touched && !frmTablaGeneral.controls.descripcion.valid)">
+                <span class="fieldvalidate-error">
+                    <i>> {{ errors( 'descripcion' ) }}</i>
+                </span>
+            </div>
+        </div>
+        <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone">
+        </div>
+        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            <div>
+                <label>Estado: </label>
+                <select formControlName="estado" id="estado" name="estado" >
+                    <option [value]="o.codigo" *ngFor="let o of estado">{{o.nombre}}</option>
+                </select>
+            </div>
         </div>
     </div>
-    <div>
-        <label>Descripcion: </label>
-        <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion" maxlength="80" required />
-                <div [hidden]="!(frmTablaGeneral.controls.descripcion.touched && !frmTablaGeneral.controls.descripcion.valid)">
-            <small>
-                <i>> {{ errors( 'descripcion' ) }}</i>
-            </small>
-        </div>
-    </div>
-    <div>
-        <label>Estado: </label>
-        <select formControlName="estado" id="estado" name="estado" >
-            <option [value]="o.codigo" *ngFor="let o of estado">{{o.nombre}}</option>
-        </select>
-    </div>
+    <br/>
     <p>
-        <button (click)="save()" [disabled]="!frmTablaGeneral.valid" >{{botonGuardar}}</button>
-        <button (click)="goToList()">{{botonRegresar}}</button>
+        <button 
+                (click)="save()" [disabled]="!frmTablaGeneral.valid" 
+                mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
+            {{botonGuardar}}
+        </button>
+        <button 
+                (click)="goToList()"
+                mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
+            {{botonRegresar}}
+        </button>
     </p>
 </form>
