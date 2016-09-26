@@ -14,8 +14,9 @@ import { cEstado}              from '../_tipos/cEstado';
 
 // Decorator
 @Component({
-  selector: 'tipos-impuesto',
-  templateUrl: Path.Server.TEMPLATE + 'tipos-impuesto/tipo-impuesto-detail.component.html'
+  moduleId    : module.id,
+  selector    : 'tipo-impuesto-detail',
+  templateUrl : 'tipo-impuesto-detail.component.html'
 })  
 
 // Clase principal del componente

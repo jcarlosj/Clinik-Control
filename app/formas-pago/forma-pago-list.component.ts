@@ -9,7 +9,9 @@ import { FormaPago }         from './forma-pago';
 
 // Decorator
 @Component({
-	templateUrl: Path.Server.TEMPLATE + 'formas-pago/forma-pago-list.component.html',
+  moduleId    : module.id,
+  selector    : 'forma-pago-list',	
+	templateUrl : 'forma-pago-list.component.html',
 })
 
 // Clase principal para este componente

@@ -9,7 +9,9 @@ import { TablaGeneral } 				from './tabla-general';
 
 // Decorator
 @Component({
-	templateUrl: Path.Server.TEMPLATE + 'tablas-generales/tabla-general-list.component.html',
+	moduleId    : module.id,
+	selector    : 'tablas-generales-list',
+	templateUrl : 'tabla-general-list.component.html',
 })
 
 // Class

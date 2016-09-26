@@ -9,7 +9,9 @@ import { Tercero }          from './tercero';
 
 // Decorator
 @Component({
-	templateUrl: Path.Server.TEMPLATE + 'terceros/tercero-list.component.html',
+	moduleId    : module.id,
+	selector		: 'tercero-list',
+	templateUrl : 'tercero-list.component.html',
 })
 
 // Clase principal para este componente

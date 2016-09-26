@@ -9,7 +9,9 @@ import { TipoImpuesto }         from './tipo-impuesto';
 
 // Decorator
 @Component({
-	templateUrl: Path.Server.TEMPLATE + 'tipos-impuesto/tipo-impuesto-list.component.html',
+  moduleId    : module.id,
+  selector    : 'tipo-impuesto-list',
+	templateUrl : 'tipo-impuesto-list.component.html',
 })
 
 // Clase principal para este componente

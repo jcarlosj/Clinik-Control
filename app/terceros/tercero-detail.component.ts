@@ -15,8 +15,9 @@ import { cEstado }         from '../_tipos/cEstado';
 
 // Decorator
 @Component({
-  selector: 'tercero',
-  templateUrl: Path.Server.TEMPLATE + 'terceros/tercero-detail.component.html'
+  moduleId    : module.id,
+  selector    : 'tercero-details',
+  templateUrl : 'tercero-detail.component.html'
 })  
 
 // Clase principal del componente

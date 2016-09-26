@@ -23,8 +23,9 @@ import { cEstado }             from '../_tipos/cEstado';
 
 // Decorator
 @Component({
-  selector    : 'tablas-generales',
-  templateUrl : Path.Server.TEMPLATE + 'tablas-generales/tabla-general-detail.component.html'
+  moduleId    : module.id,
+  selector    : 'tablas-generales-detail',
+  templateUrl : 'tabla-general-detail.component.html'
 })
 
 // Class

@@ -9,7 +9,9 @@ import { Producto }          from './producto';
 
 // Decorator
 @Component({
-	templateUrl: Path.Server.TEMPLATE + 'productos/producto-list.component.html',
+	moduleId    : module.id,
+  selector    : 'producto-list',
+	templateUrl : 'producto-list.component.html',
 })
 
 // Clase principal para este componente

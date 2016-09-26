@@ -9,7 +9,9 @@ import { Agrupacion }         from './agrupacion';
 
 // Decorator
 @Component({
-	templateUrl: Path.Server.TEMPLATE + 'agrupaciones/agrupacion-list.component.html',
+  moduleId    : module.id,
+  selector    : 'tipos-impuesto-list',	
+	templateUrl : 'agrupacion-list.component.html',
 })
 
 // Clase principal para este componente

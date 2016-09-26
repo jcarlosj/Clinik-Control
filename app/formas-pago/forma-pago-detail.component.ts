@@ -14,8 +14,9 @@ import { cEstado}           from '../_tipos/cEstado';
 
 // Decorator
 @Component({
-  selector: 'formas-de-pago',
-  templateUrl: Path.Server.TEMPLATE + 'formas-pago/forma-pago-detail.component.html'
+  moduleId    : module.id,
+  selector    : 'forma-pago-detail',
+  templateUrl : 'forma-pago-detail.component.html'
 })  
 
 // Clase principal del componente
