@@ -2,53 +2,65 @@
 <form [formGroup]="frmTipoImpuesto" *ngIf="vObj" novalidate >
     <input formControlName="id" type="hidden" id="id" name="id" />
     <div>
-        <label>Codigo: </label>
-        <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="10" required />
+        <mdl-textfield 
+                type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="10" required
+                formControlName="codigo" [disabled]="!esNuevo" 
+                label="Código" floating-label>
+        </mdl-textfield>
         
         <div [hidden]="!(frmTipoImpuesto.controls.codigo.touched && !frmTipoImpuesto.controls.codigo.valid)">
-            <small>
+            <span class="fieldvalidate-error">
                 <i> {{ errors( 'codigo' ) }}</i>
-            </small>
+            </span>
         </div>
     </div>  
     <div>
-        <label>Codigo alternativo: </label>
-        <input formControlName="codigoAlternativo" [disabled]="!esNuevo" type="text" id="codigoAlternativo" name="codigoAlternativo" placeholder="codigoAlternativo" maxlength="10" required />
+        <mdl-textfield 
+                formControlName="codigoAlternativo"
+                type="text" id="codigoAlternativo" name="codigoAlternativo" placeholder="codigoAlternativo" maxlength="10" required 
+                label="Código alternativo" floating-label >
+        </mdl-textfield>
         
         <div [hidden]="!(frmTipoImpuesto.controls.codigoAlternativo.touched && !frmTipoImpuesto.controls.codigoAlternativo.valid)">
-            <small>
+            <span class="fieldvalidate-error">
                 <i> {{ errors( 'codigoAlternativo' ) }}</i>
-            </small>
+            </span>
         </div>
     </div> 
     <div>     
-        <label>Descripcion: </label>
-        <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion" maxlength="80" required />
-        
+        <mdl-textfield 
+                formControlName="descripcion" 
+                type="text" id="descripcion" name="descripcion" placeholder="descripcion" maxlength="80" required 
+                label="Descripción" floating-label >
+        </mdl-textfield>
         <div [hidden]="!(frmTipoImpuesto.controls.descripcion.touched && !frmTipoImpuesto.controls.descripcion.valid)">
-            <small>
+            <span class="fieldvalidate-error">
                 <i> {{ errors( 'descripcion' ) }}</i>
-            </small>
+            </span>
         </div>
     </div>
     <div>
-        <label>Porcentaje: </label>
-        <input formControlName="porcentaje" [disabled]="!esNuevo" type="text" id="porcentaje" name="porcentaje" placeholder="porcentaje" maxlength="5" />
-        
+        <mdl-textfield 
+                formControlName="porcentaje" 
+                type="text" id="porcentaje" name="porcentaje" placeholder="porcentaje" maxlength="5" 
+                label="Porcentaje" floating-label >
+        </mdl-textfield>
         <div [hidden]="!(frmTipoImpuesto.controls.porcentaje.touched && !frmTipoImpuesto.controls.porcentaje.valid)">
-            <small>
+            <span class="fieldvalidate-error">
                 <i> {{ errors( 'porcentaje' ) }}</i>
-            </small>
+            </span>
         </div>
     </div>  
     <div>
-        <label>Base: </label>
-        <input formControlName="base" [disabled]="!esNuevo" type="text" id="base" name="base" placeholder="base" />
-        
+        <mdl-textfield 
+                formControlName="base" 
+                type="text" id="base" name="base" placeholder="base"  
+                label="Base" floating-label >
+        </mdl-textfield>
         <div [hidden]="!(frmTipoImpuesto.controls.base.touched && !frmTipoImpuesto.controls.base.valid)">
-            <small>
+            <span class="fieldvalidate-error">
                 <i> {{ errors( 'base' ) }}</i>
-            </small>
+            </span>
         </div>
     </div>       
     <div>
@@ -56,15 +68,42 @@
         <select formControlName="tipoImpuesto" id="tipoImpuesto" name="tipoImpuesto" >
             <option [value]="o.tipo" *ngFor="let o of tiposDeImpuesto">{{o.descripcion}}</option>
         </select>
-    </div>    
+    </div>
+    <br>    
     <div>
         <label>Estado: </label>
         <select formControlName="estado" id="estado" name="estado" >
             <option [value]="o.codigo" *ngFor="let o of estado">{{o.nombre}}</option>
         </select>
     </div>
+    <br>
     <div>
-        <button (click)="save()" [disabled]="!frmTipoImpuesto.valid" >{{botonGuardar}}</button>
-        <button (click)="goToList()">{{botonRegresar}}</button>
+        <button 
+                (click)="save()" [disabled]="!frmTipoImpuesto.valid" 
+                mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
+            {{botonGuardar}}
+        </button>
+        <button 
+                (click)="goToList()"
+                mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
+            {{botonRegresar}}
+        </button>
     </div>   
 </form>
+
+
+<!--input formControlName="codigoAlternativo" [disabled]="!esNuevo" type="text" id="codigoAlternativo" name="codigoAlternativo" placeholder="codigoAlternativo" maxlength="10" required />
+
+<input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion" maxlength="80" required />
+
+<input formControlName="porcentaje" [disabled]="!esNuevo" type="text" id="porcentaje" name="porcentaje" placeholder="porcentaje" maxlength="5" />
+
+<input formControlName="base" [disabled]="!esNuevo" type="text" id="base" name="base" placeholder="base" />
+
+<select formControlName="tipoImpuesto" id="tipoImpuesto" name="tipoImpuesto" >
+    <option [value]="o.tipo" *ngFor="let o of tiposDeImpuesto">{{o.descripcion}}</option>
+</select>
+
+<select formControlName="estado" id="estado" name="estado" >
+    <option [value]="o.codigo" *ngFor="let o of estado">{{o.nombre}}</option>
+</select-->
