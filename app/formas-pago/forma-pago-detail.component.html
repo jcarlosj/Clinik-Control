@@ -1,42 +1,63 @@
+<div class="row">
 <h4>{{title}}</h4>
-<form [formGroup]="frmFormaPago" *ngIf="vObj" novalidate >
+<form class="col s12" [formGroup]="frmFormaPago" *ngIf="vObj" novalidate >
     <input formControlName="id" type="hidden" id="id" name="id" />
-    <div>
-        <label>Codigo: </label>
-        <input formControlName="codigo" [disabled]="!esNuevo" type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="10" required />
-        
-        <div [hidden]="!(frmFormaPago.controls.codigo.touched && !frmFormaPago.controls.codigo.valid)">
-            <small>
-                <!--Error en el codigo   {{ frmFormaPago.controls.codigo.errors | json }}-->
-                <i>> {{ errors( 'codigo' ) }}</i>
-            </small>
+    <div class="mdl-grid">
+        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            <mdl-textfield 
+                    type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="10" required
+                    formControlName="codigo" [disabled]="!esNuevo" 
+                    label="Código" floating-label>
+            </mdl-textfield>
+            
+            <div [hidden]="!(frmFormaPago.controls.codigo.touched && !frmFormaPago.controls.codigo.valid)">
+                <span class="fieldvalidate-error">
+                    <!--Error en el codigo   {{ frmFormaPago.controls.codigo.errors | json }}-->
+                    <i>> {{ errors( 'codigo' ) }}</i>
+                </span>
+            </div>
+        </div>
+        <div class="mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+            <mdl-textfield 
+                    type="text" id="descripcion" name="descripcion" placeholder="descripcion" maxlength="80" required
+                    formControlName="descripcion" label="Descripción"
+                    floating-label>
+            </mdl-textfield>
+            
+            <div [hidden]="!(frmFormaPago.controls.codigo.touched && !frmFormaPago.controls.descripcion.valid)">
+                <span class="fieldvalidate-error">
+                    <!--Error en el descripcion   {{ frmFormaPago.controls.descripcion.errors | json }}-->
+                    <i>> {{ errors( 'descripcion' ) }}</i>
+                </span>
+            </div>
+        </div>
+        <div class="mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            <div>
+                <label>Tipo: </label>
+                <select formControlName="tipo" id="tipo" name="tipo">
+                    <option [value]="o.tipo" *ngFor="let o of tiposFormasPago">{{o.descripcion}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            <label>Estado: </label>
+            <select formControlName="estado" id="estado" name="estado" >
+                <option [value]="o.codigo" *ngFor="let o of estado">{{o.nombre}}</option>
+            </select>
         </div>
     </div>
+    <br>
     <div>
-        <label>Descripcion: </label>
-        <input formControlName="descripcion" type="text" id="descripcion" name="descripcion" placeholder="descripcion" maxlength="80" required />
-        
-        <div [hidden]="!(frmFormaPago.controls.codigo.touched && !frmFormaPago.controls.descripcion.valid)">
-            <small>
-                <!--Error en el descripcion   {{ frmFormaPago.controls.descripcion.errors | json }}-->
-                <i>> {{ errors( 'descripcion' ) }}</i>
-            </small>
-        </div>
-    </div>
-    <div>
-        <label>Tipo: </label>
-        <select formControlName="tipo" id="tipo" name="tipo">
-            <option [value]="o.tipo" *ngFor="let o of tiposFormasPago">{{o.descripcion}}</option>
-        </select>
-    </div>
-    <div>
-        <label>Estado: </label>
-        <select formControlName="estado" id="estado" name="estado" >
-            <option [value]="o.codigo" *ngFor="let o of estado">{{o.nombre}}</option>
-        </select>
-    </div>
-    <div>
-        <button (click)="save()" [disabled]="!frmFormaPago.valid" >{{botonGuardar}}</button>
-        <button (click)="goToList()">{{botonRegresar}}</button>
+        <button 
+                (click)="save()" [disabled]="!frmFormaPago.valid" 
+                mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
+            {{botonGuardar}}
+        </button>
+        <button 
+                (click)="goToList()"
+                mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
+            {{botonRegresar}}
+        </button>
     </div>   
 </form>
+</div>
