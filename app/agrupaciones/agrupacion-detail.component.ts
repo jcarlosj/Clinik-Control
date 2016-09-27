@@ -61,19 +61,19 @@ export class AgrupacionDetailComponent implements OnInit, OnDestroy {
 
     // Inicializando atributos
     this .frmAgrupacion = new FormGroup({
-          id                : new FormControl(),
-          codigo            : new FormControl(),
-          descripcion       : new FormControl(),
-          codigoPadre       : new FormControl(),
-          nivel             : new FormControl(),
-          permiteDetalle    : new FormControl(),
-          orden             : new FormControl(),
-          idUsuarioCrea     : new FormControl(),     // <-- Parámetros: Control. 
-          idUsuarioModifica : new FormControl(), 
-          fechaCreacion     : new FormControl(),
-          fechaModificacion : new FormControl(),
-          registro          : new FormControl(),
-          estado            : new FormControl()
+          id                  : new FormControl(),
+          codigo              : new FormControl(),
+          descripcion         : new FormControl(),
+          codigo_padre        : new FormControl(),
+          nivel               : new FormControl(),
+          permite_detalle     : new FormControl(),
+          orden               : new FormControl(),
+          id_usuario_crea     : new FormControl(),     // <-- Parámetros: Control. 
+          id_usuario_modifica : new FormControl(), 
+          fecha_creacion      : new FormControl(),
+          fecha_modificacion  : new FormControl(),
+          registro            : new FormControl(),
+          estado              : new FormControl()
     });
 
     this.sub = this.route.params.subscribe(params => {
@@ -127,7 +127,7 @@ export class AgrupacionDetailComponent implements OnInit, OnDestroy {
             Validators .maxLength( 80 ),
             Validators .pattern( Validate.RegExp.GENERAL )
     ]);
-    this .frmAgrupacion .controls[ "codigoPadre" ] .setValidators([ 
+    this .frmAgrupacion .controls[ "codigo_padre" ] .setValidators([ 
             Validators .required,
             Validators .minLength( 0 ), 
             Validators .maxLength( 3 ),
@@ -174,7 +174,7 @@ export class AgrupacionDetailComponent implements OnInit, OnDestroy {
         maxlength:     'Hasta 80 caracteres.',
         pattern:       'Solo valores alfanuméricos y algunos símbolos.'
       },
-      codigoPadre: {
+      codigo_padre: {
         required:      'Campo requerido.',
         minlength:     'Mínimo 1 o más números.',
         maxlength:     'Hasta 3 caracteres.',

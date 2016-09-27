@@ -47,12 +47,12 @@ export class TerceroDetailComponent implements OnInit, OnDestroy {
   private zonas               : any;
   private tipoDocumento       : any;
   private sexo                : any;
-  private grupoSanguineo      : any;
-  private estadoCivil         : any;
-  private profesionOficio     : any;
+  private grupo_sanguineo      : any;
+  private estado_civil         : any;
+  private profesion_oficio     : any;
   private eps                 : any;
   private profesionalAsignado : any;
-  private tipoPersona         : any;
+  private tipo_persona         : any;
   private tipoImpresion       : any;
 
   // Constructor
@@ -81,60 +81,60 @@ export class TerceroDetailComponent implements OnInit, OnDestroy {
     // Inicializando atributos
     this .frmTercero = new FormGroup({
           //--- DATOS BÁSICOS ---
-          id                    : new FormControl(),
-          codigo                : new FormControl(),
-          tipoDocIdentificacion : new FormControl(),
-          numeroIdentificacion  : new FormControl(),
-          ciudadExpedicion      : new FormControl(),
-          dv                    : new FormControl(),
-          razonSocial           : new FormControl(),
-          nombre1               : new FormControl(),
-          nombre2               : new FormControl(),
-          apellido1             : new FormControl(),
-          apellido2             : new FormControl(),
+          id                      : new FormControl(),
+          codigo                  : new FormControl(),
+          tipo_doc_identificacion : new FormControl(),
+          numero_identificacion   : new FormControl(),
+          ciudad_expedicion       : new FormControl(),
+          dv                      : new FormControl(),
+          razon_social            : new FormControl(),
+          nombre1                 : new FormControl(),
+          nombre2                 : new FormControl(),
+          apellido1               : new FormControl(),
+          apellido2               : new FormControl(),
           //--- DATOS UBICACION ---
-          direccion             : new FormControl(),
-          idCiudad              : new FormControl(),
-          idBarrio              : new FormControl(),
-          telefonoFijo          : new FormControl(),
-          telefonoMovil         : new FormControl(),
-          eMail                 : new FormControl(),
-          idZona                : new FormControl(),
+          direccion               : new FormControl(),
+          id_ciudad               : new FormControl(),
+          id_barrio               : new FormControl(),
+          telefono_fijo           : new FormControl(),
+          telefono_movil          : new FormControl(),
+          e_mail                  : new FormControl(),
+          id_zona                 : new FormControl(),
           //--- DATOS PERSONALES ---
-          fechaNacimiento       : new FormControl(),
-          lugarNacimiento       : new FormControl(),   
-          grupoSanguineo        : new FormControl(),
-          sexo                  : new FormControl(),        
-          estadoCivil           : new FormControl(),
-          profesionOficio       : new FormControl(),
-          idEPS                 : new FormControl(),
+          fecha_nacimiento        : new FormControl(),
+          lugar_nacimiento        : new FormControl(),   
+          grupo_sanguineo         : new FormControl(),
+          sexo                    : new FormControl(),        
+          estado_civil            : new FormControl(),
+          profesion_oficio        : new FormControl(),
+          id_eps                  : new FormControl(),
           //--- DATOS CLINIK CONTROL ---
-          tieneConvenio         : new FormControl(),
-          tipoAfiliacion        : new FormControl(),
-          idProfesionalAsignado : new FormControl(),
+          tiene_convenio          : new FormControl(),
+          tipo_afiliacion         : new FormControl(),
+          id_profesional_asignado : new FormControl(),
           //--- PARAMETROS LEGALES ---
-          exentoIVA             : new FormControl(),
-          autoretenedor         : new FormControl(),
-          tipoPersona           : new FormControl(),
+          exento_iva              : new FormControl(),
+          autoretenedor           : new FormControl(),
+          tipo_persona            : new FormControl(),
           //--- PARAMETROS CONTROLES CXC CXP Y CAJA ---
-          cupoCredito           : new FormControl(),
-          diasPlazo             : new FormControl(),
-          listaPrecios          : new FormControl(),
-          porcDtoContado        : new FormControl(),
-          porcDtoCredito        : new FormControl(),
-          afiliadoFidelizacion  : new FormControl(),
-          tipoImpresionFV       : new FormControl(),
+          cupo_credito            : new FormControl(),
+          dias_plazo              : new FormControl(),
+          lista_precios           : new FormControl(),
+          porc_dto_contado        : new FormControl(),
+          porc_dto_credito        : new FormControl(),
+          afiliado_fidelizacion   : new FormControl(),
+          tipo_impresion_fv       : new FormControl(),
           //--- MANEJAR PESTAÑAS ---
           //referenciasTerceros   : new FormControl(),
           //observaciones         : new FormControl(),
           //tipoTercero           : new FormControl(),
           //--- CONTROL ---
-          estado                : new FormControl(),
-          idUsuarioCrea         : new FormControl(),
-          idUsuarioModifica     : new FormControl(),
-          fechaCrea             : new FormControl(),
-          fechaModifica         : new FormControl(),
-          registros             : new FormControl()
+          estado                  : new FormControl(),
+          id_usuario_crea         : new FormControl(),
+          id_usuario_modifica     : new FormControl(),
+          fecha_creacion          : new FormControl(),
+          fecha_modificacion      : new FormControl(),
+          registros               : new FormControl()
     });
 
     this.sub = this.route.params.subscribe(params => {
@@ -152,12 +152,12 @@ export class TerceroDetailComponent implements OnInit, OnDestroy {
           this .zonas               = this.data['0'].zonas;
           this .tipoDocumento       = this.data['0'].tipoDocumento;
           this .sexo                = this.data['0'].sexo;
-          this .grupoSanguineo      = this.data['0'].grupoSanguineo;
-          this .estadoCivil         = this.data['0'].estadoCivil;
-          this .profesionOficio     = this.data['0'].profesionOficio;
+          this .grupo_sanguineo     = this.data['0'].grupo_sanguineo;
+          this .estado_civil        = this.data['0'].estado_civil;
+          this .profesion_oficio    = this.data['0'].profesion_oficio;
           this .eps                 = this.data['0'].eps;
           this .profesionalAsignado = this.data['0'].profesionalAsignado;
-          this .tipoPersona         = this.data['0'].tipoPersona;
+          this .tipo_persona        = this.data['0'].tipo_persona;
           this .tipoImpresion       = this.data['0'].tipoImpresion;
 
           // --------- Ciclo de prueba para recorrer los campos de la estructura
@@ -214,7 +214,7 @@ export class TerceroDetailComponent implements OnInit, OnDestroy {
             Validators .maxLength( 15 ),
             Validators .pattern( Validate.RegExp.CODIGO )
     ]);
-    this .frmTercero .controls[ "numeroIdentificacion" ] .setValidators([
+    this .frmTercero .controls[ "numero_identificacion" ] .setValidators([
             Validators .required,  
             Validators .minLength( 7 ), 
             Validators .maxLength( 15 ),
@@ -224,7 +224,7 @@ export class TerceroDetailComponent implements OnInit, OnDestroy {
             Validators .maxLength( 1 ),
             Validators .pattern( Validate.RegExp.ENTERO )
     ]);
-    this .frmTercero .controls[ "razonSocial" ] .setValidators([ 
+    this .frmTercero .controls[ "razon_social" ] .setValidators([ 
             Validators .maxLength( 60 ),
             Validators .pattern( Validate.RegExp.GENERAL )
     ]);
@@ -255,42 +255,42 @@ export class TerceroDetailComponent implements OnInit, OnDestroy {
             Validators .maxLength( 80 ),
             Validators .pattern( Validate.RegExp.GENERAL )
     ]);
-    this .frmTercero .controls[ "telefonoFijo" ] .setValidators([
+    this .frmTercero .controls[ "telefono_fijo" ] .setValidators([
             Validators .minLength( 7 ), 
             Validators .maxLength( 20 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
-    this .frmTercero .controls[ "telefonoMovil" ] .setValidators([
+    this .frmTercero .controls[ "telefono_movil" ] .setValidators([
             Validators .minLength( 10 ), 
             Validators .maxLength( 20 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
-    this .frmTercero .controls[ "eMail" ] .setValidators([ 
+    this .frmTercero .controls[ "e_mail" ] .setValidators([ 
             Validators .maxLength( 100 ),
             Validators .pattern( Validate.RegExp.EMAIL )
     ]);
-    /*this .frmTercero .controls[ "fechaNacimiento" ] .setValidators([ 
+    /*this .frmTercero .controls[ "fecha_nacimiento" ] .setValidators([ 
             Validators .maxLength( 10 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);*/
-    this .frmTercero .controls[ "cupoCredito" ] .setValidators([ 
+    this .frmTercero .controls[ "cupo_credito" ] .setValidators([ 
             Validators .maxLength( 12 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
-    this .frmTercero .controls[ "diasPlazo" ] .setValidators([ 
+    this .frmTercero .controls[ "dias_plazo" ] .setValidators([ 
             Validators .maxLength( 3 ),
             Validators .pattern( Validate.RegExp.ENTERO )
     ]);
-    this .frmTercero .controls[ "listaPrecios" ] .setValidators([ 
+    this .frmTercero .controls[ "lista_precios" ] .setValidators([ 
             Validators .maxLength( 1 ),
             Validators .pattern( Validate.RegExp.ENTERO )
     ]);
-    this .frmTercero .controls[ "porcDtoContado" ] .setValidators([ 
+    this .frmTercero .controls[ "porc_dto_contado" ] .setValidators([ 
             Validators .maxLength( 2 ),
             Validators .pattern( Validate.RegExp.DECIMAL ),
             this .validaRangoPorcDtoContado
     ]);
-    this .frmTercero .controls[ "porcDtoCredito" ] .setValidators([ 
+    this .frmTercero .controls[ "porc_dto_credito" ] .setValidators([ 
             Validators .maxLength( 2 ),
             Validators .pattern( Validate.RegExp.DECIMAL ),
             this .validaRangoPorcDtoCredito
@@ -299,16 +299,16 @@ export class TerceroDetailComponent implements OnInit, OnDestroy {
     
   }
 
-  validaRangoPorcDtoContado( porcDtoContado: FormControl ) {
-      console.log( 'procentaje: ' + porcDtoContado .value);
-      return parseFloat( porcDtoContado .value ) >= parseFloat( '0' ) && parseFloat( porcDtoContado .value ) <= parseFloat( '100' ) ? null : {
+  validaRangoPorcDtoContado( porc_dto_contado: FormControl ) {
+      console.log( 'procentaje: ' + porc_dto_contado .value);
+      return parseFloat( porc_dto_contado .value ) >= parseFloat( '0' ) && parseFloat( porc_dto_contado .value ) <= parseFloat( '100' ) ? null : {
         range: true
       }
   }
 
-  validaRangoPorcDtoCredito( porcDtoCredito: FormControl ) {
-      console.log( 'procentaje: ' + porcDtoCredito .value);
-      return parseFloat( porcDtoCredito .value ) >= parseFloat( '0' ) && parseFloat( porcDtoCredito .value ) <= parseFloat( '100' ) ? null : {
+  validaRangoPorcDtoCredito( porc_dto_credito: FormControl ) {
+      console.log( 'procentaje: ' + porc_dto_credito .value);
+      return parseFloat( porc_dto_credito .value ) >= parseFloat( '0' ) && parseFloat( porc_dto_credito .value ) <= parseFloat( '100' ) ? null : {
         range: true
       }
   }
@@ -342,7 +342,7 @@ export class TerceroDetailComponent implements OnInit, OnDestroy {
         maxlength:     'Hasta 10  números y/o caracteres.',
         pattern:       'Solo valores alfanuméricos sin espacios'
       },
-      numeroIdentificacion: {
+      numero_identificacion: {
         required:      'Campo requerido.',
         minlength:     'Mínimo 7 o más números.',
         maxlength:     'Hasta 15 números.',
@@ -379,38 +379,38 @@ export class TerceroDetailComponent implements OnInit, OnDestroy {
         maxlength:     'Hasta 80 números y/o caracteres.',
         pattern:       'Solo valores alfanuméricos y algunos símbolos.'
       },         
-      telefonoFijo: {
+      telefono_fijo: {
         minlength:     'Mínimo 7 o más números.',
         maxlength:     'Hasta 20 números',
         pattern:       'Solo valores numéricos.'
       },
-      telefonoMovil: {
+      telefono_movil: {
         minlength:     'Mínimo 10 o más números.',
         maxlength:     'Hasta 20 números.',
         pattern:       'Solo valores numéricos.'
       },            
-      eMail: {
+      e_mail: {
         maxlength:     'Hasta 100 números y/o caracteres.',
         pattern:       'Solo valores alfanuméricos y el símbolo @.'
       },
-      cupoCredito: {
+      cupo_credito: {
         maxlength:     'Hasta 10 números',
         pattern:       'Solo valores enteros o decimales.'
       },      
-      diasPlazo: {
+      dias_plazo: {
         maxlength:     'Hasta 3 números',
         pattern:       'Solo valores enteros.'
       },  
-      listaPrecios: {
+      lista_precios: {
         maxlength:     'Ingresar 1 digito.',
         pattern:       'Solo valores enteros o decimales.'
       },      
-      porcDtoContado: {
+      porc_dto_contado: {
         maxlength:     'Hasta 5 números punto decimal incluido.',
         pattern:       'Solo valores enteros o decimales.',
         range:         'Establezca un rango entre 0-100'              
       },  
-      porcDtoCredito: {
+      porc_dto_credito: {
         maxlength:     'Hasta 5 números punto decimal incluido.',
         pattern:       'Solo valores enteros o decimales.',
         range:         'Establezca un rango entre 1-100'   

@@ -6,14 +6,14 @@ export class Agrupacion {
         public id                   : string = '',
         public codigo               : string = '',
         public descripcion          : string = '', 
-        public codigoPadre          : number = 0,
+        public codigo_padre         : number = 0,
         public nivel                : number = 0,
-        public permiteDetalle       : string = 'N',
+        public permite_detalle      : string = 'N',
         public orden                : number = 0,
-        public idUsuarioCrea        : number = 0,     // <-- Parámetros: Control. 
-        public idUsuarioModifica    : number = 0, 
-        public fechaCreacion        : string = '',
-        public fechaModificacion    : string = '',
+        public id_usuario_crea      : number = 0,     // <-- Parámetros: Control. 
+        public id_usuario_modifica  : number = 0, 
+        public fecha_creacion       : string = '',
+        public fecha_modificacion   : string = '',
         public registro             : number = 0,
         public estado               : string = 'A' 
     ) { }

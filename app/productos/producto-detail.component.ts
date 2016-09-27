@@ -15,9 +15,9 @@ import { cEstado }         from '../_tipos/cEstado';
 
 // Decorator
 @Component({
-  moduleId    : module.id,
-  selector    : 'producto-detail',
-  templateUrl : 'producto-detail.component.html'
+  moduleId: module.id,
+  selector: 'formas-de-pago',
+  templateUrl: 'producto-detail.component.html'
 })  
 
 // Clase principal del componente
@@ -74,65 +74,65 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
     // Inicializando atributos
     this .frmProducto = new FormGroup({
           //--- IDENTIFICACION DE PRODUCTO ---
-          id                  : new FormControl(),
-          codigo              : new FormControl(),
-          agrupacion          : new FormControl(),
-          descripcion1        : new FormControl(),
-          descripcion2        : new FormControl(),
-          marca               : new FormControl(),
-          codigoBarras        : new FormControl(),
-          referencia          : new FormControl(),
-          equivalencia        : new FormControl(),
-          unidadMedida        : new FormControl(),
-          unidadEmpaque       : new FormControl(),
-          ubicacionBodega     : new FormControl(),
+          id                   : new FormControl(),
+          codigo               : new FormControl(),
+          agrupacion           : new FormControl(),
+          descripcion1         : new FormControl(),
+          descripcion2         : new FormControl(),
+          marca                : new FormControl(),
+          codigo_barras        : new FormControl(),
+          referencia           : new FormControl(),
+          equivalencia         : new FormControl(),
+          unidad_medida        : new FormControl(),
+          unidad_empaque       : new FormControl(),
+          ubicacion_bodega     : new FormControl(),
           //--- PRECIOS Y DATOS ESTADISTICOS ---
-          precioVenta1        : new FormControl(),
-          precioVenta2        : new FormControl(),
-          precioVenta3        : new FormControl(),
-          precioVenta4        : new FormControl(),
-          precioVenta5        : new FormControl(),
-          existencia          : new FormControl(),
-          saldoPedido         : new FormControl(),
-          costoPromedio       : new FormControl(),   
-          costoUltimaCompra   : new FormControl(),
-          costoFOB            : new FormControl(), 
+          precio_venta1        : new FormControl(),
+          precio_venta2        : new FormControl(),
+          precio_venta3        : new FormControl(),
+          precio_venta4        : new FormControl(),
+          precio_venta5        : new FormControl(),
+          existencia           : new FormControl(),
+          saldo_pedido         : new FormControl(),
+          costo_promedio       : new FormControl(),   
+          costo_ultima_compra  : new FormControl(),
+          costo_fob            : new FormControl(), 
           //--- PARAMETROS (Legales) ---
-          tipoIVAVenta        : new FormControl(),
-          tipoIVACompra       : new FormControl(),
-          registroInvima      : new FormControl(),
-          numeroMesesGarantia : new FormControl(),
+          tipo_iva_venta        : new FormControl(),
+          tipo_iva_compra       : new FormControl(),
+          registro_invima       : new FormControl(),
+          numero_meses_garantia : new FormControl(),
           //--- PARAMETROS (Controles sobre valores y cantidades) ---
-          stockMinimo         : new FormControl(),
-          stockMaximo         : new FormControl(),
-          porcMaxDtoContado   : new FormControl(),
-          porcMaxDtoCredito   : new FormControl(),
-          porcComisionVenta   : new FormControl(),
+          stock_minimo          : new FormControl(),
+          stock_maximo          : new FormControl(),
+          porc_max_dto_contado  : new FormControl(),
+          porc_max_dto_credito  : new FormControl(),
+          porc_comision_venta   : new FormControl(),
           //--- PARAMETROS (Si/No) ---
-          productoActivo      : new FormControl(),
-          productoSeVende     : new FormControl(),
-          precioFijo          : new FormControl(),
-          usaControlLotes     : new FormControl(),
-          aplicaParaPedido    : new FormControl(),
-          usaSeriales         : new FormControl(),
-          productoEnConsig    : new FormControl(),
-          productoControlado  : new FormControl(),
-          permiteNegativos    : new FormControl(),
+          producto_activo       : new FormControl(),
+          producto_se_vende     : new FormControl(),
+          precio_fijo           : new FormControl(),
+          usa_control_lotes     : new FormControl(),
+          aplica_para_pedido    : new FormControl(),
+          usa_seriales          : new FormControl(),
+          producto_en_consig    : new FormControl(),
+          producto_controlado   : new FormControl(),
+          permite_negativos     : new FormControl(),
           //--- PARAMETROS (Varios) ---
-          colorAgenda         : new FormControl(),
-          presentacion        : new FormControl(),
-          viaAdministracion   : new FormControl(),
+          color_agenda          : new FormControl(),
+          presentacion          : new FormControl(),
+          via_administracion    : new FormControl(),
           //codigoBono          : new FormControl(),
           //--- OTROS ---
           //observnew FormControl(),
           //riesgosAsnew FormControl(),
           //--- CONTROL ---
           estado              : new FormControl(),
-          idUsuarioCrea       : new FormControl(),
+          /*idUsuarioCrea       : new FormControl(),
           idUsuarioModifica   : new FormControl(),
           fechaCrea           : new FormControl(),
           fechaModifica       : new FormControl(),
-          registros           : new FormControl()
+          registros           : new FormControl()*/
     });
 
     this.sub = this.route.params.subscribe(params => {
@@ -171,19 +171,30 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
           this.codigo = params['codigo'];
           this.service.getRecord(this.codigo)
               .then( obj => {
-                      this .vObj = obj;
-                      this .frmProducto .setValue( this.vObj );
-                      console .log( 'Nuevo: ' + this.esNuevo );
-                      this .validateFields();
-                      this .esNuevo =  false; 
+                      try{
+                        this .vObj = obj;
+                        this .frmProducto .setValue( this.vObj );
+                        console .log( 'Nuevo: ' + this.esNuevo );
+                        this .validateFields();
+                        this .esNuevo =  false;
+                      }
+                      catch(e){
+                        console.log('-->Error al consultar producto');
+                        console.log(e);
+                      } 
               });
         } 
         else {
-          this .vObj = new Producto();
-          this .frmProducto .setValue( new Producto() );
-          this .validateFields();
-          this .esNuevo =  true;
-          console .log( 'Nuevo: ' + this.esNuevo );
+          try{
+            this .vObj = new Producto();
+            this .frmProducto .setValue( new Producto() );
+            this .validateFields();
+            this .esNuevo =  true;
+            console .log( 'Nuevo: ' + this.esNuevo );
+          }
+          catch(e){
+            console.log('---> Error al presentar captura de nuevo item');
+          }
         }
 
     });
@@ -216,7 +227,7 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
             Validators .maxLength( 80 ),
             Validators .pattern( Validate.RegExp.GENERAL )
     ]);
-    this .frmProducto .controls[ "codigoBarras" ] .setValidators([ 
+    this .frmProducto .controls[ "codigo_barras" ] .setValidators([ 
             Validators .maxLength( 20 ),
             Validators .pattern( Validate.RegExp.CODIGO_BARRAS )
     ]);
@@ -228,34 +239,34 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
             Validators .maxLength( 20 ),
             Validators .pattern( Validate.RegExp.GENERAL )
     ]);
-    this .frmProducto .controls[ "unidadEmpaque" ] .setValidators([ 
+    this .frmProducto .controls[ "unidad_empaque" ] .setValidators([ 
             Validators .maxLength( 12 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
-    this .frmProducto .controls[ "ubicacionBodega" ] .setValidators([ 
+    this .frmProducto .controls[ "ubicacion_bodega" ] .setValidators([ 
             Validators .maxLength( 10 ),
             Validators .pattern( Validate.RegExp.CODIGO )
     ]);
     //--- PRECIOS Y DATOS ESTADISTICOS ---
-    this .frmProducto .controls[ "precioVenta1" ] .setValidators([
+    this .frmProducto .controls[ "precio_venta1" ] .setValidators([
             Validators .required, 
             Validators .minLength( 3 ), 
             Validators .maxLength( 9 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
-    this .frmProducto .controls[ "precioVenta2" ] .setValidators([ 
+    this .frmProducto .controls[ "precio_venta2" ] .setValidators([ 
             Validators .maxLength( 9 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
-    this .frmProducto .controls[ "precioVenta3" ] .setValidators([
+    this .frmProducto .controls[ "precio_venta3" ] .setValidators([
             Validators .maxLength( 9 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
-    this .frmProducto .controls[ "precioVenta4" ] .setValidators([ 
+    this .frmProducto .controls[ "precio_venta4" ] .setValidators([ 
             Validators .maxLength( 9 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
-    this .frmProducto .controls[ "precioVenta5" ] .setValidators([ 
+    this .frmProducto .controls[ "precio_venta5" ] .setValidators([ 
             Validators .maxLength( 9 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
@@ -263,56 +274,56 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
             Validators .maxLength( 12 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
-    this .frmProducto .controls[ "saldoPedido" ] .setValidators([ 
+    this .frmProducto .controls[ "saldo_pedido" ] .setValidators([ 
             Validators .maxLength( 12 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
-    this .frmProducto .controls[ "costoPromedio" ] .setValidators([ 
+    this .frmProducto .controls[ "costo_promedio" ] .setValidators([ 
             Validators .maxLength( 12 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
-    this .frmProducto .controls[ "costoUltimaCompra" ] .setValidators([ 
+    this .frmProducto .controls[ "costo_ultima_compra" ] .setValidators([ 
             Validators .maxLength( 12 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
-    this .frmProducto .controls[ "costoFOB" ] .setValidators([ 
+    this .frmProducto .controls[ "costo_fob" ] .setValidators([ 
             Validators .maxLength( 12 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     //--- PARAMETROS (Legales) ---
-    this .frmProducto .controls[ "registroInvima" ] .setValidators([ 
+    this .frmProducto .controls[ "registro_invima" ] .setValidators([ 
             Validators .maxLength( 30 ),
             Validators .pattern( Validate.RegExp.GENERAL )
     ]);           
-    this .frmProducto .controls[ "numeroMesesGarantia" ] .setValidators([ 
+    this .frmProducto .controls[ "numero_meses_garantia" ] .setValidators([ 
             Validators .maxLength( 2 ),
             Validators .pattern( Validate.RegExp.ENTERO )
     ]);  
     //--- PARAMETROS (Controles sobre valores y cantidades) ---
-    this .frmProducto .controls[ "stockMinimo" ] .setValidators([ 
+    this .frmProducto .controls[ "stock_minimo" ] .setValidators([ 
             Validators .maxLength( 12 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
-    this .frmProducto .controls[ "stockMaximo" ] .setValidators([ 
+    this .frmProducto .controls[ "stock_maximo" ] .setValidators([ 
             Validators .maxLength( 12 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
-    this .frmProducto .controls[ "porcMaxDtoContado" ] .setValidators([ 
+    this .frmProducto .controls[ "porc_max_dto_contado" ] .setValidators([ 
             Validators .maxLength( 5 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
-    this .frmProducto .controls[ "porcMaxDtoCredito" ] .setValidators([ 
+    this .frmProducto .controls[ "porc_max_dto_credito" ] .setValidators([ 
             Validators .maxLength( 5 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
-    this .frmProducto .controls[ "porcComisionVenta" ] .setValidators([  
+    this .frmProducto .controls[ "porc_comision_venta" ] .setValidators([  
             Validators .maxLength( 5 ),
             Validators .pattern( Validate.RegExp.DECIMAL )
     ]);
     //--- PARAMETROS (Si/No) ---
     // No hay reglas todos son selectores obligatorios
     //--- PARAMETROS (Varios) ---
-    this .frmProducto .controls[ "colorAgenda" ] .setValidators([ 
+    this .frmProducto .controls[ "color_agenda" ] .setValidators([ 
             Validators .maxLength( 7 ),
             Validators .pattern( Validate.RegExp.HEXADECIMAL )
     ]);
@@ -321,7 +332,7 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
             Validators .maxLength( 30 ),
             Validators .pattern( Validate.RegExp.ENTERO )
     ]);
-    this .frmProducto .controls[ "viaAdministracion" ] .setValidators([ 
+    this .frmProducto .controls[ "via_administracion" ] .setValidators([ 
             Validators .minLength( 10 ), 
             Validators .maxLength( 30 ),
             Validators .pattern( Validate.RegExp.ENTERO )
@@ -375,7 +386,7 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
         maxlength:     'Hasta 80 números y/o caracteres.',
         pattern:       'Solo valores alfanuméricos y algunos símbolos.'
       },
-      codigoBarras: {
+      codigo_barras: {
         maxlength:     'Hasta 20 números y/o caracteres..',
         pattern:       'Solo valores alfabéticos.'
       },
@@ -387,34 +398,34 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
         maxlength:     'Hasta 20 números y/o caracteres..',
         pattern:       'Solo valores y algunos símbolos.'
       },
-      unidadEmpaque: {
+      unidad_empaque: {
         maxlength:     'Debe tener hasta 12 números.',
         pattern:       'Solo valores decimales.'
       },
-      ubicacionBodega: {
+      ubicacion_bodega: {
         maxlength:     'Debe tener hasta 10 números y/o caracteres..',
         pattern:       'Solo valores alfabéticos.'
       },
       //--- PRECIOS Y DATOS ESTADISTICOS ---
-      precioVenta1: {
+      precio_venta1: {
         required:      'Campo requerido.',
         minlength:     'Mínimo 3 o más números.',
         maxlength:     'Hasta 9 números.',
         pattern:       'Solo valores decimales.'
       },
-      precioVenta2: {
+      precio_venta2: {
         maxlength:     'Hasta 9 números.',
         pattern:       'Solo valores decimales.'
       },
-      precioVenta3: {
+      precio_venta3: {
         maxlength:     'Hasta 9 números.',
         pattern:       'Solo valores decimales.'
       },
-      precioVenta4: {
+      precio_venta4: {
         maxlength:     'Hasta 9 números.',
         pattern:       'Solo valores decimales.'
       },
-      precioVenta5: {
+      precio_venta5: {
         maxlength:     'Hasta 9 números.',
         pattern:       'Solo valores decimales.'
       },     
@@ -422,53 +433,53 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
         maxlength:     'Hasta 12 números.',
         pattern:       'Solo valores decimales.'
       }, 
-      saldoPedido: {
+      saldo_pedido: {
         maxlength:     'Hasta 12 números.',
         pattern:       'Solo valores decimales.'
       }, 
-      costoPromedio: {
+      costo_promedio: {
         maxlength:     'Hasta 12 números.',
         pattern:       'Solo valores decimales.'
       }, 
-      costoUltimaCompra: {
+      costo_ultima_compra: {
         maxlength:     'Hasta 12 números.',
         pattern:       'Solo valores decimales.'
       }, 
-      costoFOB: {
+      costo_fob: {
         maxlength:     'Hasta 12 números.',
         pattern:       'Solo valores decimales.'
       },                                                  
       //--- PARAMETROS (Legales) ---
-      registroInvima: {
+      registro_invima: {
         maxlength:     'Hasta 30 caracteres.',
         pattern:       'Solo valores alfabéticos.'
       }, 
-      numeroMesesGarantia: {
+      numero_meses_garantia: {
         maxlength:     'Hasta 2 números.',
         pattern:       'Solo valores enteros.'
       }, 
       //--- PARAMETROS (Controles sobre valores y cantidades) ---
-      stockMinimo: {
+      stock_minimo: {
         minlength:     'Mínimo 1 o más números.',
         maxlength:     'Hasta 12 números.',
         pattern:       'Solo valores decimales.'
       },
-      stockMaximo: {
+      stock_maximo: {
         minlength:     'Mínimo 1 o más números.',
         maxlength:     'Hasta 12 números.',
         pattern:       'Solo valores decimales.'
       },
-      porcMaxDtoContado: {
+      porc_max_dto_contado: {
         minlength:     'Mínimo 1 o más números.',
         maxlength:     'Hasta 2 números.',
         pattern:       'Solo valores decimales.'
       },                  
-      porcMaxDtoCredito: {
+      porc_max_dto_credito: {
         minlength:     'Mínimo 1 o más números.',
         maxlength:     'Hasta 2 números.',
         pattern:       'Solo valores decimales.'
       },
-      porcComisionVenta: {
+      porc_comision_venta: {
         minlength:     'Mínimo 1 o más números.',
         maxlength:     'Hasta 2 números.',
         pattern:       'Solo valores decimales.'
@@ -476,7 +487,7 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
       //--- PARAMETROS (Si/No) ---
       // No hay reglas todos son selectores obligatorios
       //--- PARAMETROS (Varios) ---
-      colorAgenda: {
+      color_agenda: {
         maxlength:     'Hasta 7 caracteres.',
         pattern:       'Solo valores hexadecimales.'
       },

@@ -66,19 +66,19 @@ export class TipoImpuestoDetailComponent implements OnInit, OnDestroy {
 
     // Inicializando atributos
     this .frmTipoImpuesto = new FormGroup({
-          id                : new FormControl(),
-          codigo            : new FormControl(),
-          codigoAlternativo : new FormControl(),
-          descripcion       : new FormControl(),
-          porcentaje        : new FormControl(),
-          base              : new FormControl(),
-          tipoImpuesto      : new FormControl(),
-          estado            : new FormControl(),
-          idUsuarioCrea     : new FormControl(),
-          idUsuarioModifica : new FormControl(),
-          fechaCreacion     : new FormControl(),
-          fechaModificacion : new FormControl(),
-          registros         : new FormControl()
+          id                  : new FormControl(),
+          codigo              : new FormControl(),
+          codigo_alternativo  : new FormControl(),
+          descripcion         : new FormControl(),
+          porcentaje          : new FormControl(),
+          base                : new FormControl(),
+          tipo_impuesto       : new FormControl(),
+          estado              : new FormControl(),
+          id_usuario_crea     : new FormControl(),
+          id_usuario_modifica : new FormControl(),
+          fecha_creacion      : new FormControl(),
+          fecha_modificacion  : new FormControl(),
+          registros           : new FormControl()
     });
 
     this.sub = this.route.params.subscribe(params => {
@@ -126,7 +126,7 @@ export class TipoImpuestoDetailComponent implements OnInit, OnDestroy {
             Validators .maxLength( 10 ),
             Validators .pattern( Validate.RegExp.CODIGO )
     ]);
-    this .frmTipoImpuesto .controls[ "codigoAlternativo" ] .setValidators([ 
+    this .frmTipoImpuesto .controls[ "codigo_alternativo" ] .setValidators([ 
             Validators .required,  
             Validators .minLength( 2 ), 
             Validators .maxLength( 10 ),
@@ -185,7 +185,7 @@ export class TipoImpuestoDetailComponent implements OnInit, OnDestroy {
         maxlength:     'Hasta 10 números y/o caracteres.',
         pattern:       'Solo valores alfanuméricos sin espacios'
       },
-      codigoAlternativo: {
+      codigo_alternativo: {
         required:      'Campo requerido.',
         minlength:     'Mínimo 2 o más números y/o caracteres.',
         maxlength:     'Hasta 10 números y/o caracteres.',
