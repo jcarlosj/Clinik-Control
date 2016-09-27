@@ -89,20 +89,28 @@ export class TipoImpuestoDetailComponent implements OnInit, OnDestroy {
           this.codigo = params['codigo'];
           this.service.getRecord(this.codigo)
               .then( obj => {
-                      this .vObj = obj;
-                      this .frmTipoImpuesto .setValue( this.vObj );
-                      console .log( 'Nuevo: ' + this.esNuevo );
-                      this .validateFields();
-                      this .esNuevo =  false;
-                      
+                  try {
+                    this .vObj = obj;
+                    this .frmTipoImpuesto .setValue( this.vObj );
+                    console .log( 'Nuevo: ' + this.esNuevo );
+                    this .validateFields();
+                    this .esNuevo =  false;
+                  } catch (error) {
+                    console .log( error );
+                  }                         
               });
         } 
         else {
-          this .vObj = new TipoImpuesto();
-          this .frmTipoImpuesto .setValue( new TipoImpuesto() );
-          this .validateFields();
-          this .esNuevo =  true;
-          console .log( 'Nuevo: ' + this.esNuevo );
+          try {
+            this .vObj = new TipoImpuesto();
+            this .frmTipoImpuesto .setValue( new TipoImpuesto() );
+            this .validateFields();
+            this .esNuevo =  true;
+            console .log( 'Nuevo: ' + this.esNuevo );
+          } catch (error) {
+            console .log( error );
+          }
+          
         }
     });
   } 

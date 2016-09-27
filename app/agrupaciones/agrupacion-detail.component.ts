@@ -84,20 +84,27 @@ export class AgrupacionDetailComponent implements OnInit, OnDestroy {
           this.codigo = params['codigo'];
           this.service.getRecord(this.codigo)
               .then( obj => {
+                  try {
                       this .vObj = obj;
                       this .frmAgrupacion .setValue( this.vObj );
                       console .log( 'Nuevo: ' + this.esNuevo );
                       this .validateFields();
                       this .esNuevo =  false;
-                      
+                  } catch (error) {
+                      console .log( error );
+                  }  
               });
         } 
         else {
-          this .vObj = new Agrupacion();
-          this .frmAgrupacion .setValue( new Agrupacion() );
-          this .validateFields();
-          this .esNuevo =  true;
-          console .log( 'Nuevo: ' + this.esNuevo );
+            try {
+              this .vObj = new Agrupacion();
+              this .frmAgrupacion .setValue( new Agrupacion() );
+              this .validateFields();
+              this .esNuevo =  true;
+              console .log( 'Nuevo: ' + this.esNuevo ); 
+            } catch (error) {
+              console .log( error );
+            }
         }
     });
   } 

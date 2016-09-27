@@ -92,11 +92,16 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
           this.codigo = params['codigo'];
           this.service.getRecord(this.codigo)
               .then( obj => {
+                  try {
                       this .vObj = obj;
                       this .frmFormaPago .setValue( this.vObj );
                       console .log( 'Nuevo: ' + this.esNuevo );
                       this .validateFields();
                       this .esNuevo =  false;
+                  } catch (error) {
+                      console .log( error );
+                  }
+                      
                       
               });
         } 

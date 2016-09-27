@@ -175,19 +175,27 @@ export class TerceroDetailComponent implements OnInit, OnDestroy {
           this.codigo = params['codigo'];
           this.service.getRecord(this.codigo)
               .then( obj => {
+                  try {
                       this .vObj = obj;
                       this .frmTercero .setValue( this.vObj );
                       console .log( 'Nuevo: ' + this.esNuevo );
                       this .validateFields();
                       this .esNuevo =  false; 
+                  } catch (error) {
+                      console .log( error );
+                  } 
               });
         } 
         else {
-          this .vObj = new Tercero();
-          this .frmTercero .setValue( new Tercero() );
-          this .validateFields();
-          this .esNuevo =  true;
-          console .log( 'Nuevo: ' + this.esNuevo );
+            try {
+              this .vObj = new Tercero();
+              this .frmTercero .setValue( new Tercero() );
+              this .validateFields();
+              this .esNuevo =  true;
+              console .log( 'Nuevo: ' + this.esNuevo ); 
+            } catch (error) {
+              console .log( error );
+            }
         }
 
     });

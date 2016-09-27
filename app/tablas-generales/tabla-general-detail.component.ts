@@ -110,16 +110,24 @@ console .log ( 'Titulo Afuera : ' + this .title );
             this.codigo  = params['codigo'];
             this.service.getTablaGeneral(this.codigo)
                 .then(obj => {
-                    this.vObj = obj;
-                    this.frmTablaGeneral.setValue(this.vObj);
-                    this .validateFields();
-                    this.esNuevo =  false;
+                    try {
+                      this.vObj = obj;
+                      this.frmTablaGeneral.setValue(this.vObj);
+                      this .validateFields();
+                      this.esNuevo =  false; 
+                    } catch (error) {
+                      console .log( error );
+                    }
                 });
         } else {
-            this.vObj = new TablaGeneral();
-            this.frmTablaGeneral.setValue(new TablaGeneral());
-            this .validateFields();
-            this.esNuevo =  true;
+            try {
+              this.vObj = new TablaGeneral();
+              this.frmTablaGeneral.setValue(new TablaGeneral());
+              this .validateFields();
+              this.esNuevo =  true; 
+            } catch (error) {
+              console .log( error );
+            }
         }
     });
   }

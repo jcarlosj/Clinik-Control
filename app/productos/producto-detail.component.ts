@@ -174,22 +174,22 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
                         this .validateFields();
                         this .esNuevo =  false;
                       }
-                      catch(e){
+                      catch( error ){
                         console.log('-->Error al consultar producto');
-                        console.log(e);
+                        console.log( error );
                       } 
               });
         } 
         else {
           try{
-            this .vObj = new Producto();
-            this .frmProducto .setValue( new Producto() );
-            this .validateFields();
-            this .esNuevo =  true;
-            console .log( 'Nuevo: ' + this.esNuevo );
+              this .vObj = new Producto();
+              this .frmProducto .setValue( new Producto() );
+              this .validateFields();
+              this .esNuevo =  true;
+              console .log( 'Nuevo: ' + this.esNuevo );
           }
-          catch(e){
-            console.log('---> Error al presentar captura de nuevo item');
+          catch( error ){
+              console.log('---> Error al presentar captura de nuevo item' + error);
           }
         }
 
