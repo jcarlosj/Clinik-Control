@@ -74,6 +74,13 @@ export class TipoImpuestoDetailComponent implements OnInit, OnDestroy {
           base                : new FormControl(),
           tipo_impuesto       : new FormControl(),
           estado              : new FormControl(),
+<<<<<<< HEAD
+=======
+          id_usuario_crea     : new FormControl(),
+          id_usuario_modifica : new FormControl(),
+          fecha_creacion      : new FormControl(),
+          fecha_modificacion  : new FormControl(),
+>>>>>>> 0f8169bf2ebc5a717ccca094377bb6eab5ecbe70
           registros           : new FormControl()
     });
 

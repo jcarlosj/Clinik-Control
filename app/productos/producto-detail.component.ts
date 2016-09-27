@@ -128,7 +128,15 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
           //riesgosAsnew FormControl(),
           //--- CONTROL ---
           estado              : new FormControl(),
+<<<<<<< HEAD
           registros           : new FormControl()
+=======
+          /*idUsuarioCrea       : new FormControl(),
+          idUsuarioModifica   : new FormControl(),
+          fechaCrea           : new FormControl(),
+          fechaModifica       : new FormControl(),
+          registros           : new FormControl()*/
+>>>>>>> 0f8169bf2ebc5a717ccca094377bb6eab5ecbe70
     });
 
     this.sub = this.route.params.subscribe(params => {
@@ -174,14 +182,21 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
                         this .validateFields();
                         this .esNuevo =  false;
                       }
+<<<<<<< HEAD
                       catch( error ){
                         console.log('-->Error al consultar producto');
                         console.log( error );
+=======
+                      catch(e){
+                        console.log('-->Error al consultar producto');
+                        console.log(e);
+>>>>>>> 0f8169bf2ebc5a717ccca094377bb6eab5ecbe70
                       } 
               });
         } 
         else {
           try{
+<<<<<<< HEAD
               this .vObj = new Producto();
               this .frmProducto .setValue( new Producto() );
               this .validateFields();
@@ -190,6 +205,16 @@ export class ProductoDetailComponent implements OnInit, OnDestroy {
           }
           catch( error ){
               console.log('---> Error al presentar captura de nuevo item' + error);
+=======
+            this .vObj = new Producto();
+            this .frmProducto .setValue( new Producto() );
+            this .validateFields();
+            this .esNuevo =  true;
+            console .log( 'Nuevo: ' + this.esNuevo );
+          }
+          catch(e){
+            console.log('---> Error al presentar captura de nuevo item');
+>>>>>>> 0f8169bf2ebc5a717ccca094377bb6eab5ecbe70
           }
         }
 

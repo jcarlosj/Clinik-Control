@@ -68,7 +68,15 @@ export class AgrupacionDetailComponent implements OnInit, OnDestroy {
           nivel               : new FormControl(),
           permite_detalle     : new FormControl(),
           orden               : new FormControl(),
+<<<<<<< HEAD
           registros           : new FormControl(),
+=======
+          id_usuario_crea     : new FormControl(),     // <-- Parámetros: Control. 
+          id_usuario_modifica : new FormControl(), 
+          fecha_creacion      : new FormControl(),
+          fecha_modificacion  : new FormControl(),
+          registro            : new FormControl(),
+>>>>>>> 0f8169bf2ebc5a717ccca094377bb6eab5ecbe70
           estado              : new FormControl()
     });
 

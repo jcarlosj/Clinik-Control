@@ -77,7 +77,15 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
           descripcion         : new FormControl(),
           estado              : new FormControl(),
           tipo                : new FormControl(),
+<<<<<<< HEAD
           registros           : new FormControl()
+=======
+          id_usuario_crea     : new FormControl(),
+          id_usuario_modifica : new FormControl(),
+          fecha_creacion      : new FormControl(),
+          fecha_modificacion  : new FormControl(),
+          registro            : new FormControl()
+>>>>>>> 0f8169bf2ebc5a717ccca094377bb6eab5ecbe70
     });
 
     this.sub = this.route.params.subscribe(params => {
