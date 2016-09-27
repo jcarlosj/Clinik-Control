@@ -72,16 +72,12 @@ export class FormaPagoDetailComponent implements OnInit, OnDestroy {
 
     // Inicializando atributos
     this .frmFormaPago = new FormGroup({
-          id                : new FormControl(),
-          codigo            : new FormControl(),
-          descripcion       : new FormControl(),
-          estado            : new FormControl(),
-          tipo              : new FormControl(),
-          idUsuarioCrea     : new FormControl(),
-          idUsuarioModifica : new FormControl(),
-          fechaCreacion     : new FormControl(),
-          fechaModificacion : new FormControl(),
-          registro          : new FormControl()
+          id                  : new FormControl(),
+          codigo              : new FormControl(),
+          descripcion         : new FormControl(),
+          estado              : new FormControl(),
+          tipo                : new FormControl(),
+          registros           : new FormControl()
     });
 
     this.sub = this.route.params.subscribe(params => {

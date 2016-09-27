@@ -13,7 +13,7 @@
                 <div class="mdl-grid">
                     <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                         <mdl-textfield 
-                                type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="10" required
+                                type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="20"
                                 formControlName="codigo" [disabled]="!esNuevo" 
                                 label="*Código" floating-label>
                         </mdl-textfield>
@@ -36,7 +36,7 @@
                     <div class="mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
                         <mdl-textfield 
                                 formControlName="descripcion1" 
-                                type="text" id="descripcion1" name="descripcion1" placeholder="descripcion1" maxlength="80" 
+                                type="text" id="descripcion1" name="descripcion1" placeholder="descripcion1"  maxlength="80" 
                                 label="*Descripcion 1" floating-label>
                         </mdl-textfield>
                         
@@ -50,7 +50,7 @@
                     <div class="mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
                         <mdl-textfield 
                                 formControlName="descripcion2" 
-                                type="text" id="descripcion2" name="descripcion2" placeholder="descripcion2" maxlength="80" 
+                                type="text" id="descripcion2" name="descripcion2" placeholder="descripcion2"  maxlength="80" 
                                 label="Descripcion 2" floating-label>
                                 
                         </mdl-textfield>
@@ -72,13 +72,13 @@
                     </div>
                     <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
                         <mdl-textfield 
-                                formControlName="codigoBarras" 
-                                type="text" id="codigoBarras" name="codigoBarras" placeholder="codigoBarras"  maxlength="20" 
+                                formControlName="codigo_barras" 
+                                type="text" id="codigo_barras" name="codigo_barras" placeholder="codigo_barras"  maxlength="20" 
                                 label="Código de barras" floating-label>
                         </mdl-textfield>
-                        <div [hidden]="!(frmProducto.controls.codigoBarras.touched && !frmProducto.controls.codigoBarras.valid)">
+                        <div [hidden]="!(frmProducto.controls.codigo_barras.touched && !frmProducto.controls.codigo_barras.valid)">
                             <span class="fieldvalidate-error">
-                                <i>> {{ errors( 'codigoBarras' ) }}</i>
+                                <i>> {{ errors( 'codigo_barras' ) }}</i>
                             </span>
                         </div>
                     </div>
@@ -109,35 +109,35 @@
                     <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
                         <label>*Unidad de medida: </label>
                         <br/>
-                        <select formControlName="unidadMedida" id="unidadMedida" name="unidadMedida">
+                        <select formControlName="unidad_medida" id="unidad_medida" name="unidad_medida">
                             <option [value]="o.id" *ngFor="let o of unidades">{{o.nombre}}</option>
                         </select>
                     </div>
                     <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
                         <mdl-textfield 
-                                formControlName="unidadEmpaque" 
-                                type="text" id="unidadEmpaque" name="unidadEmpaque" placeholder="unidadEmpaque"  maxlength="12" 
+                                formControlName="unidad_empaque" 
+                                type="text" id="unidad_empaque" name="unidad_empaque" placeholder="unidad_empaque"  maxlength="12" 
                                 label="Unidad Empaque" floating-label>
                         </mdl-textfield>
-                        <div [hidden]="!(frmProducto.controls.unidadEmpaque.touched && !frmProducto.controls.unidadEmpaque.valid)">
+                        <div [hidden]="!(frmProducto.controls.unidad_empaque.touched && !frmProducto.controls.unidad_empaque.valid)">
                             <span class="fieldvalidate-error">
-                                <i>> {{ errors( 'unidadEmpaque' ) }}</i>
+                                <i>> {{ errors( 'unidad_empaque' ) }}</i>
                             </span>
                         </div>
                     </div>
                     <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
                         <mdl-textfield 
-                                formControlName="ubicacionBodega" 
-                                type="text" id="ubicacionBodega" name="ubicacionBodega" placeholder="ubicacionBodega"  maxlength="10" 
+                                formControlName="ubicacion_bodega" 
+                                type="text" id="ubicacion_bodega" name="ubicacion_bodega" placeholder="ubicacion_bodega"  maxlength="10" 
                                 label="Ubicación bodega" floating-label>
                         </mdl-textfield>
-                        <div [hidden]="!(frmProducto.controls.ubicacionBodega.touched && !frmProducto.controls.ubicacionBodega.valid)">
+                        <div [hidden]="!(frmProducto.controls.ubicacion_bodega.touched && !frmProducto.controls.ubicacion_bodega.valid)">
                             <span class="fieldvalidate-error">
-                                <i>> {{ errors( 'ubicacionBodega' ) }}</i>
+                                <i>> {{ errors( 'ubicacion_bodega' ) }}</i>
                             </span>
                         </div>
                     </div>
-                </div>
+                </div> 
             </mdl-tab-panel-content>
         </mdl-tab-panel>
 
@@ -151,64 +151,64 @@
                 <div class="mdl-grid">
                     <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                         <mdl-textfield 
-                                formControlName="precioVenta1" 
-                                type="text" id="precioVenta1" name="precioVenta1" placeholder="precioVenta1" maxlength="9" required
+                                formControlName="precio_venta1" 
+                                type="text" id="precio_venta1" name="precio_venta1" placeholder="precio_venta1" maxlength="9"
                                 label="*Precio de venta 1" floating-label>
                         </mdl-textfield>
                         
-                        <div [hidden]="!(frmProducto.controls.precioVenta1.touched && !frmProducto.controls.precioVenta1.valid)">
+                        <div [hidden]="!(frmProducto.controls.precio_venta1.touched && !frmProducto.controls.precio_venta1.valid)">
                             <span class="fieldvalidate-error">
-                                <i>> {{ errors( 'precioVenta1' ) }}</i>
+                                <i>> {{ errors( 'precio_venta1' ) }}</i>
                             </span>
                         </div>
                     </div>
                     <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                         <mdl-textfield 
-                                formControlName="precioVenta2" 
-                                type="text" id="precioVenta2" name="precioVenta2" placeholder="precioVenta2" maxlength="9"  
+                                formControlName="precio_venta2" 
+                                type="text" id="precio_venta2" name="precio_venta2" placeholder="precio_venta2" maxlength="9"  
                                 label="Precio de venta 2" floating-label>
                         </mdl-textfield>
-                        <div [hidden]="!(frmProducto.controls.precioVenta2.touched && !frmProducto.controls.precioVenta2.valid)">
+                        <div [hidden]="!(frmProducto.controls.precio_venta2.touched && !frmProducto.controls.precio_venta2.valid)">
                             <span class="fieldvalidate-error">
-                                <i>> {{ errors( 'precioVenta2' ) }}</i>
+                                <i>> {{ errors( 'precio_venta2' ) }}</i>
                             </span>
                         </div>
                     </div>
                     <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                         <mdl-textfield 
-                                formControlName="precioVenta3" 
-                                type="text" id="precioVenta3" name="precioVenta3" placeholder="precioVenta3" maxlength="9"
+                                formControlName="precio_venta3" 
+                                type="text" id="precio_venta3" name="precio_venta3" placeholder="precio_venta3" maxlength="9"
                                 label="Precio de venta 3" floating-label>
                         </mdl-textfield>
-                        <div [hidden]="!(frmProducto.controls.precioVenta3.touched && !frmProducto.controls.precioVenta3.valid)">
+                        <div [hidden]="!(frmProducto.controls.precio_venta3.touched && !frmProducto.controls.precio_venta3.valid)">
                             <span class="fieldvalidate-error">
-                                <i>> {{ errors( 'precioVenta3' ) }}</i>
+                                <i>> {{ errors( 'precio_venta3' ) }}</i>
                             </span>
                         </div>
                     </div>        
                     <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                         <mdl-textfield 
-                                formControlName="precioVenta4" 
-                                type="text" id="precioVenta4" name="precioVenta4" placeholder="precioVenta4" maxlength="9"
+                                formControlName="precio_venta4" 
+                                type="text" id="precio_venta4" name="precio_venta4" placeholder="precio_venta4" maxlength="9"
                                 label="Precio de venta 4" floating-label>
                         </mdl-textfield>
                         
-                        <div [hidden]="!(frmProducto.controls.precioVenta4.touched && !frmProducto.controls.precioVenta4.valid)">
+                        <div [hidden]="!(frmProducto.controls.precio_venta4.touched && !frmProducto.controls.precio_venta4.valid)">
                             <span class="fieldvalidate-error">
-                                <i>> {{ errors( 'precioVenta4' ) }}</i>
+                                <i>> {{ errors( 'precio_venta4' ) }}</i>
                             </span>
                         </div>
                     </div>  
                     <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                         <mdl-textfield 
-                                formControlName="precioVenta5" 
-                                type="text" id="precioVenta5" name="precioVenta5" placeholder="precioVenta5" maxlength="9"
+                                formControlName="precio_venta5" 
+                                type="text" id="precio_venta5" name="precio_venta5" placeholder="precio_venta5" maxlength="9"
                                 label="Precio de venta 5" floating-label>
                         </mdl-textfield>
                         
-                        <div [hidden]="!(frmProducto.controls.precioVenta5.touched && !frmProducto.controls.precioVenta5.valid)">
+                        <div [hidden]="!(frmProducto.controls.precio_venta5.touched && !frmProducto.controls.precio_venta5.valid)">
                             <span class="fieldvalidate-error">
-                                <i>> {{ errors( 'precioVenta5' ) }}</i>
+                                <i>> {{ errors( 'precio_venta5' ) }}</i>
                             </span>
                         </div>
                     </div>
@@ -227,56 +227,56 @@
                     </div>    
                     <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                         <mdl-textfield 
-                                formControlName="saldoPedido" 
-                                type="text" id="saldoPedido" name="saldoPedido" placeholder="saldoPedido" maxlength="12"
+                                formControlName="saldo_pedido" 
+                                type="text" id="saldo_pedido" name="saldo_pedido" placeholder="saldo_pedido" maxlength="12"
                                 label="Saldo pedido" floating-label>
                         </mdl-textfield>
                         
-                        <div [hidden]="!(frmProducto.controls.saldoPedido.touched && !frmProducto.controls.saldoPedido.valid)">
+                        <div [hidden]="!(frmProducto.controls.saldo_pedido.touched && !frmProducto.controls.saldo_pedido.valid)">
                             <span class="fieldvalidate-error">
-                                <i>> {{ errors( 'saldoPedido' ) }}</i>
+                                <i>> {{ errors( 'saldo_pedido' ) }}</i>
                             </span>
                         </div>
                     </div>      
                     <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                         <mdl-textfield 
-                                formControlName="costoPromedio"
-                                type="text" id="costoPromedio" name="costoPromedio" placeholder="costoPromedio" maxlength="12"
+                                formControlName="costo_promedio"
+                                type="text" id="costo_promedio" name="costo_promedio" placeholder="costo_promedio" maxlength="12"
                                 label="Costo promedio" floating-label>
                         </mdl-textfield>
                         
-                        <div [hidden]="!(frmProducto.controls.costoPromedio.touched && !frmProducto.controls.costoPromedio.valid)">
+                        <div [hidden]="!(frmProducto.controls.costo_promedio.touched && !frmProducto.controls.costo_promedio.valid)">
                             <span class="fieldvalidate-error">
-                                <i>> {{ errors( 'costoPromedio' ) }}</i>
+                                <i>> {{ errors( 'costo_promedio' ) }}</i>
                             </span>
                         </div>
                     </div>      
                     <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                         <mdl-textfield 
-                                formControlName="costoUltimaCompra" 
-                                type="text" id="costoUltimaCompra" name="costoUltimaCompra" placeholder="costoUltimaCompra" maxlength="12"
+                                formControlName="costo_ultima_compra" 
+                                type="text" id="costo_ultima_compra" name="costo_ultima_compra" placeholder="costo_ultima_compra" maxlength="12"
                                 label="Costo última compra" floating-label>
                         </mdl-textfield>
                         
-                        <div [hidden]="!(frmProducto.controls.costoUltimaCompra.touched && !frmProducto.controls.costoUltimaCompra.valid)">
+                        <div [hidden]="!(frmProducto.controls.costo_ultima_compra.touched && !frmProducto.controls.costo_ultima_compra.valid)">
                             <span class="fieldvalidate-error">
-                                <i>> {{ errors( 'costoUltimaCompra' ) }}</i>
+                                <i>> {{ errors( 'costo_ultima_compra' ) }}</i>
                             </span>
                         </div>
                     </div>          
                     <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                         <mdl-textfield 
-                                formControlName="costoFOB"
-                                type="text" id="costoFOB" name="costoFOB" placeholder="costoFOB" maxlength="12"
+                                formControlName="costo_fob"
+                                type="text" id="costo_fob" name="costo_fob" placeholder="costo_fob" maxlength="12"
                                 label="Costo FOB" floating-label>
                         </mdl-textfield>
                         
-                        <div [hidden]="!(frmProducto.controls.costoFOB.touched && !frmProducto.controls.costoFOB.valid)">
+                        <div [hidden]="!(frmProducto.controls.costo_fob.touched && !frmProducto.controls.costo_fob.valid)">
                             <span class="fieldvalidate-error">
-                                <i>> {{ errors( 'costoFOB' ) }}</i>
+                                <i>> {{ errors( 'costo_fob' ) }}</i>
                             </span>
                         </div>
-                    </div>                  
+                    </div>               
                 </div>
             </mdl-tab-panel-content>
 
@@ -300,7 +300,7 @@
                             <div class="mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone graybox">
                                 <label>*Tipo de IVA venta: </label>
                                 <br/>
-                                <select formControlName="tipoIVAVenta" id="tipoIVAVenta" name="tipoIVAVenta">
+                                <select formControlName="tipo_iva_venta" id="tipo_iva_venta" name="tipo_iva_venta">
                                     <option [value]="o.id" *ngFor="let o of tiposDeIva">{{o.nombre}}</option>
                                 </select>
                             </div>
@@ -308,34 +308,34 @@
                             <div class="mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
                                 <label>*Tipo de IVA compra: </label>
                                 <br/>
-                                <select formControlName="tipoIVACompra" id="tipoIVACompra" name="tipoIVACompra">
+                                <select formControlName="tipo_iva_compra" id="tipo_iva_compra" name="tipo_iva_compra">
                                     <option [value]="o.id" *ngFor="let o of tiposDeIva">{{o.nombre}}</option>
                                 </select>
                             </div>
                             
                             <div class="mdl-cell--12-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
                                 <mdl-textfield 
-                                        formControlName="registroInvima" 
-                                        type="text" id="registroInvima" name="registroInvima" placeholder="registroInvima" maxlength="30"
+                                        formControlName="registro_invima" 
+                                        type="text" id="registro_invima" name="registro_invima" placeholder="registro_invima" maxlength="30"
                                         label="Registro invima" floating-label>
                                 </mdl-textfield>
                                 
-                                <div [hidden]="!(frmProducto.controls.registroInvima.touched && !frmProducto.controls.registroInvima.valid)">
+                                <div [hidden]="!(frmProducto.controls.registro_invima.touched && !frmProducto.controls.registro_invima.valid)">
                                     <span class="fieldvalidate-error">
-                                        <i>> {{ errors( 'registroInvima' ) }}</i>
+                                        <i>> {{ errors( 'registro_invima' ) }}</i>
                                     </span>
                                 </div>
                             </div>       
                             <div class="mdl-cell--12-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
                                 <mdl-textfield 
-                                        formControlName="numeroMesesGarantia" 
-                                        type="text" id="numeroMesesGarantia" name="numeroMesesGarantia" placeholder="numeroMesesGarantia" maxlength="2"
+                                        formControlName="numero_meses_garantia" 
+                                        type="text" id="numero_meses_garantia" name="numero_meses_garantia" placeholder="numero_meses_garantia" maxlength="30"
                                         label="Número de meses de garantia" floating-label>
                                 </mdl-textfield>
                                 
-                                <div [hidden]="!(frmProducto.controls.numeroMesesGarantia.touched && !frmProducto.controls.numeroMesesGarantia.valid)">
+                                <div [hidden]="!(frmProducto.controls.numero_meses_garantia.touched && !frmProducto.controls.numero_meses_garantia.valid)">
                                     <span class="fieldvalidate-error">
-                                        <i>> {{ errors( 'numeroMesesGarantia' ) }}</i>
+                                        <i>> {{ errors( 'numero_meses_garantia' ) }}</i>
                                     </span>
                                 </div>
                             </div>
@@ -348,66 +348,66 @@
                             </div>
                             <div class="mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
                                 <mdl-textfield 
-                                        formControlName="stockMinimo" 
-                                        type="text" id="stockMinimo" name="stockMinimo" placeholder="stockMinimo" maxlength="12"
+                                        formControlName="stock_minimo" 
+                                        type="text" id="stock_minimo" name="stock_minimo" placeholder="stock_minimo" maxlength="12"
                                         label="Stock mínimo" floating-label>
                                 </mdl-textfield>
                                 
-                                <div [hidden]="!(frmProducto.controls.stockMinimo.touched && !frmProducto.controls.stockMinimo.valid)">
+                                <div [hidden]="!(frmProducto.controls.stock_minimo.touched && !frmProducto.controls.stock_minimo.valid)">
                                     <span class="fieldvalidate-error">
-                                        <i>> {{ errors( 'stockMinimo' ) }}</i>
+                                        <i>> {{ errors( 'stock_minimo' ) }}</i>
                                     </span>
                                 </div>
                             </div>
                             <div class="mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
                                 <mdl-textfield 
-                                        formControlName="stockMaximo" 
-                                        type="text" id="stockMaximo" name="stockMaximo" placeholder="stockMaximo" maxlength="12"
+                                        formControlName="stock_maximo" 
+                                        type="text" id="stock_maximo" name="stock_maximo" placeholder="stock_maximo" maxlength="12"
                                         label="Stock máximo" floating-label>
                                 </mdl-textfield>
                                 
-                                <div [hidden]="!(frmProducto.controls.stockMaximo.touched && !frmProducto.controls.stockMaximo.valid)">
+                                <div [hidden]="!(frmProducto.controls.stock_maximo.touched && !frmProducto.controls.stock_maximo.valid)">
                                     <span class="fieldvalidate-error">
-                                        <i>> {{ errors( 'stockMaximo' ) }}</i>
+                                        <i>> {{ errors( 'stock_maximo' ) }}</i>
                                     </span>
                                 </div>
                             </div>   
                             <div class="mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
                                 <mdl-textfield 
-                                        formControlName="porcMaxDtoContado" 
-                                        type="text" id="porcMaxDtoContado" name="porcMaxDtoContado" placeholder="porcMaxDtoContado" maxlength="5"
+                                        formControlName="porc_max_dto_contado" 
+                                        type="text" id="porc_max_dto_contado" name="porc_max_dto_contado" placeholder="porc_max_dto_contado" maxlength="2"
                                         label="% Máx de Dto pago de contado" floating-label>
                                 </mdl-textfield>
                                 
-                                <div [hidden]="!(frmProducto.controls.porcMaxDtoContado.touched && !frmProducto.controls.porcMaxDtoContado.valid)">
+                                <div [hidden]="!(frmProducto.controls.porc_max_dto_contado.touched && !frmProducto.controls.porc_max_dto_contado.valid)">
                                     <span class="fieldvalidate-error">
-                                        <i>> {{ errors( 'porcMaxDtoContado' ) }}</i>
+                                        <i>> {{ errors( 'porc_max_dto_contado' ) }}</i>
                                     </span>
                                 </div>
                             </div>
                             <div class="mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
                                 <mdl-textfield 
-                                        formControlName="porcMaxDtoCredito" 
-                                        type="text" id="porcMaxDtoCredito" name="porcMaxDtoCredito" placeholder="porcMaxDtoCredito" maxlength="5"
+                                        formControlName="porc_max_dto_credito" 
+                                        type="text" id="porc_max_dto_credito" name="porc_max_dto_credito" placeholder="porc_max_dto_credito" maxlength="2"
                                         label="% Máx de Dto pago a credito" floating-label>
                                 </mdl-textfield>
                                 
-                                <div [hidden]="!(frmProducto.controls.porcMaxDtoCredito.touched && !frmProducto.controls.porcMaxDtoCredito.valid)">
+                                <div [hidden]="!(frmProducto.controls.porc_max_dto_credito.touched && !frmProducto.controls.porc_max_dto_credito.valid)">
                                     <span class="fieldvalidate-error">
-                                        <i>> {{ errors( 'porcMaxDtoCredito' ) }}</i>
+                                        <i>> {{ errors( 'porc_max_dto_credito' ) }}</i>
                                     </span>
                                 </div>
                             </div>
                             <div class="mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
                                 <mdl-textfield 
-                                        formControlName="porcComisionVenta" 
-                                        type="text" id="porcComisionVenta" name="porcComisionVenta" placeholder="porcComisionVenta" maxlength="5"
+                                        formControlName="porc_comision_venta" 
+                                        type="text" id="porc_comision_venta" name="porc_comision_venta" placeholder="porc_comision_venta" maxlength="2"
                                         label="% de comisión por venta" floating-label>
                                 </mdl-textfield>
                                 
-                                <div [hidden]="!(frmProducto.controls.porcComisionVenta.touched && !frmProducto.controls.porcComisionVenta.valid)">
+                                <div [hidden]="!(frmProducto.controls.porc_comision_venta.touched && !frmProducto.controls.porc_comision_venta.valid)">
                                     <span class="fieldvalidate-error">
-                                        <i>> {{ errors( 'porcComisionVenta' ) }}</i>
+                                        <i>> {{ errors( 'porc_comision_venta' ) }}</i>
                                     </span>
                                 </div>
                             </div>
@@ -433,10 +433,10 @@
                             </div>
                             <div class="mdl-cell--5-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone cellbackcolor">
                                 <mdl-radio  
-                                        formControlName="productoActivo"
+                                        formControlName="producto_activo"
                                         [value]="o.codigo"
                                         *ngFor="let o of activaciones">
-                                    {{o.nombre}}&nbsp;&nbsp;&nbsp;
+                                    {{o.nombre}}
                                 </mdl-radio>
                             </div>
                                 
@@ -446,10 +446,10 @@
                             </div>
                             <div class="mdl-cell--5-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone cellbackcolor-contrast">
                                 <mdl-radio  
-                                        formControlName="productoSeVende"
+                                        formControlName="producto_se_vende"
                                         [value]="o.codigo"
                                         *ngFor="let o of activaciones">
-                                    {{o.nombre}}&nbsp;&nbsp;&nbsp;
+                                    {{o.nombre}}
                                 </mdl-radio>
                             </div>
                             
@@ -458,10 +458,10 @@
                             </div>
                             <div class="mdl-cell--5-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone cellbackcolor">
                                 <mdl-radio  
-                                        formControlName="precioFijo"
+                                        formControlName="precio_fijo"
                                         [value]="o.codigo"
                                         *ngFor="let o of activaciones">
-                                    {{o.nombre}}&nbsp;&nbsp;&nbsp;
+                                    {{o.nombre}}
                                 </mdl-radio>
                             </div>
                             
@@ -470,10 +470,10 @@
                             </div>
                             <div class="mdl-cell--5-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone cellbackcolor-contrast">
                                 <mdl-radio  
-                                        formControlName="usaControlLotes"
+                                        formControlName="usa_control_lotes"
                                         [value]="o.codigo"
                                         *ngFor="let o of activaciones">
-                                    {{o.nombre}}&nbsp;&nbsp;&nbsp;
+                                    {{o.nombre}}
                                 </mdl-radio>
                             </div>
                             
@@ -483,10 +483,10 @@
                             </div>
                             <div class="mdl-cell--5-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone cellbackcolor">
                                 <mdl-radio  
-                                        formControlName="aplicaParaPedido"
+                                        formControlName="aplica_para_pedido"
                                         [value]="o.codigo"
                                         *ngFor="let o of activaciones">
-                                    {{o.nombre}}&nbsp;&nbsp;&nbsp;
+                                    {{o.nombre}}
                                 </mdl-radio>
                             </div>
                         </div>
@@ -498,10 +498,10 @@
                             </div>
                             <div class="mdl-cell--5-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone cellbackcolor-contrast">
                                 <mdl-radio  
-                                        formControlName="usaSeriales"
+                                        formControlName="usa_seriales"
                                         [value]="o.codigo"
                                         *ngFor="let o of activaciones">
-                                    {{o.nombre}}&nbsp;&nbsp;&nbsp;
+                                    {{o.nombre}}
                                 </mdl-radio>
                             </div>
                             
@@ -511,10 +511,10 @@
                             </div>
                             <div class="mdl-cell--5-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone cellbackcolor">
                                 <mdl-radio  
-                                        formControlName="productoEnConsig"
+                                        formControlName="producto_en_consig"
                                         [value]="o.codigo"
                                         *ngFor="let o of activaciones">
-                                    {{o.nombre}}&nbsp;&nbsp;&nbsp;
+                                    {{o.nombre}}
                                 </mdl-radio>
                             </div>
                             
@@ -524,10 +524,10 @@
                             </div>
                             <div class="mdl-cell--5-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone cellbackcolor-contrast">
                                 <mdl-radio  
-                                        formControlName="productoControlado"
+                                        formControlName="producto_controlado"
                                         [value]="o.codigo"
                                         *ngFor="let o of activaciones">
-                                    {{o.nombre}}&nbsp;&nbsp;&nbsp;
+                                    {{o.nombre}}
                                 </mdl-radio>
                             </div>
 
@@ -536,10 +536,10 @@
                             </div>
                             <div class="mdl-cell--5-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone cellbackcolor">
                                 <mdl-radio  
-                                        formControlName="permiteNegativos"
+                                        formControlName="permite_negativos"
                                         [value]="o.codigo"
                                         *ngFor="let o of activaciones">
-                                    {{o.nombre}}&nbsp;&nbsp;&nbsp;
+                                    {{o.nombre}}
                                 </mdl-radio>
                             </div>
                         </div>
@@ -558,13 +558,13 @@
                 <div class="mdl-grid">
                     <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                         <mdl-textfield 
-                                type="text" id="colorAgenda" name="colorAgenda" placeholder="Ej: #FF6600" maxlength="7"
-                                formControlName="colorAgenda" 
+                                type="text" id="color_agenda" name="color_agenda" placeholder="color_agenda" maxlength="12"
+                                formControlName="color_agenda" 
                                 label="Color agenda" floating-label>
                         </mdl-textfield>
-                        <div [hidden]="!(frmProducto.controls.colorAgenda.touched && !frmProducto.controls.colorAgenda.valid)">
+                        <div [hidden]="!(frmProducto.controls.color_agenda.touched && !frmProducto.controls.color_agenda.valid)">
                             <span class="fieldvalidate-error">
-                                <i>> {{ errors( 'colorAgenda' ) }}</i>
+                                <i>> {{ errors( 'color_agenda' ) }}</i>
                             </span>
                         </div>
                     </div>
@@ -582,7 +582,7 @@
                     <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                         <label>Vía administración: </label>
                         <br/>
-                        <select formControlName="viaAdministracion" id="viaAdministracion" name="viaAdministracion">
+                        <select formControlName="via_administracion" id="via_administracion" name="via_administracion">
                             <option [value]="o.id" *ngFor="let o of vias">{{o.nombre}}</option>
                         </select>
                     </div>

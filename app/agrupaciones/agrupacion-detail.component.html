@@ -31,13 +31,13 @@
         </div>
         <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             <mdl-textfield 
-                    formControlName="codigoPadre" 
-                    type="text" id="codigoPadre" name="codigoPadre" placeholder="codigoPadre" maxlength="80" required 
+                    formControlName="codigo_padre" 
+                    type="text" id="codigo_padre" name="codigo_padre" placeholder="codigo_padre" maxlength="80" required 
                     label="Código Padre" floating-label>
             </mdl-textfield>
-            <div [hidden]="!(frmAgrupacion.controls.codigoPadre.touched && !frmAgrupacion.controls.codigoPadre.valid)">
+            <div [hidden]="!(frmAgrupacion.controls.codigo_padre.touched && !frmAgrupacion.controls.codigo_padre.valid)">
                 <span class="fieldvalidate-error">
-                    <i> {{ errors( 'codigoPadre' ) }}</i>
+                    <i> {{ errors( 'codigo_padre' ) }}</i>
                 </span>
             </div>
         </div>

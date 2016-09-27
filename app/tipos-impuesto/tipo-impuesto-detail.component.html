@@ -16,14 +16,14 @@
     </div>  
     <div>
         <mdl-textfield 
-                formControlName="codigoAlternativo"
-                type="text" id="codigoAlternativo" name="codigoAlternativo" placeholder="codigoAlternativo" maxlength="10" required 
+                formControlName="codigo_alternativo"
+                type="text" id="codigo_alternativo" name="codigo_alternativo" placeholder="codigo alternativo" maxlength="10" required 
                 label="Código alternativo" floating-label >
         </mdl-textfield>
         
-        <div [hidden]="!(frmTipoImpuesto.controls.codigoAlternativo.touched && !frmTipoImpuesto.controls.codigoAlternativo.valid)">
+        <div [hidden]="!(frmTipoImpuesto.controls.codigo_alternativo.touched && !frmTipoImpuesto.controls.codigo_alternativo.valid)">
             <span class="fieldvalidate-error">
-                <i> {{ errors( 'codigoAlternativo' ) }}</i>
+                <i> {{ errors( 'codigo_alternativo' ) }}</i>
             </span>
         </div>
     </div> 
@@ -65,7 +65,7 @@
     </div>       
     <div>
         <label>Tipo de impuesto: </label>
-        <select formControlName="tipoImpuesto" id="tipoImpuesto" name="tipoImpuesto" >
+        <select formControlName="tipo_impuesto" id="tipo_impuesto" name="tipo_impuesto" >
             <option [value]="o.tipo" *ngFor="let o of tiposDeImpuesto">{{o.descripcion}}</option>
         </select>
     </div>
