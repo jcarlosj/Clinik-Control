@@ -7,7 +7,8 @@ import { TABLA_GENERAL_ROUTER }  from './tablas-generales/tabla-general.routing'
 import { AGRUPACION_ROUTER }     from './agrupaciones/agrupacion.routing';
 import { PRODUCTOS_ROUTER }      from './productos/producto.routing';
 import { TIPOS_IMPUESTO_ROUTER } from './tipos-impuesto/tipo-impuesto.routing';
-import { TERCEROS_ROUTER } from './terceros/tercero.routing';
+import { TERCEROS_ROUTER }       from './terceros/tercero.routing';
+import { DOCUMENTOS_ROUTER }     from './documentos/documento.routing' 
 
 const appRoutes: Routes = [
   {
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
   ...AGRUPACION_ROUTER,
   ...PRODUCTOS_ROUTER,
   ...TIPOS_IMPUESTO_ROUTER,
-  ...TERCEROS_ROUTER
+  ...TERCEROS_ROUTER,
+  ...DOCUMENTOS_ROUTER
   
 ];
 

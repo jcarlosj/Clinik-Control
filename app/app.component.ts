@@ -28,7 +28,11 @@ export class AppComponent {
       { path: '/tipos_impuesto',           nameItem: 'Tipos de impuesto' },
       { path: '/agrupaciones',             nameItem: 'Agrupaciones' },
       { path: '/productos',                nameItem: 'Productos' },
-      { path: '/terceros',                 nameItem: 'Terceros' }
+      { path: '/terceros',                 nameItem: 'Terceros' },
+      { path: '/entradas',                 nameItem: 'Entradas' },
+      { path: '/salidas',                  nameItem: 'Salidas' },
+      { path: '/compras',                  nameItem: 'Compras' },
+      { path: '/ventas',                   nameItem: 'Ventas' }
     ];
     
   }

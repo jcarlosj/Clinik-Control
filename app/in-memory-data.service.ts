@@ -4,19 +4,11 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
 
     let formas_pago = [
-<<<<<<< HEAD
       {id: '01', codigo: '01', descripcion: 'efectivo',                  estado: 'A', tipo: 1, registros: 1 },
       {id: '02', codigo: '02', descripcion: 'Tarjeta de credito',        estado: 'A', tipo: 1, registros: 1 },
       {id: '03', codigo: '03', descripcion: 'Transferencia electronica', estado: 'A', tipo: 1, registros: 1 },
       {id: '04', codigo: '04', descripcion: 'Pago multiple',             estado: 'A', tipo: 2, registros: 1 },
       {id: '05', codigo: '05', descripcion: 'Prueba',                    estado: 'I', tipo: 1, registros: 1 }
-=======
-      {id: '01', codigo: '01', descripcion: 'efectivo',                  estado: 'A', tipo: 1, id_usuario_crea: 1, id_usuario_modifica: 1, fecha_creacion: '2016-08-16', fecha_modificacion: '2016-08-16', registro: 1 },
-      {id: '02', codigo: '02', descripcion: 'Tarjeta de credito',        estado: 'A', tipo: 1, id_usuario_crea: 1, id_usuario_modifica: 1, fecha_creacion: '2016-08-16', fecha_modificacion: '2016-08-16', registro: 1 },
-      {id: '03', codigo: '03', descripcion: 'Transferencia electronica', estado: 'A', tipo: 1, id_usuario_crea: 1, id_usuario_modifica: 1, fecha_creacion: '2016-08-16', fecha_modificacion: '2016-08-16', registro: 1 },
-      {id: '04', codigo: '04', descripcion: 'Pago multiple',             estado: 'A', tipo: 2, id_usuario_crea: 1, id_usuario_modifica: 1, fecha_creacion: '2016-08-16', fecha_modificacion: '2016-08-16', registro: 1 },
-      {id: '05', codigo: '05', descripcion: 'Prueba',                    estado: 'I', tipo: 1, id_usuario_crea: 1, id_usuario_modifica: 1, fecha_creacion: '2016-08-16', fecha_modificacion: '2016-08-16', registro: 1 }
->>>>>>> 0f8169bf2ebc5a717ccca094377bb6eab5ecbe70
     ];
 
     let tipos_formas_pago = [
@@ -50,20 +42,11 @@ export class InMemoryDataService implements InMemoryDbService {
         //--- OTROS ---
         // observaciones    : '', riesgosAsociados : '',
         //--- CONTROL ---
-<<<<<<< HEAD
         estado: 'A', registros: 0
       }
     ];
 
     let terceros = [
-=======
-        estado: 'A'//, idUsuarioCrea: 0, idUsuarioModifica: 0, fechaCrea: '2016-01-01', fechaModifica: '2016-09-16', registros: 0
-      }
-    ];
-
-
-        let terceros = [
->>>>>>> 0f8169bf2ebc5a717ccca094377bb6eab5ecbe70
       {
         //--- DATOS BÁSICOS --- 
         id: '01', codigo: '01', tipo_doc_identificacion: 1, numero_identificacion: '79854214', ciudad_expedicion: 3, dv: '1', razon_social: 'Fulano de Tal por cual', nombre1: 'Fulano', nombre2: 'de Tal', apellido1: 'para', apellido2: 'cual', 
@@ -82,16 +65,11 @@ export class InMemoryDataService implements InMemoryDbService {
         //--- MANEJAR PESTAÑAS ---
         // referenciasTerceros: '', observaciones: '', tipoTercero: '',
         //--- CONTROL ---
-<<<<<<< HEAD
         estado: 'A', registros: 0
-=======
-        estado: 'A', id_usuario_crea: 0, id_usuario_modifica: 0, fecha_creacion: '2016-01-01', fecha_modificacion: '2016-09-16', registros: 0
->>>>>>> 0f8169bf2ebc5a717ccca094377bb6eab5ecbe70
       }
     ];
-
+    /* TABLAS GENERALES */
     let marca = [
-<<<<<<< HEAD
       { id: '01', codigo: '01', descripcion: 'Marca 1', estado: 'A', registros: 1 },
       { id: '02', codigo: '02', descripcion: 'Marca 2', estado: 'A', registros: 1 },
       { id: '03', codigo: '03', descripcion: 'Marca 3', estado: 'A', registros: 1 },
@@ -116,6 +94,31 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: '01', codigo: '01', descripcion: 'Unidades de medida 1', estado: 'A', registros: 1 },
       { id: '02', codigo: '02', descripcion: 'Unidades de medida 2', estado: 'A', registros: 1 }
     ]; 
+    /* DOCUMENTOS */
+    let entradas = [
+      { id: '01', codigo: '01', descripcion: 'Entrada 1', estado: 'A', registros: 1 },
+      { id: '02', codigo: '02', descripcion: 'Entrada 2', estado: 'A', registros: 1 },
+      { id: '03', codigo: '03', descripcion: 'Entrada 3', estado: 'A', registros: 1 },
+      { id: '04', codigo: '04', descripcion: 'Entrada 4', estado: 'A', registros: 1 }
+    ];   
+    let salidas = [
+      { id: '01', codigo: '01', descripcion: 'Salida 1', estado: 'A', registros: 1 },
+      { id: '02', codigo: '02', descripcion: 'Salida 2', estado: 'A', registros: 1 },
+      { id: '03', codigo: '03', descripcion: 'Salida 3', estado: 'A', registros: 1 },
+      { id: '04', codigo: '04', descripcion: 'Salida 4', estado: 'A', registros: 1 }
+    ];    
+    let compras = [
+      { id: '01', codigo: '01', descripcion: 'Compra 1', estado: 'A', registros: 1 },
+      { id: '02', codigo: '02', descripcion: 'Compra 2', estado: 'A', registros: 1 },
+      { id: '03', codigo: '03', descripcion: 'Compra 3', estado: 'A', registros: 1 },
+      { id: '04', codigo: '04', descripcion: 'Compra 4', estado: 'A', registros: 1 }
+    ];       
+    let ventas = [
+      { id: '01', codigo: '01', descripcion: 'Venta 1', estado: 'A', registros: 1 },
+      { id: '02', codigo: '02', descripcion: 'Venta 2', estado: 'A', registros: 1 },
+      { id: '03', codigo: '03', descripcion: 'Venta 3', estado: 'A', registros: 1 },
+      { id: '04', codigo: '04', descripcion: 'Venta 4', estado: 'A', registros: 1 }
+    ];     
 
     let tipos_impuesto = [
       { id: '01', codigo: '01', codigo_alternativo: '001', descripcion: 'Iva', porcentaje: 12, base: 1, tipo_impuesto: 'IVA', estado: 'A', registros: 0 },
@@ -127,43 +130,7 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: '01', codigo: '01', descripcion: 'Descripción Agrupación 1', codigo_padre: 1, nivel: 1, permite_detalle: 'N', orden: 1, registros: 1, estado: 'A' },
       { id: '02', codigo: '02', descripcion: 'Descripción Agrupación 2', codigo_padre: 1, nivel: 1, permite_detalle: 'N', orden: 1, registros: 1, estado: 'A' },
       { id: '03', codigo: '03', descripcion: 'Descripción Agrupación 3', codigo_padre: 1, nivel: 1, permite_detalle: 'N', orden: 1, registros: 1, estado: 'A' }
-=======
-      { id: '01', codigo: '01', descripcion: 'Marca 1', estado: 'A', id_usuario_crea: 1, id_usuario_modifica: 1, fecha_creacion: '1955-09-21', fecha_modificacion: '2016-07-16', registro: 1 },
-      { id: '02', codigo: '02', descripcion: 'Marca 2', estado: 'A', id_usuario_crea: 1, id_usuario_modifica: 1, fecha_creacion: '1955-09-21', fecha_modificacion: '2016-07-16', registro: 1 },
-      { id: '03', codigo: '03', descripcion: 'Marca 3', estado: 'A', id_usuario_crea: 1, id_usuario_modifica: 1, fecha_creacion: '1955-09-21', fecha_modificacion: '2016-07-16', registro: 1 },
-      { id: '04', codigo: '04', descripcion: 'Marca 4', estado: 'A', id_usuario_crea: 1, id_usuario_modifica: 1, fecha_creacion: '1955-09-21', fecha_modificacion: '2016-07-16', registro: 1 }
-    ];
-    let presentacion_medicamento = [
-      { id: '01', codigo: '01', descripcion: 'Presentación medicamento 1', estado: 'A', id_usuario_crea: 1, id_usuario_modifica: 1, fecha_creacion: '1955-09-21', fecha_modificacion: '2016-07-16', registro: 1 },
-      { id: '02', codigo: '02', descripcion: 'Presentación medicamento 2', estado: 'A', id_usuario_crea: 1, id_usuario_modifica: 1, fecha_creacion: '1955-09-21', fecha_modificacion: '2016-07-16', registro: 1 },
-      { id: '03', codigo: '03', descripcion: 'Presentación medicamento 3', estado: 'A', id_usuario_crea: 1, id_usuario_modifica: 1, fecha_creacion: '1955-09-21', fecha_modificacion: '2016-07-16', registro: 1 }
-    ];
-    let vias_administracion = [
-      { id: '01', codigo: '01', descripcion: 'Vías de administración 1', estado: 'A', id_usuario_crea: 1, id_usuario_modifica : 1, fecha_creacion: '1955-09-21', fecha_modificacion : '2016-07-16', registro: 1 },
-      { id: '02', codigo: '02', descripcion: 'Vías de administración 2', estado: 'A', id_usuario_crea: 1, id_usuario_modifica : 1, fecha_creacion: '1955-09-21', fecha_modificacion : '2016-07-16', registro: 1 },
-      { id: '03', codigo: '03', descripcion: 'Vías de administración 3', estado: 'A', id_usuario_crea: 1, id_usuario_modifica : 1, fecha_creacion: '1955-09-21', fecha_modificacion : '2016-07-16', registro: 1 }
-    ];
-    let riesgo_procedimiento = [
-      { id: '01', codigo: '01', descripcion: 'Riesgos de procedimiento 1', estado: 'A', id_usuario_crea: 1, id_usuario_modifica: 1, fecha_creacion: '1955-09-21', fecha_modificacion: '2016-07-16', registro: 1 },
-      { id: '02', codigo: '02', descripcion: 'Riesgos de procedimiento 2', estado: 'A', id_usuario_crea: 1, id_usuario_modifica: 1, fecha_creacion: '1955-09-21', fecha_modificacion: '2016-07-16', registro: 1 },
-      { id: '03', codigo: '03', descripcion: 'Riesgos de procedimiento 3', estado: 'A', id_usuario_crea: 1, id_usuario_modifica: 1, fecha_creacion: '1955-09-21', fecha_modificacion: '2016-07-16', registro: 1 }
-    ];
-    let unidades_medida = [
-      { id: '01', codigo: '01', descripcion: 'Unidades de medida 1', estado: 'A', id_usuario_crea: 1, id_usuario_modifica: 1, fecha_creacion: '1955-09-21', fecha_modificacion: '2016-07-16', registro: 1 },
-      { id: '02', codigo: '02', descripcion: 'Unidades de medida 2', estado: 'A', id_usuario_crea: 1, id_usuario_modifica: 1, fecha_creacion: '1955-09-21', fecha_modificacion: '2016-07-16', registro: 1 }
-    ];
 
-    let tipos_impuesto = [
-      { id: '01', codigo: '01', codigo_alternativo: '001', descripcion: 'Iva', porcentaje: 12, base: 1, tipo_impuesto: 'IVA', estado: 'A', id_usuario_crea: 2, id_usuario_modifica: 3, fecha_creacion: '1955-09-21', fecha_modificacion : '1977-11-24', registros: 0 },
-      { id: '02', codigo: '02', codigo_alternativo: '002', descripcion: 'Iva', porcentaje: 12, base: 1, tipo_impuesto: 'IVA', estado: 'A', id_usuario_crea: 2, id_usuario_modifica: 3, fecha_creacion: '1955-09-21', fecha_modificacion : '1977-11-24', registros: 0 },
-      { id: '03', codigo: '03', codigo_alternativo: '003', descripcion: 'Iva', porcentaje: 12, base: 1, tipo_impuesto: 'IVA', estado: 'A', id_usuario_crea: 2, id_usuario_modifica: 3, fecha_creacion: '1955-09-21', fecha_modificacion : '1977-11-24', registros: 0 },
-      { id: '04', codigo: '04', codigo_alternativo: '004', descripcion: 'Iva', porcentaje: 12, base: 1, tipo_impuesto: 'IVA', estado: 'A', id_usuario_crea: 2, id_usuario_modifica: 3, fecha_creacion: '1955-09-21', fecha_modificacion : '1977-11-24', registros: 0 },
-    ];
-    let agrupaciones = [
-      { id: '01', codigo: '01', descripcion: 'Descripción Agrupación 1', codigo_padre: 1, nivel: 1, permite_detalle: 'N', orden: 1, id_usuario_crea: 1, id_usuario_modifica: 3, fecha_creacion: '1955-09-21', fecha_modificacion: '1977-11-24', registro: 1, estado: 'A' },
-      { id: '02', codigo: '02', descripcion: 'Descripción Agrupación 2', codigo_padre: 1, nivel: 1, permite_detalle: 'N', orden: 1, id_usuario_crea: 1, id_usuario_modifica: 3, fecha_creacion: '1955-09-21', fecha_modificacion: '1977-11-24', registro: 1, estado: 'A' },
-      { id: '03', codigo: '03', descripcion: 'Descripción Agrupación 3', codigo_padre: 1, nivel: 1, permite_detalle: 'N', orden: 1, id_usuario_crea: 1, id_usuario_modifica: 3, fecha_creacion: '1955-09-21', fecha_modificacion: '1977-11-24', registro: 1, estado: 'A' }
->>>>>>> 0f8169bf2ebc5a717ccca094377bb6eab5ecbe70
     ];
 
     let data = [
@@ -277,17 +244,23 @@ export class InMemoryDataService implements InMemoryDbService {
 
     return { 
       data,
-      formas_pago, 
+      formas_pago,
+      tipos_formas_pago, 
+      productos, 
+      tipos_impuesto,  
+      agrupaciones,
+      terceros,
+      // Tablas Generales
       marca, 
       presentacion_medicamento, 
       vias_administracion, 
       riesgo_procedimiento,
       unidades_medida,
-      tipos_formas_pago, 
-      productos, 
-      tipos_impuesto,  
-      agrupaciones,
-      terceros
+      // Documentos
+      entradas,
+      salidas,
+      compras,
+      ventas
     };
   }
 }
