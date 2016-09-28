@@ -18,6 +18,7 @@ import { Location }            from '@angular/common';
 import { Path, Validate }      from '../paths';
 import { DocumentoService } from './documento.service';
 import { Documento }        from './documento';
+import { DataService }     from '../data.service';
 import { cTipoTabla }          from '../_tipos/c-tipo-tabla';
 import { cEstado }             from '../_tipos/cEstado';
 
@@ -47,6 +48,10 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private title         = '';
   private botonGuardar  = 'Guardar';
   private botonRegresar = 'Regresar';
+
+  private data      : any[];
+  private conceptos : any;
+  private terceros  : any;
   
 
   // Constructor
@@ -54,7 +59,8 @@ export class DocumentoDetail implements OnInit, OnDestroy {
     private location: Location,
     private service: DocumentoService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private serviceData: DataService
   ) {
     // Definimos texto boton y titulo
     this .path = this .router .url;
@@ -91,8 +97,8 @@ export class DocumentoDetail implements OnInit, OnDestroy {
         id                  : new FormControl(),
         codigo              : new FormControl(),
         descripcion         : new FormControl(),
-        estado              : new FormControl(),
-        registros           : new FormControl()
+        concepto            : new FormControl(),
+        tercero             : new FormControl()  
     });
 
     console .log ( 'router: ' + this.router);
@@ -102,6 +108,25 @@ export class DocumentoDetail implements OnInit, OnDestroy {
       s    depurando en el navegador se puede observar que el parametro codigo es igual a la cadena
           "undefined", por eso se hacen las dos comparaciones
         ---------- */
+
+// 
+        this .serviceData.getData() .then( data => { 
+          this .data = data;
+          this .conceptos = this.data['0'].conceptos;
+          this .terceros  = this.data['0'].terceros;
+
+          // --------- Ciclo de prueba para recorrer los campos de la estructura
+          /*
+          let a = this.data[0].marcas;
+          a.forEach(o => {
+            console .log( '+++' + o['nombre'] );
+            this .marcas = o
+            debugger;
+          });
+          --------- */
+        });
+
+
         if (params['codigo'] !== undefined && params['codigo'] !== "undefined") {
             // Si el parametro codigo no esta definido entonces se trata de un nuevo registro
             this.esNuevo = false;

@@ -96,28 +96,28 @@ export class InMemoryDataService implements InMemoryDbService {
     ]; 
     /* DOCUMENTOS */
     let entradas = [
-      { id: '01', codigo: '01', descripcion: 'Entrada 1', estado: 'A', registros: 1 },
-      { id: '02', codigo: '02', descripcion: 'Entrada 2', estado: 'A', registros: 1 },
-      { id: '03', codigo: '03', descripcion: 'Entrada 3', estado: 'A', registros: 1 },
-      { id: '04', codigo: '04', descripcion: 'Entrada 4', estado: 'A', registros: 1 }
+      { id: '01', codigo: '01', concepto: 2, tercero: 1, descripcion: 'Entrada 1' },
+      { id: '02', codigo: '02', concepto: 1, tercero: 2, descripcion: 'Entrada 2' },
+      { id: '03', codigo: '03', concepto: 2, tercero: 1, descripcion: 'Entrada 3' },
+      { id: '04', codigo: '04', concepto: 3, tercero: 1, descripcion: 'Entrada 4' }
     ];   
     let salidas = [
-      { id: '01', codigo: '01', descripcion: 'Salida 1', estado: 'A', registros: 1 },
-      { id: '02', codigo: '02', descripcion: 'Salida 2', estado: 'A', registros: 1 },
-      { id: '03', codigo: '03', descripcion: 'Salida 3', estado: 'A', registros: 1 },
-      { id: '04', codigo: '04', descripcion: 'Salida 4', estado: 'A', registros: 1 }
-    ];    
+      { id: '01', codigo: '01', concepto: 3, tercero: 2, descripcion: 'Salida 1' },
+      { id: '02', codigo: '02', concepto: 2, tercero: 3, descripcion: 'Salida 2' },
+      { id: '03', codigo: '03', concepto: 1, tercero: 4, descripcion: 'Salida 3' },
+      { id: '04', codigo: '04', concepto: 2, tercero: 4, descripcion: 'Salida 4' }
+    ];     
     let compras = [
-      { id: '01', codigo: '01', descripcion: 'Compra 1', estado: 'A', registros: 1 },
-      { id: '02', codigo: '02', descripcion: 'Compra 2', estado: 'A', registros: 1 },
-      { id: '03', codigo: '03', descripcion: 'Compra 3', estado: 'A', registros: 1 },
-      { id: '04', codigo: '04', descripcion: 'Compra 4', estado: 'A', registros: 1 }
-    ];       
+      { id: '01', codigo: '01', concepto: 1, tercero: 2, descripcion: 'Compra 1' },
+      { id: '02', codigo: '02', concepto: 1, tercero: 3, descripcion: 'Compra 2' },
+      { id: '03', codigo: '03', concepto: 1, tercero: 3, descripcion: 'Compra 3' },
+      { id: '04', codigo: '04', concepto: 2, tercero: 1, descripcion: 'Compra 4' }
+    ];         
     let ventas = [
-      { id: '01', codigo: '01', descripcion: 'Venta 1', estado: 'A', registros: 1 },
-      { id: '02', codigo: '02', descripcion: 'Venta 2', estado: 'A', registros: 1 },
-      { id: '03', codigo: '03', descripcion: 'Venta 3', estado: 'A', registros: 1 },
-      { id: '04', codigo: '04', descripcion: 'Venta 4', estado: 'A', registros: 1 }
+      { id: '01', codigo: '01', concepto: 1, tercero: 2, descripcion: 'Venta 1' },
+      { id: '02', codigo: '02', concepto: 2, tercero: 2, descripcion: 'Venta 2' },
+      { id: '03', codigo: '03', concepto: 3, tercero: 1, descripcion: 'Venta 3' },
+      { id: '04', codigo: '04', concepto: 3, tercero: 1, descripcion: 'Venta 4' }
     ];     
 
     let tipos_impuesto = [
@@ -236,10 +236,27 @@ export class InMemoryDataService implements InMemoryDbService {
               {id: 1, tipo: 'No imprime'},
               {id: 2, tipo: 'Tiquete'},
               {id: 3, tipo: 'Corporativa'}
+        ],
+        //---
+        conceptos: [
+              {id: 1, nombre: 'Concepto 1'},
+              {id: 2, nombre: 'Concepto 2'},
+              {id: 3, nombre: 'Concepto 3'}
+        ],
+        terceros: [
+              {id: 1, nombre: 'Tercero (Un fulano de tal) 1'},
+              {id: 2, nombre: 'Tercero (Un fulano de tal) 2'},
+              {id: 3, nombre: 'Tercero (Un fulano de tal) 3'}
+        ],
+        bodegas: [
+              {id: 1, nombre: 'La 1'},
+              {id: 2, nombre: 'La 2'},
+              {id: 3, nombre: 'La 3'}
         ]
-
       }
     ];
+
+
 
 
     return { 

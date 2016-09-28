@@ -6,7 +6,7 @@ export class Documento {
         public id                  : number = 0,
         public codigo              : string = '',
         public descripcion         : string = '',
-        public estado              : string = 'A',
+        public concepto            : number = 1,
         public registros           : number = 0
     ) { }
 }

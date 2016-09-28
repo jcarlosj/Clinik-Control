@@ -14,7 +14,27 @@
                 </span>
             </div>
         </div>
-        <div class="mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+        <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone">
+        </div>
+        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            <div>
+                <label>Concepto: </label>
+                <select formControlName="concepto" id="concepto" name="concepto" >
+                    <option [value]="o.id" *ngFor="let o of conceptos">{{o.nombre}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone">
+        </div>
+        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            <div>
+                <label>Tercero: </label>
+                <select formControlName="tercero" id="tercero" name="tercero" >
+                    <option [value]="o.id" *ngFor="let o of terceros">{{o.nombre}}</option>
+                </select>
+            </div>
+        </div>        
+        <!--div class="mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
             <mdl-textfield 
                     formControlName="descripcion" 
                     type="text" id="descripcion" name="descripcion" placeholder="descripcion" maxlength="80" required 
@@ -35,7 +55,7 @@
                     <option [value]="o.codigo" *ngFor="let o of estado">{{o.nombre}}</option>
                 </select>
             </div>
-        </div>
+        </div-->
     </div>
     <br/>
     <p>
