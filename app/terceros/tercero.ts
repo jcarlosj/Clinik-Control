@@ -3,7 +3,7 @@ export class Tercero {
 
     //Constructor
     constructor( 
-        public id                    : string = '',    // <-- Datos Básicos.
+        public id                      : number = 0,    // <-- Datos Básicos.
         public codigo                  : string = '',
         public tipo_doc_identificacion : number = 1, 
         public numero_identificacion   : string = '',
@@ -45,13 +45,6 @@ export class Tercero {
         //public observaciones           : definir,
         //public tipo_tercero            : definir,
         public estado                  : string = 'A',      // <-- Parámetros: Control.
-<<<<<<< HEAD
-=======
-        public id_usuario_crea         : number = 0,         
-        public id_usuario_modifica     : number = 0,
-        public fecha_creacion          : string = '',
-        public fecha_modificacion      : string = '',
->>>>>>> 0f8169bf2ebc5a717ccca094377bb6eab5ecbe70
         public registros               : number = 0
     ) { }
     
