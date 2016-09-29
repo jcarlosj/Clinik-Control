@@ -66,6 +66,26 @@ export class InMemoryDataService implements InMemoryDbService {
         // referenciasTerceros: '', observaciones: '', tipoTercero: '',
         //--- CONTROL ---
         estado: 'A', registros: 0
+      },
+            {
+        //--- DATOS BÁSICOS --- 
+        id: '01', codigo: '01', tipo_doc_identificacion: 1, numero_identificacion: '79854214', ciudad_expedicion: 3, dv: '1', razon_social: 'Perencejo de Tal por cual', nombre1: 'Perencejo', nombre2: 'de Tal', apellido1: 'para', apellido2: 'cual', 
+        //--- DATOS DE UBICACIÓN ---
+        direccion: 'Av Carrera con Calle', id_ciudad: 3, id_barrio: 2, telefono_fijo: '2342111', telefono_movil: '3002154487', e_mail: 'fulanitodetalporcual@correo.co', id_zona: 3, 
+        //--- DATOS PERSONALES ---
+        fecha_nacimiento: '1983-02-15', lugar_nacimiento: 3, grupo_sanguineo: 'A+', sexo: 'm', estado_civil: 2, profesion_oficio: 3, id_eps: 3,  
+        //--- DATOS CLINIK CONTROL ---
+        tiene_convenio: 'N', tipo_afiliacion: 'N', id_profesional_asignado: 1,
+        //--- PARAMETROS LEGALES ---
+        exento_iva: 'N', autoretenedor: 'N', tipo_persona: 1, 
+        //--- PARAMETROS CONTROL CXC CXP Y CAJA ---
+        cupo_credito: 1, dias_plazo: 15, lista_precios: 1, porc_dto_contado: 10, porc_dto_credito: 12,  
+        //--- PARAMETROS VARIOS ---
+        afiliado_fidelizacion: 'N', tipo_impresion_fv: 1, 
+        //--- MANEJAR PESTAÑAS ---
+        // referenciasTerceros: '', observaciones: '', tipoTercero: '',
+        //--- CONTROL ---
+        estado: 'A', registros: 0
       }
     ];
     /* TABLAS GENERALES */

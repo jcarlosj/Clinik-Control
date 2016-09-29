@@ -5,9 +5,11 @@ import { Routes, RouterModule } from '@angular/router';
 // Imports personalizados necesarios para este componente
 import { TerceroListComponent }    from './tercero-list.component';
 import { TerceroDetailComponent }  from './tercero-detail.component';
+import { TerceroSearchComponent }  from './tercero-search.component';
 
 // Constante con los PATHs del componente
 export const TERCEROS_ROUTER: Routes = [
-  { path: 'terceros',         component: TerceroListComponent },
-  { path: 'terceros/:codigo', component: TerceroDetailComponent }
+  { path: 'terceros',            component: TerceroListComponent },
+  { path: 'terceros/:codigo',    component: TerceroDetailComponent },
+  { path: 'terceros/detalle/:id',          component: TerceroSearchComponent }
 ];

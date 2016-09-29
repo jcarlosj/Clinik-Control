@@ -34,8 +34,10 @@ import { TipoImpuestoListComponent }   from './tipos-impuesto/tipo-impuesto-list
 import { TipoImpuestoDetailComponent } from './tipos-impuesto/tipo-impuesto-detail.component';
 
 import { TerceroService }         from './terceros/tercero.service';
+import { TerceroSearchService }   from './terceros/tercero-search.service';
 import { TerceroListComponent }   from './terceros/tercero-list.component';
 import { TerceroDetailComponent } from './terceros/tercero-detail.component';
+import { TerceroSearchComponent } from './terceros/tercero-search.component';
 
 import { DocumentoService } from './documentos/documento.service';
 import { DocumentoList }    from './documentos/documento-list.component';
@@ -69,6 +71,7 @@ import { routing, appRoutingProviders }        from './app.routing';
     TipoImpuestoDetailComponent,
     TerceroListComponent,
     TerceroDetailComponent,
+    TerceroSearchComponent,
     DocumentoList,
     DocumentoDetail
   ],
@@ -81,6 +84,7 @@ import { routing, appRoutingProviders }        from './app.routing';
     ProductoService,
     TipoImpuestoService,
     TerceroService,
+    TerceroSearchService,
     DocumentoService
     /*,
     { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
