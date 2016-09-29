@@ -33,3 +33,11 @@ export class Data {
       return fecha.getFullYear() + '-' + (fecha.getMonth() + 1) + '-' + fecha.getDate();
     }
 }
+
+export class Simulate {
+    static getConsecutivo() : number {
+
+      let number = Math .floor( Math .random() * 999999999 );
+      return number;
+    }
+}

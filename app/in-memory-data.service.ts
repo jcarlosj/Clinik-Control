@@ -96,28 +96,28 @@ export class InMemoryDataService implements InMemoryDbService {
     ]; 
     /* DOCUMENTOS */
     let entradas = [
-      { id: '01', codigo: '01', concepto: 2, tercero: 1, descripcion: 'Entrada 1' },
-      { id: '02', codigo: '02', concepto: 1, tercero: 2, descripcion: 'Entrada 2' },
-      { id: '03', codigo: '03', concepto: 2, tercero: 1, descripcion: 'Entrada 3' },
-      { id: '04', codigo: '04', concepto: 3, tercero: 1, descripcion: 'Entrada 4' }
+      { id: '01', codigo: '01', concepto: 2, /*tercero: 1,*/ descripcion: 'Entrada 1', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 1, bodegaDestino: 3 },
+      { id: '02', codigo: '02', concepto: 1, /*tercero: 2,*/ descripcion: 'Entrada 2', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 2, bodegaDestino: 3 },
+      { id: '03', codigo: '03', concepto: 2, /*tercero: 1,*/ descripcion: 'Entrada 3', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 2, bodegaDestino: 4 },
+      { id: '04', codigo: '04', concepto: 3, /*tercero: 1,*/ descripcion: 'Entrada 4', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 3, bodegaDestino: 1 }
     ];   
     let salidas = [
-      { id: '01', codigo: '01', concepto: 3, tercero: 2, descripcion: 'Salida 1' },
-      { id: '02', codigo: '02', concepto: 2, tercero: 3, descripcion: 'Salida 2' },
-      { id: '03', codigo: '03', concepto: 1, tercero: 4, descripcion: 'Salida 3' },
-      { id: '04', codigo: '04', concepto: 2, tercero: 4, descripcion: 'Salida 4' }
+      { id: '01', codigo: '01', concepto: 3, /*tercero: 2,*/ descripcion: 'Salida 1', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 2, bodegaDestino: 4 },
+      { id: '02', codigo: '02', concepto: 2, /*tercero: 3,*/ descripcion: 'Salida 2', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 3, bodegaDestino: 2 },
+      { id: '03', codigo: '03', concepto: 1, /*tercero: 4,*/ descripcion: 'Salida 3', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 4, bodegaDestino: 3 },
+      { id: '04', codigo: '04', concepto: 2, /*tercero: 4,*/ descripcion: 'Salida 4', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 1, bodegaDestino: 2 }
     ];     
     let compras = [
-      { id: '01', codigo: '01', concepto: 1, tercero: 2, descripcion: 'Compra 1' },
-      { id: '02', codigo: '02', concepto: 1, tercero: 3, descripcion: 'Compra 2' },
-      { id: '03', codigo: '03', concepto: 1, tercero: 3, descripcion: 'Compra 3' },
-      { id: '04', codigo: '04', concepto: 2, tercero: 1, descripcion: 'Compra 4' }
+      { id: '01', codigo: '01', concepto: 1, /*tercero: 2,*/ descripcion: 'Compra 1', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 1, bodegaDestino: 1 },
+      { id: '02', codigo: '02', concepto: 1, /*tercero: 3,*/ descripcion: 'Compra 2', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 1, bodegaDestino: 2 },
+      { id: '03', codigo: '03', concepto: 1, /*tercero: 3,*/ descripcion: 'Compra 3', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 2, bodegaDestino: 2 },
+      { id: '04', codigo: '04', concepto: 2, /*tercero: 1,*/ descripcion: 'Compra 4', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 3, bodegaDestino: 3 }
     ];         
     let ventas = [
-      { id: '01', codigo: '01', concepto: 1, tercero: 2, descripcion: 'Venta 1' },
-      { id: '02', codigo: '02', concepto: 2, tercero: 2, descripcion: 'Venta 2' },
-      { id: '03', codigo: '03', concepto: 3, tercero: 1, descripcion: 'Venta 3' },
-      { id: '04', codigo: '04', concepto: 3, tercero: 1, descripcion: 'Venta 4' }
+      { id: '01', codigo: '01', concepto: 1, /*tercero: 2,*/ descripcion: 'Venta 1', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 2, bodegaDestino: 2 },
+      { id: '02', codigo: '02', concepto: 2, /*tercero: 2,*/ descripcion: 'Venta 2', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 1, bodegaDestino: 3 },
+      { id: '03', codigo: '03', concepto: 3, /*tercero: 1,*/ descripcion: 'Venta 3', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 1, bodegaDestino: 4 },
+      { id: '04', codigo: '04', concepto: 3, /*tercero: 1,*/ descripcion: 'Venta 4', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 1, bodegaDestino: 4 }
     ];     
 
     let tipos_impuesto = [
@@ -237,7 +237,7 @@ export class InMemoryDataService implements InMemoryDbService {
               {id: 2, tipo: 'Tiquete'},
               {id: 3, tipo: 'Corporativa'}
         ],
-        //---
+        //--- Documentos
         conceptos: [
               {id: 1, nombre: 'Concepto 1'},
               {id: 2, nombre: 'Concepto 2'},
@@ -252,7 +252,19 @@ export class InMemoryDataService implements InMemoryDbService {
               {id: 1, nombre: 'La 1'},
               {id: 2, nombre: 'La 2'},
               {id: 3, nombre: 'La 3'}
-        ]
+        ],
+        origenes: [
+              {id: 1, nombre: 'Origenes 1'},
+              {id: 2, nombre: 'Origenes 2'},
+              {id: 3, nombre: 'Origenes 3'},
+              {id: 4, nombre: 'Origenes 4'}
+        ],
+        destinos: [
+              {id: 1, nombre: 'Destinos 1'},
+              {id: 2, nombre: 'Destinos 2'},
+              {id: 3, nombre: 'Destinos 3'},
+              {id: 4, nombre: 'Destinos 4'}
+        ],
       }
     ];
 

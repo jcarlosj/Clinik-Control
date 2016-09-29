@@ -52,7 +52,8 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private data      : any[];
   private conceptos : any;
   private terceros  : any;
-  
+  private origenes  : any;
+  private destinos  : any;
 
   // Constructor
   constructor(
@@ -83,7 +84,7 @@ export class DocumentoDetail implements OnInit, OnDestroy {
 	
     console .log ( 'Titulo Afuera : ' + this .title );
       // Inicializando atributos
-      this.codigo = '';
+      this.codigo;
       this.estado = [
           new cEstado( 'A', 'Activo' ),
           new cEstado( 'I', 'Inactivo' ),
@@ -98,7 +99,11 @@ export class DocumentoDetail implements OnInit, OnDestroy {
         codigo              : new FormControl(),
         descripcion         : new FormControl(),
         concepto            : new FormControl(),
-        tercero             : new FormControl()  
+        fecha               : new FormControl(),
+        direccion           : new FormControl(),
+        bodegaOrigen        : new FormControl(),
+        bodegaDestino       : new FormControl()
+        //tercero             : new FormControl()  
     });
 
     console .log ( 'router: ' + this.router);
@@ -114,6 +119,8 @@ export class DocumentoDetail implements OnInit, OnDestroy {
           this .data = data;
           this .conceptos = this.data['0'].conceptos;
           this .terceros  = this.data['0'].terceros;
+          this .origenes  = this.data['0'].origenes;
+          this .destinos  = this.data['0'].destinos;
 
           // --------- Ciclo de prueba para recorrer los campos de la estructura
           /*

@@ -2,19 +2,7 @@
 <form  *ngIf="vObj" [formGroup]="frmDocumento" novalidate >
     <input type="hidden" id="id" name="id" formControlName="id" />
     <div class="mdl-grid">
-        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            <mdl-textfield 
-                    type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="10" required
-                    formControlName="codigo" [disabled]="!esNuevo" 
-                    label="Código" floating-label >
-            </mdl-textfield>
-            <div [hidden]="!(frmDocumento.controls.codigo.touched && !frmDocumento.controls.codigo.valid)">
-                <span class="fieldvalidate-error">
-                    <i>> {{ errors( 'codigo' ) }}</i>
-                </span>
-            </div>
-        </div>
-        <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone">
+<div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone">
         </div>
         <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             <div>
@@ -23,17 +11,65 @@
                     <option [value]="o.id" *ngFor="let o of conceptos">{{o.nombre}}</option>
                 </select>
             </div>
+        </div>    
+        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            <mdl-textfield 
+                    type="text" id="fecha" name="fecha" placeholder="fecha" 
+                    formControlName="fecha" [disabled]="!esNuevo" 
+                    label="Fecha" floating-label >
+            </mdl-textfield>
+            <div [hidden]="!(frmDocumento.controls.fecha.touched && !frmDocumento.controls.fecha.valid)">
+                <span class="fieldvalidate-error">
+                    <i>> {{ errors( 'fecha' ) }}</i>
+                </span>
+            </div>
+        </div>   
+        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            <mdl-textfield 
+                    type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="10" required
+                    formControlName="codigo" [disabled]="!esNuevo" 
+                    label="Consecutivo" floating-label >
+            </mdl-textfield>
+            <div [hidden]="!(frmDocumento.controls.codigo.touched && !frmDocumento.controls.codigo.valid)">
+                <span class="fieldvalidate-error">
+                    <i>> {{ errors( 'codigo' ) }}</i>
+                </span>
+            </div>
         </div>
+        <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone">
+        </div>       
+        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            <mdl-textfield 
+                    type="text" id="direccion" name="direccion" placeholder="direccion" 
+                    formControlName="direccion" [disabled]="!esNuevo" 
+                    label="Dirección" floating-label >
+            </mdl-textfield>
+            <div [hidden]="!(frmDocumento.controls.direccion.touched && !frmDocumento.controls.direccion.valid)">
+                <span class="fieldvalidate-error">
+                    <i>> {{ errors( 'direccion' ) }}</i>
+                </span>
+            </div>
+        </div>       
         <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone">
         </div>
         <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             <div>
-                <label>Tercero: </label>
-                <select formControlName="tercero" id="tercero" name="tercero" >
-                    <option [value]="o.id" *ngFor="let o of terceros">{{o.nombre}}</option>
+                <label>Bodega origen: </label>
+                <select formControlName="bodegaOrigen" id="bodegaOrigen" name="bodegaOrigen" >
+                    <option [value]="o.id" *ngFor="let o of origenes">{{o.nombre}}</option>
                 </select>
             </div>
-        </div>        
+        </div>         
+        <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone">
+        </div>
+        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            <div>
+                <label>Bodega destino: </label>
+                <select formControlName="bodegaDestino" id="bodegaDestino" name="bodegaDestino" >
+                    <option [value]="o.id" *ngFor="let o of destinos">{{o.nombre}}</option>
+                </select>
+            </div>
+        </div>                         
         <!--div class="mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
             <mdl-textfield 
                     formControlName="descripcion" 

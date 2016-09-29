@@ -7,6 +7,9 @@ export class Documento {
         public codigo              : string = '',
         public descripcion         : string = '',
         public concepto            : number = 1,
-        public registros           : number = 0
+        public fecha               : string = '',
+        public direccion           : string = '',
+        public bodegaOrigen        : number = 1,
+        public bodegaDestino       : number = 1
     ) { }
 }
