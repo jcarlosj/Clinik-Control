@@ -49,7 +49,7 @@ export class InMemoryDataService implements InMemoryDbService {
     let terceros = [
       {
         //--- DATOS BÁSICOS --- 
-        id: '01', codigo: '01', tipo_doc_identificacion: 1, numero_identificacion: '79854214', ciudad_expedicion: 3, dv: '1', razon_social: 'Fulano de Tal por cual', nombre1: 'Fulano', nombre2: 'de Tal', apellido1: 'para', apellido2: 'cual', 
+        id: 1, codigo: '01', tipo_doc_identificacion: 1, numero_identificacion: '79854214', ciudad_expedicion: 3, dv: '1', razon_social: 'Fulano de Tal por cual', nombre1: 'Fulano', nombre2: 'de Tal', apellido1: 'para', apellido2: 'cual', 
         //--- DATOS DE UBICACIÓN ---
         direccion: 'Av Carrera con Calle', id_ciudad: 3, id_barrio: 2, telefono_fijo: '2342111', telefono_movil: '3002154487', e_mail: 'fulanitodetalporcual@correo.co', id_zona: 3, 
         //--- DATOS PERSONALES ---

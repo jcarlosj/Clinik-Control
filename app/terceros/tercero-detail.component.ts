@@ -27,7 +27,7 @@ export class TerceroDetailComponent implements OnInit, OnDestroy {
   @Output() close = new EventEmitter();
 
   // Atributes 
-  private frmTercero    : FormGroup;
+  private frmTercero      : FormGroup;
   private vObj            : Tercero;
   private codigo          : string;
   private activaciones    : Activaciones[];

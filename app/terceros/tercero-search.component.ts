@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input } from '@angular/core';
 import { Router }            from '@angular/router';
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
@@ -15,8 +15,12 @@ import { Tercero } from '../terceros/tercero';
 })
 export class TerceroSearchComponent implements OnInit {
 
+  @Input()
+  obj = new Tercero();
   terceros: Observable<Tercero[]>;
   private searchTerms = new Subject<string>();          // <--- Terminos de busqueda
+  private razon_social: string = '';
+  private inputFocused = new EventEmitter();
   
   constructor(
     private terceroSearchService: TerceroSearchService,
@@ -45,7 +49,17 @@ export class TerceroSearchComponent implements OnInit {
   }
 
   gotoDetail(obj: Tercero): void {
-    let link = ['/terceros/detalle', obj.id];
+    let link = ['/terceros', obj.id];
     this.router.navigate(link);
   }
+
+  showDetail(obj: Tercero): void {
+    
+    if ( obj .razon_social != '' ) {
+      this .obj = obj;
+      this .razon_social = obj .razon_social;
+    }
+  
+  }
+
 }

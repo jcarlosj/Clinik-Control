@@ -13,7 +13,7 @@ import { DOCUMENTOS_ROUTER }     from './documentos/documento.routing'
 const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: '/terceros',
+    redirectTo: '/entradas',
     pathMatch: 'full'
   },
   ...FORMAS_PAGO_ROUTER,

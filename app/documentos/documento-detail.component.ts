@@ -18,6 +18,7 @@ import { Location }            from '@angular/common';
 import { Path, Validate }      from '../paths';
 import { DocumentoService } from './documento.service';
 import { Documento }        from './documento';
+import { Tercero }          from '../terceros/tercero';  
 import { DataService }     from '../data.service';
 import { cTipoTabla }          from '../_tipos/c-tipo-tabla';
 import { cEstado }             from '../_tipos/cEstado';
@@ -34,8 +35,9 @@ export class DocumentoDetail implements OnInit, OnDestroy {
 
   // Atributes
   @Output() close = new EventEmitter();
-  private frmDocumento : FormGroup;
+  private frmDocumento    : FormGroup;
   private vObj            : Documento;
+  tercero = new Tercero();
   private codigo          : string;
   //private tiposTablas     : cTipoTabla[];
   private estado          : cEstado[];
@@ -63,6 +65,7 @@ export class DocumentoDetail implements OnInit, OnDestroy {
     private router: Router,
     private serviceData: DataService
   ) {
+
     // Definimos texto boton y titulo
     this .path = this .router .url;
     console .log( 'Validate Path: ' + this .path );

@@ -1,9 +1,10 @@
 <div id="search-component">
   <label>Tercero</label>
-  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" [value]="razon_social" />
+  <span>{{ obj.codigo + ' ' + obj.nombre1 + ' ' + obj.nombre2 + ' ' + obj.apellido1 + ' ' + obj.apellido2  }}</span>
   <div>
     <div *ngFor="let tercero of terceros | async"
-         (click)="gotoDetail(tercero)" class="search-result" >
+         (click)="showDetail(tercero)" class="search-result" >
       {{tercero.razon_social}}
     </div>
   </div>
