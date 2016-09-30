@@ -14,11 +14,15 @@ import { FormControl,
 import {ReactiveFormsModule}   from '@angular/forms';
 import { Location }            from '@angular/common';
 
+import { Observable }        from 'rxjs/Observable';
+import { Subject }           from 'rxjs/Subject';
+
 // Imports personalizados necesarios para este componente
 import { Path, Validate }      from '../paths';
 import { DocumentoService } from './documento.service';
 import { Documento }        from './documento';
 import { Tercero }          from '../terceros/tercero';  
+import { TerceroSearchService } from '../terceros/tercero-search.service';
 import { DataService }     from '../data.service';
 import { cTipoTabla }          from '../_tipos/c-tipo-tabla';
 import { cEstado }             from '../_tipos/cEstado';
@@ -27,7 +31,8 @@ import { cEstado }             from '../_tipos/cEstado';
 @Component({
   moduleId    : module.id,
   selector    : 'documentos-detail',
-  templateUrl : 'documento-detail.component.html'
+  templateUrl : 'documento-detail.component.html',
+  providers: [ TerceroSearchService ]
 })
 
 // Class
@@ -53,9 +58,15 @@ export class DocumentoDetail implements OnInit, OnDestroy {
 
   private data      : any[];
   private conceptos : any;
-  private terceros  : any;
   private origenes  : any;
   private destinos  : any;
+
+  // BUSQUEDA
+  obj = new Tercero();
+  terceros: Observable<Tercero[]>;
+  private searchTerms = new Subject<string>();          // <--- Terminos de busqueda
+  private razon_social: string = '';
+  private inputFocused = new EventEmitter();
 
   // Constructor
   constructor(
@@ -63,6 +74,7 @@ export class DocumentoDetail implements OnInit, OnDestroy {
     private service: DocumentoService,
     private route: ActivatedRoute,
     private router: Router,
+    private terceroSearchService: TerceroSearchService,
     private serviceData: DataService
   ) {
 
@@ -105,8 +117,8 @@ export class DocumentoDetail implements OnInit, OnDestroy {
         fecha               : new FormControl(),
         direccion           : new FormControl(),
         bodegaOrigen        : new FormControl(),
-        bodegaDestino       : new FormControl()
-        //tercero             : new FormControl()  
+        bodegaDestino       : new FormControl(),
+        tercero             : new FormControl()  
     });
 
     console .log ( 'router: ' + this.router);
@@ -121,7 +133,6 @@ export class DocumentoDetail implements OnInit, OnDestroy {
         this .serviceData.getData() .then( data => { 
           this .data = data;
           this .conceptos = this.data['0'].conceptos;
-          this .terceros  = this.data['0'].terceros;
           this .origenes  = this.data['0'].origenes;
           this .destinos  = this.data['0'].destinos;
 
@@ -163,6 +174,21 @@ export class DocumentoDetail implements OnInit, OnDestroy {
             }
         }
     });
+
+    // BUSQUEDA
+    this.terceros = this.searchTerms
+      .debounceTime(300)        // Espera de 300ms (frecuencia de peticiones)
+      .distinctUntilChanged()   // Asegura que solo si cambia el termino de busqueda se realiza una nueva busqueda
+      .switchMap(term => term   // Cancela y descarta anteriores observables de búsqueda, devolviendo sólo el último servicio de búsqueda observable.
+        // Retorna la búsqueda http observables
+        ? this.terceroSearchService.search(term)
+        // o lo observable del herpes vacías si no hay término de búsqueda
+        : Observable.of<Tercero[]>([]))
+      .catch(error => {
+        // HACER: control de errores reales
+        console.log(error);
+        return Observable.of<Tercero[]>([]);
+      });
   }
 
   // Configuración de validaciones de
@@ -227,4 +253,25 @@ export class DocumentoDetail implements OnInit, OnDestroy {
     
     return resp;
   }  
+
+  /* BUSQUEDA */
+  // Push a search term into the observable stream.
+  search( term: string ): void {
+    this.searchTerms.next( term );
+  }
+
+  gotoDetail(obj: Tercero): void {
+    let link = ['/terceros', obj.id];
+    this.router.navigate(link);
+  }
+
+  showDetail(obj: Tercero): void {
+    
+    if ( obj .razon_social != '' ) {
+      this .obj = obj;
+      this .razon_social = obj .razon_social;
+    }
+  
+  }
+
 }

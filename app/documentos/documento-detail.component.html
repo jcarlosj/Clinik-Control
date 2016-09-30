@@ -15,7 +15,7 @@
         <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             <mdl-textfield 
                     type="text" id="fecha" name="fecha" placeholder="fecha" 
-                    formControlName="fecha" [disabled]="!esNuevo" 
+                    formControlName="fecha" 
                     label="Fecha" floating-label >
             </mdl-textfield>
             <div [hidden]="!(frmDocumento.controls.fecha.touched && !frmDocumento.controls.fecha.valid)">
@@ -26,8 +26,8 @@
         </div>   
         <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             <mdl-textfield 
-                    type="text" id="codigo" name="codigo" placeholder="codigo" maxlength="10" required
-                    formControlName="codigo" [disabled]="!esNuevo" 
+                    type="text" id="codigo" name="codigo" placeholder="codigo" 
+                    formControlName="codigo" 
                     label="Consecutivo" floating-label >
             </mdl-textfield>
             <div [hidden]="!(frmDocumento.controls.codigo.touched && !frmDocumento.controls.codigo.valid)">
@@ -36,14 +36,25 @@
                 </span>
             </div>
         </div>
+        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            <label>Tercero</label>
+            <input formControlName="tercero" #searchBox id="search-box" (keyup)="search(searchBox.value)" [value]="razon_social" />
+            <span>{{ obj.codigo + ' ' + obj.nombre1 + ' ' + obj.nombre2 + ' ' + obj.apellido1 + ' ' + obj.apellido2  }}</span>
+            <div>
+                <div *ngFor="let tercero of terceros | async"
+                    (click)="showDetail(tercero)" class="search-result" >
+                {{tercero.razon_social}}
+                </div>
+            </div>
+        </div>
         
-        <tercero-search></tercero-search>
+
         <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone">
         </div>       
         <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             <mdl-textfield 
                     type="text" id="direccion" name="direccion" placeholder="direccion" 
-                    formControlName="direccion" [disabled]="!esNuevo" 
+                    formControlName="direccion"  
                     label="Dirección" floating-label >
             </mdl-textfield>
             <div [hidden]="!(frmDocumento.controls.direccion.touched && !frmDocumento.controls.direccion.valid)">
