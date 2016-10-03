@@ -8,6 +8,7 @@ import { HEROES } from './hero';
     <hero-child *ngFor="let hero of heroes"
       [hero]="hero"
       [master]="master">
+      console.log('Objeto Tercero: '+tercero);
     </hero-child>
   `
 })
