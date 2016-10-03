@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Tercero } from '../terceros/tercero';
 import { HEROES } from './hero';
 @Component({
   selector: 'hero-parent',
@@ -11,6 +12,6 @@ import { HEROES } from './hero';
   `
 })
 export class HeroParentComponent {
-  heroes = HEROES;
-  master: string = 'Master';
+    heroes = HEROES;
+    master: string = 'Master';
 }
