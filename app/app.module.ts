@@ -47,6 +47,9 @@ import { DataService } from './data.service';
 
 import { routing, appRoutingProviders }        from './app.routing';
 
+import { HeroParentComponent } from './component-integration-1/hero-parent.component';
+import { HeroChildComponent }  from './component-integration-1/hero-child.component';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -73,7 +76,9 @@ import { routing, appRoutingProviders }        from './app.routing';
     TerceroDetailComponent,
     TerceroSearchComponent,
     DocumentoList,
-    DocumentoDetail
+    DocumentoDetail,
+    HeroParentComponent,
+    HeroChildComponent
   ],
   providers: [
     appRoutingProviders,

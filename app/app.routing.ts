@@ -10,6 +10,8 @@ import { TIPOS_IMPUESTO_ROUTER } from './tipos-impuesto/tipo-impuesto.routing';
 import { TERCEROS_ROUTER }       from './terceros/tercero.routing';
 import { DOCUMENTOS_ROUTER }     from './documentos/documento.routing' 
 
+import { COMPONENT_INTEGRATION_1_ROUTER } from './component-integration-1/hero.routing';
+
 const appRoutes: Routes = [
   {
     path: '',
@@ -22,7 +24,8 @@ const appRoutes: Routes = [
   ...PRODUCTOS_ROUTER,
   ...TIPOS_IMPUESTO_ROUTER,
   ...TERCEROS_ROUTER,
-  ...DOCUMENTOS_ROUTER
+  ...DOCUMENTOS_ROUTER,
+  ...COMPONENT_INTEGRATION_1_ROUTER
   
 ];
 
