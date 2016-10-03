@@ -7,6 +7,5 @@ import { HeroChildComponent }  from './hero-child.component';
 
 // Constante con los PATHs del componente
 export const COMPONENT_INTEGRATION_1_ROUTER: Routes = [
-  { path: 'padre-1' , component: HeroParentComponent },
-  { path: 'hijo-1'  , component: HeroChildComponent }
+  { path: 'padre-1' , component: HeroParentComponent }
 ];

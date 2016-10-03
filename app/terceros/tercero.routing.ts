@@ -10,6 +10,5 @@ import { TerceroSearchComponent }  from './tercero-search.component';
 // Constante con los PATHs del componente
 export const TERCEROS_ROUTER: Routes = [
   { path: 'terceros',            component: TerceroListComponent },
-  { path: 'terceros/:codigo',    component: TerceroDetailComponent },
-  { path: 'terceros/detalle/:id',          component: TerceroSearchComponent }
+  { path: 'terceros/:codigo',    component: TerceroDetailComponent }
 ];
