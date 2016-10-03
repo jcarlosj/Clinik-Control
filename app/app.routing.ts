@@ -11,6 +11,7 @@ import { TERCEROS_ROUTER }       from './terceros/tercero.routing';
 import { DOCUMENTOS_ROUTER }     from './documentos/documento.routing' 
 
 import { COMPONENT_INTEGRATION_1_ROUTER } from './component-integration-1/hero.routing';
+import { COMPONENT_INTEGRATION_2_ROUTER } from './component-integration-2/name.routing';
 
 const appRoutes: Routes = [
   {
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
   ...TIPOS_IMPUESTO_ROUTER,
   ...TERCEROS_ROUTER,
   ...DOCUMENTOS_ROUTER,
-  ...COMPONENT_INTEGRATION_1_ROUTER
+  ...COMPONENT_INTEGRATION_1_ROUTER,
+  ...COMPONENT_INTEGRATION_2_ROUTER
   
 ];
 

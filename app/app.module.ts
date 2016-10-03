@@ -49,6 +49,8 @@ import { routing, appRoutingProviders }        from './app.routing';
 
 import { HeroParentComponent } from './component-integration-1/hero-parent.component';
 import { HeroChildComponent }  from './component-integration-1/hero-child.component';
+import { NameParentComponent } from './component-integration-2/name-parent.component';
+import { NameChildComponent }  from './component-integration-2/name-child.component';
 
 @NgModule({
   imports: [
@@ -78,7 +80,10 @@ import { HeroChildComponent }  from './component-integration-1/hero-child.compon
     DocumentoList,
     DocumentoDetail,
     HeroParentComponent,
-    HeroChildComponent
+    HeroChildComponent,
+    NameParentComponent,
+    NameChildComponent
+    
   ],
   providers: [
     appRoutingProviders,
