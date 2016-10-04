@@ -21,18 +21,22 @@ import { Subject }           from 'rxjs/Subject';
 import { Path, Validate }      from '../paths';
 import { DocumentoService } from './documento.service';
 import { Documento }        from './documento';
-import { Tercero }          from '../terceros/tercero';  
-import { TerceroSearchService } from '../terceros/tercero-search.service';
 import { DataService }     from '../data.service';
 import { cTipoTabla }          from '../_tipos/c-tipo-tabla';
 import { cEstado }             from '../_tipos/cEstado';
+
+import { Tercero }          from '../terceros/tercero';
+import { Producto }          from '../productos/producto';   
+import { TerceroSearchService } from '../terceros/tercero-search.service';
+import { ProductoSearchService } from '../productos/producto-search.service';
 
 // Decorator
 @Component({
   moduleId    : module.id,
   selector    : 'documentos-detail',
   templateUrl : 'documento-detail.component.html',
-  providers: [ TerceroSearchService ]
+  //styleUrls   : [ 'documento-detail.component.css' ],
+  providers   : [ TerceroSearchService, ProductoSearchService ]
 })
 
 // Class
@@ -43,6 +47,7 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private frmDocumento    : FormGroup;
   private vObj            : Documento;
   tercero = new Tercero();
+  producto = new Producto();
   private codigo          : string;
   //private tiposTablas     : cTipoTabla[];
   private estado          : cEstado[];
@@ -52,7 +57,7 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private path            : string;
 
   // Definimos texto boton y titulo
-  private title         = '';
+  private title         = 'Documentos';
   private botonGuardar  = 'Guardar';
   private botonRegresar = 'Regresar';
 
@@ -62,10 +67,17 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private destinos  : any;
 
   // BUSQUEDA
-  obj = new Tercero();
+  objTercero = new Tercero();
   terceros: Observable<Tercero[]>;
-  private searchTerms = new Subject<string>();          // <--- Terminos de busqueda
-  private razon_social: string = '';
+  private tercero_razon_social: string = '';
+  private tercero_terminos = new Subject<string>();          // <--- Terminos de busqueda de Terceros
+
+  objProducto = new Producto();
+  productos: Observable<Producto[]>;
+  private producto_descripcion1: string = '';
+  private producto_terminos = new Subject<string>();          // <--- Terminos de busqueda de Producto
+  
+  
   private inputFocused = new EventEmitter();
 
   // Constructor
@@ -75,6 +87,7 @@ export class DocumentoDetail implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private terceroSearchService: TerceroSearchService,
+    private productoSearchService: ProductoSearchService,
     private serviceData: DataService
   ) {
 
@@ -118,7 +131,8 @@ export class DocumentoDetail implements OnInit, OnDestroy {
         direccion           : new FormControl(),
         bodegaOrigen        : new FormControl(),
         bodegaDestino       : new FormControl(),
-        tercero             : new FormControl()  
+        tercero             : new FormControl(),
+        producto            : new FormControl()  
     });
 
     console .log ( 'router: ' + this.router);
@@ -175,11 +189,12 @@ export class DocumentoDetail implements OnInit, OnDestroy {
         }
     });
 
-    // BUSQUEDA
-    this.terceros = this.searchTerms
+
+// BUSQUEDA TERCEROS
+    this.terceros = this.tercero_terminos
       .debounceTime(300)        // Espera de 300ms (frecuencia de peticiones)
       .distinctUntilChanged()   // Asegura que solo si cambia el termino de busqueda se realiza una nueva busqueda
-      .switchMap(term => term   // Cancela y descarta anteriores observables de búsqueda, devolviendo sólo el último servicio de búsqueda observable.
+      .switchMap( term => term   // Cancela y descarta anteriores observables de búsqueda, devolviendo sólo el último servicio de búsqueda observable.
         // Retorna la búsqueda http observables
         ? this.terceroSearchService.search(term)
         // o lo observable del herpes vacías si no hay término de búsqueda
@@ -189,6 +204,24 @@ export class DocumentoDetail implements OnInit, OnDestroy {
         console.log(error);
         return Observable.of<Tercero[]>([]);
       });
+
+    // BUSQUEDA PRODUCTOS
+    this.productos = this.producto_terminos
+      .debounceTime(300)        // Espera de 300ms (frecuencia de peticiones)
+      .distinctUntilChanged()   // Asegura que solo si cambia el termino de busqueda se realiza una nueva busqueda
+      .switchMap( term => term   // Cancela y descarta anteriores observables de búsqueda, devolviendo sólo el último servicio de búsqueda observable.
+        // Retorna la búsqueda http observables
+        ? this.productoSearchService.search(term)
+        // o lo observable del herpes vacías si no hay término de búsqueda
+        : Observable.of<Producto[]>([]))
+      .catch(error => {
+        // HACER: control de errores reales
+        console.log(error);
+        return Observable.of<Producto[]>([]);
+      });
+
+      console .log( '> this.productos: ' + Object.keys( this .productos ) );
+      console .log( '> this.terceros: ' + Object.keys( this .terceros ) );
   }
 
   // Configuración de validaciones de
@@ -256,20 +289,30 @@ export class DocumentoDetail implements OnInit, OnDestroy {
 
   /* BUSQUEDA */
   // Push a search term into the observable stream.
-  search( term: string ): void {
-    this.searchTerms.next( term );
+  searchTerceros( term: string ): void {
+    console .log( 'term: ' + term);
+    this.tercero_terminos.next( term );
+  }
+  
+  searchProductos( term: string ): void {
+    console .log( 'term: ' + term);
+    this.producto_terminos.next( term );
   }
 
-  gotoDetail(obj: Tercero): void {
-    let link = ['/terceros', obj.id];
-    this.router.navigate(link);
-  }
-
-  showDetail(obj: Tercero): void {
+  showDetailTercero(obj: Tercero): void {
     
     if ( obj .razon_social != '' ) {
-      this .obj = obj;
-      this .razon_social = obj .razon_social;
+      this .objTercero = obj;
+      this .tercero_razon_social = obj .razon_social;
+    }
+  
+  }
+
+  showDetailProducto(obj: Producto): void {
+    
+    if ( obj .descripcion1 != '' ) {
+      this .objProducto = obj;
+      this .producto_descripcion1 = obj .descripcion1;
     }
   
   }

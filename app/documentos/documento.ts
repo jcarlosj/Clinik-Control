@@ -11,6 +11,7 @@ export class Documento {
         public tercero             : number = 0,
         public direccion           : string = '',
         public bodegaOrigen        : number = 1,
-        public bodegaDestino       : number = 1
+        public bodegaDestino       : number = 1,
+        public producto            : number = 0
     ) { }
 }

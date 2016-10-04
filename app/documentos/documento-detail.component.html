@@ -1,112 +1,140 @@
-<h3>{{title}}</h3>
 <form  *ngIf="vObj" [formGroup]="frmDocumento" novalidate >
     <input type="hidden" id="id" name="id" formControlName="id" />
     <div class="mdl-grid">
-<div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone">
-        </div>
-        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            <div>
-                <label>Concepto: </label>
-                <select formControlName="concepto" id="concepto" name="concepto" >
-                    <option [value]="o.id" *ngFor="let o of conceptos">{{o.nombre}}</option>
-                </select>
+        <div class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h3>{{title}}</h3>
             </div>
-        </div>    
-        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            <mdl-textfield 
-                    type="text" id="fecha" name="fecha" placeholder="fecha" 
-                    formControlName="fecha" 
-                    label="Fecha" floating-label >
-            </mdl-textfield>
-            <div [hidden]="!(frmDocumento.controls.fecha.touched && !frmDocumento.controls.fecha.valid)">
-                <span class="fieldvalidate-error">
-                    <i>> {{ errors( 'fecha' ) }}</i>
-                </span>
-            </div>
-        </div>   
-        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            <mdl-textfield 
-                    type="text" id="codigo" name="codigo" placeholder="codigo" 
-                    formControlName="codigo" 
-                    label="Consecutivo" floating-label >
-            </mdl-textfield>
-            <div [hidden]="!(frmDocumento.controls.codigo.touched && !frmDocumento.controls.codigo.valid)">
-                <span class="fieldvalidate-error">
-                    <i>> {{ errors( 'codigo' ) }}</i>
-                </span>
-            </div>
-        </div>
-        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            <label>Tercero</label>
-            <input formControlName="tercero" #searchBox id="search-box" (keyup)="search(searchBox.value)" [value]="razon_social" />
-            <span>{{ obj.codigo + ' ' + obj.nombre1 + ' ' + obj.nombre2 + ' ' + obj.apellido1 + ' ' + obj.apellido2  }}</span>
-            <div>
-                <div *ngFor="let tercero of terceros | async"
-                    (click)="showDetail(tercero)" class="search-result" >
-                {{tercero.razon_social}}
+            <div class="mdl-card__supporting-text">
+                <div class="mdl-grid">
+                    <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+                    <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                        <div>
+                            <label>Concepto: </label>
+                            <select formControlName="concepto" id="concepto" name="concepto" >
+                                <option [value]="o.id" *ngFor="let o of conceptos">{{o.nombre}}</option>
+                            </select>
+                        </div>
+                    </div>    
+                    <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                        <mdl-textfield 
+                                type="text" id="fecha" name="fecha" placeholder="fecha" 
+                                formControlName="fecha" 
+                                label="Fecha" floating-label >
+                        </mdl-textfield>
+                        <div [hidden]="!(frmDocumento.controls.fecha.touched && !frmDocumento.controls.fecha.valid)">
+                            <span class="fieldvalidate-error">
+                                <i>> {{ errors( 'fecha' ) }}</i>
+                            </span>
+                        </div>
+                    </div>   
+                    <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                        <mdl-textfield 
+                                type="text" id="codigo" name="codigo" placeholder="codigo" 
+                                formControlName="codigo" 
+                                label="Consecutivo" floating-label >
+                        </mdl-textfield>
+                        <div [hidden]="!(frmDocumento.controls.codigo.touched && !frmDocumento.controls.codigo.valid)">
+                            <span class="fieldvalidate-error">
+                                <i>> {{ errors( 'codigo' ) }}</i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                        <label>Tercero</label>
+                        <input formControlName="tercero" #searchBoxT id="search-box-t" (keyup)="searchTerceros(searchBoxT.value)" [value]="razon_social" />
+                        <div>
+                            <div *ngFor="let tercero of terceros | async"
+                                (click)="showDetailTercero(tercero)" class="search-result" >
+                            {{tercero.razon_social}}
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone">
+                    </div>       
+                    <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                        <mdl-textfield 
+                                type="text" id="direccion" name="direccion" placeholder="direccion" 
+                                formControlName="direccion"  
+                                label="Dirección" floating-label >
+                        </mdl-textfield>
+                        <div [hidden]="!(frmDocumento.controls.direccion.touched && !frmDocumento.controls.direccion.valid)">
+                            <span class="fieldvalidate-error">
+                                <i>> {{ errors( 'direccion' ) }}</i>
+                            </span>
+                        </div>
+                    </div>    
+                    
+                    <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone">
+                    </div>
+                    <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                        <div>
+                            <label>Bodega origen: </label>
+                            <select formControlName="bodegaOrigen" id="bodegaOrigen" name="bodegaOrigen" >
+                                <option [value]="o.id" *ngFor="let o of origenes">{{o.nombre}}</option>
+                            </select>
+                        </div>
+                    </div>         
+                    <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone">
+                    </div>
+                    <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                        <div>
+                            <label>Bodega destino: </label>
+                            <select formControlName="bodegaDestino" id="bodegaDestino" name="bodegaDestino" >
+                                <option [value]="o.id" *ngFor="let o of destinos">{{o.nombre}}</option>
+                            </select>
+                        </div>
+                    </div>                            
                 </div>
             </div>
-        </div>
-        
+            <div class="mdl-card__supporting-text">
+                <div class="mdl-grid">
+                    <div class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--8-col-desktop mdl-cell--2-offset-desktop mdl-shadow--2dp">
+                        <div class="mdl-card__title">
+                            <h3>Listado de productos</h3>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>    
+                                        <th class="mdl-data-table__cell--non-numeric">Descripción</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Marca</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Unidad de medida</th>
+                                        <th>Valor unitario</th>
+                                        <th>Cantidad</th>
+                                        <th>Descuento</th>
+                                        <th>Sub-Total</th>
+                                    </tr>   
+                                </thead>    
+                                <tbody>
 
-        <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone">
-        </div>       
-        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            <mdl-textfield 
-                    type="text" id="direccion" name="direccion" placeholder="direccion" 
-                    formControlName="direccion"  
-                    label="Dirección" floating-label >
-            </mdl-textfield>
-            <div [hidden]="!(frmDocumento.controls.direccion.touched && !frmDocumento.controls.direccion.valid)">
-                <span class="fieldvalidate-error">
-                    <i>> {{ errors( 'direccion' ) }}</i>
-                </span>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a href="#" class="mdl-button">1</a><a href="#" class="mdl-button">1</a><a href="#" class="mdl-button">1</a><a href="#" class="mdl-button">1</a>
+                        </div>    
+                    </div>
+                </div>        
             </div>
-        </div>    
-           
-        <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone">
+            <div class="mdl-card__actions mdl-card--border">
+                <div class="mdl-cell--12-col">
+                    <label>Producto:</label>
+                    <input formControlName="producto" #searchBoxP id="search-box-p" (keyup)="searchProductos(searchBoxP.value)" [value]="producto_descripcion1" />
+                    <div>
+                        <div *ngFor="let producto of productos | async"
+                            (click)="showDetailProducto(producto)" class="search-result" >
+                        {{producto.producto_descripcion1}}
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>    
         </div>
-        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            <div>
-                <label>Bodega origen: </label>
-                <select formControlName="bodegaOrigen" id="bodegaOrigen" name="bodegaOrigen" >
-                    <option [value]="o.id" *ngFor="let o of origenes">{{o.nombre}}</option>
-                </select>
-            </div>
-        </div>         
-        <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone">
-        </div>
-        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            <div>
-                <label>Bodega destino: </label>
-                <select formControlName="bodegaDestino" id="bodegaDestino" name="bodegaDestino" >
-                    <option [value]="o.id" *ngFor="let o of destinos">{{o.nombre}}</option>
-                </select>
-            </div>
-        </div>                         
-        <!--div class="mdl-cell--6-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-            <mdl-textfield 
-                    formControlName="descripcion" 
-                    type="text" id="descripcion" name="descripcion" placeholder="descripcion" maxlength="80" required 
-                    label="Descripción" floating-label >
-            </mdl-textfield>
-            <div [hidden]="!(frmDocumento.controls.descripcion.touched && !frmDocumento.controls.descripcion.valid)">
-                <span class="fieldvalidate-error">
-                    <i>> {{ errors( 'descripcion' ) }}</i>
-                </span>
-            </div>
-        </div>
-        <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone">
-        </div>
-        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            <div>
-                <label>Estado: </label>
-                <select formControlName="estado" id="estado" name="estado" >
-                    <option [value]="o.codigo" *ngFor="let o of estado">{{o.nombre}}</option>
-                </select>
-            </div>
-        </div-->
-    </div>
+    </div>        
     <br/>
     <p>
         <button 
