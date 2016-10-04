@@ -51,6 +51,8 @@ import { HeroParentComponent } from './component-integration-1/hero-parent.compo
 import { HeroChildComponent }  from './component-integration-1/hero-child.component';
 import { NameParentComponent } from './component-integration-2/name-parent.component';
 import { NameChildComponent }  from './component-integration-2/name-child.component';
+import { VersionParentComponent } from './component-integration-3/version-parent.component';
+import { VersionChildComponent } from './component-integration-3/version-child.component';
 
 @NgModule({
   imports: [
@@ -82,8 +84,9 @@ import { NameChildComponent }  from './component-integration-2/name-child.compon
     HeroParentComponent,
     HeroChildComponent,
     NameParentComponent,
-    NameChildComponent
-    
+    NameChildComponent,
+    VersionParentComponent,
+    VersionChildComponent
   ],
   providers: [
     appRoutingProviders,
