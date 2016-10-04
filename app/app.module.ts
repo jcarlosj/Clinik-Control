@@ -53,6 +53,8 @@ import { NameParentComponent } from './component-integration-2/name-parent.compo
 import { NameChildComponent }  from './component-integration-2/name-child.component';
 import { VersionParentComponent } from './component-integration-3/version-parent.component';
 import { VersionChildComponent } from './component-integration-3/version-child.component';
+import { VoterComponent } from './component-integration-4/voter.component';
+import { VoteTakerComponent } from './component-integration-4/voter-taker.component';
 
 @NgModule({
   imports: [
@@ -86,7 +88,9 @@ import { VersionChildComponent } from './component-integration-3/version-child.c
     NameParentComponent,
     NameChildComponent,
     VersionParentComponent,
-    VersionChildComponent
+    VersionChildComponent,
+    VoterComponent,
+    VoteTakerComponent
   ],
   providers: [
     appRoutingProviders,

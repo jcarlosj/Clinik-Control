@@ -35,7 +35,8 @@ export class AppComponent {
       { path: '/ventas',                   nameItem: 'Ventas' },
       { path: '/padre-1',                  nameItem: 'Padre 1' },
       { path: '/padre-2',                  nameItem: 'Padre 2' },
-      { path: '/padre-3',                  nameItem: 'Padre 3' }
+      { path: '/padre-3',                  nameItem: 'Padre 3' },
+      { path: '/padre-4',                  nameItem: 'Padre 4' }
     ];
     
   }
