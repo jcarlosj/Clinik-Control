@@ -56,6 +56,12 @@ import { VersionChildComponent } from './component-integration-3/version-child.c
 import { VoterComponent } from './component-integration-4/voter.component';
 import { VoteTakerComponent } from './component-integration-4/voter-taker.component';
 
+import { FdoExampleComponent } from './fdo-deploy-examples/fdo-example.component';
+import { RdCalendarComponent } from './fdo-calendar/rd-calendar.component';
+import { DayComponent } from './fdo-calendar/day.component';
+import { MonthComponent } from './fdo-calendar/month.component';
+import { YearComponent } from './fdo-calendar/year.component';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -90,7 +96,12 @@ import { VoteTakerComponent } from './component-integration-4/voter-taker.compon
     VersionParentComponent,
     VersionChildComponent,
     VoterComponent,
-    VoteTakerComponent
+    VoteTakerComponent,
+    FdoExampleComponent,
+    RdCalendarComponent,
+    DayComponent,
+    MonthComponent,
+    YearComponent
   ],
   providers: [
     appRoutingProviders,

@@ -15,6 +15,8 @@ import { COMPONENT_INTEGRATION_2_ROUTER } from './component-integration-2/name.r
 import { COMPONENT_INTEGRATION_3_ROUTER } from './component-integration-3/version.routing';
 import { COMPONENT_INTEGRATION_4_ROUTER } from './component-integration-4/voter.routing';
 
+import { FDO_EXAMPLES_ROUTER } from './fdo-deploy-examples/fdo-example.routing';
+
 const appRoutes: Routes = [
   {
     path: '',
@@ -31,7 +33,8 @@ const appRoutes: Routes = [
   ...COMPONENT_INTEGRATION_1_ROUTER,
   ...COMPONENT_INTEGRATION_2_ROUTER,
   ...COMPONENT_INTEGRATION_3_ROUTER,
-  ...COMPONENT_INTEGRATION_4_ROUTER
+  ...COMPONENT_INTEGRATION_4_ROUTER,
+  ...FDO_EXAMPLES_ROUTER
   
 ];
 

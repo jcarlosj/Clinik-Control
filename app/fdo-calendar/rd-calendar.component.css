@@ -1,0 +1,11 @@
+.calendar{
+    display: block;
+    background-color: yellowgreen;
+}
+.calendar form{
+    float: left;
+    padding: 2px;
+}
+#year{
+    width: 60px;
+}
