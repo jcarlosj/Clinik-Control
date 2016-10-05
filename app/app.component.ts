@@ -37,7 +37,8 @@ export class AppComponent {
       { path: '/padre-2',                  nameItem: 'Padre 2' },
       { path: '/padre-3',                  nameItem: 'Padre 3' },
       { path: '/padre-4',                  nameItem: 'Padre 4' },
-      { path: '/fdo-examples',             nameItem: 'Fdo (Ejemplos)' }
+      { path: '/fdo-examples',             nameItem: 'Fdo (Ejemplos)' },
+      { path: '/deploy',                   nameItem: 'Deploy' }
     ];
     
   }

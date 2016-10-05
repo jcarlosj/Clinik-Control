@@ -62,6 +62,9 @@ import { DayComponent } from './fdo-calendar/day.component';
 import { MonthComponent } from './fdo-calendar/month.component';
 import { YearComponent } from './fdo-calendar/year.component';
 
+import { DeployAutocompleteComponent } from './dev-deploy-new-components/deploy-autocomplete.component';
+import { AutocompleteComponent } from './autocomplete/autocomplete.component';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -97,11 +100,15 @@ import { YearComponent } from './fdo-calendar/year.component';
     VersionChildComponent,
     VoterComponent,
     VoteTakerComponent,
+    // Fdo: Code
     FdoExampleComponent,
     RdCalendarComponent,
     DayComponent,
     MonthComponent,
-    YearComponent
+    YearComponent,
+    // My Code
+    DeployAutocompleteComponent,
+    AutocompleteComponent
   ],
   providers: [
     appRoutingProviders,
