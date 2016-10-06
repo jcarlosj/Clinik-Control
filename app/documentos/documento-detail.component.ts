@@ -65,20 +65,18 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private conceptos : any;
   private origenes  : any;
   private destinos  : any;
-
-  // BUSQUEDA
-  objTercero = new Tercero();
-  terceros: Observable<Tercero[]>;
-  private tercero_razon_social: string = '';
-  private tercero_terminos = new Subject<string>();          // <--- Terminos de busqueda de Terceros
-
-  objProducto = new Producto();
-  productos: Observable<Producto[]>;
-  private producto_descripcion1: string = '';
-  private producto_terminos = new Subject<string>();          // <--- Terminos de busqueda de Producto
-  
   
   private inputFocused = new EventEmitter();
+
+  private urlApi        : string;
+  /* --- Terceros --- */
+  private pathTerceros  : string;
+  private fieldTerceros : string;
+  private labelTerceros : string;
+  /* --- Productos --- */
+  private pathProducto  : string;
+  private fieldProducto : string;
+  private labelProducto : string;
 
   // Constructor
   constructor(
@@ -90,6 +88,15 @@ export class DocumentoDetail implements OnInit, OnDestroy {
     private productoSearchService: ProductoSearchService,
     private serviceData: DataService
   ) {
+    this .urlApi = Path.Server.API;
+    // Terceros
+    this .pathTerceros  = '/terceros';       // Representa el nombre de la tabla en la BD
+    this .fieldTerceros = 'razon_social';
+    this .labelTerceros = 'Terceros:';
+    // Producto
+    this .pathProducto  = '/productos';       // Representa el nombre de la tabla en la BD
+    this .fieldProducto = 'descripcion1';
+    this .labelProducto = 'Producto:';
 
     // Definimos texto boton y titulo
     this .path = this .router .url;
@@ -189,39 +196,6 @@ export class DocumentoDetail implements OnInit, OnDestroy {
         }
     });
 
-
-// BUSQUEDA TERCEROS
-    this.terceros = this.tercero_terminos
-      .debounceTime(300)        // Espera de 300ms (frecuencia de peticiones)
-      .distinctUntilChanged()   // Asegura que solo si cambia el termino de busqueda se realiza una nueva busqueda
-      .switchMap( term => term   // Cancela y descarta anteriores observables de búsqueda, devolviendo sólo el último servicio de búsqueda observable.
-        // Retorna la búsqueda http observables
-        ? this.terceroSearchService.search(term)
-        // o lo observable del herpes vacías si no hay término de búsqueda
-        : Observable.of<Tercero[]>([]))
-      .catch(error => {
-        // HACER: control de errores reales
-        console.log(error);
-        return Observable.of<Tercero[]>([]);
-      });
-
-    // BUSQUEDA PRODUCTOS
-    this.productos = this.producto_terminos
-      .debounceTime(300)        // Espera de 300ms (frecuencia de peticiones)
-      .distinctUntilChanged()   // Asegura que solo si cambia el termino de busqueda se realiza una nueva busqueda
-      .switchMap( term => term   // Cancela y descarta anteriores observables de búsqueda, devolviendo sólo el último servicio de búsqueda observable.
-        // Retorna la búsqueda http observables
-        ? this.productoSearchService.search(term)
-        // o lo observable del herpes vacías si no hay término de búsqueda
-        : Observable.of<Producto[]>([]))
-      .catch(error => {
-        // HACER: control de errores reales
-        console.log(error);
-        return Observable.of<Producto[]>([]);
-      });
-
-      console .log( '> this.productos: ' + Object.keys( this .productos ) );
-      console .log( '> this.terceros: ' + Object.keys( this .terceros ) );
   }
 
   // Configuración de validaciones de
@@ -287,34 +261,34 @@ export class DocumentoDetail implements OnInit, OnDestroy {
     return resp;
   }  
 
-  /* BUSQUEDA */
-  // Push a search term into the observable stream.
-  searchTerceros( term: string ): void {
-    console .log( 'term: ' + term);
-    this.tercero_terminos.next( term );
-  }
-  
-  searchProductos( term: string ): void {
-    console .log( 'term: ' + term);
-    this.producto_terminos.next( term );
-  }
-
-  showDetailTercero(obj: Tercero): void {
+  /* --- Objeto retornado de la búsqueda del componente Autocomplete --- */
+  /* --- TERCEROS --- */ 
+  blurTerceros(obj:Object){
     
-    if ( obj .razon_social != '' ) {
-      this .objTercero = obj;
-      this .tercero_razon_social = obj .razon_social;
+    if( typeof obj == 'Object' ) {
+      console .log( 'Entonces este es un objeto de tipo: ' + typeof obj );
+    } 
+    else {
+      
     }
-  
+        console.log( '> ' + Object.keys(obj) + ' '+ Object.values(obj ) );
+        for( let campo in obj ) {
+          console.log( ' - ' + campo + '\n' );
+        }
   }
-
-  showDetailProducto(obj: Producto): void {
+  /* --- PRODUCTOS --- */
+  blurProductos(obj:Object){
     
-    if ( obj .descripcion1 != '' ) {
-      this .objProducto = obj;
-      this .producto_descripcion1 = obj .descripcion1;
+    if( typeof obj == 'Object' ) {
+      console .log( 'Entonces este es un objeto de tipo: ' + typeof obj );
+    } 
+    else {
+      
     }
-  
+        console.log( '> ' + Object.keys(obj) + ' '+ Object.values(obj ) );
+        for( let campo in obj ) {
+          console.log( ' - ' + campo + '\n' );
+        }
   }
 
 }

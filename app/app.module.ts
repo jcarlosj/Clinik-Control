@@ -63,7 +63,7 @@ import { MonthComponent } from './fdo-calendar/month.component';
 import { YearComponent } from './fdo-calendar/year.component';
 
 import { DeployAutocompleteComponent } from './dev-deploy-new-components/deploy-autocomplete.component';
-import { AutocompleteComponent } from './autocomplete/autocomplete.component';
+import { AutocompleteComponent } from '../components/autocomplete/autocomplete.component';
 
 @NgModule({
   imports: [

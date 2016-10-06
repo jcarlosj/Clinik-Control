@@ -39,18 +39,14 @@
                                 <i>> {{ errors( 'codigo' ) }}</i>
                             </span>
                         </div>
-                    </div>
-                    <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-                        <label>Tercero</label>
-                        <input formControlName="tercero" #searchBoxT id="search-box-t" (keyup)="searchTerceros(searchBoxT.value)" [value]="razon_social" />
-                        <div>
-                            <div *ngFor="let tercero of terceros | async"
-                                (click)="showDetailTercero(tercero)" class="search-result" >
-                            {{tercero.razon_social}}
-                            </div>
-                        </div>
-                    </div>
-                
+                    </div>   
+                    <autocomplete id="terceros" name="terceros"
+                        (blur)="blurTerceros( $event )" 
+                        [urlApi]="urlApi" 
+                        [tabla]="pathTerceros" 
+                        [campo]="fieldTerceros" 
+                        [etiqueta]="labelTerceros">
+                    </autocomplete>            
                     <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone">
                     </div>       
                     <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
@@ -114,24 +110,16 @@
                             </table>
                         </div>
                         <div class="mdl-card__actions mdl-card--border">
-                            <a href="#" class="mdl-button">1</a><a href="#" class="mdl-button">1</a><a href="#" class="mdl-button">1</a><a href="#" class="mdl-button">1</a>
+                    <autocomplete id="producto" name="producto"
+                        (blur)="blurProductos( $event )" 
+                        [urlApi]="urlApi" 
+                        [tabla]="pathProducto" 
+                        [campo]="fieldProducto" 
+                        [etiqueta]="labelProducto">
+                    </autocomplete>
                         </div>    
                     </div>
                 </div>        
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-                <div class="mdl-cell--12-col">
-                    <label>Producto:</label>
-                    <input formControlName="producto" #searchBoxP id="search-box-p" (keyup)="searchProductos(searchBoxP.value)" [value]="producto_descripcion1" />
-                    <div>
-                        <div *ngFor="let producto of productos | async"
-                            (click)="showDetailProducto(producto)" class="search-result" >
-                        {{producto.producto_descripcion1}}
-                        </div>
-                    </div>
-                    
-                    
-                </div>
             </div>    
         </div>
     </div>        

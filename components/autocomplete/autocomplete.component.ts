@@ -3,11 +3,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
 
-import { Path } from '../Paths';
-import { Tercero } from '../terceros/tercero';
 import { AutoCompleteService } from '../autocomplete/autocomplete.service';
-
-
 
 const noop = () => {
 };
@@ -53,6 +49,7 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
     @Input() tabla:string;
     @Input() campo:string;
     @Input() etiqueta:string;
+    @Input() urlApi:string;
 
     //get accessor
     @Input() 
@@ -69,15 +66,13 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
   @Output() blur: EventEmitter<any> = new EventEmitter();
   @Output() change: EventEmitter<any> = new EventEmitter();
 
-  private api:string = Path.Server.API;
-
   constructor( private autocompleteService: AutoCompleteService ) { 
     console .log( '-> CHILD (AutocompleteComponent) constructor()' );
   }
 
   ngOnInit() {
     console .log( '-> CHILD (AutocompleteComponent) ngOnInit()' );
-    console .log( ' - this .api + this .tabla : ' + this.api+this.tabla );
+    console .log( ' - this .api + this .tabla : ' + this.urlApi+this.tabla );
     console .log( ' - this .campo             : ' + this.campo );
     console .log( ' - this .etiqueta          : ' + this.etiqueta );
 
@@ -86,7 +81,7 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
       .distinctUntilChanged()   // Asegura que solo si cambia el termino de busqueda se realiza una nueva busqueda
       .switchMap(term => term   // Cancela y descarta anteriores observables de búsqueda, devolviendo sólo el último servicio de búsqueda observable.
         // Retorna la búsqueda http observables
-        ? this.autocompleteService.search( this.api+this.tabla, this.campo, term )
+        ? this.autocompleteService.search( this.urlApi+this.tabla, this.campo, term )
         // o lo observable del herpes vacías si no hay término de búsqueda
         : Observable.of<Object[]>([]))
       .catch(error => {
