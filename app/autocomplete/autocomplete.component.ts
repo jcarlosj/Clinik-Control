@@ -31,8 +31,8 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
 
     private desarrollador: Object[] = [{ nombre: 'Samir', profesion: 'peligro', edad: 34 }];
 
-    @Input() obj = new Tercero();
-    terceros: Observable<Tercero[]>;
+    @Input() obj = new Object();
+    terceros: Observable<Object[]>;
     private searchTerms = new Subject<string>();          // <--- Terminos de busqueda
     private razon_social: string = '';
     private inputFocused = new EventEmitter();
@@ -44,13 +44,15 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
 
     //The internal data model
     private innerValue: any = '';
-    private objSelected: Tercero;
+    private objSelected: Object;
 
     search( term: string ): void {
         this.searchTerms.next( term );
     }
 
     @Input() tabla:string;
+    @Input() campo:string;
+    @Input() etiqueta:string;
 
     //get accessor
     @Input() 
@@ -70,31 +72,34 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
   private api:string = Path.Server.API;
 
   constructor( private autocompleteService: AutoCompleteService ) { 
-    console .log( '-> CHILD (AutocompleteComponent) api: ' + this.api );
+    console .log( '-> CHILD (AutocompleteComponent) constructor()' );
   }
 
   ngOnInit() {
-    console .log( 'URL API: ' + this.api+this.tabla );
+    console .log( '-> CHILD (AutocompleteComponent) ngOnInit()' );
+    console .log( ' - this .api + this .tabla : ' + this.api+this.tabla );
+    console .log( ' - this .campo             : ' + this.campo );
+    console .log( ' - this .etiqueta          : ' + this.etiqueta );
 
     this.terceros = this.searchTerms
       .debounceTime(300)        // Espera de 300ms (frecuencia de peticiones)
       .distinctUntilChanged()   // Asegura que solo si cambia el termino de busqueda se realiza una nueva busqueda
       .switchMap(term => term   // Cancela y descarta anteriores observables de búsqueda, devolviendo sólo el último servicio de búsqueda observable.
         // Retorna la búsqueda http observables
-        ? this.autocompleteService.search(term)
+        ? this.autocompleteService.search( this.api+this.tabla, this.campo, term )
         // o lo observable del herpes vacías si no hay término de búsqueda
-        : Observable.of<Tercero[]>([]))
+        : Observable.of<Object[]>([]))
       .catch(error => {
         // HACER: control de errores reales
         console.log(error);
-        return Observable.of<Tercero[]>([]);
+        return Observable.of<Object[]>([]);
       });
 
   }
   ngOnDestroy() {}
 
       //Set touched on blur
-    onBlur(obj:Tercero) {
+    onBlur(obj:Object) {
         console .log( '--> CHILD: AutocompleteComponent -> onBlur(): ' );
         console .log( '--> obj: ' + Object.values( obj ) );
         this.onTouchedCallback();        
@@ -120,16 +125,19 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
     }
 
 
-  showDetail(obj:Tercero): void {
-    
+  showDetail(obj:Object): void {
     
     this .objSelected = obj;
-    console.log( '--> CHILD: AutocompleteComponent -> showDetail(): obj: " \n' + Object .values( this.obj ) );
+    console.log( '--> CHILD: AutocompleteComponent -> showDetail()' );
+    console.log( ' - obj: " \n' + Object .values( this.obj ) );
     //this.onTouchedCallback();
     this.blur.emit( obj );
-    if ( obj .razon_social != '' ) {
+
+    console .log( ' - obj.campo: ' + obj[ this.campo ] );
+
+    if ( obj[ this.campo ] != '' ) {
       this .obj = obj;
-      this .razon_social = obj .razon_social;
+      this .campo = obj[ this.campo ];
     }
   
   }
