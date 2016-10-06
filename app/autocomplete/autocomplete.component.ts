@@ -55,7 +55,7 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
     //get accessor
     @Input() 
     get value(): any {
-        return this.objSelected;
+        return this.innerValue;
     };
     //set accessor including call the onchange callback
     set value(v: any) {
@@ -94,10 +94,11 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
   ngOnDestroy() {}
 
       //Set touched on blur
-    onBlur() {
-        console .log( '--> CHILD: DayComponent -> onBlur(): ' );
-        this.onTouchedCallback();
-        this.blur.emit( this .desarrollador );
+    onBlur(obj:Tercero) {
+        console .log( '--> CHILD: AutocompleteComponent -> onBlur(): ' );
+        console .log( '--> obj: ' + Object.values( obj ) );
+        this.onTouchedCallback();        
+        this.blur.emit( obj );
     }
 
     //From ControlValueAccessor interface
@@ -123,8 +124,9 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
     
     
     this .objSelected = obj;
+    console.log( '--> CHILD: AutocompleteComponent -> showDetail(): obj: " \n' + Object .values( this.obj ) );
     //this.onTouchedCallback();
-
+    this.blur.emit( obj );
     if ( obj .razon_social != '' ) {
       this .obj = obj;
       this .razon_social = obj .razon_social;

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { Tercero } from '../terceros/tercero';
+
 @Component({
   moduleId: module.id,
   selector: 'deploy',
@@ -17,7 +19,15 @@ export class DeployAutocompleteComponent {
     console .log( '> PARENT (DeployAutocompleteComponent) path: ' + this.path );
   }
 
-  blurX(saludando:Object){
-        console.log( '> ' + Object.keys(saludando[0]) + ' '+ Object.values(saludando[0] ) );
+  blurX(saludando:Tercero){
+    
+    if( typeof saludando == 'Tercero' ) {
+      console .log( 'Entonces este es un objeto de tipo: ' + typeof saludando );
+    } 
+    else {
+      
+    }
+    
+        console.log( '> ' + Object.keys(saludando) + ' '+ Object.values(saludando ) );
   }
 }
