@@ -60,6 +60,7 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private title         = 'Documentos';
   private botonGuardar  = 'Guardar';
   private botonRegresar = 'Regresar';
+  private botonAgregar  = 'Agregar';
 
   private data      : any[];
   private conceptos : any;
@@ -77,7 +78,7 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private pathProducto  : string;
   private fieldProducto : string;
   private labelProducto : string;
-  private objTercero = new Object();
+  private objProducto = new Object();
 
   // Constructor
   constructor(
@@ -235,6 +236,16 @@ export class DocumentoDetail implements OnInit, OnDestroy {
       .catch( error => this .error = error );
   }
 
+  private list_producto = [];
+
+  agregar( obj:Object ) {
+    this .list_producto .push( obj );
+
+    this .list_producto .forEach( element => {
+      console .log( " -> " + Object.values(element) + '\n' );
+    });
+  }
+
   errors( name: string ){
 
     let resp: string = '';
@@ -282,8 +293,8 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   /* --- PRODUCTOS --- */
   blurProductos(obj:Object){
     
-    this. objTercero = obj;
-    console.log( 'PARENT (DocumentoDetail) \n - obj[\'codigo\'] : ' + obj['codigo'] + '\n - this.objTercero[\'codigo\'] : ' + this.objTercero['codigo'] );
+    this. objProducto = obj;
+    console.log( 'PARENT (DocumentoDetail) \n - obj[\'codigo\'] : ' + obj['codigo'] + '\n - this.objProducto[\'codigo\'] : ' + this.objProducto['codigo'] );
 
     if( typeof obj == 'Object' ) {
       console .log( 'Entonces este es un objeto de tipo: ' + typeof obj );

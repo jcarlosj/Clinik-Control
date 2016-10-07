@@ -119,46 +119,51 @@
                             </autocomplete>
                             <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                                 <mdl-textfield 
-                                        type="text" id="codigo_producto" name="codigo_producto" placeholder="codigo_producto" value="{{objTercero.codigo}}"
+                                        type="text" id="codigo_producto" name="codigo_producto" placeholder="codigo_producto" value="{{objProducto.codigo}}"
                                         
                                         label="Código" floating-label >
                                 </mdl-textfield>
                             </div> 
                             <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                                 <mdl-textfield 
-                                        type="text" id="codigo_producto" name="codigo_producto" placeholder="codigo_producto" [value]="objTercero.codigo"
+                                        type="text" id="codigo_producto" name="codigo_producto" placeholder="codigo_producto" [value]="objProducto.codigo"
                                         
                                         label="Código" floating-label >
                                 </mdl-textfield>
                             </div>
                             <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                                 <mdl-textfield 
-                                        type="text" id="descripcion2" name="descripcion2" placeholder="descripcion2" [value]="objTercero.descripcion2"
+                                        type="text" id="descripcion2" name="descripcion2" placeholder="descripcion2" [value]="objProducto.descripcion2"
                                         
                                         label="Descripción" floating-label >
                                 </mdl-textfield>
                             </div>        
                             <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                                 <mdl-textfield 
-                                        type="text" id="precioventa1" name="precioventa1" placeholder="precioventa1" [value]="objTercero.precio_venta1"
+                                        type="text" id="precioventa1" name="precioventa1" placeholder="precioventa1" [value]="objProducto.precio_venta1"
                                         
                                         label="Valor unitario" floating-label >
                                 </mdl-textfield>
                             </div>   
                             <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                                 <mdl-textfield 
-                                        type="text" id="marca" name="marca" placeholder="marca" [value]="objTercero.marca"
+                                        type="text" id="marca" name="marca" placeholder="marca" [value]="objProducto.marca"
                                         
                                         label="Marca" floating-label >
                                 </mdl-textfield>
                             </div>   
                             <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                                 <mdl-textfield 
-                                        type="text" id="unidad_medida" name="unidad_medida" placeholder="unidad_medida" [value]="objTercero.unidad_medida"
+                                        type="text" id="unidad_medida" name="unidad_medida" placeholder="unidad_medida" [value]="objProducto.unidad_medida"
                                         
                                         label="Unidad de medida" floating-label >
                                 </mdl-textfield>
-                            </div>                                                                                                        
+                            </div>   
+                            <button 
+                                (click)="agregar(objProducto)"  
+                                mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>
+                                {{botonAgregar}}
+                            </button>                                                                                                     
                         </div>    
                     </div>
                 </div>        
