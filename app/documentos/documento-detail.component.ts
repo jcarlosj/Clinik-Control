@@ -77,6 +77,7 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private pathProducto  : string;
   private fieldProducto : string;
   private labelProducto : string;
+  private objTercero = new Object();
 
   // Constructor
   constructor(
@@ -276,9 +277,14 @@ export class DocumentoDetail implements OnInit, OnDestroy {
           console.log( ' - ' + campo + '\n' );
         }
   }
+
+  
   /* --- PRODUCTOS --- */
   blurProductos(obj:Object){
     
+    this. objTercero = obj;
+    console.log( 'PARENT (DocumentoDetail) \n - obj[\'codigo\'] : ' + obj['codigo'] + '\n - this.objTercero[\'codigo\'] : ' + this.objTercero['codigo'] );
+
     if( typeof obj == 'Object' ) {
       console .log( 'Entonces este es un objeto de tipo: ' + typeof obj );
     } 
