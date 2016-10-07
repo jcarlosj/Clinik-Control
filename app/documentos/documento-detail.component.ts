@@ -30,6 +30,8 @@ import { Producto }          from '../productos/producto';
 import { TerceroSearchService } from '../terceros/tercero-search.service';
 import { ProductoSearchService } from '../productos/producto-search.service';
 
+import { TiposPago } from '../_tipos/tipos-pago';
+
 // Decorator
 @Component({
   moduleId    : module.id,
@@ -81,6 +83,23 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private objProducto = new Object();
   private list_producto = []; // Array de Objetos producto
 
+  /* --- Tipos de pago --- */
+  private opcionTiposPago : TiposPago[];
+  private radioTiposPagoSelected : string;
+
+  /* --- Control de campos Documento --- */
+  private enabledDefault      : boolean;
+  private enableConcepto      : boolean;
+  private visibleConcepto     : boolean;
+  private visibleConsecutivo  : boolean;
+  private enableTercero       : boolean;
+  private visibleTercero      : boolean; 
+  private visibleListado      : boolean;
+  private enableValorUnitario : boolean; 
+  private enableDescuento     : boolean;
+  private visibleDescuento    : boolean;
+  
+
   // Constructor
   constructor(
     private location: Location,
@@ -91,7 +110,29 @@ export class DocumentoDetail implements OnInit, OnDestroy {
     private productoSearchService: ProductoSearchService,
     private serviceData: DataService
   ) {
+
+    // Inicializa Paths 
+    this .path = this .router .url;  
     this .urlApi = Path.Server.API;
+
+    // Entry Point
+    let path = this .path .split('/');
+    this .validateEntryPoint( path[1] );
+
+    // Inicializa RadioButton (Tipo de pago) 
+    this .opcionTiposPago = [
+      new TiposPago( 'contado', 'Contado' ),
+      new TiposPago( 'credito', 'Crédito' )
+    ];
+
+    // Mensajes
+    console .log( 
+      'Validate Path: ' + this .path +
+      'Titulo: ' + this .title +
+      '(DocumentoDetail) \n - Path: '   + this .path + 
+                        '\n - Titulo: ' + this .title 
+    );
+
     // Terceros
     this .pathTerceros  = '/terceros';       // Representa el nombre de la tabla en la BD
     this .fieldTerceros = 'razon_social';
@@ -101,34 +142,73 @@ export class DocumentoDetail implements OnInit, OnDestroy {
     this .fieldProducto = 'descripcion1';
     this .labelProducto = 'Producto:';
 
-    // Definimos texto boton y titulo
-    this .path = this .router .url;
-    console .log( 'Validate Path: ' + this .path );
-    console .log( 'Titulo: ' + this .title );
     
-		if( this .path == '/entradas' ) {
-			this .title += 'Entrada';
-		}
-		if( this .path == '/salidas' ) {
-			this .title += 'Salida';
-		}
-		if( this .path == '/compras' ) {
-			this .title += 'Compra';
-		}
-		if( this .path == '/ventas' ) {
-			this .title += 'Venta';
-		}
-	
-      console .log( '(DocumentoDetail) \n - Path: '   + this .path + 
-                                      '\n - Titulo: ' + this .title );
-  
-      // Inicializando atributos
-      this.codigo;
-      this.estado = [
-          new cEstado( 'A', 'Activo' ),
-          new cEstado( 'I', 'Inactivo' ),
-      ];
+
+    // Inicializando atributos
+    this.codigo;
+    this.estado = [
+        new cEstado( 'A', 'Activo' ),
+        new cEstado( 'I', 'Inactivo' ),
+    ];
+  }
+
+  validateEntryPoint( entry_point:string ) {
+
+    this .enabledDefault      = true;
+    this .enableConcepto      = false;
+    this .visibleConcepto     = false;
+    this .enableTercero       = true;
+    
+    this .enableValorUnitario = true; 
+    this .enableDescuento     = true;
+    this .visibleDescuento    = true;
+
+    if( entry_point == 'entradas' ) {
+      console .log( 'EB: Entradas' );
+        this .enableConcepto      = true;
+        this .visibleConcepto     = true;
+        this .visibleConsecutivo  = false;
+        this .visibleTercero      = true; 
+        this .visibleListado      = true;
+        this .enableValorUnitario = false;
+        this .enableDescuento     = false;
+        this .visibleDescuento    = false; 
     }
+    if( entry_point == 'salidas' ) {
+      console .log( 'SB: Salidas' );
+        this .enableConcepto      = true;
+        this .visibleConcepto     = true;
+        this .visibleConsecutivo  = false;
+        this .visibleTercero      = true; 
+        this .visibleListado      = true;
+        this .enableValorUnitario = false; 
+        this .enableDescuento     = false;
+        this .visibleDescuento    = false;         
+    }
+    if( entry_point == 'compras' ) {
+      console .log( 'FC: Compras' );
+      this .enableConcepto      = false;
+      this .visibleConcepto     = false;
+      this .visibleConsecutivo  = false;
+      this .visibleTercero      = false; 
+      this .visibleListado      = false;
+      this .enableValorUnitario = true; 
+      this .enableDescuento     = true;
+      this .visibleDescuento    = true;       
+    }
+    if( entry_point == 'ventas' ) {
+      console .log( 'FV: Ventas' );
+      this .enableConcepto      = false;
+      this .visibleConcepto     = false;
+      this .visibleConsecutivo  = false;
+      this .visibleTercero      = false; 
+      this .visibleListado      = false;
+      this .enableValorUnitario = true;
+      this .enableDescuento     = true;
+      this .visibleDescuento    = true;       
+    }
+      
+  }
 
   // Implements de Angular 2
   ngOnInit() {
@@ -200,6 +280,13 @@ export class DocumentoDetail implements OnInit, OnDestroy {
         }
     });
 
+  }
+  // Change Option Selected RadioButton Tipo de pago
+  radioTipoPago( tipo: string ) {
+    this .radioTiposPagoSelected = tipo;
+    this .enabledDefault = false;
+
+    // alert( 'Has seleccionado ' + tipo );
   }
 
   // Configuración de validaciones de
@@ -302,9 +389,9 @@ export class DocumentoDetail implements OnInit, OnDestroy {
     else {
       
     }
-        console.log( '> ' + Object.keys(obj) + ' '+ Object.values(obj ) );
+        //console.log( '> ' + Object.keys(obj) + ' '+ Object.values(obj ) );
         for( let campo in obj ) {
-          console.log( ' - ' + campo + '\n' );
+          console.log( ' - ' + campo + ': ' + obj[campo] + '\n' );
         }
   }
 

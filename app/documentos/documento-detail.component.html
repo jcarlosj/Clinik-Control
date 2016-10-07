@@ -7,11 +7,24 @@
             </div>
             <div class="mdl-card__supporting-text">
                 <div class="mdl-grid">
+
+                    <!-- [(ngModel)]="user.tipo_pago"  -->
+                    <div>
+                        <label>Tipo de pago</label>
+                        <div *ngFor="let tipo_pago of opcionTiposPago">
+                            <label>
+                                <input type="radio" name="tipo_pago" 
+                                    
+                                    [value]="tipo_pago.value" (change)="radioTipoPago( tipo_pago.value )">{{tipo_pago.opcion}}
+                            </label>
+                        </div>
+                    </div>
                     <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
                     <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-                        <div>
+                        <div [hidden]="!visibleConcepto">
                             <label>Concepto: </label>
-                            <select formControlName="concepto" id="concepto" name="concepto" >
+                            <select formControlName="concepto" id="concepto" name="concepto"
+                                [disabled]="!enableConcepto">
                                 <option [value]="o.id" *ngFor="let o of conceptos">{{o.nombre}}</option>
                             </select>
                         </div>
@@ -31,7 +44,7 @@
                     <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                         <mdl-textfield 
                                 type="text" id="codigo" name="codigo" placeholder="codigo" 
-                                formControlName="codigo" 
+                                formControlName="codigo"
                                 label="Consecutivo" floating-label >
                         </mdl-textfield>
                         <div [hidden]="!(frmDocumento.controls.codigo.touched && !frmDocumento.controls.codigo.valid)">
@@ -119,42 +132,40 @@
                             </autocomplete>
                             <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                                 <mdl-textfield 
-                                        type="text" id="codigo_producto" name="codigo_producto" placeholder="codigo_producto" value="{{objProducto.codigo}}"
-                                        
-                                        label="Código" floating-label >
-                                </mdl-textfield>
-                            </div> 
-                            <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-                                <mdl-textfield 
                                         type="text" id="codigo_producto" name="codigo_producto" placeholder="codigo_producto" [value]="objProducto.codigo"
                                         
+                                        [disabled]="!enabledDefault"
                                         label="Código" floating-label >
                                 </mdl-textfield>
                             </div>
                             <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                                 <mdl-textfield 
-                                        type="text" id="descripcion2" name="descripcion2" placeholder="descripcion2" [value]="objProducto.descripcion2"
+                                        type="text" id="descripcion2" name="descripcion2" placeholder="descripcion2" 
+                                        [disabled]="!enabledDefault" [value]="objProducto.descripcion2"
                                         
                                         label="Descripción" floating-label >
                                 </mdl-textfield>
                             </div>        
                             <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                                 <mdl-textfield 
-                                        type="text" id="precioventa1" name="precioventa1" placeholder="precioventa1" [value]="objProducto.precio_venta1"
+                                        type="text" id="precioventa1" name="precioventa1" placeholder="precioventa1" 
+                                        [value]="objProducto.precio_venta1"
                                         
                                         label="Valor unitario" floating-label >
                                 </mdl-textfield>
                             </div>   
                             <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                                 <mdl-textfield 
-                                        type="text" id="marca" name="marca" placeholder="marca" [value]="objProducto.marca"
+                                        type="text" id="marca" name="marca" placeholder="marca" 
+                                        [disabled]="!enabledDefault" [value]="objProducto.marca"
                                         
                                         label="Marca" floating-label >
                                 </mdl-textfield>
                             </div>   
                             <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                                 <mdl-textfield 
-                                        type="text" id="unidad_medida" name="unidad_medida" placeholder="unidad_medida" [value]="objProducto.unidad_medida"
+                                        type="text" id="unidad_medida" name="unidad_medida" placeholder="unidad_medida" 
+                                        [disabled]="!enabledDefault" [value]="objProducto.unidad_medida"
                                         
                                         label="Unidad de medida" floating-label >
                                 </mdl-textfield>
