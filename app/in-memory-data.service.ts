@@ -152,6 +152,18 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: '01', codigo: '01', descripcion: 'Unidades de medida 1', estado: 'A', registros: 1 },
       { id: '02', codigo: '02', descripcion: 'Unidades de medida 2', estado: 'A', registros: 1 }
     ]; 
+    let zonas = [
+      { id: '01', codigo: '01', descripcion: 'Zona 1', estado: 'A', registros: 1 },
+      { id: '02', codigo: '02', descripcion: 'Zona 2', estado: 'A', registros: 1 }
+    ];
+    let profesiones = [
+      { id: '01', codigo: '01', descripcion: 'Profesión 1', estado: 'A', registros: 1 },
+      { id: '02', codigo: '02', descripcion: 'Profesión 2', estado: 'A', registros: 1 }
+    ];  
+    let eps = [
+      { id: '01', codigo: '01', descripcion: 'EPS 1', estado: 'A', registros: 1 },
+      { id: '02', codigo: '02', descripcion: 'EPS 2', estado: 'A', registros: 1 }
+    ]; 
     /* DOCUMENTOS */
     let entradas = [
       { id: '01', codigo: '01', concepto: 2, tercero: 1, descripcion: 'Entrada 1', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 1, bodegaDestino: 3, producto: '' },
@@ -343,6 +355,9 @@ export class InMemoryDataService implements InMemoryDbService {
       vias_administracion, 
       riesgo_procedimiento,
       unidades_medida,
+      zonas,
+      profesiones,
+      eps,
       // Documentos
       entradas,
       salidas,

@@ -79,6 +79,7 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private fieldProducto : string;
   private labelProducto : string;
   private objProducto = new Object();
+  private list_producto = []; // Array de Objetos producto
 
   // Constructor
   constructor(
@@ -107,7 +108,6 @@ export class DocumentoDetail implements OnInit, OnDestroy {
     
 		if( this .path == '/entradas' ) {
 			this .title += 'Entrada';
-      console .log ( 'Titulo Agrega : ' + this .title );
 		}
 		if( this .path == '/salidas' ) {
 			this .title += 'Salida';
@@ -119,7 +119,9 @@ export class DocumentoDetail implements OnInit, OnDestroy {
 			this .title += 'Venta';
 		}
 	
-    console .log ( 'Titulo Afuera : ' + this .title );
+      console .log( '(DocumentoDetail) \n - Path: '   + this .path + 
+                                      '\n - Titulo: ' + this .title );
+  
       // Inicializando atributos
       this.codigo;
       this.estado = [
@@ -234,9 +236,7 @@ export class DocumentoDetail implements OnInit, OnDestroy {
         this .goToList( obj );
       })
       .catch( error => this .error = error );
-  }
-
-  private list_producto = [];
+  } 
 
   agregar( obj:Object ) {
     this .list_producto .push( obj );

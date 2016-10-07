@@ -16,5 +16,11 @@ export const TABLA_GENERAL_ROUTER: Routes = [
   { path: 'riesgo_procedimiento'              , component: TablaGeneralList },
   { path: 'riesgo_procedimiento/:codigo'      , component: TablaGeneralDetail },
   { path: 'unidades_medida'                   , component: TablaGeneralList },
-  { path: 'unidades_medida/:codigo'           , component: TablaGeneralDetail }
+  { path: 'unidades_medida/:codigo'           , component: TablaGeneralDetail },
+  { path: 'zonas'                             , component: TablaGeneralList },
+  { path: 'zonas/:codigo'                     , component: TablaGeneralDetail },
+  { path: 'profesiones'                       , component: TablaGeneralList },
+  { path: 'profesiones/:codigo'               , component: TablaGeneralDetail },
+  { path: 'eps'                               , component: TablaGeneralList },
+  { path: 'eps/:codigo'                       , component: TablaGeneralDetail }
 ];

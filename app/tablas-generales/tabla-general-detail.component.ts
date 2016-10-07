@@ -58,12 +58,9 @@ export class TablaGeneralDetail implements OnInit, OnDestroy {
   ) {
     // Definimos texto boton y titulo
     this .path = this .router .url;
-    console .log( 'Validate Path: ' + this .path );
-    console .log( 'Titulo: ' + this .title );
     
 		if( this .path == '/marca' ) {
 			this .title += 'Marcas';
-      console .log ( 'Titulo Agrega : ' + this .title );
 		}
 		if( this .path == '/presentacion_medicamento' ) {
 			this .title += 'Presentación de medicamentos';
@@ -77,14 +74,26 @@ export class TablaGeneralDetail implements OnInit, OnDestroy {
 		if( this .path == '/unidades_medida' ) {
 			this .title += 'Unidades de medida';
 		}
-console .log ( 'Titulo Afuera : ' + this .title );
-      // Inicializando atributos
-      this.codigo = '';
-      this.estado = [
-          new cEstado( 'A', 'Activo' ),
-          new cEstado( 'I', 'Inactivo' ),
-      ];
-    }
+		if( this .path == '/zonas' ) {
+			this .title += 'Zonas';
+		}
+		if( this .path == '/profesionales' ) {
+			this .title += 'Profesionales';
+		}
+		if( this .path == '/eps' ) {
+			this .title += 'EPS';
+		}    
+
+    console .log( '(TablaGeneralDetail) \n - Path: '   + this .path + 
+                                       '\n - Titulo: ' + this .title );
+
+    // Inicializando atributos
+    this.codigo = '';
+    this.estado = [
+        new cEstado( 'A', 'Activo' ),
+        new cEstado( 'I', 'Inactivo' ),
+    ];
+  }
 
   // Implements de Angular 2
   ngOnInit() {
