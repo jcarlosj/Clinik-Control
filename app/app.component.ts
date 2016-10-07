@@ -18,7 +18,7 @@ export class AppComponent {
   private menu                  : any;
   private menu_tablas_generales : any;
   private menu_documentos       : any;
-  private menu_pruebas          : any;
+  private menu_dev       : any;
 
   // Constructor
   public constructor( ) {
@@ -27,9 +27,10 @@ export class AppComponent {
       { path: '/tipos_impuesto',           nameItem: 'Tipos de impuesto' },
       { path: '/agrupaciones',             nameItem: 'Agrupaciones' },
       { path: '/productos',                nameItem: 'Productos' },
-      { path: '/terceros',                 nameItem: 'Terceros' }
-    ];
-    this .menu_tablas_generales = [
+      { path: '/terceros',                 nameItem: 'Terceros' },
+    ];  
+      /* Tablas generales */
+    this .menu_tablas_generales = [  
       { path: '/marca',                    nameItem: 'Marcas' },
       { path: '/presentacion_medicamento', nameItem: 'Presentación de medicamentos' },
       { path: '/vias_administracion',      nameItem: 'Vías de administración' },
@@ -38,14 +39,16 @@ export class AppComponent {
       { path: '/zonas',                    nameItem: 'Zonas' },
       { path: '/profesiones',              nameItem: 'Profesiones' },
       { path: '/eps',                      nameItem: 'EPS' },
-    ];
-    this .menu_documentos = [
+    ];  
+      /* Documentos */
+    this .menu_documentos = [ 
       { path: '/entradas',                 nameItem: 'Entradas' },
       { path: '/salidas',                  nameItem: 'Salidas' },
       { path: '/compras',                  nameItem: 'Compras' },
       { path: '/ventas',                   nameItem: 'Ventas' },
-    ];
-    this .menu_pruebas = [
+    ];  
+      /* Devs: Desarrollo de componentes, ejemplos, pruebas, testing */
+    this .menu_dev = [ 
       { path: '/padre-1',                  nameItem: 'Padre 1' },
       { path: '/padre-2',                  nameItem: 'Padre 2' },
       { path: '/padre-3',                  nameItem: 'Padre 3' },
@@ -53,5 +56,6 @@ export class AppComponent {
       { path: '/fdo-examples',             nameItem: 'Fdo (Ejemplos)' },
       { path: '/deploy',                   nameItem: 'Deploy' }
     ];
+    
   }
 }

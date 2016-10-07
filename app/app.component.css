@@ -31,3 +31,23 @@ nav a:hover {
 nav a.active {
   color: #039be5;
 }
+
+#menu-clinik-control {
+  color: black;
+}
+
+#menu-principal li a {
+  background-color: #eee;
+}
+
+#menu-tablas-generales li a {
+  background-color: lightgray;
+}
+
+#menu-documentos li a {
+  background-color: #eee;
+}
+
+#menu-dev li a {
+  background-color: #CCCFFF;
+}

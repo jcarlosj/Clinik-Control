@@ -5,34 +5,27 @@
     
     <nav>
         <label>Menú principal</label>
-        <ul class="menu-principal">
-            <li *ngFor="let o of menu">
-                <a routerLink="{{o.path}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{o.nameItem}}</a>
-            </li>
-        </ul>
-    </nav>
-    <nav>
-        <label>Tablas generales</label>
-        <ul class="menu-tablas-generales">
-            <li *ngFor="let o of menu_tablas_generales">
-                <a routerLink="{{o.path}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{o.nameItem}}</a>
-            </li>
-        </ul>
-    </nav>
-    <nav>
-        <label>Documentos</label>
-        <ul class="menu-documentos">
-            <li *ngFor="let o of menu_documentos">
-                <a routerLink="{{o.path}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{o.nameItem}}</a>
-            </li>
-        </ul>
-    </nav>    
-    <nav>
-        <label>Devs</label>
-        <ul class="menu-pruebas">
-            <li *ngFor="let o of menu_pruebas">
-                <a routerLink="{{o.path}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{o.nameItem}}</a>
-            </li>
+        <ul id="menu-clinik-control">
+            <span id="menu-principal">
+                <li *ngFor="let o of menu">
+                    <a routerLink="{{o.path}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="o.class" >{{o.nameItem}}</a>
+                </li>
+            </span>
+            <span id="menu-tablas-generales">
+                <li *ngFor="let o of menu_tablas_generales">
+                    <a routerLink="{{o.path}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="o.class" >{{o.nameItem}}</a>
+                </li>
+            </span>
+            <span id="menu-documentos">
+                <li *ngFor="let o of menu_documentos">
+                    <a routerLink="{{o.path}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="o.class" >{{o.nameItem}}</a>
+                </li>
+            </span>     
+            <span id="menu-dev">
+                <li *ngFor="let o of menu_dev">
+                    <a routerLink="{{o.path}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="o.class" >{{o.nameItem}}</a>
+                </li>
+            </span>              
         </ul>
     </nav>
 
