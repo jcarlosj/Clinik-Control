@@ -87,19 +87,52 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private opcionTiposPago : TiposPago[];
   private radioTiposPagoSelected : string;
 
-  /* --- Control de campos Documento --- */
-  private enabledDefault      : boolean;
-  private enableConcepto      : boolean;
-  private visibleConcepto     : boolean;
-  private visibleConsecutivo  : boolean;
-  private enableTercero       : boolean;
-  private visibleTercero      : boolean; 
-  private visibleListado      : boolean;
-  private enableValorUnitario : boolean; 
-  private enableDescuento     : boolean;
-  private visibleDescuento    : boolean;
-  
-
+  /* --- Control de campos Documento --- @Jce_ 
+    NOTA: Puede mejorar usando un Array con todos los permisos para 
+    la activación y visibilidad de cada uno de los campos.
+    --- */
+  private enableTipoPago            : boolean;
+  private visibleTipoPago           : boolean;
+  private valueDefaultTipoPago      : string;
+  private enableConcepto            : boolean;
+  private visibleConcepto           : boolean;
+  private enableFecha               : boolean;
+  private visibleFecha              : boolean;
+  private enableConsecutivo         : boolean;
+  private visibleConsecutivo        : boolean;
+  private visibleTercero            : boolean;  // <--- Componente de búsqueda para terceros 
+  private valueDefaultTercero       : string;   // <--- Componente de búsqueda para terceros
+  private enableDireccion           : boolean;
+  private visibleDireccion          : boolean;
+  private enableBodegaOrigen        : boolean;
+  private visibleBodegaOrigen       : boolean;
+  private valueDefaultBodegaOrigen  : string;
+  private enableBodegaDestino       : boolean;
+  private visibleBodegaDestino      : boolean;
+  private valueDefaultBodegaDestino : string; 
+  private enableDocumentoSoporte    : boolean;
+  private visibleDocumentoSoporte   : boolean; 
+  private visibleListaProductos     : boolean;
+  private visibleProducto           : boolean;  // <--- Componente de búsqueda para productos   
+  private enableCodigoProducto      : boolean;
+  private visibleCodigoProducto     : boolean;
+  private enableMarca               : boolean;
+  private visibleMarca              : boolean;
+  private enableDescripcion         : boolean;
+  private visibleDescripcion        : boolean;
+  private enableValorUnitario       : boolean;
+  private visibleValorUnitario      : boolean;
+  private enableUnidadMedida        : boolean;
+  private visibleUnidadMedida       : boolean;
+  private enableDescuento           : boolean;
+  private visibleDescuento          : boolean;
+  private enableCantidad            : boolean;
+  private visibleCantidad           : boolean;
+  private enableObservaciones1      : boolean;
+  private visibleObservaciones1     : boolean;
+  private enableObservaciones2      : boolean;
+  private visibleObservaciones2     : boolean;
+    
   // Constructor
   constructor(
     private location: Location,
@@ -121,8 +154,8 @@ export class DocumentoDetail implements OnInit, OnDestroy {
 
     // Inicializa RadioButton (Tipo de pago) 
     this .opcionTiposPago = [
-      new TiposPago( 'contado', 'Contado' ),
-      new TiposPago( 'credito', 'Crédito' )
+      new TiposPago( 'C', 'Contado' ),
+      new TiposPago( 'R', 'Crédito' )
     ];
 
     // Mensajes
@@ -152,62 +185,102 @@ export class DocumentoDetail implements OnInit, OnDestroy {
     ];
   }
 
+  /* --- Control de campos Documento --- @Jce_ 
+    NOTA: Puede mejorar usando un Array con todos los permisos para 
+    la activación y visibilidad de cada uno de los campos.
+    --- */
   validateEntryPoint( entry_point:string ) {
 
-    this .enabledDefault      = true;
-    this .enableConcepto      = false;
-    this .visibleConcepto     = false;
-    this .enableTercero       = true;
-    
-    this .enableValorUnitario = true; 
-    this .enableDescuento     = true;
-    this .visibleDescuento    = true;
+    console .log( '*** Aplica permisos comunes (enabled/visible) para todos los puntos de entrada ***' );
+    // Aplica permisos comunes (enabled/visible) para todos los puntos de entrada
+    this .enableFecha             = false;
+    this .visibleFecha            = true;
+    this .enableConsecutivo       = false;
+    this .visibleConsecutivo      = true;   
+    this .enableDireccion         = false;
+    this .visibleDireccion        = true;     
+    this .enableDocumentoSoporte  = true;
+    this .visibleDocumentoSoporte = true; 
+    this .visibleListaProductos   = true;
+    this .visibleProducto         = true;    // <--- Componente de búsqueda para productos   
+    this .enableCodigoProducto    = false;
+    this .visibleCodigoProducto   = true; 
+    this .enableMarca             = false;
+    this .visibleMarca            = true;
+    this .enableValorUnitario     = false;
+    this .visibleValorUnitario    = true;
+    this .enableUnidadMedida      = false;
+    this .visibleUnidadMedida     = true;   
+    this .enableCantidad          = false;
+    this .visibleCantidad         = true;   
+    this .enableObservaciones1    = true;
+    this .visibleObservaciones1   = true;
+    this .enableObservaciones2    = true;
+    this .visibleObservaciones2   = true;            
 
-    if( entry_point == 'entradas' ) {
-      console .log( 'EB: Entradas' );
-        this .enableConcepto      = true;
-        this .visibleConcepto     = true;
-        this .visibleConsecutivo  = false;
-        this .visibleTercero      = true; 
-        this .visibleListado      = true;
-        this .enableValorUnitario = false;
-        this .enableDescuento     = false;
-        this .visibleDescuento    = false; 
+    if( entry_point == 'entradas' || entry_point == 'salidas' ) {
+      console .log( '*** Aplica permisos comunes (enabled/visible) para puntos de entrada tipo -> EB: Entradas y SB: Salidas ***' );
+      // Aplica permisos comunes (enabled/visible) para puntos de entrada tipo -> EB: Entradas y SB: Salidas
+      this .enableTipoPago          = false;
+      this .visibleTipoPago         = false;
+      this .valueDefaultTipoPago    = "C";      
+      this .enableConcepto          = true;
+      this .visibleConcepto         = true;
+      this .visibleTercero          = false;    // <--- Componente de búsqueda para terceros
+      this .enableBodegaOrigen      = true;
+      this .visibleBodegaOrigen     = true;
+      this .enableBodegaDestino     = true;
+      this .visibleBodegaDestino    = true; 
+      this .enableDescripcion       = false;
+      this .visibleDescripcion      = true;
+      this .enableDescuento         = false;
+      this .visibleDescuento        = true;
+
+      if( entry_point == 'entradas' ) {
+      console .log( '*** Aplica permisos exclusivos (enabled/visible) para el punto de entrada tipo -> EB: Entradas ***' );
+      // Aplica permisos exclusivos (enabled/visible) para el punto de entrada tipo -> EB: Entradas
+        
+      }
+      if( entry_point == 'salidas' ) {
+        console .log( '*** Aplica permisos exclusivos (enabled/visible) para el punto de entrada tipo -> SB: Salidas ***' );
+      // Aplica permisos exclusivos (enabled/visible) para el punto de entrada tipo -> SB: Salidas
+        this .valueDefaultTercero = ".";                  
+      }
     }
-    if( entry_point == 'salidas' ) {
-      console .log( 'SB: Salidas' );
-        this .enableConcepto      = true;
-        this .visibleConcepto     = true;
-        this .visibleConsecutivo  = false;
-        this .visibleTercero      = true; 
-        this .visibleListado      = true;
-        this .enableValorUnitario = false; 
-        this .enableDescuento     = false;
-        this .visibleDescuento    = false;         
-    }
-    if( entry_point == 'compras' ) {
-      console .log( 'FC: Compras' );
-      this .enableConcepto      = false;
-      this .visibleConcepto     = false;
-      this .visibleConsecutivo  = false;
-      this .visibleTercero      = false; 
-      this .visibleListado      = false;
-      this .enableValorUnitario = true; 
-      this .enableDescuento     = true;
-      this .visibleDescuento    = true;       
-    }
-    if( entry_point == 'ventas' ) {
-      console .log( 'FV: Ventas' );
-      this .enableConcepto      = false;
-      this .visibleConcepto     = false;
-      this .visibleConsecutivo  = false;
-      this .visibleTercero      = false; 
-      this .visibleListado      = false;
-      this .enableValorUnitario = true;
-      this .enableDescuento     = true;
-      this .visibleDescuento    = true;       
-    }
+    if( entry_point == 'compras' || entry_point == 'ventas' ) {
+      console .log( '*** Aplica permisos comunes (enabled/visible) para puntos de entrada tipo -> FC: Facturas de compra y FV: Facturas de venta ***' );
+      // Aplica permisos comunes (enabled/visible) para puntos de entrada tipo -> FC: Facturas de compra y FV: Facturas de venta
+      this .enableTipoPago          = true;
+      this .visibleTipoPago         = true;
+      this .enableConcepto          = false;
+      this .visibleConcepto         = false;
+      this .visibleTercero          = true;    // <--- Componente de búsqueda para terceros
+      this .enableBodegaOrigen      = false;
+      this .visibleBodegaOrigen     = false;
+      this .enableBodegaDestino     = false;
+      this .visibleBodegaDestino    = false; 
+      this .enableDescripcion       = true;
+      this .visibleDescripcion      = true;
+      this .enableDescuento         = true;
+      this .visibleDescuento        = true;
       
+      if( entry_point == 'compras' ) {
+        console .log( '*** Aplica permisos exclusivos (enabled/visible) para el punto de entrada tipo -> FC: Compras ***' );
+        // Aplica permisos exclusivos (enabled/visible) para el punto de entrada tipo -> FC: Compras
+        this .valueDefaultTipoPago      = "R";    
+        this .valueDefaultBodegaOrigen  = "PR";
+        this .valueDefaultBodegaDestino = "PR";
+                
+      }
+      if( entry_point == 'ventas' ) {
+        console .log( '*** Aplica permisos exclusivos (enabled/visible) para el punto de entrada tipo -> FV: Ventas ***' );
+        // Aplica permisos exclusivos (enabled/visible) para el punto de entrada tipo -> FV: Ventas
+        this .valueDefaultTipoPago      = "C";
+        this .valueDefaultBodegaOrigen  = "CL";
+        this .valueDefaultBodegaDestino = "CL";                
+      }
+    }
+ 
   }
 
   // Implements de Angular 2
@@ -284,7 +357,6 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   // Change Option Selected RadioButton Tipo de pago
   radioTipoPago( tipo: string ) {
     this .radioTiposPagoSelected = tipo;
-    this .enabledDefault = false;
 
     // alert( 'Has seleccionado ' + tipo );
   }
@@ -383,16 +455,10 @@ export class DocumentoDetail implements OnInit, OnDestroy {
     this. objProducto = obj;
     console.log( 'PARENT (DocumentoDetail) \n - obj[\'codigo\'] : ' + obj['codigo'] + '\n - this.objProducto[\'codigo\'] : ' + this.objProducto['codigo'] );
 
-    if( typeof obj == 'Object' ) {
-      console .log( 'Entonces este es un objeto de tipo: ' + typeof obj );
-    } 
-    else {
-      
+    //console.log( '> ' + Object.keys(obj) + ' '+ Object.values(obj ) );
+    for( let campo in obj ) {
+      console.log( ' - ' + campo + ': ' + obj[campo] + '\t' );
     }
-        //console.log( '> ' + Object.keys(obj) + ' '+ Object.values(obj ) );
-        for( let campo in obj ) {
-          console.log( ' - ' + campo + ': ' + obj[campo] + '\n' );
-        }
   }
 
 }
