@@ -25,11 +25,11 @@ export class InMemoryDataService implements InMemoryDbService {
     ]; 
 
     let productos = [
-      {
+            {
         //--- IDENTIFICACION DE PRODUCTO --- 
-        id: '01', codigo: '01', agrupacion: 1, descripcion1: 'pan con queso', descripcion2: 'Descripcion del producto (1)', marca: 1, codigo_barras: 'DEREDERRA-234', referencia: 'AT-098i', equivalencia: 'Equivalencia', unidad_medida: 1, unidad_empaque: 6, ubicacion_bodega: 'Por ahi anda', 
+        id: '01', codigo: '01', agrupacion: 1, descripcion1: 'Roscón con arequipe (1)', descripcion2: 'Roscón con arequipe (2)', marca: 1, codigo_barras: 'DEREDERRA-234', referencia: 'AT-098i', equivalencia: 'Equivalencia', unidad_medida: 1, unidad_empaque: 6, ubicacion_bodega: 'Por ahi anda', 
         //--- PRECIOS Y DATOS ESTADISTICOS ---
-        precio_venta1: 82000, precio_venta2: 90000, precio_venta3: 120000, precio_venta4: 150000, precio_venta5: 180000, existencia: 12, saldo_pedido: 36, costo_promedio: 23000, costo_ultima_compra: 21500, costo_fob: 27, 
+        precio_venta1: 5, precio_venta2: 10, precio_venta3: 12, precio_venta4: 15, precio_venta5: 18, existencia: 12, saldo_pedido: 36, costo_promedio: 23, costo_ultima_compra: 21, costo_fob: 27, 
         //--- PARAMETROS (Legales) ---
         tipo_iva_venta: 1, tipo_iva_compra: 1, registro_invima: 'RegistroInvima', numero_meses_garantia : 6,
         //--- PARAMETROS (Controles sobre valores y cantidades) ---
@@ -46,9 +46,9 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         //--- IDENTIFICACION DE PRODUCTO --- 
-        id: '01', codigo: '01', agrupacion: 1, descripcion1: 'pan integral', descripcion2: 'Descripcion del producto (1)', marca: 1, codigo_barras: 'DEREDERRA-234', referencia: 'AT-098i', equivalencia: 'Equivalencia', unidad_medida: 1, unidad_empaque: 6, ubicacion_bodega: 'Por ahi anda', 
+        id: '02', codigo: '02', agrupacion: 1, descripcion1: 'Roscón con bocadillo (1)', descripcion2: 'Roscón con bocadillo (2)', marca: 1, codigo_barras: 'DEREDERRA-234', referencia: 'AT-098i', equivalencia: 'Equivalencia', unidad_medida: 1, unidad_empaque: 6, ubicacion_bodega: 'Por ahi anda', 
         //--- PRECIOS Y DATOS ESTADISTICOS ---
-        precio_venta1: 82000, precio_venta2: 90000, precio_venta3: 120000, precio_venta4: 150000, precio_venta5: 180000, existencia: 12, saldo_pedido: 36, costo_promedio: 23000, costo_ultima_compra: 21500, costo_fob: 27, 
+        precio_venta1: 5, precio_venta2: 10, precio_venta3: 12, precio_venta4: 15, precio_venta5: 18, existencia: 12, saldo_pedido: 36, costo_promedio: 23, costo_ultima_compra: 21, costo_fob: 27, 
         //--- PARAMETROS (Legales) ---
         tipo_iva_venta: 1, tipo_iva_compra: 1, registro_invima: 'RegistroInvima', numero_meses_garantia : 6,
         //--- PARAMETROS (Controles sobre valores y cantidades) ---
@@ -65,9 +65,85 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         //--- IDENTIFICACION DE PRODUCTO --- 
-        id: '01', codigo: '01', agrupacion: 1, descripcion1: 'roscon', descripcion2: 'Descripcion del producto (1)', marca: 1, codigo_barras: 'DEREDERRA-234', referencia: 'AT-098i', equivalencia: 'Equivalencia', unidad_medida: 1, unidad_empaque: 6, ubicacion_bodega: 'Por ahi anda', 
+        id: '03', codigo: '03', agrupacion: 1, descripcion1: 'Pan frances (1)', descripcion2: 'Pan Frances (2)', marca: 1, codigo_barras: 'DEREDERRA-234', referencia: 'AT-098i', equivalencia: 'Equivalencia', unidad_medida: 1, unidad_empaque: 6, ubicacion_bodega: 'Por ahi anda', 
         //--- PRECIOS Y DATOS ESTADISTICOS ---
-        precio_venta1: 82000, precio_venta2: 90000, precio_venta3: 120000, precio_venta4: 150000, precio_venta5: 180000, existencia: 12, saldo_pedido: 36, costo_promedio: 23000, costo_ultima_compra: 21500, costo_fob: 27, 
+        precio_venta1: 5, precio_venta2: 10, precio_venta3: 12, precio_venta4: 15, precio_venta5: 18, existencia: 12, saldo_pedido: 36, costo_promedio: 23, costo_ultima_compra: 21, costo_fob: 27, 
+        //--- PARAMETROS (Legales) ---
+        tipo_iva_venta: 1, tipo_iva_compra: 1, registro_invima: 'RegistroInvima', numero_meses_garantia : 6,
+        //--- PARAMETROS (Controles sobre valores y cantidades) ---
+        stock_minimo: 12, stock_maximo: 30, porc_max_dto_contado: 5, porc_max_dto_credito: 7, porc_comision_venta: 5, 
+        //--- PARAMETROS (Si/No) ---
+        producto_activo: 'S', producto_se_vende: 'N', precio_fijo: 'S', usa_control_lotes: 'N', aplica_para_pedido: 'N', usa_seriales: 'N', producto_en_consig: 'N', producto_controlado: 'N', permite_negativos: 'N', 
+        //--- PARAMETROS (Varios) ---
+        color_agenda: '#CC00CC', presentacion: 1, via_administracion: 1, 
+        //codigoBono          : 0,
+        //--- OTROS ---
+        // observaciones    : '', riesgosAsociados : '',
+        //--- CONTROL ---
+        estado: 'A', registros: 0
+      },
+      {
+        //--- IDENTIFICACION DE PRODUCTO --- 
+        id: '04', codigo: '04', agrupacion: 1, descripcion1: 'Pan integral (1)', descripcion2: 'Pan integral (2)', marca: 1, codigo_barras: 'DEREDERRA-234', referencia: 'AT-098i', equivalencia: 'Equivalencia', unidad_medida: 1, unidad_empaque: 6, ubicacion_bodega: 'Por ahi anda', 
+        //--- PRECIOS Y DATOS ESTADISTICOS ---
+        precio_venta1: 5, precio_venta2: 10, precio_venta3: 12, precio_venta4: 15, precio_venta5: 18, existencia: 12, saldo_pedido: 36, costo_promedio: 23, costo_ultima_compra: 21, costo_fob: 27, 
+        //--- PARAMETROS (Legales) ---
+        tipo_iva_venta: 1, tipo_iva_compra: 1, registro_invima: 'RegistroInvima', numero_meses_garantia : 6,
+        //--- PARAMETROS (Controles sobre valores y cantidades) ---
+        stock_minimo: 12, stock_maximo: 30, porc_max_dto_contado: 5, porc_max_dto_credito: 7, porc_comision_venta: 5, 
+        //--- PARAMETROS (Si/No) ---
+        producto_activo: 'S', producto_se_vende: 'N', precio_fijo: 'S', usa_control_lotes: 'N', aplica_para_pedido: 'N', usa_seriales: 'N', producto_en_consig: 'N', producto_controlado: 'N', permite_negativos: 'N', 
+        //--- PARAMETROS (Varios) ---
+        color_agenda: '#CC00CC', presentacion: 1, via_administracion: 1, 
+        //codigoBono          : 0,
+        //--- OTROS ---
+        // observaciones    : '', riesgosAsociados : '',
+        //--- CONTROL ---
+        estado: 'A', registros: 0
+      },
+      {
+        //--- IDENTIFICACION DE PRODUCTO --- 
+        id: '05', codigo: '05', agrupacion: 1, descripcion1: 'Mogolla integral (1)', descripcion2: 'Mogolla integral (2)', marca: 1, codigo_barras: 'DEREDERRA-234', referencia: 'AT-098i', equivalencia: 'Equivalencia', unidad_medida: 1, unidad_empaque: 6, ubicacion_bodega: 'Por ahi anda', 
+        //--- PRECIOS Y DATOS ESTADISTICOS ---
+        precio_venta1: 5, precio_venta2: 10, precio_venta3: 12, precio_venta4: 15, precio_venta5: 18, existencia: 12, saldo_pedido: 36, costo_promedio: 23, costo_ultima_compra: 21, costo_fob: 27, 
+        //--- PARAMETROS (Legales) ---
+        tipo_iva_venta: 1, tipo_iva_compra: 1, registro_invima: 'RegistroInvima', numero_meses_garantia : 6,
+        //--- PARAMETROS (Controles sobre valores y cantidades) ---
+        stock_minimo: 12, stock_maximo: 30, porc_max_dto_contado: 5, porc_max_dto_credito: 7, porc_comision_venta: 5, 
+        //--- PARAMETROS (Si/No) ---
+        producto_activo: 'S', producto_se_vende: 'N', precio_fijo: 'S', usa_control_lotes: 'N', aplica_para_pedido: 'N', usa_seriales: 'N', producto_en_consig: 'N', producto_controlado: 'N', permite_negativos: 'N', 
+        //--- PARAMETROS (Varios) ---
+        color_agenda: '#CC00CC', presentacion: 1, via_administracion: 1, 
+        //codigoBono          : 0,
+        //--- OTROS ---
+        // observaciones    : '', riesgosAsociados : '',
+        //--- CONTROL ---
+        estado: 'A', registros: 0
+      },
+      {
+        //--- IDENTIFICACION DE PRODUCTO --- 
+        id: '06', codigo: '06', agrupacion: 1, descripcion1: 'Palitos de queso (1)', descripcion2: 'Palitos de queso (2)', marca: 1, codigo_barras: 'DEREDERRA-234', referencia: 'AT-098i', equivalencia: 'Equivalencia', unidad_medida: 1, unidad_empaque: 6, ubicacion_bodega: 'Por ahi anda', 
+        //--- PRECIOS Y DATOS ESTADISTICOS ---
+        precio_venta1: 5, precio_venta2: 10, precio_venta3: 12, precio_venta4: 15, precio_venta5: 18, existencia: 12, saldo_pedido: 36, costo_promedio: 23, costo_ultima_compra: 21, costo_fob: 27, 
+        //--- PARAMETROS (Legales) ---
+        tipo_iva_venta: 1, tipo_iva_compra: 1, registro_invima: 'RegistroInvima', numero_meses_garantia : 6,
+        //--- PARAMETROS (Controles sobre valores y cantidades) ---
+        stock_minimo: 12, stock_maximo: 30, porc_max_dto_contado: 5, porc_max_dto_credito: 7, porc_comision_venta: 5, 
+        //--- PARAMETROS (Si/No) ---
+        producto_activo: 'S', producto_se_vende: 'N', precio_fijo: 'S', usa_control_lotes: 'N', aplica_para_pedido: 'N', usa_seriales: 'N', producto_en_consig: 'N', producto_controlado: 'N', permite_negativos: 'N', 
+        //--- PARAMETROS (Varios) ---
+        color_agenda: '#CC00CC', presentacion: 1, via_administracion: 1, 
+        //codigoBono          : 0,
+        //--- OTROS ---
+        // observaciones    : '', riesgosAsociados : '',
+        //--- CONTROL ---
+        estado: 'A', registros: 0
+      },
+      {
+        //--- IDENTIFICACION DE PRODUCTO --- 
+        id: '07', codigo: '07', agrupacion: 1, descripcion1: 'Croissant Hawaiano (1)', descripcion2: 'Croissant Hawaiano (2)', marca: 1, codigo_barras: 'DEREDERRA-234', referencia: 'AT-098i', equivalencia: 'Equivalencia', unidad_medida: 1, unidad_empaque: 6, ubicacion_bodega: 'Por ahi anda', 
+        //--- PRECIOS Y DATOS ESTADISTICOS ---
+        precio_venta1: 5, precio_venta2: 10, precio_venta3: 12, precio_venta4: 15, precio_venta5: 18, existencia: 12, saldo_pedido: 36, costo_promedio: 23, costo_ultima_compra: 21, costo_fob: 27, 
         //--- PARAMETROS (Legales) ---
         tipo_iva_venta: 1, tipo_iva_compra: 1, registro_invima: 'RegistroInvima', numero_meses_garantia : 6,
         //--- PARAMETROS (Controles sobre valores y cantidades) ---

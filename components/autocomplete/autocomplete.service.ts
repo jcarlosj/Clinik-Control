@@ -17,19 +17,20 @@ export class AutoCompleteService {
     - Estructura del Objeto
   */    
   //search(termino: string): Observable<Tercero[]> {
-  search( urlApi: string, tabla:string, termino_busqueda: string ): Observable<Object[]> {        
+  search( urlApi: string, tabla:string, campo:string, termino_busqueda: string ): Observable<Object[]> {        
 
     console.log( 
       'Configuración de búsqueda \n ---------------------------- \n' + 
       ' - urlApi  : ' + urlApi + '\n' +
       ' - tabla   : ' + tabla + '\n' +          // <--- El nombre esta asociado a la última cadena de la urlAPI
+      ' - campo   : ' + campo + '\n' +
       ' - termino : ' + termino_busqueda + '\n' +
-      ' - url     : ' + `${urlApi}/?${tabla}=${termino_busqueda}`          
+      ' - url     : ' + `${urlApi}${tabla}/?${campo}=${termino_busqueda}`          
     );
 
     return this.http
                //.get(`app/terceros/?razon_social=${termino}`)
-               .get(`${urlApi}/?${tabla}=${termino_busqueda}`)
+               .get(`${urlApi}${tabla}/?${campo}=${termino_busqueda}`)
                //.map( (r: Response) => r.json().data as Tercero[] );
                .map( (r: Response) => r.json().data as Object[] );
   }

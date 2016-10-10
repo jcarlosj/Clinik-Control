@@ -4,7 +4,7 @@
   <span>{{ obj.codigo }}</span>
   <div>
     <div *ngFor="let tercero of terceros | async"
-         (click)="showDetail(tercero)" class="search-result" >
+         (click)="showDetail(tercero, searchBox)" class="search-result" >
       {{tercero[campo]}}
     </div>
   </div>

@@ -14,14 +14,15 @@ var AutoCompleteService = (function () {
     function AutoCompleteService(http) {
         this.http = http;
     }
-    AutoCompleteService.prototype.search = function (urlApi, tabla, termino_busqueda) {
+    AutoCompleteService.prototype.search = function (urlApi, tabla, campo, termino_busqueda) {
         console.log('Configuración de búsqueda \n ---------------------------- \n' +
             ' - urlApi  : ' + urlApi + '\n' +
             ' - tabla   : ' + tabla + '\n' +
+            ' - campo   : ' + campo + '\n' +
             ' - termino : ' + termino_busqueda + '\n' +
-            ' - url     : ' + (urlApi + "/?" + tabla + "=" + termino_busqueda));
+            ' - url     : ' + ("" + urlApi + tabla + "/?" + campo + "=" + termino_busqueda));
         return this.http
-            .get(urlApi + "/?" + tabla + "=" + termino_busqueda)
+            .get("" + urlApi + tabla + "/?" + campo + "=" + termino_busqueda)
             .map(function (r) { return r.json().data; });
     };
     AutoCompleteService = __decorate([

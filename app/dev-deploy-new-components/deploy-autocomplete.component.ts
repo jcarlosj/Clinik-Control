@@ -41,9 +41,9 @@ export class DeployAutocompleteComponent {
     else {
       
     }
-        console.log( '> ' + Object.keys(saludando) + ' '+ Object.values( saludando ) );
+        /* console.log( '> ' + Object.keys(saludando) + ' '+ Object.values( saludando ) );
         for( let campo in saludando ) {
           console.log( ' - ' + campo + '\n' );
-        }
+        } */
   }
 }

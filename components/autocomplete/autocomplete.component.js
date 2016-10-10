@@ -62,7 +62,7 @@ var AutocompleteComponent = (function () {
             .debounceTime(300)
             .distinctUntilChanged()
             .switchMap(function (term) { return term
-            ? _this.autocompleteService.search(_this.urlApi + _this.tabla, _this.campo, term)
+            ? _this.autocompleteService.search(_this.urlApi, _this.tabla, _this.campo, term)
             : Observable_1.Observable.of([]); })
             .catch(function (error) {
             console.log(error);
@@ -88,16 +88,15 @@ var AutocompleteComponent = (function () {
     AutocompleteComponent.prototype.registerOnTouched = function (fn) {
         this.onTouchedCallback = fn;
     };
-    AutocompleteComponent.prototype.showDetail = function (obj) {
+    AutocompleteComponent.prototype.showDetail = function (obj, search) {
+        search.value = null;
         this.objSelected = obj;
-        console.log('--> CHILD: AutocompleteComponent -> showDetail()');
-        console.log(' - obj: " \n' + Object.values(this.obj));
         this.blur.emit(obj);
-        console.log(' - obj.campo: ' + obj[this.campo]);
         if (obj[this.campo] != '') {
             this.obj = obj;
-            this.campo = obj[this.campo];
         }
+        console.log('--> CHILD: AutocompleteComponent -> showDetail()');
+        console.log(' - this .obj && obj: ' + Object.values(this.obj));
     };
     __decorate([
         core_1.Input(), 

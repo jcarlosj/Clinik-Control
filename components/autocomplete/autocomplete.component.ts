@@ -24,7 +24,6 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDestroy  {
 
-
     private desarrollador: Object[] = [{ nombre: 'Samir', profesion: 'peligro', edad: 34 }];
 
     @Input() obj = new Object();
@@ -81,7 +80,12 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
       .distinctUntilChanged()   // Asegura que solo si cambia el termino de busqueda se realiza una nueva busqueda
       .switchMap(term => term   // Cancela y descarta anteriores observables de búsqueda, devolviendo sólo el último servicio de búsqueda observable.
         // Retorna la búsqueda http observables
-        ? this.autocompleteService.search( this.urlApi+this.tabla, this.campo, term )
+        ? this.autocompleteService.search( 
+            this.urlApi, 
+            this.tabla, 
+            this.campo, 
+            term 
+        )
         // o lo observable del herpes vacías si no hay término de búsqueda
         : Observable.of<Object[]>([]))
       .catch(error => {
@@ -120,20 +124,22 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
     }
 
 
-  showDetail(obj:Object): void {
+  showDetail(obj:Object, search: any): void {
     
+    search.value = null;
+
     this .objSelected = obj;
-    console.log( '--> CHILD: AutocompleteComponent -> showDetail()' );
-    console.log( ' - obj: " \n' + Object .values( this.obj ) );
     //this.onTouchedCallback();
     this.blur.emit( obj );
 
-    console .log( ' - obj.campo: ' + obj[ this.campo ] );
+    //console .log( ' - obj.campo: ' + obj[ this.campo ] );
 
     if ( obj[ this.campo ] != '' ) {
       this .obj = obj;
-      this .campo = obj[ this.campo ];
+    
     }
-  
+    console.log( '--> CHILD: AutocompleteComponent -> showDetail()' );
+    console.log( ' - this .obj && obj: ' + Object .values( this.obj ) );
+
   }
 }
