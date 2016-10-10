@@ -81,6 +81,7 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private fieldProducto : string;
   private labelProducto : string;
   private objProducto = new Object();
+  private objTercero  = new Object();
   private list_producto = []; // Array de Objetos producto
 
   /* --- Tipos de pago --- */
@@ -112,6 +113,7 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private valueDefaultBodegaDestino : string; 
   private enableDocumentoSoporte    : boolean;
   private visibleDocumentoSoporte   : boolean; 
+  private enableListaProductos      : boolean;
   private visibleListaProductos     : boolean;
   private visibleProducto           : boolean;  // <--- Componente de búsqueda para productos   
   private enableCodigoProducto      : boolean;
@@ -201,6 +203,7 @@ export class DocumentoDetail implements OnInit, OnDestroy {
     this .visibleDireccion        = true;     
     this .enableDocumentoSoporte  = true;
     this .visibleDocumentoSoporte = true; 
+    this .enableListaProductos    = false;
     this .visibleListaProductos   = true;
     this .visibleProducto         = true;    // <--- Componente de búsqueda para productos   
     this .enableCodigoProducto    = false;
@@ -436,6 +439,8 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   /* --- TERCEROS --- */ 
   blurTerceros(obj:Object){
     
+    this. objTercero = obj;
+
     if( typeof obj == 'Object' ) {
       console .log( 'Entonces este es un objeto de tipo: ' + typeof obj );
     } 
