@@ -39,21 +39,31 @@ export class DocumentoList implements OnInit, OnDestroy {
 		this .path = this .router .url;
 		console .log( 'Validate Path: ' + this .path );
 
-		if( this .path == '/entradas' ) {
-			this .title += 'Entradas';
-			this .botonNuevo += 'a entrada';
+		if( this .path == '/entradas' || this .path == '/salidas'  ) {
+
+
+			if( this .path == '/entradas' ) {
+				this .title += 'Entradas';
+				this .botonNuevo += 'a entrada';
+			}
+			if( this .path == '/salidas' ) {
+				this .title += 'Salidas';
+				this .botonNuevo += 'a salida';
+			}
+
 		}
-		if( this .path == '/salidas' ) {
-			this .title += 'Salidas';
-			this .botonNuevo += 'a salida';
-		}
-		if( this .path == '/compras' ) {
-			this .title += 'Compras';
-			this .botonNuevo += 'a compra';
-		}
-		if( this .path == '/ventas' ) {
-			this .title += 'Ventas';
-			this .botonNuevo += 'a venta';
+		if( this .path == '/compras' || this .path == '/ventas'  ) {
+			
+
+			if( this .path == '/compras' ) {
+				this .title += 'Compras';
+				this .botonNuevo += 'a compra';
+			}
+			if( this .path == '/ventas' ) {
+				this .title += 'Ventas';
+				this .botonNuevo += 'a venta';
+			}
+
 		}
 
 	}
@@ -65,7 +75,20 @@ export class DocumentoList implements OnInit, OnDestroy {
     	.params
     	.subscribe(params => {
       	this.selectedId = params['codigo'];
-      	this.service.getRecords( this .path ) .then(arrObj => this.arrObj = arrObj);
+      	this.service.getRecords( this .path ) 
+				    .then( arrObj => { 
+							this.arrObj = arrObj;
+							arrObj.forEach(element => {
+								if( this .path == '/entradas' || this .path == '/salidas'  ) {
+									element .desc_tmp = element .concepto.toString();
+									console .log( ' => arrObj[].concepto: ' + element.concepto + '\n => arrObj[].desc_tmp: ' + element.desc_tmp );
+								}
+								if( this .path == '/compras' || this .path == '/ventas'  ) {
+									element .desc_tmp = element .tercero.toString();
+									console .log( ' => arrObj[].tercero: ' + element.tercero + '\n => arrObj[].desc_tmp: ' + element.desc_tmp );
+								}
+							}); 
+						});
 		});
   }
 

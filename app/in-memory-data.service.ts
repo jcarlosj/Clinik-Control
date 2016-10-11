@@ -163,9 +163,49 @@ export class InMemoryDataService implements InMemoryDbService {
     let terceros = [
       {
         //--- DATOS BÁSICOS --- 
-        id: 1, codigo: '01', tipo_doc_identificacion: 1, numero_identificacion: '79854214', ciudad_expedicion: 3, dv: '1', razon_social: 'Fulano de Tal por cual', nombre1: 'Fulano', nombre2: 'de Tal', apellido1: 'para', apellido2: 'cual', 
+        id: 1, codigo: '01', tipo_doc_identificacion: 1, numero_identificacion: '79854214', ciudad_expedicion: 3, dv: '1', razon_social: 'RD Casa de Software', nombre1: 'Nestor', nombre2: 'Ricardo', apellido1: 'Diaz', apellido2: '', 
         //--- DATOS DE UBICACIÓN ---
-        direccion: 'Av Carrera con Calle', id_ciudad: 3, id_barrio: 2, telefono_fijo: '2342111', telefono_movil: '3002154487', e_mail: 'fulanitodetalporcual@correo.co', id_zona: 3, 
+        direccion: 'Av Carrera 1 con Calle 1', id_ciudad: 3, id_barrio: 2, telefono_fijo: '2342111', telefono_movil: '3002154487', e_mail: 'nestor.ricardo@correo.co', id_zona: 3, 
+        //--- DATOS PERSONALES ---
+        fecha_nacimiento: '1983-02-15', lugar_nacimiento: 3, grupo_sanguineo: 'A+', sexo: 'm', estado_civil: 2, profesion_oficio: 3, id_eps: 3,  
+        //--- DATOS CLINIK CONTROL ---
+        tiene_convenio: 'N', tipo_afiliacion: 'N', id_profesional_asignado: 1,
+        //--- PARAMETROS LEGALES ---
+        exento_iva: 'N', autoretenedor: 'N', tipo_persona: 1, 
+        //--- PARAMETROS CONTROL CXC CXP Y CAJA ---
+        cupo_credito: 1, dias_plazo: 15, lista_precios: 1, porc_dto_contado: 10, porc_dto_credito: 12,  
+        //--- PARAMETROS VARIOS ---
+        afiliado_fidelizacion: 'N', tipo_impresion_fv: 1, 
+        //--- MANEJAR PESTAÑAS ---
+        // referenciasTerceros: '', observaciones: '', tipoTercero: '',
+        //--- CONTROL ---
+        estado: 'A', registros: 0
+      },
+      {
+        //--- DATOS BÁSICOS --- 
+        id: 2, codigo: '02', tipo_doc_identificacion: 1, numero_identificacion: '79854214', ciudad_expedicion: 3, dv: '1', razon_social: 'Fernándo Bermeo', nombre1: 'Fernándo', nombre2: 'Bermeo', apellido1: '', apellido2: '', 
+        //--- DATOS DE UBICACIÓN ---
+        direccion: 'Av Carrera 2 con Calle 2', id_ciudad: 3, id_barrio: 2, telefono_fijo: '2342111', telefono_movil: '3002154487', e_mail: 'fdobermeo@correo.co', id_zona: 3, 
+        //--- DATOS PERSONALES ---
+        fecha_nacimiento: '1983-02-15', lugar_nacimiento: 3, grupo_sanguineo: 'A+', sexo: 'm', estado_civil: 2, profesion_oficio: 3, id_eps: 3,  
+        //--- DATOS CLINIK CONTROL ---
+        tiene_convenio: 'N', tipo_afiliacion: 'N', id_profesional_asignado: 1,
+        //--- PARAMETROS LEGALES ---
+        exento_iva: 'N', autoretenedor: 'N', tipo_persona: 1, 
+        //--- PARAMETROS CONTROL CXC CXP Y CAJA ---
+        cupo_credito: 1, dias_plazo: 15, lista_precios: 1, porc_dto_contado: 10, porc_dto_credito: 12,  
+        //--- PARAMETROS VARIOS ---
+        afiliado_fidelizacion: 'N', tipo_impresion_fv: 1, 
+        //--- MANEJAR PESTAÑAS ---
+        // referenciasTerceros: '', observaciones: '', tipoTercero: '',
+        //--- CONTROL ---
+        estado: 'A', registros: 0
+      },
+      {
+        //--- DATOS BÁSICOS --- 
+        id: 3, codigo: '03', tipo_doc_identificacion: 1, numero_identificacion: '79854214', ciudad_expedicion: 3, dv: '1', razon_social: 'Samir Vidal', nombre1: 'Samir', nombre2: '', apellido1: 'Vidal', apellido2: '', 
+        //--- DATOS DE UBICACIÓN ---
+        direccion: 'Av Carrera 3 con Calle 4', id_ciudad: 3, id_barrio: 2, telefono_fijo: '2342111', telefono_movil: '3002154487', e_mail: 'samir.vidal@correo.co', id_zona: 3, 
         //--- DATOS PERSONALES ---
         fecha_nacimiento: '1983-02-15', lugar_nacimiento: 3, grupo_sanguineo: 'A+', sexo: 'm', estado_civil: 2, profesion_oficio: 3, id_eps: 3,  
         //--- DATOS CLINIK CONTROL ---
@@ -183,9 +223,9 @@ export class InMemoryDataService implements InMemoryDbService {
       },
             {
         //--- DATOS BÁSICOS --- 
-        id: '01', codigo: '01', tipo_doc_identificacion: 1, numero_identificacion: '79854214', ciudad_expedicion: 3, dv: '1', razon_social: 'Perencejo de Tal por cual', nombre1: 'Perencejo', nombre2: 'de Tal', apellido1: 'para', apellido2: 'cual', 
+        id: 4, codigo: '04', tipo_doc_identificacion: 1, numero_identificacion: '79854214', ciudad_expedicion: 3, dv: '1', razon_social: 'Juan Carlos Jiménez Gutiérrez', nombre1: 'Juan', nombre2: 'Carlos', apellido1: 'Jiménez', apellido2: 'Gutiérrez', 
         //--- DATOS DE UBICACIÓN ---
-        direccion: 'Av Carrera con Calle', id_ciudad: 3, id_barrio: 2, telefono_fijo: '2342111', telefono_movil: '3002154487', e_mail: 'fulanitodetalporcual@correo.co', id_zona: 3, 
+        direccion: 'Av Carrera 4 con Calle 4', id_ciudad: 3, id_barrio: 2, telefono_fijo: '2342111', telefono_movil: '3002154487', e_mail: 'jcarlosj@correo.co', id_zona: 3, 
         //--- DATOS PERSONALES ---
         fecha_nacimiento: '1983-02-15', lugar_nacimiento: 3, grupo_sanguineo: 'A+', sexo: 'm', estado_civil: 2, profesion_oficio: 3, id_eps: 3,  
         //--- DATOS CLINIK CONTROL ---
@@ -242,28 +282,28 @@ export class InMemoryDataService implements InMemoryDbService {
     ]; 
     /* DOCUMENTOS */
     let entradas = [
-      { id: '01', codigo: '01', concepto: 2, tercero: 1, descripcion: 'Entrada 1', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 1, bodegaDestino: 3, producto: '' },
-      { id: '02', codigo: '02', concepto: 1, tercero: 2, descripcion: 'Entrada 2', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 2, bodegaDestino: 3, producto: '' },
-      { id: '03', codigo: '03', concepto: 2, tercero: 1, descripcion: 'Entrada 3', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 2, bodegaDestino: 4, producto: '' },
-      { id: '04', codigo: '04', concepto: 3, tercero: 1, descripcion: 'Entrada 4', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 3, bodegaDestino: 1, producto: '' }
+      { id: '01', codigo: '01', concepto: 2222222222, tercero: 1, descripcion: 'Entrada 1', fecha: '2016-09-29', direccion: 'Av Calle 22 con carrera 22', bodegaOrigen: 1, bodegaDestino: 3, producto: '', desc_tmp: '' },
+      { id: '02', codigo: '02', concepto: 3333333333, tercero: 2, descripcion: 'Entrada 2', fecha: '2016-09-29', direccion: 'Av Calle 33 con carrera 33', bodegaOrigen: 2, bodegaDestino: 3, producto: '', desc_tmp: '' },
+      { id: '03', codigo: '03', concepto: 4444444444, tercero: 1, descripcion: 'Entrada 3', fecha: '2016-09-29', direccion: 'Av Calle 44 con carrera 44', bodegaOrigen: 2, bodegaDestino: 4, producto: '', desc_tmp: '' },
+      { id: '04', codigo: '04', concepto: 6666666666, tercero: 1, descripcion: 'Entrada 4', fecha: '2016-09-29', direccion: 'Av Calle 66 con carrera 66', bodegaOrigen: 3, bodegaDestino: 1, producto: '', desc_tmp: '' }
     ];   
     let salidas = [
-      { id: '01', codigo: '01', concepto: 3, tercero: 2, descripcion: 'Salida 1', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 2, bodegaDestino: 4, producto: '' },
-      { id: '02', codigo: '02', concepto: 2, tercero: 3, descripcion: 'Salida 2', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 3, bodegaDestino: 2, producto: '' },
-      { id: '03', codigo: '03', concepto: 1, tercero: 4, descripcion: 'Salida 3', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 4, bodegaDestino: 3, producto: '' },
-      { id: '04', codigo: '04', concepto: 2, tercero: 4, descripcion: 'Salida 4', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 1, bodegaDestino: 2, producto: '' }
+      { id: '01', codigo: '01', concepto: 1111111111, tercero: 2, descripcion: 'Salida 1', fecha: '2016-09-29', direccion: 'Av Calle 11 con carrera 11', bodegaOrigen: 2, bodegaDestino: 4, producto: '', desc_tmp: '' },
+      { id: '02', codigo: '02', concepto: 5555555555, tercero: 3, descripcion: 'Salida 2', fecha: '2016-09-29', direccion: 'Av Calle 55 con carrera 55', bodegaOrigen: 3, bodegaDestino: 2, producto: '', desc_tmp: '' },
+      { id: '03', codigo: '03', concepto: 7777777777, tercero: 4, descripcion: 'Salida 3', fecha: '2016-09-29', direccion: 'Av Calle 77 con carrera 77', bodegaOrigen: 4, bodegaDestino: 3, producto: '', desc_tmp: '' },
+      { id: '04', codigo: '04', concepto: 8888888888, tercero: 4, descripcion: 'Salida 4', fecha: '2016-09-29', direccion: 'Av Calle 88 con carrera 88', bodegaOrigen: 1, bodegaDestino: 2, producto: '', desc_tmp: '' }
     ];     
     let compras = [
-      { id: '01', codigo: '01', concepto: 1, tercero: 2, descripcion: 'Compra 1', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 1, bodegaDestino: 1, producto: '' },
-      { id: '02', codigo: '02', concepto: 1, tercero: 3, descripcion: 'Compra 2', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 1, bodegaDestino: 2, producto: '' },
-      { id: '03', codigo: '03', concepto: 1, tercero: 3, descripcion: 'Compra 3', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 2, bodegaDestino: 2, producto: '' },
-      { id: '04', codigo: '04', concepto: 2, tercero: 1, descripcion: 'Compra 4', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 3, bodegaDestino: 3, producto: '' }
+      { id: '01', codigo: '01', concepto: 1, tercero: 2, descripcion: 'Compra 1', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 1, bodegaDestino: 1, producto: '', desc_tmp: '' },
+      { id: '02', codigo: '02', concepto: 1, tercero: 3, descripcion: 'Compra 2', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 1, bodegaDestino: 2, producto: '', desc_tmp: '' },
+      { id: '03', codigo: '03', concepto: 1, tercero: 3, descripcion: 'Compra 3', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 2, bodegaDestino: 2, producto: '', desc_tmp: '' },
+      { id: '04', codigo: '04', concepto: 2, tercero: 1, descripcion: 'Compra 4', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 3, bodegaDestino: 3, producto: '', desc_tmp: '' }
     ];         
     let ventas = [
-      { id: '01', codigo: '01', concepto: 1, tercero: 2, descripcion: 'Venta 1', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 2, bodegaDestino: 2, producto: '' },
-      { id: '02', codigo: '02', concepto: 2, tercero: 2, descripcion: 'Venta 2', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 1, bodegaDestino: 3, producto: '' },
-      { id: '03', codigo: '03', concepto: 3, tercero: 1, descripcion: 'Venta 3', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 1, bodegaDestino: 4, producto: '' },
-      { id: '04', codigo: '04', concepto: 3, tercero: 1, descripcion: 'Venta 4', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 1, bodegaDestino: 4, producto: '' }
+      { id: '01', codigo: '01', concepto: 1, tercero: 2, descripcion: 'Venta 1', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 2, bodegaDestino: 2, producto: '', desc_tmp: '' },
+      { id: '02', codigo: '02', concepto: 2, tercero: 2, descripcion: 'Venta 2', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 1, bodegaDestino: 3, producto: '', desc_tmp: '' },
+      { id: '03', codigo: '03', concepto: 3, tercero: 1, descripcion: 'Venta 3', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 1, bodegaDestino: 4, producto: '', desc_tmp: '' },
+      { id: '04', codigo: '04', concepto: 3, tercero: 1, descripcion: 'Venta 4', fecha: '2016-09-29', direccion: 'Av Calle con carrera', bodegaOrigen: 1, bodegaDestino: 4, producto: '', desc_tmp: '' }
     ];     
     /* END DOCUMENTOS */
 

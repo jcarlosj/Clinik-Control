@@ -11,10 +11,11 @@ export class Documento {
         public descripcion         : string = '',
         public concepto            : number = 1,
         public fecha               : string = Simulate.getDate(),
-        public tercero             : number = 0,
+        public tercero             : number = -1,
         public direccion           : string = '',
         public bodegaOrigen        : number = 1,
         public bodegaDestino       : number = 1,
-        public producto            : number = 0
+        public producto            : number = 0,
+        public desc_tmp            : string = ''
     ) { }
 }

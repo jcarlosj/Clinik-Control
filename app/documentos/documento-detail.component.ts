@@ -50,6 +50,7 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private vObj            : Documento;
   tercero = new Tercero();
   producto = new Producto();
+  private codigo : string;
   
   //private tiposTablas     : cTipoTabla[];
   private estado          : cEstado[];
@@ -72,9 +73,6 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private inputFocused = new EventEmitter();
 
   private urlApi        : string;
-  /* --- Simulaciones --- */
-  private fecha  : string = Simulate.getDate();                     //   <--- Asigna la fecha actual
-  private codigo : string = Simulate.getConsecutivo().toString();   //   <--- Asigna un número aleatorio consecutivo (Simulando el generado por el sistema desde el Back-End)
 
   /* --- Terceros --- */
   private pathTerceros  : string;
@@ -141,16 +139,14 @@ export class DocumentoDetail implements OnInit, OnDestroy {
     
   // Constructor
   constructor(
-    private location: Location,
-    private service: DocumentoService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private terceroSearchService: TerceroSearchService,
-    private productoSearchService: ProductoSearchService,
-    private serviceData: DataService
+    private location              : Location,
+    private service               : DocumentoService,
+    private route                 : ActivatedRoute,
+    private router                : Router,
+    private terceroSearchService  : TerceroSearchService,
+    private productoSearchService : ProductoSearchService,
+    private serviceData           : DataService
   ) {
-
-    console .log( 'Simulaciones \n------------\n - codigo: ' + this .codigo + '\n - fecha: ' + this .fecha );
 
     // Inicializa Paths 
     this .path = this .router .url;  
@@ -307,7 +303,8 @@ export class DocumentoDetail implements OnInit, OnDestroy {
         bodegaOrigen        : new FormControl(),
         bodegaDestino       : new FormControl(),
         tercero             : new FormControl(),
-        producto            : new FormControl()  
+        producto            : new FormControl(),
+        desc_tmp            : new FormControl()  
     });
 
     console .log ( 'router: ' + this.router);
@@ -408,6 +405,27 @@ export class DocumentoDetail implements OnInit, OnDestroy {
       .catch( error => this .error = error );
   } 
 
+/*
+  save(){
+    console .log( 'this .frmDocumento .value :' + this.frmDocumento.value );
+
+    console .log( ' >>>>> ' + this .frmDocumento.controls['tercero'].value ); 
+
+    this.service
+      .save( this.frmDocumento.value, this.esNuevo )
+      .then( obj => { 
+        
+        //obj .tercero = this.objTercero['tercero'];  // <--- Tercero es un componente (Por eso pasamos el valor directamente)
+        //this .vObj .tercero = this.objTercero['tercero'];
+
+        this .vObj = obj;
+        this .goToList( obj );
+      })
+      .catch( error => this .error = error );
+  } 
+*/
+
+
   agregar( obj:Object ) {
     this .list_producto .push( obj );
 
@@ -442,17 +460,17 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   blurTerceros(obj:Object){
     
     this. objTercero = obj;
+    console.log( 
+      'PARENT (DocumentoDetail) \n - obj[\'codigo\'] : ' + obj['codigo'] + 
+      '\n - this.objTercero[\'codigo\'] : ' + this.objTercero['codigo']  +
+      '\n - this.objTercero[\'direccion\'] : ' + this.objTercero['direccion'] 
+    );
 
-    if( typeof obj == 'Object' ) {
-      console .log( 'Entonces este es un objeto de tipo: ' + typeof obj );
-    } 
-    else {
-      
-    }
-        console.log( '> ' + Object.keys(obj) + ' '+ Object.values(obj ) );
-        for( let campo in obj ) {
-          console.log( ' - ' + campo + '\n' );
-        }
+
+    //console.log( '> ' + Object.keys(obj) + ' '+ Object.values(obj ) );
+    /*for( let campo in obj ) {
+      console.log( ' - ' + campo + '\n' );
+    }*/
   }
 
   
@@ -460,12 +478,15 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   blurProductos(obj:Object){
     
     this. objProducto = obj;
-    console.log( 'PARENT (DocumentoDetail) \n - obj[\'codigo\'] : ' + obj['codigo'] + '\n - this.objProducto[\'codigo\'] : ' + this.objProducto['codigo'] );
+    console.log( 
+      'PARENT (DocumentoDetail) \n - obj[\'codigo\'] : ' + obj['codigo'] + 
+      '\n - this.objProducto[\'codigo\'] : ' + this.objProducto['codigo'] 
+    );
 
     //console.log( '> ' + Object.keys(obj) + ' '+ Object.values(obj ) );
-    for( let campo in obj ) {
+    /*for( let campo in obj ) {
       console.log( ' - ' + campo + ': ' + obj[campo] + '\t' );
-    }
+    }*/
   }
 
 }

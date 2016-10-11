@@ -3,7 +3,7 @@
     <li *ngFor="let o of arrObj"
     [class.selected]="isSelected(o)"
     (click)="onSelect(o)">
-        <span class="badge">{{o.codigo}}</span> {{o.descripcion}}<!--br />
+        <span class="badge">{{o.codigo}}</span> {{o.desc_tmp}}<!--br />
         <span style="font-size: 9px;">estado: {{o.estado}} / editable: {{o.editable}} / borrable: {{o.borrable}} / ID Crea: {{o.idUsuarioCrea}} / ID Modifica: {{o.idUsuarioModifica}} / Fecha creacion: {{o.fechaCreacion}} / fecha modifica: {{o.fechaModificacion}}</span-->
         <button class="delete-button"  (click)="delete(o, $event)">{{botonBorrar}}</button>
     </li>

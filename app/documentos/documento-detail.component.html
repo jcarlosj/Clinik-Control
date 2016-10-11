@@ -48,7 +48,7 @@
                         <mdl-textfield 
                                 [hidden]   = "!visibleConsecutivo"
                                 [disabled] = "!enableConsecutivo"
-                                type="text" id="codigo" name="codigo" placeholder="codigo" 
+                                type="text" id="codigo" name="codigo" placeholder="" 
                                 formControlName="codigo"
                                 label="Consecutivo" floating-label >
                         </mdl-textfield>
@@ -72,8 +72,9 @@
                         <mdl-textfield 
                                 [hidden]   = "!visibleDireccion"
                                 [disabled] = "!enableDireccion"
+                                [value]    = "objTercero.direccion"
                                 formControlName="direccion"  
-                                type="text" id="direccion" name="direccion" placeholder="direccion" 
+                                type="text" id="direccion" name="direccion" placeholder="" 
                                 label="Dirección" floating-label >
                         </mdl-textfield>
                         <div [hidden]="!(frmDocumento.controls.direccion.touched && !frmDocumento.controls.direccion.valid)">
@@ -132,7 +133,16 @@
                                     </tr>   
                                 </thead>    
                                 <tbody>
-
+                                    <tr *ngFor="let o of list_producto">
+                                        <th>{{ o.codigo }}</th>    
+                                        <th class="mdl-data-table__cell--non-numeric">{{ o.descripcion1 }}</th>
+                                        <th class="mdl-data-table__cell--non-numeric">{{ o.marca }}</th>
+                                        <th class="mdl-data-table__cell--non-numeric">{{ o.unidad_medida }}</th>
+                                        <th>{{ o.cantidad }}</th>
+                                        <th>{{ o.precio_venta1 }}</th>
+                                        <th>{{ o.porc_max_dto_contado }}</th>
+                                        <th>-- Por calcular --</th>
+                                    </tr>         
                                 </tbody>
                             </table>
                         </div>   
@@ -152,7 +162,7 @@
                         </autocomplete>
                         <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                             <mdl-textfield 
-                                    type="text" id="codigo_producto" name="codigo_producto" placeholder="codigo_producto" 
+                                    type="text" id="codigo_producto" name="codigo_producto" placeholder="" 
                                     [hidden]   = "!visibleCodigoProducto"
                                     [disabled] = "!enableCodigoProducto" 
                                     [value]="objProducto.codigo"                                   
@@ -161,7 +171,7 @@
                         </div>
                         <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                             <mdl-textfield 
-                                    type="text" id="descripcion2" name="descripcion2" placeholder="descripcion2" 
+                                    type="text" id="descripcion2" name="descripcion2" placeholder="" 
                                     [hidden]   = "!visibleDescripcion"
                                     [disabled] = "!enableDescripcion" 
                                     [value]="objProducto.descripcion2"           
@@ -170,7 +180,7 @@
                         </div>        
                         <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                             <mdl-textfield 
-                                    type="text" id="precioventa1" name="precioventa1" placeholder="precioventa1" 
+                                    type="text" id="precioventa1" name="precioventa1" placeholder="" 
                                     [hidden]   = "!visibleValorUnitario"
                                     [disabled] = "!enableValorUnitario" 
                                     [value]="objProducto.precio_venta1"
@@ -180,7 +190,7 @@
                         </div>   
                         <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                             <mdl-textfield 
-                                    type="text" id="marca" name="marca" placeholder="marca" 
+                                    type="text" id="marca" name="marca" placeholder="" 
                                     [hidden]   = "!visibleMarca"
                                     [disabled] = "!enableMarca"                                     
                                     [value]="objProducto.marca"                         
@@ -189,7 +199,7 @@
                         </div>   
                         <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                             <mdl-textfield 
-                                    type="text" id="unidad_medida" name="unidad_medida" placeholder="unidad_medida"
+                                    type="text" id="unidad_medida" name="unidad_medida" placeholder=""
                                     [hidden]   = "!visibleUnidadMedida"
                                     [disabled] = "!enableUnidadMedida"  
                                     [value]="objProducto.unidad_medida"                                

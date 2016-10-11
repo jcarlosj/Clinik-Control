@@ -1,7 +1,7 @@
 <div id="search-component">
   <label>{{etiqueta}}</label>
   <input #searchBox id="search-box" (keyup)="search(searchBox.value)" [value]="campo" />
-  <span>{{ obj.codigo }}</span>
+  <!--span>{{ obj.codigo }}</span-->
   <div>
     <div *ngFor="let tercero of terceros | async"
          (click)="showDetail(tercero, searchBox)" class="search-result" >
