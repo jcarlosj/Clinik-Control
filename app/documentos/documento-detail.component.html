@@ -59,13 +59,23 @@
                         </div>
                     </div>   
                     <autocomplete id="terceros" name="terceros"
-                        [hidden]   = "!visibleTercero"
+                        [hidden]   = "!visibleTerceroComponent"
                         [urlApi]   = "urlApi" 
                         [tabla]    = "pathTerceros" 
                         [campo]    = "fieldTerceros" 
                         [etiqueta] = "labelTerceros"
                         (blur)     = "blurTerceros( $event )">
-                    </autocomplete>            
+                    </autocomplete>    
+                          
+                    <mdl-textfield type="hidden"
+                            [hidden]   = "!visibleTercero"
+                            [disabled] = "!enableTercero"
+                            [value]    = "objTercero.codigo"
+                            type="text" id="tercero" name="tercero" placeholder="" 
+                            formControlName="tercero"
+                            label="Tercero" floating-label >
+                    </mdl-textfield>
+                    
                     <div class="mdl-cell--3-col-desktop mdl-cell--hide-tablet mdl-cell--hide-phone">
                     </div>       
                     <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
@@ -112,9 +122,9 @@
                     </div>                            
                 </div>
             </div>
-            <div class="mdl-card__supporting-text" [hidden]="!visibleListaProductos">
-                <div class="mdl-grid">
-                    <div class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--8-col-desktop mdl-cell--2-offset-desktop mdl-shadow--2dp">
+            <div class="" [hidden]="!visibleListaProductos">
+                <div class="">
+                    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-desktop mdl-cell--2-offset-desktop mdl-shadow--2dp">
                         <div class="mdl-card__title">
                             <h3>Listado de productos</h3>
                         </div>
@@ -138,10 +148,10 @@
                                         <th class="mdl-data-table__cell--non-numeric">{{ o.descripcion1 }}</th>
                                         <th class="mdl-data-table__cell--non-numeric">{{ o.marca }}</th>
                                         <th class="mdl-data-table__cell--non-numeric">{{ o.unidad_medida }}</th>
+                                        <th class="mdl-data-table__cell--non-numeric">{{ o.precio_venta1 }}</th>
                                         <th>{{ o.cantidad }}</th>
-                                        <th>{{ o.precio_venta1 }}</th>
                                         <th>{{ o.porc_max_dto_contado }}</th>
-                                        <th>-- Por calcular --</th>
+                                        <th>{{ o.sub_total }}</th>
                                     </tr>         
                                 </tbody>
                             </table>
@@ -180,7 +190,7 @@
                         </div>        
                         <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                             <mdl-textfield 
-                                    type="text" id="precioventa1" name="precioventa1" placeholder="" 
+                                    type="text" id="cantidad" name="precioventa1" placeholder="" 
                                     [hidden]   = "!visibleValorUnitario"
                                     [disabled] = "!enableValorUnitario" 
                                     [value]="objProducto.precio_venta1"
@@ -206,6 +216,26 @@
                                     label="Unidad de medida" floating-label >
                             </mdl-textfield>
                         </div>   
+                       <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            <mdl-textfield 
+                                    type="text" id="existencia" name="existencia" placeholder="" 
+                                    [hidden]   = "!visibleExistencia"
+                                    [disabled] = "!enableExistencia" 
+                                    [value]="objProducto.existencia"
+                                    
+                                    label="Existencia" floating-label >
+                            </mdl-textfield>
+                        </div>                         
+                        <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            <mdl-textfield 
+                                    type="text" id="cantidad" name="cantidad" placeholder="" 
+                                    [hidden]   = "!visibleCantidad"
+                                    [disabled] = "!enableCantidad" 
+                                    [value]="objProducto.cantidad"
+                                    
+                                    label="Cantidad" floating-label >
+                            </mdl-textfield>
+                        </div> 
                         <button 
                             (click)="agregar(objProducto)"  
                             mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>

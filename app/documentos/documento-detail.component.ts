@@ -103,8 +103,10 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private visibleFecha              : boolean;
   private enableConsecutivo         : boolean;
   private visibleConsecutivo        : boolean;
-  private visibleTercero            : boolean;  // <--- Componente de búsqueda para terceros 
-  private valueDefaultTercero       : string;   // <--- Componente de búsqueda para terceros
+  private visibleTerceroComponent   : boolean;  // <--- Componente de búsqueda para terceros
+  private enableTercero             : boolean;
+  private visibleTercero            : boolean;    
+  private valueDefaultTercero       : string;   
   private enableDireccion           : boolean;
   private visibleDireccion          : boolean;
   private enableBodegaOrigen        : boolean;
@@ -132,6 +134,8 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private visibleDescuento          : boolean;
   private enableCantidad            : boolean;
   private visibleCantidad           : boolean;
+  private enableExistencia          : boolean;
+  private visibleExistencia         : boolean;
   private enableObservaciones1      : boolean;
   private visibleObservaciones1     : boolean;
   private enableObservaciones2      : boolean;
@@ -214,8 +218,10 @@ export class DocumentoDetail implements OnInit, OnDestroy {
     this .visibleValorUnitario    = true;
     this .enableUnidadMedida      = false;
     this .visibleUnidadMedida     = true;   
-    this .enableCantidad          = false;
-    this .visibleCantidad         = true;   
+    this .enableCantidad          = true;
+    this .visibleCantidad         = true; 
+    this .enableExistencia        = false;
+    this .visibleExistencia       = true;      
     this .enableObservaciones1    = true;
     this .visibleObservaciones1   = true;
     this .enableObservaciones2    = true;
@@ -229,7 +235,9 @@ export class DocumentoDetail implements OnInit, OnDestroy {
       this .valueDefaultTipoPago    = "C";      
       this .enableConcepto          = true;
       this .visibleConcepto         = true;
-      this .visibleTercero          = false;    // <--- Componente de búsqueda para terceros
+      this .visibleTerceroComponent = false;    // <--- Componente de búsqueda para terceros
+      this .enableTercero           = false;
+      this .visibleTercero          = false;    
       this .enableDireccion         = false;
       this .visibleDireccion        = false;        
       this .enableBodegaOrigen      = true;
@@ -259,7 +267,9 @@ export class DocumentoDetail implements OnInit, OnDestroy {
       this .visibleTipoPago         = true;
       this .enableConcepto          = false;
       this .visibleConcepto         = false;
-      this .visibleTercero          = true;    // <--- Componente de búsqueda para terceros
+      this .visibleTerceroComponent = true;    // <--- Componente de búsqueda para terceros
+      this .enableTercero           = false;
+      this .visibleTercero          = false; 
       this .enableDireccion         = false;
       this .visibleDireccion        = true;  
       this .enableBodegaOrigen      = false;
@@ -403,30 +413,16 @@ export class DocumentoDetail implements OnInit, OnDestroy {
         this .goToList( obj );
       })
       .catch( error => this .error = error );
-  } 
-
-/*
-  save(){
-    console .log( 'this .frmDocumento .value :' + this.frmDocumento.value );
-
-    console .log( ' >>>>> ' + this .frmDocumento.controls['tercero'].value ); 
-
-    this.service
-      .save( this.frmDocumento.value, this.esNuevo )
-      .then( obj => { 
-        
-        //obj .tercero = this.objTercero['tercero'];  // <--- Tercero es un componente (Por eso pasamos el valor directamente)
-        //this .vObj .tercero = this.objTercero['tercero'];
-
-        this .vObj = obj;
-        this .goToList( obj );
-      })
-      .catch( error => this .error = error );
-  } 
-*/
-
+  }
 
   agregar( obj:Object ) {
+
+    // Se crean nuevos atributos al objeto
+    obj['cantidad'] = 2;            
+    obj['sub_total'] = obj['cantidad'] * obj['precio_venta1'];
+
+    console .log( 'Del carajo si funcionas : ' + obj['cantidad'] );
+
     this .list_producto .push( obj );
 
     this .list_producto .forEach( element => {
@@ -478,6 +474,11 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   blurProductos(obj:Object){
     
     this. objProducto = obj;
+    /* --- Valor Unitario 
+    El valor desplegado debe ser el campo costo_promedio de la tabla productos
+    --- */
+    
+
     console.log( 
       'PARENT (DocumentoDetail) \n - obj[\'codigo\'] : ' + obj['codigo'] + 
       '\n - this.objProducto[\'codigo\'] : ' + this.objProducto['codigo'] 
