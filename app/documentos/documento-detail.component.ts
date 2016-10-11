@@ -11,14 +11,14 @@ import { FormControl,
          FormGroup,
          Validators }          from '@angular/forms';
 
-import {ReactiveFormsModule}   from '@angular/forms';
+import { ReactiveFormsModule }   from '@angular/forms';
 import { Location }            from '@angular/common';
 
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
 
 // Imports personalizados necesarios para este componente
-import { Path, Validate }      from '../paths';
+import { Path, Validate, Simulate }      from '../paths';
 import { DocumentoService } from './documento.service';
 import { Documento }        from './documento';
 import { DataService }     from '../data.service';
@@ -50,7 +50,7 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private vObj            : Documento;
   tercero = new Tercero();
   producto = new Producto();
-  private codigo          : string;
+  
   //private tiposTablas     : cTipoTabla[];
   private estado          : cEstado[];
   private sub             : any;
@@ -72,6 +72,10 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private inputFocused = new EventEmitter();
 
   private urlApi        : string;
+  /* --- Simulaciones --- */
+  private fecha  : string = Simulate.getDate();                     //   <--- Asigna la fecha actual
+  private codigo : string = Simulate.getConsecutivo().toString();   //   <--- Asigna un número aleatorio consecutivo (Simulando el generado por el sistema desde el Back-End)
+
   /* --- Terceros --- */
   private pathTerceros  : string;
   private fieldTerceros : string;
@@ -146,6 +150,8 @@ export class DocumentoDetail implements OnInit, OnDestroy {
     private serviceData: DataService
   ) {
 
+    console .log( 'Simulaciones \n------------\n - codigo: ' + this .codigo + '\n - fecha: ' + this .fecha );
+
     // Inicializa Paths 
     this .path = this .router .url;  
     this .urlApi = Path.Server.API;
@@ -198,9 +204,7 @@ export class DocumentoDetail implements OnInit, OnDestroy {
     this .enableFecha             = false;
     this .visibleFecha            = true;
     this .enableConsecutivo       = false;
-    this .visibleConsecutivo      = true;   
-    this .enableDireccion         = false;
-    this .visibleDireccion        = true;     
+    this .visibleConsecutivo      = true;      
     this .enableDocumentoSoporte  = true;
     this .visibleDocumentoSoporte = true; 
     this .enableListaProductos    = false;
@@ -230,6 +234,8 @@ export class DocumentoDetail implements OnInit, OnDestroy {
       this .enableConcepto          = true;
       this .visibleConcepto         = true;
       this .visibleTercero          = false;    // <--- Componente de búsqueda para terceros
+      this .enableDireccion         = false;
+      this .visibleDireccion        = false;        
       this .enableBodegaOrigen      = true;
       this .visibleBodegaOrigen     = true;
       this .enableBodegaDestino     = true;
@@ -258,6 +264,8 @@ export class DocumentoDetail implements OnInit, OnDestroy {
       this .enableConcepto          = false;
       this .visibleConcepto         = false;
       this .visibleTercero          = true;    // <--- Componente de búsqueda para terceros
+      this .enableDireccion         = false;
+      this .visibleDireccion        = true;  
       this .enableBodegaOrigen      = false;
       this .visibleBodegaOrigen     = false;
       this .enableBodegaDestino     = false;
@@ -414,12 +422,6 @@ export class DocumentoDetail implements OnInit, OnDestroy {
     let error: any;
 
     let fields = { 
-      codigo: {
-        required:      'Campo requerido.',
-        minlength:     'Mínimo 2 o más números y/o caracteres.',
-        maxlength:     'Hasta 10 números y/o caracteres.',
-        pattern:       'Solo valores alfanuméricos sin espacios'
-      },
       descripcion: {
         required:      'Campo requerido.',
         minlength:     'Mínimo 10 o más números y/o caracteres.',

@@ -40,4 +40,10 @@ export class Simulate {
       let number = Math .floor( Math .random() * 999999999 );
       return number;
     }
+
+    static getDate() : string {
+      let date = new Date();
+      
+      return date.getFullYear() + '-' + (date.getMonth() + 1)  + '-' + date.getDate();
+    }
 }
