@@ -1,4 +1,9 @@
 "use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -143,4 +148,20 @@ var AutocompleteComponent = (function () {
     return AutocompleteComponent;
 }());
 exports.AutocompleteComponent = AutocompleteComponent;
+var AutoCompleteByComponent = (function (_super) {
+    __extends(AutoCompleteByComponent, _super);
+    function AutoCompleteByComponent() {
+        _super.apply(this, arguments);
+    }
+    return AutoCompleteByComponent;
+}(AutocompleteComponent));
+exports.AutoCompleteByComponent = AutoCompleteByComponent;
+var AutoCompleteByModule = (function (_super) {
+    __extends(AutoCompleteByModule, _super);
+    function AutoCompleteByModule() {
+        _super.apply(this, arguments);
+    }
+    return AutoCompleteByModule;
+}(AutocompleteComponent));
+exports.AutoCompleteByModule = AutoCompleteByModule;
 //# sourceMappingURL=autocomplete.component.js.map

@@ -8,7 +8,6 @@
             <div class="mdl-card__supporting-text">
                 <div class="mdl-grid">
 
-                    <!-- [(ngModel)]="user.tipo_pago"  -->
                     <div [hidden]="!visibleTipoPago">
                         <label>Tipo de pago</label>
                         <div *ngFor="let tipo_pago of opcionTiposPago">
@@ -58,14 +57,14 @@
                             </span>
                         </div>
                     </div>   
-                    <!--autocomplete id="terceros" name="terceros"
+                    <autocomplete id="terceros" name="terceros"
                         [hidden]   = "!visibleTerceroComponent"
                         [urlApi]   = "urlApi" 
                         [tabla]    = "pathTerceros" 
                         [campo]    = "fieldTerceros" 
                         [etiqueta] = "labelTerceros"
                         (blur)     = "blurTerceros( $event )">
-                    </autocomplete-->    
+                    </autocomplete>    
                           
                     <mdl-textfield type="hidden"
                             [hidden]   = "!visibleTercero"
@@ -162,14 +161,14 @@
             <div class="mdl-card__supporting-text">
                 <div class="mdl-grid">
                    <div class="mdl-card__actions mdl-card--border">
-                        <!--autocomplete id="producto" name="producto"
+                        <autocomplete id="producto" name="producto"
                             [hidden]   = "!visibleProducto" 
                             [urlApi]="urlApi" 
                             [tabla]="pathProducto" 
                             [campo]="fieldProducto" 
                             [etiqueta]="labelProducto"
                             (blur)="blurProductos( $event )">
-                        </autocomplete-->
+                        </autocomplete>
                         <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                             <mdl-textfield 
                                     type="text" id="codigo_producto" name="codigo_producto" placeholder="" 

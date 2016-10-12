@@ -16,7 +16,7 @@ import { InMemoryDataService }  from '../in-memory-data.service';
 
 import { DeployComponent } from './deploy.component';
 import { DeployAutocompleteComponent } from './deploy-components/deploy-autocomplete.component';
-import { AutocompleteComponent } from '../../components/autocomplete/autocomplete.component';
+import { AutoCompleteByModule } from '../../components/autocomplete/autocomplete.component';
 
 @NgModule({
   imports: [
@@ -31,7 +31,7 @@ import { AutocompleteComponent } from '../../components/autocomplete/autocomplet
   declarations: [
     DeployComponent,
     DeployAutocompleteComponent,
-    AutocompleteComponent
+    AutoCompleteByModule
   ],
   providers: [
     deployRoutingProviders  

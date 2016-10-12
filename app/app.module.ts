@@ -62,7 +62,7 @@ import { DayComponent } from './fdo-calendar/day.component';
 import { MonthComponent } from './fdo-calendar/month.component';
 import { YearComponent } from './fdo-calendar/year.component';
 
-//import { AutocompleteComponent } from '../components/autocomplete/autocomplete.component';
+import { AutoCompleteByComponent } from '../components/autocomplete/autocomplete.component';
 
 // Módulos
 import { DeployModule } from './dev-components/deploy.module';
@@ -110,7 +110,7 @@ import { DeployModule } from './dev-components/deploy.module';
     MonthComponent,
     YearComponent,
     // Modulos
-    //AutocompleteComponent
+    AutoCompleteByComponent
   ],
   providers: [
     appRoutingProviders,
