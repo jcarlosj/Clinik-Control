@@ -47,6 +47,7 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   // Atributes
   @Output() close = new EventEmitter();
   private frmDocumento    : FormGroup;
+  private frmAddProducto  : FormGroup;
   private vObj            : Documento;
   tercero = new Tercero();
   producto = new Producto();
@@ -85,6 +86,8 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   private objProducto = new Object();
   private objTercero  = new Object();
   private list_producto = []; // Array de Objetos producto
+
+  private cantidad : number = 0;
 
   /* --- Tipos de pago --- */
   private opcionTiposPago : TiposPago[];
@@ -303,7 +306,23 @@ export class DocumentoDetail implements OnInit, OnDestroy {
   // Implements de Angular 2
   ngOnInit() {
 
+    // FormGroup Documento
     this .frmDocumento = new FormGroup({
+        id                  : new FormControl(),
+        codigo              : new FormControl(),
+        descripcion         : new FormControl(),
+        concepto            : new FormControl(),
+        fecha               : new FormControl(),
+        direccion           : new FormControl(),
+        bodegaOrigen        : new FormControl(),
+        bodegaDestino       : new FormControl(),
+        tercero             : new FormControl(),
+        producto            : new FormControl(),
+        desc_tmp            : new FormControl()  
+    });
+
+    // FormGroup AddProducto
+    this .frmAddProducto = new FormGroup({
         id                  : new FormControl(),
         codigo              : new FormControl(),
         descripcion         : new FormControl(),
@@ -417,9 +436,16 @@ export class DocumentoDetail implements OnInit, OnDestroy {
 
   agregar( obj:Object ) {
 
+    console .log ( '>> this.objProducto[\'cantidad\']: ' + this .objProducto['cantidad'] );
     // Se crean nuevos atributos al objeto
-    obj['cantidad'] = 2;            
-    obj['sub_total'] = obj['cantidad'] * obj['precio_venta1'];
+    console .log( 'Cantidad del formulario: ' + this .cantidad );
+    obj['cantidad'] = 2;
+    alert( 'this .cantidad: ' + this .cantidad );
+    // Se crea un metodo para realizar el calculo del subtotal
+    obj['subtotal'] = ( function() {
+      return this.cantidad * this.precio_venta1;
+    });            
+    //obj['sub_total'] = obj['cantidad'] * obj['precio_venta1'];
 
     console .log( 'Del carajo si funcionas : ' + obj['cantidad'] );
 

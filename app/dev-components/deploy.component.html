@@ -1,0 +1,15 @@
+    <h3>
+        <a routerLink="{{urlTitle}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{title}}</a>
+        <small>{{description}}</small>
+    </h3>
+    
+    <nav>
+        <label>Menú principal</label>
+        <ul id="menu-clinik-control">
+            <span id="menu-documentos">
+                <li *ngFor="let o of menu">
+                    <a routerLink="{{o.path}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="o.class" >{{o.nameItem}}</a>
+                </li>
+            </span>                  
+        </ul>
+    </nav>

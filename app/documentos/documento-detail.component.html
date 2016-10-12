@@ -58,14 +58,14 @@
                             </span>
                         </div>
                     </div>   
-                    <autocomplete id="terceros" name="terceros"
+                    <!--autocomplete id="terceros" name="terceros"
                         [hidden]   = "!visibleTerceroComponent"
                         [urlApi]   = "urlApi" 
                         [tabla]    = "pathTerceros" 
                         [campo]    = "fieldTerceros" 
                         [etiqueta] = "labelTerceros"
                         (blur)     = "blurTerceros( $event )">
-                    </autocomplete>    
+                    </autocomplete-->    
                           
                     <mdl-textfield type="hidden"
                             [hidden]   = "!visibleTercero"
@@ -151,7 +151,7 @@
                                         <th class="mdl-data-table__cell--non-numeric">{{ o.precio_venta1 }}</th>
                                         <th>{{ o.cantidad }}</th>
                                         <th>{{ o.porc_max_dto_contado }}</th>
-                                        <th>{{ o.sub_total }}</th>
+                                        <th>{{ o.sub_total() }}</th>
                                     </tr>         
                                 </tbody>
                             </table>
@@ -162,14 +162,14 @@
             <div class="mdl-card__supporting-text">
                 <div class="mdl-grid">
                    <div class="mdl-card__actions mdl-card--border">
-                        <autocomplete id="producto" name="producto"
+                        <!--autocomplete id="producto" name="producto"
                             [hidden]   = "!visibleProducto" 
                             [urlApi]="urlApi" 
                             [tabla]="pathProducto" 
                             [campo]="fieldProducto" 
                             [etiqueta]="labelProducto"
                             (blur)="blurProductos( $event )">
-                        </autocomplete>
+                        </autocomplete-->
                         <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                             <mdl-textfield 
                                     type="text" id="codigo_producto" name="codigo_producto" placeholder="" 
@@ -190,7 +190,7 @@
                         </div>        
                         <div class="mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                             <mdl-textfield 
-                                    type="text" id="cantidad" name="precioventa1" placeholder="" 
+                                    type="text" id="precioventa1" name="precioventa1" placeholder="" 
                                     [hidden]   = "!visibleValorUnitario"
                                     [disabled] = "!enableValorUnitario" 
                                     [value]="objProducto.precio_venta1"
@@ -231,8 +231,7 @@
                                     type="text" id="cantidad" name="cantidad" placeholder="" 
                                     [hidden]   = "!visibleCantidad"
                                     [disabled] = "!enableCantidad" 
-                                    [value]="objProducto.cantidad"
-                                    
+                                    [value]="cantidad"
                                     label="Cantidad" floating-label >
                             </mdl-textfield>
                         </div> 

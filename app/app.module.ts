@@ -62,8 +62,10 @@ import { DayComponent } from './fdo-calendar/day.component';
 import { MonthComponent } from './fdo-calendar/month.component';
 import { YearComponent } from './fdo-calendar/year.component';
 
-import { DeployAutocompleteComponent } from './dev-deploy-new-components/deploy-autocomplete.component';
-import { AutocompleteComponent } from '../components/autocomplete/autocomplete.component';
+//import { AutocompleteComponent } from '../components/autocomplete/autocomplete.component';
+
+// Módulos
+import { DeployModule } from './dev-components/deploy.module';
 
 @NgModule({
   imports: [
@@ -73,7 +75,8 @@ import { AutocompleteComponent } from '../components/autocomplete/autocomplete.c
     MdlModule,          // <--- Material Design Lite
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
-    routing
+    routing,
+    DeployModule    // <--- Desarrollo de componentes @Jce_ 
   ],
   declarations: [
     AppComponent,
@@ -106,9 +109,8 @@ import { AutocompleteComponent } from '../components/autocomplete/autocomplete.c
     DayComponent,
     MonthComponent,
     YearComponent,
-    // My Code
-    DeployAutocompleteComponent,
-    AutocompleteComponent
+    // Modulos
+    //AutocompleteComponent
   ],
   providers: [
     appRoutingProviders,

@@ -16,7 +16,6 @@ import { COMPONENT_INTEGRATION_3_ROUTER } from './component-integration-3/versio
 import { COMPONENT_INTEGRATION_4_ROUTER } from './component-integration-4/voter.routing';
 
 import { FDO_EXAMPLES_ROUTER } from './fdo-deploy-examples/fdo-example.routing';
-import { DEPLOY_ROUTER } from './dev-deploy-new-components/deploy.routing';
 
 const appRoutes: Routes = [
   {
@@ -35,8 +34,7 @@ const appRoutes: Routes = [
   ...COMPONENT_INTEGRATION_2_ROUTER,
   ...COMPONENT_INTEGRATION_3_ROUTER,
   ...COMPONENT_INTEGRATION_4_ROUTER,
-  ...FDO_EXAMPLES_ROUTER,
-  ...DEPLOY_ROUTER
+  ...FDO_EXAMPLES_ROUTER
   
 ];
 

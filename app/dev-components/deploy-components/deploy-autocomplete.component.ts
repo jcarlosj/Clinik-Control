@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Tercero } from '../terceros/tercero';
-import { Path } from '../paths';
+import { Path } from '../../paths';
 
 @Component({
   moduleId: module.id,
