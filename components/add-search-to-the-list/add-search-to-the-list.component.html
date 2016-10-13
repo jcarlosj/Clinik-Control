@@ -2,11 +2,10 @@
     <autocomplete (blur)="blurX( $event )" [urlApi]="urlApi" [tabla]="path" [campo]="field" [etiqueta]="label"></autocomplete>
     <div [hidden]="!showFormProductos" >
         <form>
-            <div *ngFor="let field of fieldsForm">
+            <div *ngFor="let field of fields_form">
                 <mdl-textfield 
                     
-
-                    type="text" id="{{field.id}}" name="{{field.name}}" 
+                    type="text" id="{{field.id_style}}" class="{{field.class_style}}" name="{{field.name}}" 
                     
                     label="{{field.label}}" floating-label >
                 </mdl-textfield>

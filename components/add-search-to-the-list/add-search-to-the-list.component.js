@@ -15,9 +15,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var paths_1 = require('../../app/paths');
+var fields_form_1 = require('./fields-form');
 var AddSearchToTheListComponent = (function () {
     function AddSearchToTheListComponent() {
+        var _this = this;
         this.showFormProductos = false;
+        this.fields_form = [];
+        this.config_fields = [
+            { label: 'Código', name: 'codigo' },
+            { label: 'Descripción', name: 'descripcion' },
+            { label: 'Valor unitario', name: 'valor_unitario' },
+            { label: 'Marca', name: 'marca' },
+            { label: 'Unidad de medida', name: 'unidad_medida' },
+            { label: 'Existencia', name: 'existencia' },
+            { label: 'Cantidad ', name: 'cantidad' }
+        ];
         this.urlApi = paths_1.Path.Server.API;
         this.path = '/productos';
         this.field = 'descripcion1';
@@ -27,51 +39,12 @@ var AddSearchToTheListComponent = (function () {
             ' - path   : ' + this.path + '\n' +
             ' - field  : ' + this.field + '\n' +
             ' - label  : ' + this.label + '\n');
-        this.fieldsForm = [
-            {
-                label: 'Código',
-                name: 'codigo',
-                id: 'codigo',
-                class: '_codigo',
-            },
-            {
-                label: 'Descripción',
-                name: 'descripcion',
-                id: 'descripcion',
-                class: '_descripcion',
-            },
-            {
-                label: 'Valor unitario',
-                name: 'valor_unitario',
-                id: 'valor-unitario',
-                class: '_valor-unitario',
-            },
-            {
-                label: 'Marca',
-                name: 'marca',
-                id: 'marca',
-                class: '_marca',
-            },
-            {
-                label: 'Valor unitario',
-                name: 'valor_unitario',
-                id: 'valor-unitario',
-                class: '_valor-unitario',
-            },
-            {
-                label: 'Existencia',
-                name: 'existencia',
-                id: 'existencia',
-                class: '_existencia',
-            },
-            ,
-            {
-                label: 'Cantidad',
-                name: 'cantidad',
-                id: 'cantidad',
-                class: '_cantidad',
-            }
-        ];
+        this.config_fields.forEach(function (element) {
+            _this.fields_form.push(new fields_form_1.FieldsForm(element.label, element.name));
+        });
+        this.fields_form.forEach(function (element) {
+            console.log('>> label: ' + element['label'] + ', name: ' + element['name'] + ', id: ' + element['id_style'] + ', class: ' + element['class_style']);
+        });
     }
     AddSearchToTheListComponent.prototype.blurX = function (saludando) {
         this.showFormProductos = true;

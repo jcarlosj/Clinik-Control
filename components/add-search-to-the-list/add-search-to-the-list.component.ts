@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import { Path } from '../../app/paths';
 
+import { FieldsForm } from './fields-form';
+
 @Component({
   moduleId    : module.id,
   selector    : 'add-search-to-the-list',
@@ -15,10 +17,22 @@ export class AddSearchToTheListComponent {
   private field:string;
   private label:string;
   private showFormProductos : boolean = false;
-  private fieldsForm :any;
-  
+  private fields_form : any = [] ;
+
+  private config_fields = [ 
+    { label: 'Código', name: 'codigo' },
+    { label: 'Descripción', name: 'descripcion' },
+    { label: 'Valor unitario', name: 'valor_unitario' },
+    { label: 'Marca', name: 'marca' },
+    { label: 'Unidad de medida', name: 'unidad_medida' },
+    { label: 'Existencia', name: 'existencia' },
+    { label: 'Cantidad ', name: 'cantidad' }
+  ];
   
   constructor() {
+
+  
+
     this .urlApi = Path.Server.API;
     this .path = '/productos';       // Representa el nombre de la tabla en la BD
     this .field = 'descripcion1';
@@ -32,53 +46,19 @@ export class AddSearchToTheListComponent {
     );
 
     // Configuración de campos que se van a generar automáticamente usando un Array de Objetos JSON 
-    this .fieldsForm = [
-      {
-        label    : 'Código',
-        name     : 'codigo',
-        id       : 'codigo',
-        class    : '_codigo',
-      },
-      {
-        label    : 'Descripción',
-        name     : 'descripcion',
-        id       : 'descripcion',
-        class    : '_descripcion',
-      },
-      {
-        label    : 'Valor unitario',
-        name     : 'valor_unitario',
-        id       : 'valor-unitario',
-        class    : '_valor-unitario',
-      },
-      {
-        label    : 'Marca',
-        name     : 'marca',
-        id       : 'marca',
-        class    : '_marca',
-      },
-      {
-        label    : 'Valor unitario',
-        name     : 'valor_unitario',
-        id       : 'valor-unitario',
-        class    : '_valor-unitario',
-      },
-      {
-        label    : 'Existencia',
-        name     : 'existencia',
-        id       : 'existencia',
-        class    : '_existencia',
-      },
-      ,
-      {
-        label    : 'Cantidad',
-        name     : 'cantidad',
-        id       : 'cantidad',
-        class    : '_cantidad',
-      }
-    ];
-  }
 
+    this .config_fields.forEach( element => {
+        this .fields_form .push( new FieldsForm( element.label, element.name ) );
+    });
+    
+
+
+    this .fields_form .forEach(element => {
+      console .log( '>> label: ' + element['label'] + ', name: ' + element['name'] + ', id: ' + element['id_style'] + ', class: ' + element['class_style'] );
+    });
+
+  }  
+   
   blurX( saludando : Object ){
     
     this .showFormProductos = true;
