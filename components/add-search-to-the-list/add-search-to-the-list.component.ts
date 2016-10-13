@@ -1,8 +1,6 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, Output, OnInit, OnDestroy, EventEmitter } from '@angular/core';
 
 import { Path } from '../../app/paths';
-
-import { FieldsForm } from './fields-form';
 
 @Component({
   moduleId    : module.id,
@@ -19,7 +17,8 @@ export class AddSearchToTheListComponent implements OnInit, OnDestroy {
   private showFormProductos : boolean = false;
   private fields_form : any = [] ;
 
-  @Input() private data:any[] = []  ;
+  @Input() private data:any[] = [];
+  @Output() dad = new EventEmitter();
   
   constructor() {
 
@@ -39,20 +38,7 @@ export class AddSearchToTheListComponent implements OnInit, OnDestroy {
   }  
 
   ngOnInit() {
-    console.log( '++++++++++++++++++++\n' + this.data + '\n++++++++++++++++++++' );
-    this .data .forEach( element => {
-      console .log( ' ==> LABEL ' + element .label + '\n ==> NAME ' + element .name );
-    });  
 
-    // Configuración de campos que se van a generar automáticamente usando un Array de Objetos JSON 
-
-    this .data .forEach( element => {
-        this .fields_form .push( new FieldsForm( element.label, element.name ) );
-    });
-    
-    this .fields_form .forEach(element => {
-      console .log( '>> label: ' + element['label'] + ', name: ' + element['name'] + ', id: ' + element['id_style'] + ', class: ' + element['class_style'] );
-    }); 
   }
    
   ngOnDestroy() {
@@ -62,11 +48,6 @@ export class AddSearchToTheListComponent implements OnInit, OnDestroy {
   blurX( saludando : Object ){
     
     this .showFormProductos = true;
-
-    console.log( '> HOLA >>> ' + Object.keys( saludando ) + ' ' + Object.values( saludando ) );
-    for( let campo in saludando ) {
-      console.log( ' - ' + campo + '\n' );
-    } 
 
     if ( this .showFormProductos ) {
       console .log( 'Muestra el formulario con los campos de busqueda diligenciados' );
@@ -80,6 +61,9 @@ export class AddSearchToTheListComponent implements OnInit, OnDestroy {
   addList() {
     /* Limpia, deshabilita, y oculta el formulario */
     this .showFormProductos = false;
+
+    // Envia al padre
+    this.dad.emit( 'Hola papa' );
   }
 
 }

@@ -15,12 +15,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var paths_1 = require('../../app/paths');
-var fields_form_1 = require('./fields-form');
 var AddSearchToTheListComponent = (function () {
     function AddSearchToTheListComponent() {
         this.showFormProductos = false;
         this.fields_form = [];
         this.data = [];
+        this.dad = new core_1.EventEmitter();
         this.urlApi = paths_1.Path.Server.API;
         this.path = '/productos';
         this.field = 'descripcion1';
@@ -32,26 +32,11 @@ var AddSearchToTheListComponent = (function () {
             ' - label  : ' + this.label + '\n');
     }
     AddSearchToTheListComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        console.log('++++++++++++++++++++\n' + this.data + '\n++++++++++++++++++++');
-        this.data.forEach(function (element) {
-            console.log(' ==> LABEL ' + element.label + '\n ==> NAME ' + element.name);
-        });
-        this.data.forEach(function (element) {
-            _this.fields_form.push(new fields_form_1.FieldsForm(element.label, element.name));
-        });
-        this.fields_form.forEach(function (element) {
-            console.log('>> label: ' + element['label'] + ', name: ' + element['name'] + ', id: ' + element['id_style'] + ', class: ' + element['class_style']);
-        });
     };
     AddSearchToTheListComponent.prototype.ngOnDestroy = function () {
     };
     AddSearchToTheListComponent.prototype.blurX = function (saludando) {
         this.showFormProductos = true;
-        console.log('> HOLA >>> ' + Object.keys(saludando) + ' ' + Object.values(saludando));
-        for (var campo in saludando) {
-            console.log(' - ' + campo + '\n');
-        }
         if (this.showFormProductos) {
             console.log('Muestra el formulario con los campos de busqueda diligenciados');
             return true;
@@ -61,11 +46,16 @@ var AddSearchToTheListComponent = (function () {
     };
     AddSearchToTheListComponent.prototype.addList = function () {
         this.showFormProductos = false;
+        this.dad.emit('Hola papa');
     };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)
     ], AddSearchToTheListComponent.prototype, "data", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], AddSearchToTheListComponent.prototype, "dad", void 0);
     AddSearchToTheListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

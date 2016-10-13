@@ -14,3 +14,4 @@
 [1013/091916:WARNING:in_range_cast.h(38)] value 2045557949384 out of range
 [1013/091916:WARNING:in_range_cast.h(38)] value 2045557935784 out of range
 [1013/091916:WARNING:in_range_cast.h(38)] value 2045557936022 out of range
+[1013/170203:ERROR:file_io.cc(30)] read: expected 36, observed 0

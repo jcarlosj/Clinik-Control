@@ -1,17 +1,58 @@
 <div id="add-search-to-the-list-component">
-    <autocomplete (blur)="blurX( $event )" [urlApi]="urlApi" [tabla]="path" [campo]="field" [etiqueta]="label"></autocomplete>
-    <div [hidden]="!showFormProductos" >
+    <div>
         <form>
-            <div *ngFor="let field of fields_form">
-                <mdl-textfield 
-                    
-                    type="text" id="{{field.id_style}}" class="{{field.class_style}}" name="{{field.name}}" 
-                    
-                    label="{{field.label}}" floating-label >
-                </mdl-textfield>
-            </div>    
             <div>
-                <button (click)="addList()">Boton</button>
+                <mdl-textfield 
+                    type="text" id="codigo" name="codigo" placeholder="" 
+                    label="Código" floating-label >
+                </mdl-textfield>
+            </div>
+            <div>
+                <mdl-textfield 
+                    type="text" id="descripcion1" name="descripcion1" placeholder="" 
+                    label="Descripción" floating-label >
+                </mdl-textfield>
+            </div>
+            <div>
+                <mdl-textfield 
+                    type="text" id="valor-unitario" name="valor_unitario" placeholder="" 
+                    label="Dirección" floating-label >
+                </mdl-textfield>
+            </div>
+            <div>
+                <mdl-textfield 
+                    type="text" id="marca" name="marca" placeholder="" 
+                    label="Marca" floating-label >
+                </mdl-textfield>
+            </div>
+            <div>
+                <mdl-textfield 
+                    type="text" id="unidad-medida" name="unidad_medida" placeholder="" 
+                    label="Unidad de medida" floating-label >
+                </mdl-textfield>
+            </div>             
+            <div>
+                <mdl-textfield 
+                    [hidden]   = "!visibleExistencia"
+                    [disabled] = "!enableExistencia"
+                    
+                      
+                    type="text" id="existencia" name="existencia" placeholder="" 
+                    label="Existencia" floating-label >
+                </mdl-textfield>
+            </div>   
+            <div>
+                <mdl-textfield 
+                    [hidden]   = "!visibleCantidad"
+                    [disabled] = "!enableCantidad"
+                    
+                      
+                    type="text" id="cantidad" name="cantidad" placeholder="" 
+                    label="Kantidad" floating-label >
+                </mdl-textfield>
+            </div>                                                                  
+            <div>
+                <button (click)="addList()">Agregar</button>
             </div>
         </form>
     </div>
