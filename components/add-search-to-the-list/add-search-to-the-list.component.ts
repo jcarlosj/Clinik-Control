@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 
 import { Path } from '../../app/paths';
 
@@ -10,7 +10,7 @@ import { FieldsForm } from './fields-form';
   templateUrl : 'add-search-to-the-list.component.html',
   styleUrls   : [ 'add-search-to-the-list.component.css' ]
 })
-export class AddSearchToTheListComponent {
+export class AddSearchToTheListComponent implements OnInit, OnDestroy {
 
   private urlApi:string;
   private path:string;
@@ -19,24 +19,15 @@ export class AddSearchToTheListComponent {
   private showFormProductos : boolean = false;
   private fields_form : any = [] ;
 
-  private config_fields = [ 
-    { label: 'Código', name: 'codigo' },
-    { label: 'Descripción', name: 'descripcion' },
-    { label: 'Valor unitario', name: 'valor_unitario' },
-    { label: 'Marca', name: 'marca' },
-    { label: 'Unidad de medida', name: 'unidad_medida' },
-    { label: 'Existencia', name: 'existencia' },
-    { label: 'Cantidad ', name: 'cantidad' }
-  ];
+  @Input() private data:any[] = []  ;
   
   constructor() {
 
-  
-
     this .urlApi = Path.Server.API;
-    this .path = '/productos';       // Representa el nombre de la tabla en la BD
-    this .field = 'descripcion1';
-    this .label = 'Producto:';
+    this .path   = '/productos';       // Representa el nombre de la tabla en la BD
+    this .field  = 'descripcion1';
+    this .label  = 'Producto:';
+
     console .log( 
       '> PARENT (DeployAutocompleteComponent)\n' + 
       ' - urlApi : ' + this .urlApi + '\n' +
@@ -45,20 +36,29 @@ export class AddSearchToTheListComponent {
       ' - label  : ' + this .label +  '\n' 
     );
 
+  }  
+
+  ngOnInit() {
+    console.log( '++++++++++++++++++++\n' + this.data + '\n++++++++++++++++++++' );
+    this .data .forEach( element => {
+      console .log( ' ==> LABEL ' + element .label + '\n ==> NAME ' + element .name );
+    });  
+
     // Configuración de campos que se van a generar automáticamente usando un Array de Objetos JSON 
 
-    this .config_fields.forEach( element => {
+    this .data .forEach( element => {
         this .fields_form .push( new FieldsForm( element.label, element.name ) );
     });
     
-
-
     this .fields_form .forEach(element => {
       console .log( '>> label: ' + element['label'] + ', name: ' + element['name'] + ', id: ' + element['id_style'] + ', class: ' + element['class_style'] );
-    });
-
-  }  
+    }); 
+  }
    
+  ngOnDestroy() {
+
+  }
+
   blurX( saludando : Object ){
     
     this .showFormProductos = true;

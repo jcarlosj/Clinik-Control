@@ -18,18 +18,9 @@ var paths_1 = require('../../app/paths');
 var fields_form_1 = require('./fields-form');
 var AddSearchToTheListComponent = (function () {
     function AddSearchToTheListComponent() {
-        var _this = this;
         this.showFormProductos = false;
         this.fields_form = [];
-        this.config_fields = [
-            { label: 'Código', name: 'codigo' },
-            { label: 'Descripción', name: 'descripcion' },
-            { label: 'Valor unitario', name: 'valor_unitario' },
-            { label: 'Marca', name: 'marca' },
-            { label: 'Unidad de medida', name: 'unidad_medida' },
-            { label: 'Existencia', name: 'existencia' },
-            { label: 'Cantidad ', name: 'cantidad' }
-        ];
+        this.data = [];
         this.urlApi = paths_1.Path.Server.API;
         this.path = '/productos';
         this.field = 'descripcion1';
@@ -39,13 +30,22 @@ var AddSearchToTheListComponent = (function () {
             ' - path   : ' + this.path + '\n' +
             ' - field  : ' + this.field + '\n' +
             ' - label  : ' + this.label + '\n');
-        this.config_fields.forEach(function (element) {
+    }
+    AddSearchToTheListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        console.log('++++++++++++++++++++\n' + this.data + '\n++++++++++++++++++++');
+        this.data.forEach(function (element) {
+            console.log(' ==> LABEL ' + element.label + '\n ==> NAME ' + element.name);
+        });
+        this.data.forEach(function (element) {
             _this.fields_form.push(new fields_form_1.FieldsForm(element.label, element.name));
         });
         this.fields_form.forEach(function (element) {
             console.log('>> label: ' + element['label'] + ', name: ' + element['name'] + ', id: ' + element['id_style'] + ', class: ' + element['class_style']);
         });
-    }
+    };
+    AddSearchToTheListComponent.prototype.ngOnDestroy = function () {
+    };
     AddSearchToTheListComponent.prototype.blurX = function (saludando) {
         this.showFormProductos = true;
         console.log('> HOLA >>> ' + Object.keys(saludando) + ' ' + Object.values(saludando));
@@ -62,6 +62,10 @@ var AddSearchToTheListComponent = (function () {
     AddSearchToTheListComponent.prototype.addList = function () {
         this.showFormProductos = false;
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Array)
+    ], AddSearchToTheListComponent.prototype, "data", void 0);
     AddSearchToTheListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
