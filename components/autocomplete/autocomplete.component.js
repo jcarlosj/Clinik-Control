@@ -148,20 +148,20 @@ var AutocompleteComponent = (function () {
     return AutocompleteComponent;
 }());
 exports.AutocompleteComponent = AutocompleteComponent;
-var AutoCompleteByComponent = (function (_super) {
-    __extends(AutoCompleteByComponent, _super);
-    function AutoCompleteByComponent() {
+var AutoCompleteComponentByComponent = (function (_super) {
+    __extends(AutoCompleteComponentByComponent, _super);
+    function AutoCompleteComponentByComponent() {
         _super.apply(this, arguments);
     }
-    return AutoCompleteByComponent;
+    return AutoCompleteComponentByComponent;
 }(AutocompleteComponent));
-exports.AutoCompleteByComponent = AutoCompleteByComponent;
-var AutoCompleteByModule = (function (_super) {
-    __extends(AutoCompleteByModule, _super);
-    function AutoCompleteByModule() {
+exports.AutoCompleteComponentByComponent = AutoCompleteComponentByComponent;
+var AutoCompleteComponentByModule = (function (_super) {
+    __extends(AutoCompleteComponentByModule, _super);
+    function AutoCompleteComponentByModule() {
         _super.apply(this, arguments);
     }
-    return AutoCompleteByModule;
+    return AutoCompleteComponentByModule;
 }(AutocompleteComponent));
-exports.AutoCompleteByModule = AutoCompleteByModule;
+exports.AutoCompleteComponentByModule = AutoCompleteComponentByModule;
 //# sourceMappingURL=autocomplete.component.js.map

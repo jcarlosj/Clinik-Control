@@ -20,7 +20,8 @@ export class DeployComponent {
   // Constructor
   public constructor( ) {
     this .menu = [
-      { path: '/autocomplete', nameItem: 'Autocomplete' }
+      { path: '/autocomplete', nameItem: 'Autocomplete' },
+      { path: '/add-search-to-the-list', nameItem: 'Agregar una busqueda a un listado' }
     ]; 
   }
 }

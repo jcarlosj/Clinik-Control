@@ -15,8 +15,12 @@ import { InMemoryWebApiModule } from 'angular2-in-memory-web-api';
 import { InMemoryDataService }  from '../in-memory-data.service';
 
 import { DeployComponent } from './deploy.component';
+
 import { DeployAutocompleteComponent } from './deploy-components/deploy-autocomplete.component';
-import { AutoCompleteByModule } from '../../components/autocomplete/autocomplete.component';
+import { AutoCompleteComponentByModule } from '../../components/autocomplete/autocomplete.component';
+
+import { DeployAddSearchToTheListComponent } from './deploy-components/deploy-add-search-to-the-list.component';
+import { AddSearchToTheListComponentByModule } from '../../components/add-search-to-the-list/add-search-to-the-list.component';
 
 @NgModule({
   imports: [
@@ -31,7 +35,9 @@ import { AutoCompleteByModule } from '../../components/autocomplete/autocomplete
   declarations: [
     DeployComponent,
     DeployAutocompleteComponent,
-    AutoCompleteByModule
+    DeployAddSearchToTheListComponent,
+    AutoCompleteComponentByModule,          // <-- Child de AutoCompleteComponent
+    AddSearchToTheListComponentByModule     // <-- Child de AddSearchToTheListComponent
   ],
   providers: [
     deployRoutingProviders  

@@ -1,7 +1,7 @@
 import { ModuleWithProviders }   from '@angular/core';
 import { Routes, RouterModule }  from '@angular/router';
 
-import { AUTOCOMPLETE_ROUTER } from './deploy-components/deploy-autocomplete.routing';
+import { DEPLOY_COMPONENTS_ROUTER } from './deploy-components/deploy-components.routing';
 
 const deployRoutes: Routes = [
   {
@@ -9,7 +9,7 @@ const deployRoutes: Routes = [
     redirectTo: '/componentes',
     pathMatch: 'full'
   },
-  ...AUTOCOMPLETE_ROUTER
+  ...DEPLOY_COMPONENTS_ROUTER
 ];
 
 export const deployRoutingProviders: any[] = [

@@ -149,5 +149,5 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
     Herencia: Creamos dos clases para evitar el conficto que nos genera  
     llamar la misma clase (ó Componente) en dos lugares donde es requerida 
    ---  */
-export class AutoCompleteByComponent extends AutocompleteComponent {}
-export class AutoCompleteByModule extends AutocompleteComponent {}
+export class AutoCompleteComponentByComponent extends AutocompleteComponent {}
+export class AutoCompleteComponentByModule extends AutocompleteComponent {}
