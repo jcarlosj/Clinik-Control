@@ -14,9 +14,81 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var paths_1 = require('../../app/paths');
 var AddSearchToTheListComponent = (function () {
     function AddSearchToTheListComponent() {
+        this.showFormProductos = false;
+        this.urlApi = paths_1.Path.Server.API;
+        this.path = '/productos';
+        this.field = 'descripcion1';
+        this.label = 'Producto:';
+        console.log('> PARENT (DeployAutocompleteComponent)\n' +
+            ' - urlApi : ' + this.urlApi + '\n' +
+            ' - path   : ' + this.path + '\n' +
+            ' - field  : ' + this.field + '\n' +
+            ' - label  : ' + this.label + '\n');
+        this.fieldsForm = [
+            {
+                label: 'Código',
+                name: 'codigo',
+                id: 'codigo',
+                class: '_codigo',
+            },
+            {
+                label: 'Descripción',
+                name: 'descripcion',
+                id: 'descripcion',
+                class: '_descripcion',
+            },
+            {
+                label: 'Valor unitario',
+                name: 'valor_unitario',
+                id: 'valor-unitario',
+                class: '_valor-unitario',
+            },
+            {
+                label: 'Marca',
+                name: 'marca',
+                id: 'marca',
+                class: '_marca',
+            },
+            {
+                label: 'Valor unitario',
+                name: 'valor_unitario',
+                id: 'valor-unitario',
+                class: '_valor-unitario',
+            },
+            {
+                label: 'Existencia',
+                name: 'existencia',
+                id: 'existencia',
+                class: '_existencia',
+            },
+            ,
+            {
+                label: 'Cantidad',
+                name: 'cantidad',
+                id: 'cantidad',
+                class: '_cantidad',
+            }
+        ];
     }
+    AddSearchToTheListComponent.prototype.blurX = function (saludando) {
+        this.showFormProductos = true;
+        console.log('> HOLA >>> ' + Object.keys(saludando) + ' ' + Object.values(saludando));
+        for (var campo in saludando) {
+            console.log(' - ' + campo + '\n');
+        }
+        if (this.showFormProductos) {
+            console.log('Muestra el formulario con los campos de busqueda diligenciados');
+            return true;
+        }
+        console.log('NO muestra formulario ni resultados');
+        return false;
+    };
+    AddSearchToTheListComponent.prototype.addList = function () {
+        this.showFormProductos = false;
+    };
     AddSearchToTheListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

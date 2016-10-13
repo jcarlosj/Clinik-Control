@@ -1,3 +1,19 @@
 <div id="add-search-to-the-list-component">
-    Este es el componente
+    <autocomplete (blur)="blurX( $event )" [urlApi]="urlApi" [tabla]="path" [campo]="field" [etiqueta]="label"></autocomplete>
+    <div [hidden]="!showFormProductos" >
+        <form>
+            <div *ngFor="let field of fieldsForm">
+                <mdl-textfield 
+                    
+
+                    type="text" id="{{field.id}}" name="{{field.name}}" 
+                    
+                    label="{{field.label}}" floating-label >
+                </mdl-textfield>
+            </div>    
+            <div>
+                <button (click)="addList()">Boton</button>
+            </div>
+        </form>
+    </div>
 </div>
