@@ -18,6 +18,7 @@ var AddSearchToTheListComponent = (function () {
     function AddSearchToTheListComponent() {
         this.showFormProductos = false;
         this.fields_form = [];
+        this.data = new Object();
         this.dad = new core_1.EventEmitter();
         console.log('constructor()');
     }
@@ -41,12 +42,12 @@ var AddSearchToTheListComponent = (function () {
         this.dad.emit('Hola papa');
         console.log('HEY! Daddy ');
         console.log('> RECIBE\n addList() \n [ \n' +
-            '  - Object.keys( this.data[0] ) \n' + Object.keys(this.data[0]) + '\n\n' +
-            '  - Object.values( this.data[0] ) \n' + Object.values(this.data[0]) + '\n ] \n ');
+            '  - Object.keys( this.data ) \n' + Object.keys(this.data) + '\n\n' +
+            '  - Object.values( this.data ) \n' + Object.values(this.data) + '\n ] \n ');
     };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', Array)
+        __metadata('design:type', Object)
     ], AddSearchToTheListComponent.prototype, "data", void 0);
     __decorate([
         core_1.Output(), 

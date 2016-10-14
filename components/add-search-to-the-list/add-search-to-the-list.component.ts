@@ -17,7 +17,7 @@ export class AddSearchToTheListComponent implements OnInit, OnDestroy {
   private showFormProductos : boolean = false;
   private fields_form : any = [] ;
 
-  @Input() private data:any[];
+  @Input() private data = new Object();
   @Output() dad = new EventEmitter();
   
   constructor() {
@@ -62,8 +62,8 @@ export class AddSearchToTheListComponent implements OnInit, OnDestroy {
     // (To debug)
     console .log( 
         '> RECIBE\n addList() \n [ \n' +
-        '  - Object.keys( this.data[0] ) \n' + Object.keys( this .data[0] ) + '\n\n' + 
-        '  - Object.values( this.data[0] ) \n' + Object.values( this .data[0] ) + '\n ] \n '
+        '  - Object.keys( this.data ) \n' + Object.keys( this .data ) + '\n\n' + 
+        '  - Object.values( this.data ) \n' + Object.values( this .data ) + '\n ] \n '
     );
   }
 

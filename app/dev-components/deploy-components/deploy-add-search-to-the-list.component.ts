@@ -10,7 +10,7 @@ import { Path } from '../../paths';
 export class DeployAddSearchToTheListComponent implements OnInit, OnDestroy {
 
     
-    private data: any[];            // Para ENVIAR a AddSearchToTheListComponent
+    private data = new Object();            // Para ENVIAR a AddSearchToTheListComponent
 
     private urlApi : string;
     private path   : string;
@@ -107,24 +107,14 @@ export class DeployAddSearchToTheListComponent implements OnInit, OnDestroy {
 
     enviarAddSearchToTheListComponent( obj : Object ) {
         // Define valores por defecto
-        //this .data .push( obj );
         
-        this .data = [
-            { label: 'Código'          , name: 'codigo' },
-            { label: 'Descripción'     , name: 'descripcion' },
-            { label: 'Valor unitario'  , name: 'valor_unitario' },
-            { label: 'Marca'           , name: 'marca' },
-            { label: 'Unidad de medida', name: 'unidad_medida' },
-            { label: 'Existencia'      , name: 'existencia' },
-            { label: 'Cantidad '       , name: 'cantidad' }
-        ];
-
+        this .data = obj;
         // (To debug)
-        /*
+        
         console .log( 
             '> ENVIA\n enviarAddSearchToTheListComponent() \n [ \n' +
-            '  - Object.keys( this .data[0] .obj ) \n' + Object.keys( this .data[0] .obj  ) + '\n\n' + 
-            '  - Object.values( this .data[0] .obj ) \n' + Object.values( this .data[0] .obj ) + '\n ] \n '
-        );*/
+            '  - Object.keys( this .data .obj ) \n' + Object.keys( this .data ) + '\n\n' + 
+            '  - Object.values( this .data .obj ) \n' + Object.values( this .data ) + '\n ] \n '
+        );
     }
 }
