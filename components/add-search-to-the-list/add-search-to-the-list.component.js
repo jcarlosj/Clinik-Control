@@ -14,26 +14,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var paths_1 = require('../../app/paths');
 var AddSearchToTheListComponent = (function () {
     function AddSearchToTheListComponent() {
         this.showFormProductos = false;
         this.fields_form = [];
-        this.data = [];
         this.dad = new core_1.EventEmitter();
-        this.urlApi = paths_1.Path.Server.API;
-        this.path = '/productos';
-        this.field = 'descripcion1';
-        this.label = 'Producto:';
-        console.log('> PARENT (DeployAutocompleteComponent)\n' +
-            ' - urlApi : ' + this.urlApi + '\n' +
-            ' - path   : ' + this.path + '\n' +
-            ' - field  : ' + this.field + '\n' +
-            ' - label  : ' + this.label + '\n');
+        console.log('constructor()');
     }
     AddSearchToTheListComponent.prototype.ngOnInit = function () {
+        console.log('ngOnInit()');
     };
     AddSearchToTheListComponent.prototype.ngOnDestroy = function () {
+        console.log('ngOnDestroy()');
     };
     AddSearchToTheListComponent.prototype.blurX = function (saludando) {
         this.showFormProductos = true;
@@ -47,6 +39,10 @@ var AddSearchToTheListComponent = (function () {
     AddSearchToTheListComponent.prototype.addList = function () {
         this.showFormProductos = false;
         this.dad.emit('Hola papa');
+        console.log('HEY! Daddy ');
+        console.log('> RECIBE\n addList() \n [ \n' +
+            '  - Object.keys( this.data[0] ) \n' + Object.keys(this.data[0]) + '\n\n' +
+            '  - Object.values( this.data[0] ) \n' + Object.values(this.data[0]) + '\n ] \n ');
     };
     __decorate([
         core_1.Input(), 

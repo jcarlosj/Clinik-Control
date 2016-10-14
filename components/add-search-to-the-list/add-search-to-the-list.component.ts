@@ -17,32 +17,25 @@ export class AddSearchToTheListComponent implements OnInit, OnDestroy {
   private showFormProductos : boolean = false;
   private fields_form : any = [] ;
 
-  @Input() private data:any[] = [];
+  @Input() private data:any[];
   @Output() dad = new EventEmitter();
   
   constructor() {
-
-    this .urlApi = Path.Server.API;
-    this .path   = '/productos';       // Representa el nombre de la tabla en la BD
-    this .field  = 'descripcion1';
-    this .label  = 'Producto:';
-
-    console .log( 
-      '> PARENT (DeployAutocompleteComponent)\n' + 
-      ' - urlApi : ' + this .urlApi + '\n' +
-      ' - path   : ' + this .path + '\n' +
-      ' - field  : ' + this .field + '\n' +
-      ' - label  : ' + this .label +  '\n' 
-    );
-
+    console .log( 'constructor()' );
   }  
 
   ngOnInit() {
-
+    console .log( 'ngOnInit()' );
+                /* --- 
+                1. Desplegamos los datos.
+                2. Mostramos el formulario.
+                3. Valida el campo Cantidad.
+                4. Activa el boton de AGREGAR.
+               --- */
   }
    
   ngOnDestroy() {
-
+    console .log( 'ngOnDestroy()' );
   }
 
   blurX( saludando : Object ){
@@ -64,6 +57,14 @@ export class AddSearchToTheListComponent implements OnInit, OnDestroy {
 
     // Envia al padre
     this.dad.emit( 'Hola papa' );
+    console .log ( 'HEY! Daddy ');
+
+    // (To debug)
+    console .log( 
+        '> RECIBE\n addList() \n [ \n' +
+        '  - Object.keys( this.data[0] ) \n' + Object.keys( this .data[0] ) + '\n\n' + 
+        '  - Object.values( this.data[0] ) \n' + Object.values( this .data[0] ) + '\n ] \n '
+    );
   }
 
 }

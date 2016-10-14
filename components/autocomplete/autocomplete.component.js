@@ -38,7 +38,7 @@ var AutocompleteComponent = (function () {
         this.innerValue = '';
         this.blur = new core_1.EventEmitter();
         this.change = new core_1.EventEmitter();
-        console.log('-> CHILD (AutocompleteComponent) constructor()');
+        console.log('constructor()');
     }
     AutocompleteComponent.prototype.search = function (term) {
         this.searchTerms.next(term);
@@ -59,10 +59,10 @@ var AutocompleteComponent = (function () {
     ;
     AutocompleteComponent.prototype.ngOnInit = function () {
         var _this = this;
-        console.log('-> CHILD (AutocompleteComponent) ngOnInit()');
-        console.log(' - this .api + this .tabla : ' + this.urlApi + this.tabla);
-        console.log(' - this .campo             : ' + this.campo);
-        console.log(' - this .etiqueta          : ' + this.etiqueta);
+        console.log('> RECIBE\n ngOnInit() \n [ \n' +
+            ' - this.api + this.tabla  : ' + this.urlApi + this.tabla + '\n' +
+            ' - this.campo             : ' + this.campo + '\n' +
+            ' - this.etiqueta          : ' + this.etiqueta + '\n ] \n');
         this.terceros = this.searchTerms
             .debounceTime(300)
             .distinctUntilChanged()
@@ -74,7 +74,9 @@ var AutocompleteComponent = (function () {
             return Observable_1.Observable.of([]);
         });
     };
-    AutocompleteComponent.prototype.ngOnDestroy = function () { };
+    AutocompleteComponent.prototype.ngOnDestroy = function () {
+        console.log('ngOnDestroy()');
+    };
     AutocompleteComponent.prototype.onBlur = function (obj) {
         console.log('--> CHILD: AutocompleteComponent -> onBlur(): ');
         console.log('--> obj: ' + Object.values(obj));
@@ -94,14 +96,15 @@ var AutocompleteComponent = (function () {
         this.onTouchedCallback = fn;
     };
     AutocompleteComponent.prototype.showDetail = function (obj, search) {
-        search.value = null;
-        this.objSelected = obj;
-        this.blur.emit(obj);
         if (obj[this.campo] != '') {
             this.obj = obj;
         }
-        console.log('--> CHILD: AutocompleteComponent -> showDetail()');
-        console.log(' - this .obj && obj: ' + Object.values(this.obj));
+        console.log('showDetail() \n [ \n' +
+            ' - Object.keys( this .obj ) \n ' + Object.keys(this.obj) + '\n\n' +
+            ' - Object.values( this .obj ) \n ' + Object.values(this.obj) + '\n ] \n');
+        search.value = null;
+        this.objSelected = obj;
+        this.blur.emit(obj);
     };
     __decorate([
         core_1.Input(), 

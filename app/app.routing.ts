@@ -20,7 +20,7 @@ import { FDO_EXAMPLES_ROUTER } from './fdo-deploy-examples/fdo-example.routing';
 const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: '/entradas',
+    redirectTo: '/add-search-to-the-list',
     pathMatch: 'full'
   },
   ...FORMAS_PAGO_ROUTER,

@@ -66,14 +66,16 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
   @Output() change: EventEmitter<any> = new EventEmitter();
 
   constructor( private autocompleteService: AutoCompleteService ) { 
-    console .log( '-> CHILD (AutocompleteComponent) constructor()' );
+    console .log( 'constructor()' );
   }
 
   ngOnInit() {
-    console .log( '-> CHILD (AutocompleteComponent) ngOnInit()' );
-    console .log( ' - this .api + this .tabla : ' + this.urlApi+this.tabla );
-    console .log( ' - this .campo             : ' + this.campo );
-    console .log( ' - this .etiqueta          : ' + this.etiqueta );
+    console .log( 
+        '> RECIBE\n ngOnInit() \n [ \n' +
+        ' - this.api + this.tabla  : ' + this .urlApi + this .tabla + '\n' +
+        ' - this.campo             : ' + this .campo + '\n' +
+        ' - this.etiqueta          : ' + this .etiqueta + '\n ] \n' 
+    );
 
     this.terceros = this.searchTerms
       .debounceTime(300)        // Espera de 300ms (frecuencia de peticiones)
@@ -95,7 +97,9 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
       });
 
   }
-  ngOnDestroy() {}
+  ngOnDestroy() {
+      console .log( 'ngOnDestroy()' );
+  }
 
       //Set touched on blur
     onBlur(obj:Object) {
@@ -124,24 +128,25 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
     }
 
 
-  showDetail(obj:Object, search: any): void {
-    
-    search.value = null;
+    showDetail(obj:Object, search: any): void {
 
-    this .objSelected = obj;
-    //this.onTouchedCallback();
-    this.blur.emit( obj );
+        if ( obj[ this.campo ] != '' ) {
+            this .obj = obj;
+        }
 
-    //console .log( ' - obj.campo: ' + obj[ this.campo ] );
+        // (To debug)
+        console.log( 
+            'showDetail() \n [ \n' +
+            ' - Object.keys( this .obj ) \n ' + Object .keys( this.obj ) + '\n\n' +
+            ' - Object.values( this .obj ) \n ' + Object .values( this.obj ) + '\n ] \n'
+        );
 
-    if ( obj[ this.campo ] != '' ) {
-      this .obj = obj;
-    
+        search.value = null;        // Limpia el campo de búsqueda en el formulario
+
+        this .objSelected = obj;    
+        this.blur.emit( obj );      // ENVIA el Objeto al PARENT
+
     }
-    console.log( '--> CHILD: AutocompleteComponent -> showDetail()' );
-    console.log( ' - this .obj && obj: ' + Object .values( this.obj ) );
-
-  }
 }
 
 
