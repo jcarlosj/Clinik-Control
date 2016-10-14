@@ -24,6 +24,12 @@ var AddSearchToTheListComponent = (function () {
     }
     AddSearchToTheListComponent.prototype.ngOnInit = function () {
         console.log('ngOnInit()');
+        if (this.data == null || this.data == undefined) {
+            console.log('=> Msg: El objeto esta definido.');
+        }
+        else {
+            console.log('=> Msg: El objeto NO esta definido.');
+        }
     };
     AddSearchToTheListComponent.prototype.ngOnDestroy = function () {
         console.log('ngOnDestroy()');
@@ -36,6 +42,8 @@ var AddSearchToTheListComponent = (function () {
         }
         console.log('NO muestra formulario ni resultados');
         return false;
+    };
+    AddSearchToTheListComponent.prototype.addForm = function () {
     };
     AddSearchToTheListComponent.prototype.addList = function () {
         this.showFormProductos = false;

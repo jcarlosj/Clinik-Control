@@ -25,6 +25,16 @@ export class DeployAddSearchToTheListComponent implements OnInit, OnDestroy {
         this .enviarAutoCompleteComponent();
     }  
 
+    changeAutocomplete() {
+        alert( 'PARENT: Has hecho un click desde el componente AutoComplete' );
+            // (To debug)
+            console .log( 
+                '> RECIBE\n changeAutocomplete() \n [ \n' +
+                '  - Object.keys( this .data ) \n' + Object.keys( this .data ) + '\n\n' + 
+                '  - Object.values( this .data ) \n' + Object.values( this .data ) + '\n ] \n '
+            );
+    }
+
     ngOnInit() {
         console .log( 'ngOnInit()' );
     }
@@ -39,6 +49,7 @@ export class DeployAddSearchToTheListComponent implements OnInit, OnDestroy {
     }
 
     blurX( saludando : Object ){
+        alert( 'Hey Jude!' );
         console .log( 'blurX()' );
 
         if( saludando ) {

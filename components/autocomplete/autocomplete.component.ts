@@ -64,6 +64,7 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
     }
   @Output() blur: EventEmitter<any> = new EventEmitter();
   @Output() change: EventEmitter<any> = new EventEmitter();
+  @Output() changeData: EventEmitter<any> = new EventEmitter();
 
   constructor( private autocompleteService: AutoCompleteService ) { 
     console .log( 'constructor()' );
@@ -145,7 +146,8 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit, OnDe
 
         this .objSelected = obj;    
         this.blur.emit( obj );      // ENVIA el Objeto al PARENT
-
+        this.changeData.emit(null);
+        
     }
 }
 

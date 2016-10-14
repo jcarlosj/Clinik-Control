@@ -20,8 +20,11 @@ export class AddSearchToTheListComponent implements OnInit, OnDestroy {
   @Input() private data = new Object();
   @Output() dad = new EventEmitter();
   
+  
   constructor() {
     console .log( 'constructor()' );
+
+
   }  
 
   ngOnInit() {
@@ -32,6 +35,13 @@ export class AddSearchToTheListComponent implements OnInit, OnDestroy {
                 3. Valida el campo Cantidad.
                 4. Activa el boton de AGREGAR.
                --- */
+    if ( this .data == null || this .data == undefined ) {
+      console .log( '=> Msg: El objeto esta definido.' );
+    }
+    else {
+      console .log( '=> Msg: El objeto NO esta definido.' );
+    
+    }               
   }
    
   ngOnDestroy() {
@@ -49,6 +59,10 @@ export class AddSearchToTheListComponent implements OnInit, OnDestroy {
 
     console .log( 'NO muestra formulario ni resultados' );
     return false;
+  }
+
+  addForm() {
+
   }
 
   addList() {

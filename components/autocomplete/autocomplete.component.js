@@ -38,6 +38,7 @@ var AutocompleteComponent = (function () {
         this.innerValue = '';
         this.blur = new core_1.EventEmitter();
         this.change = new core_1.EventEmitter();
+        this.changeData = new core_1.EventEmitter();
         console.log('constructor()');
     }
     AutocompleteComponent.prototype.search = function (term) {
@@ -105,6 +106,7 @@ var AutocompleteComponent = (function () {
         search.value = null;
         this.objSelected = obj;
         this.blur.emit(obj);
+        this.changeData.emit(null);
     };
     __decorate([
         core_1.Input(), 
@@ -138,6 +140,10 @@ var AutocompleteComponent = (function () {
         core_1.Output(), 
         __metadata('design:type', core_1.EventEmitter)
     ], AutocompleteComponent.prototype, "change", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], AutocompleteComponent.prototype, "changeData", void 0);
     AutocompleteComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
