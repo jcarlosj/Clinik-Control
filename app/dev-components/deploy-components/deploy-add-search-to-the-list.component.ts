@@ -54,25 +54,27 @@ export class DeployAddSearchToTheListComponent implements OnInit, OnDestroy {
         console .log( '> PARENT >> ' + saludo );
     }
 
-    blurX( saludando : Object ){
-        alert( 'Hey Jude!' );
+    blurX( obj : Object ){
         console .log( 'blurX()' );
 
-        if( saludando ) {
-            /* --- 
-                1. Enviar los datos a AddSearchToTheListComponent
-            --- */
+        if( obj ) {
+            // Agregamos los campos: cantidad y saldo_total al objeto recuperado
+            obj['cantidad'] = 0;
+            obj['subtotal'] = 0;
+            obj['calcula'] = ( function() { 
+                this .subtotal = this .cantidad * this .precio_venta1;      
+            } );
 
             // (To debug)
             console .log( 
                 '> RECIBE\n blurX() \n [ \n' +
-                '  - Object.keys( saludando ) \n' + Object.keys( saludando ) + '\n\n' + 
-                '  - Object.values( saludando ) \n' + Object.values( saludando ) + '\n ] \n '
+                '  - Object.keys( obj ) \n' + Object.keys( obj ) + '\n\n' + 
+                '  - Object.values( obj ) \n' + Object.values( obj ) + '\n ] \n '
             );
 
             
             // Enviar los datos.
-            this .enviarAddSearchToTheListComponent( saludando );
+            this .enviarAddSearchToTheListComponent( obj );
             // Mostrar el módulo "AddSearchToTheList""
             this .visibleAddSearchToTheList = true;
 
@@ -81,22 +83,6 @@ export class DeployAddSearchToTheListComponent implements OnInit, OnDestroy {
 
             this .showFormProductos = true;
         }
-/*
-        
-
-        console.log( '> HOLA >>> ' + Object.keys( saludando ) + ' ' + Object.values( saludando ) );
-        for( let campo in saludando ) {
-        console.log( ' - ' + campo + '\n' );
-        } 
-
-        if ( this .showFormProductos ) {
-        console .log( 'Muestra el formulario con los campos de busqueda diligenciados' );
-        return true;
-        }
-
-        console .log( 'NO muestra formulario ni resultados' );
-        return false;
-        */
     }
 
     addList() {

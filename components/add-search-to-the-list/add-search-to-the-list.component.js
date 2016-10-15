@@ -17,7 +17,7 @@ var core_1 = require('@angular/core');
 var AddSearchToTheListComponent = (function () {
     function AddSearchToTheListComponent() {
         this.showFormProductos = false;
-        this.fields_form = [];
+        this.list_producto = [];
         this.data = new Object();
         this.dad = new core_1.EventEmitter();
         console.log('constructor()');
@@ -45,11 +45,13 @@ var AddSearchToTheListComponent = (function () {
     };
     AddSearchToTheListComponent.prototype.addList = function () {
         this.showFormProductos = false;
+        this.list_producto.push(this.data);
+        console.log('AGREGA a Lista\n addList() \n [ \n');
+        this.list_producto.forEach(function (element) {
+            console.log(" -> " + Object.values(element) + '\n');
+        });
+        console.log('\n ] \n');
         this.dad.emit('Hola papa');
-        alert('HEY! Daddy soy tu hijo! \nAddSearchToTheListComponent ');
-        console.log('> RECIBE\n addList() \n [ \n' +
-            '  - Object.keys( this.data ) \n' + Object.keys(this.data) + '\n\n' +
-            '  - Object.values( this.data ) \n' + Object.values(this.data) + '\n ] \n ');
     };
     __decorate([
         core_1.Input(), 

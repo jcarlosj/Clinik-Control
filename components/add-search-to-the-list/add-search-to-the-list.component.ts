@@ -15,7 +15,7 @@ export class AddSearchToTheListComponent implements OnInit, OnDestroy {
   private field:string;
   private label:string;
   private showFormProductos : boolean = false;
-  private fields_form : any = [] ;
+  private list_producto = []; // Array de Objetos producto
 
   @Input() private data = new Object();
   @Output() dad = new EventEmitter();
@@ -65,16 +65,18 @@ export class AddSearchToTheListComponent implements OnInit, OnDestroy {
     /* Limpia, deshabilita, y oculta el formulario */
     this .showFormProductos = false;
 
-    // Envia al padre
-    this.dad.emit( 'Hola papa' );
-    alert( 'HEY! Daddy soy tu hijo! \nAddSearchToTheListComponent ');
+    this .list_producto .push( this.data );
 
     // (To debug)
-    console .log( 
-        '> RECIBE\n addList() \n [ \n' +
-        '  - Object.keys( this.data ) \n' + Object.keys( this .data ) + '\n\n' + 
-        '  - Object.values( this.data ) \n' + Object.values( this .data ) + '\n ] \n '
-    );
+    console .log( 'AGREGA a Lista\n addList() \n [ \n' );
+    this .list_producto .forEach( element => {
+      console .log( " -> " + Object.values(element) + '\n' );
+    });
+    console .log( '\n ] \n' );
+
+    // Envia al padre
+    this.dad.emit( 'Hola papa' );
+
   }
 
 }

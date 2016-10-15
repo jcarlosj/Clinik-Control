@@ -1,55 +1,98 @@
+<div class="" >
+    <div class="">
+        <div class="mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h3>Listado de productos</h3>
+            </div>
+            <div class="">
+                <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>    
+                            <th class="mdl-data-table__cell--non-numeric">Descripción</th>
+                            <th class="mdl-data-table__cell--non-numeric">Marca</th>
+                            <th class="mdl-data-table__cell--non-numeric">Unidad de medida</th>
+                            <th>Valor unitario</th>
+                            <th>Cantidad</th>
+                            <th>Descuento</th>
+                            <th>Sub-Total</th>
+                        </tr>   
+                    </thead>    
+                    <thead>
+                        <tr>
+                            <th colspan="8" class="mdl-data-table__cell--non-numeric">No hay productos agregados a la lista</th>
+                        </tr>         
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let o of list_producto">
+                            <th>{{ o.codigo }}</th>    
+                            <th class="mdl-data-table__cell--non-numeric">{{ o.descripcion1 }}</th>
+                            <th class="mdl-data-table__cell--non-numeric">{{ o.marca }}</th>
+                            <th class="mdl-data-table__cell--non-numeric">{{ o.unidad_medida }}</th>
+                            <th class="mdl-data-table__cell--non-numeric">{{ o.precio_venta1 }}</th>
+                            <th>{{ o.cantidad }}</th>
+                            <th>{{ o.porc_max_dto_contado }}</th>
+                            <th>{{ o.sub_total() }}</th>
+                        </tr>         
+                    </tbody>
+                </table>
+            </div>   
+        </div>
+    </div>        
+</div>
+
 <div id="add-search-to-the-list-component">
     <div>
         <form>
-            <div>
+            <span>
                 <mdl-textfield 
                     type="text" id="codigo" name="codigo"  
                     label="Código" floating-label 
                     [value]="data.codigo">
                 </mdl-textfield>
-            </div>
-            <div>
+            </span>
+            <span>
                 <mdl-textfield 
                     type="text" id="descripcion1" name="descripcion1"  
                     label="Descripción" floating-label 
                     [value]="data.descripcion1">
                 </mdl-textfield>
-            </div>
-            <div>
+            </span>
+            <span>
                 <mdl-textfield 
                     type="text" id="marca" name="marca"  
                     label="Marca" floating-label 
                     [value]="data.marca">
                 </mdl-textfield>
-            </div>
-            <div>
+            </span>
+            <span>
                 <mdl-textfield 
                     type="text" id="unidad-medida" name="unidad_medida"  
                     label="Unidad de medida" floating-label 
                     [value]="data.unidad_medida">
                 </mdl-textfield>
-            </div>  
-            <div>
+            </span>  
+            <span>
                 <mdl-textfield 
                     type="text" id="valor-unitario" name="valor_unitario"  
                     label="Valor unitario" floating-label 
                     [value]="data.precio_venta1">
                 </mdl-textfield>
-            </div>            
-            <div>
+            </span>            
+            <span>
                 <mdl-textfield    
                     type="text" id="existencia" name="existencia"  
                     label="Existencia" floating-label 
                     [value]="data.existencia">
                 </mdl-textfield>
-            </div>          
-            <div>
-                <mdl-textfield    
+            </span>          
+            <span>
+                <mdl-textfield  
                     type="text" id="cantidad" name="cantidad"  
                     label="Cantidad" floating-label 
                     [value]="data.cantidad">
                 </mdl-textfield>
-            </div>                                                          
+            </span>                                                         
             <div>
                 <button (click)="addList()">Agregar</button>
             </div>
