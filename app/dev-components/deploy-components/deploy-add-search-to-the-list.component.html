@@ -1,3 +1,16 @@
 <h2>Deploy add search to the list</h2>
-<autocomplete (blur)="blurX( $event )" (changeData)="changeAutocomplete($event)"  [urlApi]="urlApi" [tabla]="path" [campo]="field" [etiqueta]="label" id="autocomplete" class=""></autocomplete>
-<add-search-to-the-list [data]="data" (dad)="paraElPapa($event)" id="add-search-to-the-list" class="" [hidden]="!visibleAddSearchToTheList"></add-search-to-the-list>
+<autocomplete 
+    (blur)="blurX( $event )" 
+    (changeData)="changeAutocomplete($event)"  
+    [urlApi]="urlApi" 
+    [tabla]="path" 
+    [campo]="field" 
+    [etiqueta]="label" 
+    id="autocomplete" class="">
+</autocomplete>
+<add-search-to-the-list 
+    [data]="data"
+    [hidden]="!visibleAddSearchToTheList" 
+    (dad)="paraElPapa($event)" 
+    id="add-search-to-the-list" class="">
+</add-search-to-the-list>

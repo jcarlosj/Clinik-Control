@@ -43,12 +43,10 @@ var AddSearchToTheListComponent = (function () {
         console.log('NO muestra formulario ni resultados');
         return false;
     };
-    AddSearchToTheListComponent.prototype.addForm = function () {
-    };
     AddSearchToTheListComponent.prototype.addList = function () {
         this.showFormProductos = false;
         this.dad.emit('Hola papa');
-        console.log('HEY! Daddy ');
+        alert('HEY! Daddy soy tu hijo! \nAddSearchToTheListComponent ');
         console.log('> RECIBE\n addList() \n [ \n' +
             '  - Object.keys( this.data ) \n' + Object.keys(this.data) + '\n\n' +
             '  - Object.values( this.data ) \n' + Object.values(this.data) + '\n ] \n ');

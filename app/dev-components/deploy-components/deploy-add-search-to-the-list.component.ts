@@ -1,5 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 
+//import { AutocompleteComponent } from '../../../components/autocomplete/autocomplete.component';
+//import { AddSearchToTheListComponent } from '../../../components/add-search-to-the-list/add-search-to-the-list.component';
+ 
 import { Path } from '../../paths';
 
 @Component({
@@ -20,6 +23,9 @@ export class DeployAddSearchToTheListComponent implements OnInit, OnDestroy {
     private showFormProductos : boolean;
 
     private visibleAddSearchToTheList = false;
+
+    //@ViewChild(AutocompleteComponent)       autocomplete        : AutocompleteComponent;
+    //@ViewChild(AddSearchToTheListComponent) addSearchToTheList  : AddSearchToTheListComponent;
 
     constructor() {
         this .enviarAutoCompleteComponent();
@@ -116,10 +122,14 @@ export class DeployAddSearchToTheListComponent implements OnInit, OnDestroy {
         );
     }
 
-    enviarAddSearchToTheListComponent( obj : Object ) {
-        // Define valores por defecto
-        
+    enviarAddSearchToTheListComponent( obj : Object ) {     
+        // Agregamos el campo cantidad y sub-total
+        obj[ 'sub_total' ] = 0;
+        obj[ 'cantidad' ] = 0; 
+
+        // Asignamos el valor que vamos a enviar a nuestro componente hijo  
         this .data = obj;
+        
         // (To debug)
         
         console .log( 

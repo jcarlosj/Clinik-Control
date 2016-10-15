@@ -61,17 +61,13 @@ export class AddSearchToTheListComponent implements OnInit, OnDestroy {
     return false;
   }
 
-  addForm() {
-
-  }
-
   addList() {
     /* Limpia, deshabilita, y oculta el formulario */
     this .showFormProductos = false;
 
     // Envia al padre
     this.dad.emit( 'Hola papa' );
-    console .log ( 'HEY! Daddy ');
+    alert( 'HEY! Daddy soy tu hijo! \nAddSearchToTheListComponent ');
 
     // (To debug)
     console .log( 
